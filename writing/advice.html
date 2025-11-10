@@ -75,17 +75,8 @@
         <p class="with-space">
             <span id="edited-date" class="italic"></span>
         </p>
-        <script>
-            function setEditedDateToToday() {
-                const el = document.getElementById('edited-date');
-                if (!el) return;
-                const now = new Date();
-                const opts = { year: 'numeric', month: 'long', day: 'numeric' };
-                const formatted = now.toLocaleDateString(undefined, opts);
-                el.textContent = `Edited ${formatted}`;
-            }
-            setEditedDateToToday();
-        </script>
+        
+        <script src="/assets/js/main.js"></script>
         
         </div>
     </div>
