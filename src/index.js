@@ -1,6 +1,6 @@
 import indexHTML from '../index.html';
 import adviceHTML from '../writing/advice.html';
-import mainJS from '../assets/js/main.js';
+import mainJS from './js/main.js';
 
 export default {
   async fetch(request) {
