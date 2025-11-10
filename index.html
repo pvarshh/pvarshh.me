@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Pranav Varshney</title>
+
+    <!-- Standard favicon -->
+    <link rel="icon" type="image/x-icon" href="/assets/favicon/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+
+    <!-- Apple Touch Icons -->
+    <link rel="apple-touch-icon" href="/assets/favicon/apple-touch-icon.png">
+
+    <!-- Android Chrome Icons -->
+    <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/assets/favicon/android-chrome-512x512.png">
+
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="/site.webmanifest">
+
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-serif/1.0.0/fonts.min.css" async>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=Crimson+Text:ital,wght@0,400;0,700;1,400&display=swap" async>
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <h2>Pranav Varshney</h2>
+
+            <p>Some things about me:</p>
+            <ul>
+                <li>Studying computer science at <a href="https://www.umich.edu">University of Michigan</a></li>
+                <li>Incoming intern at Uber and <a href="https://plaid.com">Plaid</a>. Previous intern at AWS and Scale AI</li>
+                <li>Interested in quantitative finance, ai/ml and distributed systems</li>
+                <li>Obsessed with philosophy <a href = https://mitxonline.mit.edu/courses/course-v1:MITxT+24.09x/">mind and machines</a></li>
+
+            </ul>
+            
+            <p>Some things I wrote:</p>
+            
+            <ul>
+                <li>Incoming soon ... </li>
+                <!--
+                <li><a href="/writing/advice.html">Advice for a Younger Me</a></li>
+                <li><a href="/writing/bio.html">A Longer, More Informal Bio</a></li>
+                -->
+            </ul>
+            
+            
+
+            <p>Some things I did:</p>
+            <ul>
+                <li>Healthcare-driven ai algorithms research with <a href="https://pixail.engin.umich.edu/index.html">Joyce Wang</a></li>
+                <li>Helped build popular job board <a href="https://cvrve.me">Cvrve</a></li>
+                <li>Self-operating networks research with <a href="https://websites.umich.edu/~vyl/#home">Victor Liu</a></li>
+                <li>Helped teach intro python for <a href="https://lsa.umich.edu/content/michigan-lsa/computingfor/en/people/instructional-assistants/pranav-varshney.html">Compfor 131</a></li>
+            </ul>
+
+            <p>Some places to find me:</p>
+            <ul>
+                <li>Email: <a href="mailto:pvarsh@umich.edu">pvarsh [at] umich [dot] edu</a></li>
+                <li>Twitter: <a href="https://x.com/pvarshh">@pvarshh</a></li>
+                <li>Github: <a href="https://github.com/pvarshh">@pvarshh</a></li>
+                <li>LinkedIn: <a href="https://linkedin.com/in/pvarshh">@pvarshh</a></li>
+            </ul>
+
+
+        <p class="with-space">
+
+            <span id="edited-date" class="italic"></span>
+        </p>
+        
+        </div>
+    </div>
+    
+    <script>
+        function generateRandomText(length) {
+            const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+            let result = '';
+            for (let i = 0; i < length; i++) {
+                result += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            return result;
+        }
+        
+        function updateObfuscatedText() {
+            const element1 = document.getElementById('obfuscated-text-1');
+            const element2 = document.getElementById('obfuscated-text-2');
+            
+            if (element1) {
+                element1.textContent = generateRandomText(5);
+            }
+            if (element2) {
+                element2.textContent = generateRandomText(5);
+            }
+        }
+
+        function setEditedDateToToday() {
+            const el = document.getElementById('edited-date');
+            if (!el) return;
+            const now = new Date();
+            const opts = { year: 'numeric', month: 'long', day: 'numeric' };
+            const formatted = now.toLocaleDateString(undefined, opts);
+            el.textContent = `Edited ${formatted}`;
+        }
+        
+        // update obfuscated text frequently and set edited date once on load
+        setInterval(updateObfuscatedText, 50);
+        updateObfuscatedText();
+        setEditedDateToToday();
+    </script>
+</body>
+</html>

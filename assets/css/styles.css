@@ -1,0 +1,739 @@
+/* Base styles */
+body {
+    background: linear-gradient(135deg, #f5f4ef 0%, #e8e6dc 50%, #f5f4ef 100%);
+    background-size: 200% 200%;
+    animation: gradientShift 15s ease infinite;
+    color: #1a1a1a;
+    padding: 2rem 0;
+    line-height: 1.25;
+    font-family: "Times New Roman", Times, serif;
+    letter-spacing: -0.0px;
+    cursor: default;
+    position: relative;
+}
+
+/* Subtle grain texture overlay for vintage feel */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.03;
+    z-index: -1;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    pointer-events: none;
+    animation: grainMove 8s steps(10) infinite;
+}
+
+@keyframes grainMove {
+    0%, 100% { transform: translate(0, 0); }
+    10% { transform: translate(-5%, -10%); }
+    20% { transform: translate(-15%, 5%); }
+    30% { transform: translate(7%, -25%); }
+    40% { transform: translate(-5%, 25%); }
+    50% { transform: translate(-15%, 10%); }
+    60% { transform: translate(15%, 0%); }
+    70% { transform: translate(0%, 15%); }
+    80% { transform: translate(3%, 35%); }
+    90% { transform: translate(-10%, 10%); }
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Cursor trail effect - subtle dot follows cursor */
+body::after {
+    content: '';
+    position: fixed;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(26, 26, 26, 0.3), transparent);
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    animation: cursorPulse 2s ease-in-out infinite;
+}
+
+@keyframes cursorPulse {
+    0%, 100% { transform: scale(1); opacity: 0.3; }
+    50% { transform: scale(1.5); opacity: 0.6; }
+}
+
+/* Container */
+.container {
+    margin: 0;
+    padding: 0 20px;
+    font-family: "Times New Roman", Times, serif;
+    animation: fadeIn 1s ease-in, floatGentle 6s ease-in-out infinite;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes floatGentle {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-3px); }
+}
+
+.content {
+    max-width: 600px;
+    position: relative;
+}
+
+/* Decorative corner accent that appears on hover */
+.content::before {
+    content: '◆';
+    position: absolute;
+    top: -25px;
+    left: -25px;
+    font-size: 1.2rem;
+    opacity: 0;
+    transform: rotate(45deg) scale(0);
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    color: rgba(26, 26, 26, 0.2);
+}
+
+.content:hover::before {
+    opacity: 1;
+    transform: rotate(45deg) scale(1);
+}
+
+.content-centered {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+}
+
+/* Breathing border effect */
+.content-centered::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(26, 26, 26, 0.3), transparent);
+    animation: breatheBorder 4s ease-in-out infinite;
+}
+
+@keyframes breatheBorder {
+    0%, 100% { width: 0%; opacity: 0; }
+    50% { width: 100%; opacity: 1; }
+}
+
+.content-blog-post {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: left;
+    position: relative;
+}
+
+/* Subtle page number indicator effect */
+.content-blog-post::before {
+    content: '◦';
+    position: absolute;
+    left: -40px;
+    top: 0;
+    font-size: 2rem;
+    opacity: 0.1;
+    animation: fadeInOut 3s ease-in-out infinite;
+}
+
+@keyframes fadeInOut {
+    0%, 100% { opacity: 0.1; }
+    50% { opacity: 0.3; }
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Times New Roman", Times, serif;
+}
+
+h1 {
+    font-weight: bold;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    position: relative;
+    display: inline-block;
+}
+
+/* Subtle shadow that follows cursor movement - activated on hover */
+h1:hover {
+    animation: titleGlow 2s ease-in-out infinite;
+}
+
+@keyframes titleGlow {
+    0%, 100% { text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1); }
+    50% { text-shadow: -2px -2px 12px rgba(0, 0, 0, 0.15); }
+}
+
+h2 {
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin: 1.0rem 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+h2:hover {
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.1);
+    letter-spacing: 0.5px;
+    transform: scale(1.02);
+}
+
+p {
+    font-family: "Times New Roman", Times, serif;
+    transition: all 0.3s ease;
+}
+
+/* Subtle highlight effect when hovering over paragraphs */
+p:hover {
+    background: linear-gradient(to right, transparent, rgba(232, 230, 220, 0.3), transparent);
+    padding: 0.2rem 0;
+    border-radius: 2px;
+}
+
+ol, ul, li {
+    font-size: inherit;
+    line-height: inherit;
+}
+
+/* Staggered fade-in for list items */
+ol li, ul li {
+    animation: fadeInList 0.5s ease-out backwards;
+    animation-delay: calc(var(--li-index, 0) * 0.05s);
+}
+
+ol li:nth-child(1), ul li:nth-child(1) { --li-index: 1; }
+ol li:nth-child(2), ul li:nth-child(2) { --li-index: 2; }
+ol li:nth-child(3), ul li:nth-child(3) { --li-index: 3; }
+ol li:nth-child(4), ul li:nth-child(4) { --li-index: 4; }
+ol li:nth-child(5), ul li:nth-child(5) { --li-index: 5; }
+ol li:nth-child(6), ul li:nth-child(6) { --li-index: 6; }
+ol li:nth-child(7), ul li:nth-child(7) { --li-index: 7; }
+ol li:nth-child(8), ul li:nth-child(8) { --li-index: 8; }
+ol li:nth-child(9), ul li:nth-child(9) { --li-index: 9; }
+ol li:nth-child(10), ul li:nth-child(10) { --li-index: 10; }
+
+@keyframes fadeInList {
+    from {
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+li {
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    padding-left: 0.3rem;
+    position: relative;
+}
+
+li:hover {
+    transform: translateX(5px);
+    color: #444;
+}
+
+/* Playful bullet point animation */
+li::marker {
+    transition: all 0.3s ease;
+}
+
+li:hover::marker {
+    color: #888;
+    font-size: 1.1em;
+}
+
+.serif {
+    font-family: Georgia, serif;
+}
+
+.garamond {
+    font-family: "Garamond", serif;
+}
+
+.georgia {
+    font-family: Georgia, serif;
+}
+
+
+#obfuscated-text, #obfuscated-text-1, #obfuscated-text-2 {
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: normal;
+}
+
+.site-title {
+    text-decoration: none;
+    color: inherit;
+}
+
+.site-title:hover {
+    color: inherit;
+}
+
+.with-space {
+    margin-top: 2rem; /* Add space above the line break */
+    position: relative;
+}
+
+/* Decorative line animation */
+.with-space::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -1rem;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to right, rgba(26, 26, 26, 0.2), transparent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.8s ease;
+}
+
+.with-space:hover::after {
+    transform: scaleX(1);
+}
+
+.bold {
+    font-weight: bold;
+    transition: all 0.2s ease;
+}
+
+.bold:hover {
+    letter-spacing: 0.3px;
+}
+
+.italic {
+    font-style: italic;
+    transition: all 0.2s ease;
+}
+
+.italic:hover {
+    letter-spacing: 0.5px;
+    font-style: italic;
+}
+
+
+/* Links */
+a {
+    color: inherit;
+    text-decoration: none;
+    background-image: linear-gradient(to right, #1a1a1a 0%, #666 100%);
+    background-size: 0% 2px;
+    background-repeat: no-repeat;
+    background-position: left bottom;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border-bottom: 2px solid #1a1a1a;
+    position: relative;
+}
+
+a:hover {
+    color: #666;
+    background-size: 100% 2px;
+    border-bottom-color: transparent;
+    transform: translateY(-1px);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Subtle sparkle effect on link hover */
+a::after {
+    content: '✦';
+    position: absolute;
+    right: -18px;
+    top: 50%;
+    transform: translateY(-50%) scale(0);
+    opacity: 0;
+    transition: all 0.3s ease;
+    font-size: 0.7em;
+    pointer-events: none;
+}
+
+a:hover::after {
+    transform: translateY(-50%) scale(1) rotate(20deg);
+    opacity: 0.4;
+}
+
+/* Remove underline from links in h2 elements */
+h2 a {
+    text-decoration: none;
+}
+
+h2 a:hover {
+    color: #1a1a1a;
+}
+
+/* Hover effect for h3 headings */
+h3 {
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+}
+
+h3:hover {
+    transform: translateX(3px);
+}
+
+h3::before {
+    content: '→';
+    position: absolute;
+    left: -20px;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+h3:hover::before {
+    opacity: 0.5;
+    left: -25px;
+}
+
+/* Fun Easter egg: konami code style effect */
+@keyframes rainbow {
+    0% { filter: hue-rotate(0deg); }
+    100% { filter: hue-rotate(360deg); }
+}
+
+/* Smooth scroll behavior */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Selection styling */
+::selection {
+    background: rgba(26, 26, 26, 0.2);
+    color: #1a1a1a;
+}
+
+::-moz-selection {
+    background: rgba(26, 26, 26, 0.2);
+    color: #1a1a1a;
+}
+
+/* Header */
+.header-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 2rem;
+}
+
+.header-nav h1 {
+    font-weight: normal;
+    font-size: 2.2rem;
+    margin-bottom: 0;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+/* Fun wiggle on header title hover */
+.header-nav h1:hover {
+    animation: wiggle 0.5s ease-in-out;
+}
+
+@keyframes wiggle {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-1deg); }
+    75% { transform: rotate(1deg); }
+}
+
+.nav-links {
+    font-size: 1rem;
+    display: flex;
+    gap: 1rem;
+}
+
+/* Separator dots between nav items */
+.nav-links::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    bottom: -5px;
+    background: linear-gradient(to right, transparent, rgba(26, 26, 26, 0.1), transparent);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.nav-links:hover::before {
+    opacity: 1;
+}
+
+.nav-item {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    color: inherit;
+    border-bottom: none;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    position: relative;
+}
+
+.nav-item:hover {
+    color: #666;
+    transform: translateY(-2px);
+}
+
+/* Remove sparkle from nav items */
+.nav-item::after {
+    display: none;
+}
+
+.nav-item.current {
+    border-bottom: 2px solid #1a1a1a;
+    text-decoration: none;
+    animation: pulseUnderline 2s ease-in-out infinite;
+}
+
+@keyframes pulseUnderline {
+    0%, 100% { border-bottom-color: #1a1a1a; }
+    50% { border-bottom-color: #666; }
+}
+
+.right-align {
+    text-align: right;
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+/* Decorative quote mark for right-aligned content */
+.right-align::before {
+    content: '"';
+    position: absolute;
+    left: -30px;
+    top: -10px;
+    font-size: 4rem;
+    opacity: 0.05;
+    font-family: Georgia, serif;
+    transition: all 0.5s ease;
+}
+
+.right-align:hover::before {
+    opacity: 0.15;
+    transform: scale(1.1);
+}
+
+/* Content sections */
+section {
+    margin: 2rem 0;
+    animation: slideInSection 0.6s ease-out backwards;
+    animation-delay: calc(var(--section-index, 0) * 0.1s);
+}
+
+@keyframes slideInSection {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Assign delay variables to sections */
+section:nth-of-type(1) { --section-index: 1; }
+section:nth-of-type(2) { --section-index: 2; }
+section:nth-of-type(3) { --section-index: 3; }
+section:nth-of-type(4) { --section-index: 4; }
+section:nth-of-type(5) { --section-index: 5; }
+
+/* Blog post specific styling */
+.blog-title {
+    font-size: 3rem;
+    font-weight: normal;
+    margin: 0 0 1rem 0;
+    line-height: 1.2;
+    animation: fadeInTitle 1.2s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+@keyframes fadeInTitle {
+    from { 
+        opacity: 0; 
+        transform: translateY(-20px);
+        letter-spacing: 5px;
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0);
+        letter-spacing: 0px;
+    }
+}
+
+/* Responsive images and figures */
+.wide-image, .wide-figure {
+    max-width: calc(100vw - 40px);
+    width: auto;
+    height: auto;
+    margin: 2rem 0;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.wide-image:hover, .wide-figure:hover {
+    transform: scale(1.01);
+    filter: contrast(1.05) brightness(1.02);
+}
+
+.content-centered .wide-image,
+.content-centered .wide-figure,
+.content-blog-post .wide-image,
+.content-blog-post .wide-figure {
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+
+.wide-figure {
+    text-align: center;
+}
+
+.wide-figure img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 2px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.wide-figure:hover img {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    border-radius: 4px;
+}
+
+.wide-figure figcaption {
+    margin-top: 0.5rem;
+    font-style: italic;
+    font-size: 0.9rem;
+    color: #666;
+    opacity: 0;
+    animation: fadeInCaption 0.8s ease-in 0.3s forwards;
+}
+
+@keyframes fadeInCaption {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Footer */
+footer {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    animation: fadeInFooter 1s ease-in 0.5s both;
+}
+
+@keyframes fadeInFooter {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.footer-left {
+    font-size: 1.5rem;  /* Adjust size as needed */
+    transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.footer-left:hover {
+    transform: scale(1.05) rotate(-2deg);
+}
+
+.footer-right {
+    display: flex;
+    gap: 1rem;
+}
+
+.footer-right a {
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.footer-right a:hover {
+    transform: translateY(-3px) rotate(5deg);
+}
+
+/* Line length control */
+.content p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* First letter drop cap effect for first paragraph in blog posts */
+.content-blog-post > p:first-of-type::first-letter {
+    font-size: 3.5rem;
+    line-height: 0.9;
+    float: left;
+    margin: 0.1rem 0.1rem 0 0;
+    font-weight: bold;
+    color: rgba(26, 26, 26, 0.7);
+    font-family: Georgia, serif;
+}
+
+.content ol, .content ul {
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* .content li {
+    margin-bottom: 0.5rem;
+} */
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    body {
+        padding: 1rem 0;
+    }
+    
+    .container {
+        padding: 0 20px;
+    }
+    
+    h1 {
+        font-size: 1.75rem;
+    }
+    
+    .content {
+        font-size: 0.9rem;
+    }
+    
+    /* Disable some effects on mobile for performance */
+    .content::before,
+    .content-blog-post::before,
+    .right-align::before {
+        display: none;
+    }
+}
+
+/* Fun time-based color shifts (subtle) */
+@media (prefers-reduced-motion: no-preference) {
+    body {
+        animation: gradientShift 15s ease infinite, timeBasedTint 60s ease infinite;
+    }
+}
+
+@keyframes timeBasedTint {
+    0%, 100% { filter: brightness(1); }
+    25% { filter: brightness(1.02) hue-rotate(2deg); }
+    50% { filter: brightness(0.98); }
+    75% { filter: brightness(1.02) hue-rotate(-2deg); }
+}
+
+/* Respect user preferences for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
