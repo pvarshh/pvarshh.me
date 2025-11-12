@@ -3,7 +3,13 @@ import adviceHTML from '../writing/advice.html';
 import mainJS from './js/main.js';
 import stylesCSS from './css/styles.css';
 import resumeHTML from '../resume.html';
-import resumePDF from '../Resume.pdf';
+// Local images (placeholders)
+import mountainSvg from './images/mountain.svg';
+import birdSvg from './images/bird.svg';
+import desertSvg from './images/desert.svg';
+import forestSvg from './images/forest.svg';
+import imagesHTML from '../favorites/images.html';
+import musicHTML from '../favorites/music.html';
 
 // Import favicons
 import faviconIco from './favicon/favicon.ico';
@@ -33,6 +39,19 @@ export default {
     // Resume page
     if (url.pathname === '/resume.html') {
       return new Response(resumeHTML, {
+        headers: { 'content-type': 'text/html;charset=UTF-8' }
+      });
+    }
+
+    // Favorites: images and music
+    if (url.pathname === '/favorites/images.html') {
+      return new Response(imagesHTML, {
+        headers: { 'content-type': 'text/html;charset=UTF-8' }
+      });
+    }
+
+    if (url.pathname === '/favorites/music.html') {
+      return new Response(musicHTML, {
         headers: { 'content-type': 'text/html;charset=UTF-8' }
       });
     }
@@ -84,13 +103,6 @@ export default {
     if (url.pathname === '/src/favicon/android-chrome-512x512.png') {
       return new Response(androidChrome512, {
         headers: { 'content-type': 'image/png' }
-      });
-    }
-
-    // Serve PDF resume
-    if (url.pathname === '/Resume.pdf') {
-      return new Response(resumePDF, {
-        headers: { 'content-type': 'application/pdf' }
       });
     }
     
