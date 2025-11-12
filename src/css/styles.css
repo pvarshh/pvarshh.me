@@ -738,25 +738,38 @@ footer {
     }
 }
 
-/* Spotify embed container: cap width and center embeds */
+/* Spotify embed container: cap width, center, and add spacing */
 .spotify-embed {
-    max-width: 100%;
-    margin-right: 14%;
+    max-width: 640px;
+    margin: 0.75rem auto;
+    display: block;
 }
 .spotify-embed + .spotify-embed {
-    margin-top: 0.75rem;
+    margin-top: 1rem;
 }
 
 /* Embed item styling (title + meta above embeds) */
 .embed-item {
-    padding: 0.5rem 0;
+    padding: 0.4rem 0;
+    text-align: left;
 }
 .embed-item h3 {
     margin: 0 0 0.25rem 0;
-    font-size: 1.05rem;
+    font-size: 1.1rem;
+    font-weight: 600;
 }
 .embed-item .spotify-meta {
     margin: 0 0 0.5rem 0;
-    color: rgba(26,26,26,0.6);
-    font-size: 0.92rem;
+    color: rgba(26,26,26,0.55);
+    font-size: 0.95rem;
+}
+
+/* Make the iframe visually contained on small screens */
+.spotify-embed iframe {
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+@media (max-width: 680px) {
+    .spotify-embed { max-width: 100%; padding: 0 10px; }
 }
