@@ -2,6 +2,8 @@ import indexHTML from '../index.html';
 import adviceHTML from '../writing/advice.html';
 import mainJS from './js/main.js';
 import stylesCSS from './css/styles.css';
+import resumeHTML from '../resume.html';
+import resumePDF from '../Resume.pdf';
 
 // Import favicons
 import faviconIco from './favicon/favicon.ico';
@@ -24,6 +26,13 @@ export default {
     
     if (url.pathname === '/writing/advice.html') {
       return new Response(adviceHTML, {
+        headers: { 'content-type': 'text/html;charset=UTF-8' }
+      });
+    }
+
+    // Resume page
+    if (url.pathname === '/resume.html') {
+      return new Response(resumeHTML, {
         headers: { 'content-type': 'text/html;charset=UTF-8' }
       });
     }
@@ -75,6 +84,13 @@ export default {
     if (url.pathname === '/src/favicon/android-chrome-512x512.png') {
       return new Response(androidChrome512, {
         headers: { 'content-type': 'image/png' }
+      });
+    }
+
+    // Serve PDF resume
+    if (url.pathname === '/Resume.pdf') {
+      return new Response(resumePDF, {
+        headers: { 'content-type': 'application/pdf' }
       });
     }
     
