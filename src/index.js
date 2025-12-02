@@ -10,6 +10,9 @@ import desertSvg from './images/desert.svg';
 import forestSvg from './images/forest.svg';
 import imagesHTML from '../favorites/images.html';
 import musicHTML from '../favorites/music.html';
+import booksHTML from '../favorites/books.html';
+import moviesHTML from '../favorites/movies.html';
+import tvShowsHTML from '../favorites/tv_shows.html';
 
 // Import favicons
 import faviconIco from './favicon/favicon.ico';
@@ -52,6 +55,24 @@ export default {
 
     if (url.pathname === '/favorites/music.html') {
       return new Response(musicHTML, {
+        headers: { 'content-type': 'text/html;charset=UTF-8' }
+      });
+    }
+
+    if (url.pathname === '/favorites/books.html') {
+      return new Response(booksHTML, {
+        headers: { 'content-type': 'text/html;charset=UTF-8' }
+      });
+    }
+
+    if (url.pathname === '/favorites/movies.html') {
+      return new Response(moviesHTML, {
+        headers: { 'content-type': 'text/html;charset=UTF-8' }
+      });
+    }
+
+    if (url.pathname === '/favorites/tv_shows.html') {
+      return new Response(tvShowsHTML, {
         headers: { 'content-type': 'text/html;charset=UTF-8' }
       });
     }

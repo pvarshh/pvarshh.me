@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Favorite Images - Pranav</title>
+    <title>Favorite Movies - Pranav</title>
 
     <!-- Standard favicon -->
     <link rel="icon" type="image/x-icon" href="/src/favicon/favicon.ico">
@@ -25,41 +25,55 @@
 <body>
   	<div class="container content-centered">
     	<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;">
-        	<a href="/favorites/images.html">Favorite Images</a>
+        	<a href="/favorites/movies.html">Favorite TV Shows</a>
         	<a href="/" class="nav-item">Home</a>
     	</div>
-    	<div class="content-blog-post">
-      		<figure class="wide-figure">
-        		<figcaption>amazon — early morning </figcaption>
-        		<img src="/src/images/amazon_office.JPG" alt="Mountain lake" class="wide-image" />
-      		</figure>
-      		<figure class="wide-figure">
-        		<figcaption>hiking — the peak</figcaption>
-        		<img src="/src/images/amazon_hiking.JPG" alt="Bird close-up" class="wide-image" />
-      		</figure>
-			<figure class="wide-figure">
-        		<figcaption>northern lights — so pretty</figcaption>
-        		<img src="/src/images/northern_lights.jpg" alt="Forest path" class="wide-image" />
-      		</figure>
-	    	<figure class="wide-figure">
-        		<figcaption>iceland — waterfall</figcaption>
-        		<img src="/src/images/iceland.JPG" alt="Desert road" class="wide-image" />
-      		</figure>
-		    <figure class="wide-figure">
-        		<figcaption>texas — family</figcaption>
-        		<img src="/src/images/texas.JPG" alt="Forest path" class="wide-image" />
-      		</figure>
-      		<figure class="wide-figure">
-        		<figcaption>relax — have fun</figcaption>
-        		<img src="/src/images/relax.JPG" alt="Forest path" class="wide-image" />
-      		</figure>
-			<figure class="wide-figure">
-        		<figcaption>w ... wally west — 2021</figcaption>
-        		<img src="/src/images/wally_west.jpg" alt="Forest path" class="wide-image" />
-      		</figure>
+    	<div style="text-align: left;">
+            <ul style="list-style: none; padding: 0; margin: 0;">
+                <li style="margin-bottom: 2rem;">
+                    <span class="bold" style="font-size: 1.1rem;">Adaalat</span> <span class="italic">(2010)</span>
+                    <p style="margin-top: 0.25rem; margin-bottom: 0.5rem;">A defense attorney known for his sharp intellect and unconventional methods defends clients accused of serious crimes.</p>
+                    <button class="trailer-btn" data-video-id="UJWYWG7r4Ek">Watch Trailer</button>
+                </li>
+                <li style="margin-bottom: 2rem;">
+                    <span class="bold" style="font-size: 1.1rem;">House M.D.</span> <span class="italic">(2004)</span>
+                    <p style="margin-top: 0.25rem; margin-bottom: 0.5rem;">An unconventional, misanthropic medical genius heads a team of diagnosticians at a teaching hospital in New Jersey.
+                    <button class="trailer-btn" data-video-id="GSgua-jsn-Q">Watch Trailer</button>
+                </li>
+                <li style="margin-bottom: 2rem;">
+                    <span class="bold" style="font-size: 1.1rem;">Dexter</span> <span class="italic">(2006)</span>
+                    <p style="margin-top: 0.25rem; margin-bottom: 0.5rem;">A forensic technician specializing in blood spatter pattern analysis leads a secret parallel life as a vigilante serial killer.</p>
+                    <button class="trailer-btn" data-video-id="YQeUmSD1c3g">Watch Trailer</button>
+                </li>
+                <li style="margin-bottom: 2rem;">
+                    <span class="bold" style="font-size: 1.1rem;">Breaking Bad</span> <span class="italic">(2008)</span>
+                    <p style="margin-top: 0.25rem; margin-bottom: 0.5rem;">A high school chemistry teacher turned meth kingpin navigates the criminal underworld to secure his family's future.</p>
+                    <button class="trailer-btn" data-video-id="HhesaQXLuRY">Watch Trailer</button>
+                </li>
+                <li style="margin-bottom: 2rem;">
+                    <span class="bold" style="font-size: 1.1rem;">Friends</span> <span class="italic">(1994)</span>
+                    <p style="margin-top: 0.25rem; margin-bottom: 0.5rem;">The lives of six friends living in Manhattan as they navigate relationships, careers, and life in their 20s and 30s.</p>
+                    <button class="trailer-btn" data-video-id="QdQ58BbGRsA">Watch Trailer</button>
+                </li>
+                <li style="margin-bottom: 2rem;">
+                    <span class="bold" style="font-size: 1.1rem;">Hannibal</span> <span class="italic">(2013)</span>
+                    <p style="margin-top: 0.25rem; margin-bottom: 0.5rem;">FBI profiler Will Graham is recruited to investigate serial killers and forms a complex relationship with Hannibal Lecter.</p>
+                    <button class="trailer-btn" data-video-id="0wnDcDcPq2A">Watch Trailer</button>
+                </li>
+            </ul>
     	</div>
     	<p class="with-space"><span id="edited-date" class="italic"></span></p>
   	</div>
+
+    <!-- Trailer Modal -->
+    <div id="trailer-modal" class="modal-overlay" aria-hidden="true">
+        <div class="modal-content">
+            <button id="close-modal" class="close-btn" aria-label="Close modal">&times;</button>
+            <div class="video-container">
+                <iframe id="trailer-iframe" src="" title="Trailer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
 <script src="/src/js/main.js"></script>
 </body>
 </html>

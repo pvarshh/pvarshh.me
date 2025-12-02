@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Favorite Images - Pranav</title>
+    <title>Favorite Movies - Pranav</title>
 
     <!-- Standard favicon -->
     <link rel="icon" type="image/x-icon" href="/src/favicon/favicon.ico">
@@ -25,41 +25,55 @@
 <body>
   	<div class="container content-centered">
     	<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;">
-        	<a href="/favorites/images.html">Favorite Images</a>
+        	<a href="/favorites/movies.html">Favorite Movies</a>
         	<a href="/" class="nav-item">Home</a>
     	</div>
-    	<div class="content-blog-post">
-      		<figure class="wide-figure">
-        		<figcaption>amazon — early morning </figcaption>
-        		<img src="/src/images/amazon_office.JPG" alt="Mountain lake" class="wide-image" />
-      		</figure>
-      		<figure class="wide-figure">
-        		<figcaption>hiking — the peak</figcaption>
-        		<img src="/src/images/amazon_hiking.JPG" alt="Bird close-up" class="wide-image" />
-      		</figure>
-			<figure class="wide-figure">
-        		<figcaption>northern lights — so pretty</figcaption>
-        		<img src="/src/images/northern_lights.jpg" alt="Forest path" class="wide-image" />
-      		</figure>
-	    	<figure class="wide-figure">
-        		<figcaption>iceland — waterfall</figcaption>
-        		<img src="/src/images/iceland.JPG" alt="Desert road" class="wide-image" />
-      		</figure>
-		    <figure class="wide-figure">
-        		<figcaption>texas — family</figcaption>
-        		<img src="/src/images/texas.JPG" alt="Forest path" class="wide-image" />
-      		</figure>
-      		<figure class="wide-figure">
-        		<figcaption>relax — have fun</figcaption>
-        		<img src="/src/images/relax.JPG" alt="Forest path" class="wide-image" />
-      		</figure>
-			<figure class="wide-figure">
-        		<figcaption>w ... wally west — 2021</figcaption>
-        		<img src="/src/images/wally_west.jpg" alt="Forest path" class="wide-image" />
-      		</figure>
+    	<div style="text-align: left;">
+            <ul style="list-style: none; padding: 0; margin: 0;">
+                <li style="margin-bottom: 2rem;">
+                    <span class="bold" style="font-size: 1.1rem;">Drishyam</span> <span class="italic">(2015)</span>
+                    <p style="margin-top: 0.25rem; margin-bottom: 0.5rem;">A gripping thriller where a common man goes to extreme lengths to protect his family.</p>
+                    <button class="trailer-btn" data-video-id="64xJLmcA2K8">Watch Trailer</button>
+                </li>
+                <li style="margin-bottom: 2rem;">
+                    <span class="bold" style="font-size: 1.1rem;">Parasite</span> <span class="italic">(2019)</span>
+                    <p style="margin-top: 0.25rem; margin-bottom: 0.5rem;">A masterpiece of social satire about class discrimination and survival.</p>
+                    <button class="trailer-btn" data-video-id="5xH0HfJHsaY">Watch Trailer</button>
+                </li>
+                <li style="margin-bottom: 2rem;">
+                    <span class="bold" style="font-size: 1.1rem;">The Truman Show</span> <span class="italic">(1998)</span>
+                    <p style="margin-top: 0.25rem; margin-bottom: 0.5rem;">A man discovers his entire life is a reality TV show. Deeply philosophical and moving.</p>
+                    <button class="trailer-btn" data-video-id="dlnmQbPGuls">Watch Trailer</button>
+                </li>
+                <li style="margin-bottom: 2rem;">
+                    <span class="bold" style="font-size: 1.1rem;">Andhadhun</span> <span class="italic">(2018)</span>
+                    <p style="margin-top: 0.25rem; margin-bottom: 0.5rem;">A blind pianist witnesses a murder. A dark comedy full of twists and turns.</p>
+                    <button class="trailer-btn" data-video-id="2iVYI99VGaw">Watch Trailer</button>
+                </li>
+                <li style="margin-bottom: 2rem;">
+                    <span class="bold" style="font-size: 1.1rem;">Jaane Bhi Do Yaro</span> <span class="italic">(1983)</span>
+                    <p style="margin-top: 0.25rem; margin-bottom: 0.5rem;">A cult classic satire on corruption in Indian politics and media.</p>
+                    <button class="trailer-btn" data-video-id="8qb17cYmSH4">Watch Trailer</button>
+                </li>
+                <li style="margin-bottom: 2rem;">
+                    <span class="bold" style="font-size: 1.1rem;">Rush Hour</span> <span class="italic">(1998)</span>
+                    <p style="margin-top: 0.25rem; margin-bottom: 0.5rem;">The perfect blend of action and comedy with Jackie Chan and Chris Tucker.</p>
+                    <button class="trailer-btn" data-video-id="JMiFsFQcFLE">Watch Trailer</button>
+                </li>
+            </ul>
     	</div>
     	<p class="with-space"><span id="edited-date" class="italic"></span></p>
   	</div>
+
+    <!-- Trailer Modal -->
+    <div id="trailer-modal" class="modal-overlay" aria-hidden="true">
+        <div class="modal-content">
+            <button id="close-modal" class="close-btn" aria-label="Close modal">&times;</button>
+            <div class="video-container">
+                <iframe id="trailer-iframe" src="" title="Trailer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
 <script src="/src/js/main.js"></script>
 </body>
 </html>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Favorite Images - Pranav</title>
+    <title>Favorite Books - Pranav</title>
 
     <!-- Standard favicon -->
     <link rel="icon" type="image/x-icon" href="/src/favicon/favicon.ico">
@@ -25,41 +25,99 @@
 <body>
   	<div class="container content-centered">
     	<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;">
-        	<a href="/favorites/images.html">Favorite Images</a>
+        	<a href="/favorites/books.html">Favorite Books</a>
         	<a href="/" class="nav-item">Home</a>
     	</div>
-    	<div class="content-blog-post">
-      		<figure class="wide-figure">
-        		<figcaption>amazon — early morning </figcaption>
-        		<img src="/src/images/amazon_office.JPG" alt="Mountain lake" class="wide-image" />
-      		</figure>
-      		<figure class="wide-figure">
-        		<figcaption>hiking — the peak</figcaption>
-        		<img src="/src/images/amazon_hiking.JPG" alt="Bird close-up" class="wide-image" />
-      		</figure>
-			<figure class="wide-figure">
-        		<figcaption>northern lights — so pretty</figcaption>
-        		<img src="/src/images/northern_lights.jpg" alt="Forest path" class="wide-image" />
-      		</figure>
-	    	<figure class="wide-figure">
-        		<figcaption>iceland — waterfall</figcaption>
-        		<img src="/src/images/iceland.JPG" alt="Desert road" class="wide-image" />
-      		</figure>
-		    <figure class="wide-figure">
-        		<figcaption>texas — family</figcaption>
-        		<img src="/src/images/texas.JPG" alt="Forest path" class="wide-image" />
-      		</figure>
-      		<figure class="wide-figure">
-        		<figcaption>relax — have fun</figcaption>
-        		<img src="/src/images/relax.JPG" alt="Forest path" class="wide-image" />
-      		</figure>
-			<figure class="wide-figure">
-        		<figcaption>w ... wally west — 2021</figcaption>
-        		<img src="/src/images/wally_west.jpg" alt="Forest path" class="wide-image" />
-      		</figure>
+    	<div style="text-align: left;">
+            <ul style="list-style: none; padding: 0; margin: 0;">
+                <li style="margin-bottom: 2rem;">
+
+                    <span class="bold" style="font-size: 1.1rem;">Satyarth Prakash</span> <span class="italic">by Maharishi Dayanand Saraswati</span>
+                    <p style="margin-top: 0.25rem; margin-bottom: 0.5rem;">Foundational text on Vedic philosophy and reform.</p>
+                    <button class="trailer-btn summary-btn" data-summary-id="summary-sp">Read Summary</button>
+                </li>
+                <li style="margin-bottom: 2rem;">
+                    <span class="bold" style="font-size: 1.1rem;">Harry Potter Series</span> <span class="italic">by J.K. Rowling</span>
+                    <p style="margin-top: 0.25rem; margin-bottom: 0.5rem;">A childhood classic that defined a generation.</p>
+                    <button class="trailer-btn summary-btn" data-summary-id="summary-hp">Read Summary</button>
+                </li>
+                <li style="margin-bottom: 2rem;">
+                    <span class="bold" style="font-size: 1.1rem;">Percy Jackson & The Olympians</span> <span class="italic">by Rick Riordan</span>
+                    <p style="margin-top: 0.25rem; margin-bottom: 0.5rem;">Another childhood classic that defined a generation.</p>
+                    <button class="trailer-btn summary-btn" data-summary-id="summary-pj">Read Summary</button>
+                </li>
+                <li style="margin-bottom: 2rem;">
+                    <span class="bold" style="font-size: 1.1rem;">To Kill a Mockingbird</span> <span class="italic">by Harper Lee</span>
+                    <p style="margin-top: 0.25rem; margin-bottom: 0.5rem;">A profound story about justice and moral growth.</p>
+                    <button class="trailer-btn summary-btn" data-summary-id="summary-tkm">Read Summary</button>
+                </li>
+                <li style="margin-bottom: 2rem;">
+                    <span class="bold" style="font-size: 1.1rem;">Frankenstein</span> <span class="italic">by Mary Shelley</span>
+                    <p style="margin-top: 0.25rem; margin-bottom: 0.5rem;">The original science fiction masterpiece about creation and responsibility.</p>
+                    <button class="trailer-btn summary-btn" data-summary-id="summary-frank">Read Summary</button>
+                </li>
+                <li style="margin-bottom: 2rem;">
+                    <span class="bold" style="font-size: 1.1rem;">Lord of the Flies</span> <span class="italic">by William Golding</span>
+                    <p style="margin-top: 0.25rem; margin-bottom: 0.5rem;">A chilling exploration of human nature and civilization.</p>
+                    <button class="trailer-btn summary-btn" data-summary-id="summary-lotf">Read Summary</button>
+                </li>
+                <li style="margin-bottom: 2rem;">
+                    <span class="bold" style="font-size: 1.1rem;">1984</span> <span class="italic">by George Orwell</span>
+                    <p style="margin-top: 0.25rem; margin-bottom: 0.5rem;">A dystopian warning about surveillance and totalitarianism.</p>
+                    <button class="trailer-btn summary-btn" data-summary-id="summary-1984">Read Summary</button>
+                </li>
+            </ul>
     	</div>
     	<p class="with-space"><span id="edited-date" class="italic"></span></p>
   	</div>
+
+    <!-- Hidden Summaries -->
+    <div style="display: none;">
+        <div id="summary-hp">
+            <h3>Harry Potter Series</h3>
+            <p>The novels chronicle the lives of a young wizard, Harry Potter, and his friends Hermione Granger and Ron Weasley, all of whom are students at Hogwarts School of Witchcraft and Wizardry. The main story arc concerns Harry's struggle against Lord Voldemort, a dark wizard who intends to become immortal, overthrow the wizard governing body known as the Ministry of Magic and subjugate all wizards and Muggles (non-magical people).</p>
+        </div>
+        <div id="summary-pj">
+            <h3>Percy Jackson & The Olympians</h3>
+            <p>Percy Jackson is a twelve-year-old boy diagnosed with ADHD and dyslexia, who discovers he is a demigod son of Poseidon. He attends Camp Half-Blood, a training camp for demigods, and embarks on adventures to stop the rise of the Titan lord Kronos.</p>
+        </div>
+        <div id="summary-sp">
+            <h3>Satyarth Prakash</h3>
+            <p>Satyarth Prakash (The Light of Meaning of the Truth) is a 1875 book written originally in Hindi by Maharishi Dayanand Saraswati, a renowned religious and social reformer and the founder of Arya Samaj. It is considered one of his major scholarly works. The book was revised by Swami Dayanand Saraswati in 1882 and has now been translated into more than 20 languages including Sanskrit and several foreign languages.</p>
+        </div>
+        <div id="summary-tkm">
+            <h3>To Kill a Mockingbird</h3>
+            <p>The story takes place during three years (1933–35) of the Great Depression in the fictional "tired old town" of Maycomb, Alabama, the seat of Maycomb County. It focuses on six-year-old Jean Louise Finch (Scout), who lives with her older brother Jeremy (Jem) and their widowed father Atticus, a middle-aged lawyer.</p>
+        </div>
+        <div id="summary-frank">
+            <h3>Frankenstein</h3>
+            <p>Frankenstein tells the story of Victor Frankenstein, a young scientist who creates a sapient creature in an unorthodox scientific experiment. Shelley started writing the story when she was 18, and the first edition was published anonymously in London on 1 January 1818, when she was 20.</p>
+        </div>
+        <div id="summary-lotf">
+            <h3>Lord of the Flies</h3>
+            <p>The book focuses on a group of British boys stranded on an uninhabited island and their disastrous attempt to govern themselves. Themes include the tension between groupthink and individuality, between rational and emotional reactions, and between morality and immorality.</p>
+        </div>
+        <div id="summary-1984">
+            <h3>1984</h3>
+            <p>The story takes place in an imagined future, the year 1984, when much of the world has fallen victim to perpetual war, omnipresent government surveillance, historical negationism, and propaganda. Great Britain, known as Airstrip One, has become a province of a totalitarian superstate named Oceania that is ruled by the Party who employ the Thought Police to persecute individuality and independent thinking.</p>
+        </div>
+        <div id="summary-tsh">
+            <h3>The Silent History</h3>
+            <p>The Silent History tells the story of a generation of children born without the ability to create or comprehend language, but with other, mysterious skills. It explores how society reacts to this phenomenon, from fear and isolation to acceptance and adaptation.</p>
+        </div>
+    </div>
+
+    <!-- Summary Modal -->
+    <div id="summary-modal" class="modal-overlay" aria-hidden="true">
+        <div class="modal-content">
+            <div class="summary-container">
+                <button id="close-summary-modal" class="close-btn">&times;</button>
+                <div id="summary-content">
+                    <!-- Content injected via JS -->
+                </div>
+            </div>
+        </div>
+    </div>
 <script src="/src/js/main.js"></script>
 </body>
 </html>

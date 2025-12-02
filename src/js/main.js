@@ -20,6 +20,99 @@ function updateObfuscatedText() {
   }
 }
 
+function setupTrailerModal() {
+  const modal = document.getElementById('trailer-modal');
+  const iframe = document.getElementById('trailer-iframe');
+  const closeBtn = document.getElementById('close-modal');
+  const buttons = document.querySelectorAll('.trailer-btn');
+
+  if (!modal || !iframe || !buttons.length) return;
+
+  function openModal(videoId) {
+    iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+    modal.classList.add('active');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+  }
+
+  function closeModal() {
+    modal.classList.remove('active');
+    modal.setAttribute('aria-hidden', 'true');
+    setTimeout(() => {
+      iframe.src = ''; // Stop video
+    }, 300); // Wait for fade out
+    document.body.style.overflow = '';
+  }
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const videoId = btn.getAttribute('data-video-id');
+      if (videoId) openModal(videoId);
+    });
+  });
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', closeModal);
+  }
+
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closeModal();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('active')) {
+      closeModal();
+    }
+  });
+}
+
+function setupSummaryModal() {
+  const modal = document.getElementById('summary-modal');
+  const contentContainer = document.getElementById('summary-content');
+  const closeBtn = document.getElementById('close-summary-modal');
+  const buttons = document.querySelectorAll('.summary-btn');
+
+  if (!modal || !contentContainer || !buttons.length) return;
+
+  function openModal(summaryId) {
+    const summarySource = document.getElementById(summaryId);
+    if (summarySource) {
+        contentContainer.innerHTML = summarySource.innerHTML;
+        modal.classList.add('active');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    }
+  }
+
+  function closeModal() {
+    modal.classList.remove('active');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const summaryId = e.target.getAttribute('data-summary-id');
+      if (summaryId) openModal(summaryId);
+    });
+  });
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', closeModal);
+  }
+
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closeModal();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('active')) {
+      closeModal();
+    }
+  });
+}
+
 function setEditedDateToToday() {
   const el = document.getElementById('edited-date');
   if (!el) return;
@@ -33,6 +126,12 @@ function setEditedDateToToday() {
 function init() {
   // Always set edited date
   setEditedDateToToday();
+  
+  // Setup trailer modal if present
+  setupTrailerModal();
+  
+  // Setup summary modal if present
+  setupSummaryModal();
   
   // Only run obfuscation on pages that have obfuscated text elements
   if (document.getElementById('obfuscated-text-1') || document.getElementById('obfuscated-text-2')) {
