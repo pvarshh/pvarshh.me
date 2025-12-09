@@ -35,51 +35,51 @@ export default {
       });
     }
     
-    if (url.pathname === '/writing/advice.html') {
+    if (url.pathname === '/writing/advice.html' || url.pathname === '/writing/advice') {
       return new Response(adviceHTML, {
         headers: { 'content-type': 'text/html;charset=UTF-8' }
       });
     }
 
-    if (url.pathname === '/writing/life.html') {
+    if (url.pathname === '/writing/life.html' || url.pathname === '/writing/life') {
       return new Response(lifeHTML, {
         headers: { 'content-type': 'text/html;charset=UTF-8' }
       });
     }
 
     // Resume page
-    if (url.pathname === '/resume.html') {
+    if (url.pathname === '/resume.html' || url.pathname === '/resume') {
       return new Response(resumeHTML, {
         headers: { 'content-type': 'text/html;charset=UTF-8' }
       });
     }
 
     // Favorites: images and music
-    if (url.pathname === '/favorites/images.html') {
+    if (url.pathname === '/favorites/images.html' || url.pathname === '/favorites/images') {
       return new Response(imagesHTML, {
         headers: { 'content-type': 'text/html;charset=UTF-8' }
       });
     }
 
-    if (url.pathname === '/favorites/music.html') {
+    if (url.pathname === '/favorites/music.html' || url.pathname === '/favorites/music') {
       return new Response(musicHTML, {
         headers: { 'content-type': 'text/html;charset=UTF-8' }
       });
     }
 
-    if (url.pathname === '/favorites/books.html') {
+    if (url.pathname === '/favorites/books.html' || url.pathname === '/favorites/books') {
       return new Response(booksHTML, {
         headers: { 'content-type': 'text/html;charset=UTF-8' }
       });
     }
 
-    if (url.pathname === '/favorites/movies.html') {
+    if (url.pathname === '/favorites/movies.html' || url.pathname === '/favorites/movies') {
       return new Response(moviesHTML, {
         headers: { 'content-type': 'text/html;charset=UTF-8' }
       });
     }
 
-    if (url.pathname === '/favorites/tv_shows.html') {
+    if (url.pathname === '/favorites/tv_shows.html' || url.pathname === '/favorites/tv_shows') {
       return new Response(tvShowsHTML, {
         headers: { 'content-type': 'text/html;charset=UTF-8' }
       });
