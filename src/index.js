@@ -1,19 +1,14 @@
-import indexHTML from '../index.html';
-import adviceHTML from '../writing/advice.html';
-import lifeHTML from '../writing/life.html';
+import indexHTML from '../pages/index.html';
+import lifeHTML from '../pages/writing/life.html';
 import mainJS from './js/main.js';
 import stylesCSS from './css/styles.css';
-import resumeHTML from '../resume.html';
+import resumeHTML from '../pages/resume.html';
 // Local images (placeholders)
-import mountainSvg from './images/mountain.svg';
-import birdSvg from './images/bird.svg';
-import desertSvg from './images/desert.svg';
-import forestSvg from './images/forest.svg';
-import imagesHTML from '../favorites/images.html';
-import musicHTML from '../favorites/music.html';
-import booksHTML from '../favorites/books.html';
-import moviesHTML from '../favorites/movies.html';
-import tvShowsHTML from '../favorites/tv_shows.html';
+import imagesHTML from '../pages/favorites/images.html';
+import musicHTML from '../pages/favorites/music.html';
+import booksHTML from '../pages/favorites/books.html';
+import moviesHTML from '../pages/favorites/movies.html';
+import tvShowsHTML from '../pages/favorites/tv_shows.html';
 
 // Import favicons
 import faviconIco from './favicon/favicon.ico';
@@ -27,121 +22,109 @@ import resumePDF from './pdf/resume.pdf';
 export default {
   async fetch(request) {
     const url = new URL(request.url);
-    let path = url.pathname;
-    
-    // Normalize path: remove trailing slash if present (except for root)
-    if (path.endsWith('/') && path.length > 1) {
-      path = path.slice(0, -1);
-    }
     
     // Serve HTML pages
-    if (path === '/' || path === '/index.html') {
+    if (url.pathname === '/' || url.pathname === '/index.html') {
       return new Response(indexHTML, {
         headers: { 'content-type': 'text/html;charset=UTF-8' }
       });
     }
-    
-    if (path === '/writing/advice.html' || path === '/writing/advice') {
-      return new Response(adviceHTML, {
-        headers: { 'content-type': 'text/html;charset=UTF-8' }
-      });
-    }
 
-    if (path === '/writing/life.html' || path === '/writing/life') {
+    if (url.pathname === '/writing/life.html') {
       return new Response(lifeHTML, {
         headers: { 'content-type': 'text/html;charset=UTF-8' }
       });
     }
 
     // Resume page
-    if (path === '/resume.html' || path === '/resume') {
+    if (url.pathname === '/resume.html') {
       return new Response(resumeHTML, {
         headers: { 'content-type': 'text/html;charset=UTF-8' }
       });
     }
 
     // Favorites: images and music
-    if (path === '/favorites/images.html' || path === '/favorites/images') {
+    if (url.pathname === '/favorites/images.html') {
       return new Response(imagesHTML, {
         headers: { 'content-type': 'text/html;charset=UTF-8' }
       });
     }
 
-    if (path === '/favorites/music.html' || path === '/favorites/music') {
+    if (url.pathname === '/favorites/music.html') {
       return new Response(musicHTML, {
         headers: { 'content-type': 'text/html;charset=UTF-8' }
       });
     }
 
-    if (path === '/favorites/books.html' || path === '/favorites/books') {
+    if (url.pathname === '/favorites/books.html') {
       return new Response(booksHTML, {
         headers: { 'content-type': 'text/html;charset=UTF-8' }
       });
     }
 
-    if (path === '/favorites/movies.html' || path === '/favorites/movies') {
+    if (url.pathname === '/favorites/movies.html') {
       return new Response(moviesHTML, {
         headers: { 'content-type': 'text/html;charset=UTF-8' }
       });
     }
 
-    if (path === '/favorites/tv_shows.html' || path === '/favorites/tv_shows') {
+    if (url.pathname === '/favorites/tv_shows.html') {
       return new Response(tvShowsHTML, {
         headers: { 'content-type': 'text/html;charset=UTF-8' }
       });
     }
     
     // Serve static assets
-    if (path === '/src/js/main.js') {
+    if (url.pathname === '/src/js/main.js') {
       return new Response(mainJS, {
         headers: { 'content-type': 'application/javascript;charset=UTF-8' }
       });
     }
     
-    if (path === '/src/css/styles.css') {
+    if (url.pathname === '/src/css/styles.css') {
       return new Response(stylesCSS, {
         headers: { 'content-type': 'text/css;charset=UTF-8' }
       });
     }
 
-    if (path === '/src/pdf/resume.pdf') {
+    if (url.pathname === '/src/pdf/resume.pdf') {
       return new Response(resumePDF, {
         headers: { 'content-type': 'application/pdf' }
       });
     }
     
     // Serve favicons
-    if (path === '/src/favicon/favicon.ico') {
+    if (url.pathname === '/src/favicon/favicon.ico') {
       return new Response(faviconIco, {
         headers: { 'content-type': 'image/x-icon' }
       });
     }
     
-    if (path === '/src/favicon/favicon-16x16.png') {
+    if (url.pathname === '/src/favicon/favicon-16x16.png') {
       return new Response(favicon16, {
         headers: { 'content-type': 'image/png' }
       });
     }
     
-    if (path === '/src/favicon/favicon-32x32.png') {
+    if (url.pathname === '/src/favicon/favicon-32x32.png') {
       return new Response(favicon32, {
         headers: { 'content-type': 'image/png' }
       });
     }
     
-    if (path === '/src/favicon/apple-touch-icon.png') {
+    if (url.pathname === '/src/favicon/apple-touch-icon.png') {
       return new Response(appleTouchIcon, {
         headers: { 'content-type': 'image/png' }
       });
     }
     
-    if (path === '/src/favicon/android-chrome-192x192.png') {
+    if (url.pathname === '/src/favicon/android-chrome-192x192.png') {
       return new Response(androidChrome192, {
         headers: { 'content-type': 'image/png' }
       });
     }
     
-    if (path === '/src/favicon/android-chrome-512x512.png') {
+    if (url.pathname === '/src/favicon/android-chrome-512x512.png') {
       return new Response(androidChrome512, {
         headers: { 'content-type': 'image/png' }
       });
