@@ -1,18 +1,19 @@
-import indexHTML from '../index.html';
-import adviceHTML from '../writing/advice.html';
+import indexHTML from '../pages/index.html';
+import adviceHTML from '../pages/writing/advice.html';
+import lifeHTML from '../pages/writing/life.html';
 import mainJS from './js/main.js';
 import stylesCSS from './css/styles.css';
-import resumeHTML from '../resume.html';
+import resumeHTML from '../pages/resume.html';
 // Local images (placeholders)
 import mountainSvg from './images/mountain.svg';
 import birdSvg from './images/bird.svg';
 import desertSvg from './images/desert.svg';
 import forestSvg from './images/forest.svg';
-import imagesHTML from '../favorites/images.html';
-import musicHTML from '../favorites/music.html';
-import booksHTML from '../favorites/books.html';
-import moviesHTML from '../favorites/movies.html';
-import tvShowsHTML from '../favorites/tv_shows.html';
+import imagesHTML from '../pages/favorites/images.html';
+import musicHTML from '../pages/favorites/music.html';
+import booksHTML from '../pages/favorites/books.html';
+import moviesHTML from '../pages/favorites/movies.html';
+import tvShowsHTML from '../pages/favorites/tv_shows.html';
 
 // Import favicons
 import faviconIco from './favicon/favicon.ico';
@@ -21,6 +22,7 @@ import favicon32 from './favicon/favicon-32x32.png';
 import appleTouchIcon from './favicon/apple-touch-icon.png';
 import androidChrome192 from './favicon/android-chrome-192x192.png';
 import androidChrome512 from './favicon/android-chrome-512x512.png';
+import resumePDF from './pdf/resume.pdf';
 
 export default {
   async fetch(request) {
@@ -35,6 +37,12 @@ export default {
     
     if (url.pathname === '/writing/advice.html') {
       return new Response(adviceHTML, {
+        headers: { 'content-type': 'text/html;charset=UTF-8' }
+      });
+    }
+
+    if (url.pathname === '/writing/life.html') {
+      return new Response(lifeHTML, {
         headers: { 'content-type': 'text/html;charset=UTF-8' }
       });
     }
@@ -87,6 +95,12 @@ export default {
     if (url.pathname === '/src/css/styles.css') {
       return new Response(stylesCSS, {
         headers: { 'content-type': 'text/css;charset=UTF-8' }
+      });
+    }
+
+    if (url.pathname === '/src/pdf/resume.pdf') {
+      return new Response(resumePDF, {
+        headers: { 'content-type': 'application/pdf' }
       });
     }
     
