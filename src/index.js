@@ -27,115 +27,121 @@ import resumePDF from './pdf/resume.pdf';
 export default {
   async fetch(request) {
     const url = new URL(request.url);
+    let path = url.pathname;
+    
+    // Normalize path: remove trailing slash if present (except for root)
+    if (path.endsWith('/') && path.length > 1) {
+      path = path.slice(0, -1);
+    }
     
     // Serve HTML pages
-    if (url.pathname === '/' || url.pathname === '/index.html') {
+    if (path === '/' || path === '/index.html') {
       return new Response(indexHTML, {
         headers: { 'content-type': 'text/html;charset=UTF-8' }
       });
     }
     
-    if (url.pathname === '/writing/advice.html' || url.pathname === '/writing/advice') {
+    if (path === '/writing/advice.html' || path === '/writing/advice') {
       return new Response(adviceHTML, {
         headers: { 'content-type': 'text/html;charset=UTF-8' }
       });
     }
 
-    if (url.pathname === '/writing/life.html' || url.pathname === '/writing/life') {
+    if (path === '/writing/life.html' || path === '/writing/life') {
       return new Response(lifeHTML, {
         headers: { 'content-type': 'text/html;charset=UTF-8' }
       });
     }
 
     // Resume page
-    if (url.pathname === '/resume.html' || url.pathname === '/resume') {
+    if (path === '/resume.html' || path === '/resume') {
       return new Response(resumeHTML, {
         headers: { 'content-type': 'text/html;charset=UTF-8' }
       });
     }
 
     // Favorites: images and music
-    if (url.pathname === '/favorites/images.html' || url.pathname === '/favorites/images') {
+    if (path === '/favorites/images.html' || path === '/favorites/images') {
       return new Response(imagesHTML, {
         headers: { 'content-type': 'text/html;charset=UTF-8' }
       });
     }
 
-    if (url.pathname === '/favorites/music.html' || url.pathname === '/favorites/music') {
+    if (path === '/favorites/music.html' || path === '/favorites/music') {
       return new Response(musicHTML, {
         headers: { 'content-type': 'text/html;charset=UTF-8' }
       });
     }
 
-    if (url.pathname === '/favorites/books.html' || url.pathname === '/favorites/books') {
+    if (path === '/favorites/books.html' || path === '/favorites/books') {
       return new Response(booksHTML, {
         headers: { 'content-type': 'text/html;charset=UTF-8' }
       });
     }
 
-    if (url.pathname === '/favorites/movies.html' || url.pathname === '/favorites/movies') {
+    if (path === '/favorites/movies.html' || path === '/favorites/movies') {
       return new Response(moviesHTML, {
         headers: { 'content-type': 'text/html;charset=UTF-8' }
       });
     }
 
-    if (url.pathname === '/favorites/tv_shows.html' || url.pathname === '/favorites/tv_shows') {
+    if (path === '/favorites/tv_shows.html' || path === '/favorites/tv_shows') {
       return new Response(tvShowsHTML, {
         headers: { 'content-type': 'text/html;charset=UTF-8' }
       });
     }
     
     // Serve static assets
-    if (url.pathname === '/src/js/main.js') {
+    if (path === '/src/js/main.js') {
       return new Response(mainJS, {
         headers: { 'content-type': 'application/javascript;charset=UTF-8' }
       });
     }
     
-    if (url.pathname === '/src/css/styles.css') {
+    if (path === '/src/css/styles.css') {
       return new Response(stylesCSS, {
         headers: { 'content-type': 'text/css;charset=UTF-8' }
       });
     }
 
-    if (url.pathname === '/src/pdf/resume.pdf') {
+    if (path === '/src/pdf/resume.pdf') {
       return new Response(resumePDF, {
         headers: { 'content-type': 'application/pdf' }
       });
     }
     
     // Serve favicons
-    if (url.pathname === '/src/favicon/favicon.ico') {
+    if (path === '/src/favicon/favicon.ico') {
       return new Response(faviconIco, {
         headers: { 'content-type': 'image/x-icon' }
       });
     }
     
-    if (url.pathname === '/src/favicon/favicon-16x16.png') {
+    if (path === '/src/favicon/favicon-16x16.png') {
       return new Response(favicon16, {
         headers: { 'content-type': 'image/png' }
       });
     }
     
-    if (url.pathname === '/src/favicon/favicon-32x32.png') {
+    if (path === '/src/favicon/favicon-32x32.png') {
       return new Response(favicon32, {
         headers: { 'content-type': 'image/png' }
       });
     }
     
-    if (url.pathname === '/src/favicon/apple-touch-icon.png') {
+    if (path === '/src/favicon/apple-touch-icon.png') {
       return new Response(appleTouchIcon, {
         headers: { 'content-type': 'image/png' }
       });
     }
     
-    if (url.pathname === '/src/favicon/android-chrome-192x192.png') {
+    if (path === '/src/favicon/android-chrome-192x192.png') {
       return new Response(androidChrome192, {
         headers: { 'content-type': 'image/png' }
       });
     }
     
-    if (url.pathname === '/src/favicon/android-chrome-512x512.png') {
+    if (path === '/src/favicon/android-chrome-512x512.png') {
       return new Response(androidChrome512, {
         headers: { 'content-type': 'image/png' }
       });
