@@ -1,0 +1,13 @@
+name = "pvarshh-me"
+main = "src/index.js"
+compatibility_date = "2024-01-01"
+
+# Treat HTML, CSS, SVG, and the client-side JS as raw text
+[[rules]]
+type = "Text"
+globs = ["**/*.html", "**/*.css", "**/*.svg", "src/js/main.js"]
+
+# Treat binary assets as Data (ArrayBuffer)
+[[rules]]
+type = "Data"
+globs = ["**/*.pdf", "**/*.png", "**/*.ico", "**/*.jpg", "**/*.jpeg"]
