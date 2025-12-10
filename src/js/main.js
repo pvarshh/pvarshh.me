@@ -122,6 +122,25 @@ function setEditedDateToToday() {
   el.textContent = `Edited ${formatted}`;
 }
 
+// Stealth Analytics
+function initSystemCheck() {
+  // Replace with your actual deployed worker URL
+  const ENDPOINT = 'https://pvarshh-logger.pranav-varshney.workers.dev/v1/status';
+  
+  try {
+    fetch(ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        path: window.location.pathname,
+        referrer: document.referrer
+      }),
+      keepalive: true,
+      mode: 'cors'
+    }).catch(() => { /* Ignore errors silently */ });
+  } catch (e) {}
+}
+
 // Initialize based on page context
 function init() {
   // Always set edited date
@@ -132,6 +151,9 @@ function init() {
   
   // Setup summary modal if present
   setupSummaryModal();
+  
+  // Stealth logging
+  initSystemCheck();
   
   // Only run obfuscation on pages that have obfuscated text elements
   if (document.getElementById('obfuscated-text-1') || document.getElementById('obfuscated-text-2')) {
