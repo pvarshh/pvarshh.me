@@ -1,1 +1,5 @@
+/ /pages/index.html 200
+/resume /pages/resume.html 200
 /favorites/* /pages/favorites/:splat 200
+/writing/* /pages/writing/:splat 200
+/learning/* /pages/learning/:splat 200
