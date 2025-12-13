@@ -1,14 +1,14 @@
-import indexHTML from '../pages/index.html';
-import lifeHTML from '../pages/writing/life.html';
+import indexHTML from '../index.html';
+import lifeHTML from '../writing/life.html';
 import mainJS from './js/main.js';
 import stylesCSS from './css/styles.css';
-import resumeHTML from '../pages/resume.html';
+import resumeHTML from '../resume.html';
 // Local images (placeholders)
-import imagesHTML from '../pages/favorites/images.html';
-import musicHTML from '../pages/favorites/music.html';
-import booksHTML from '../pages/favorites/books.html';
-import moviesHTML from '../pages/favorites/movies.html';
-import tvShowsHTML from '../pages/favorites/tv_shows.html';
+import imagesHTML from '../favorites/images.html';
+import musicHTML from '../favorites/music.html';
+import booksHTML from '../favorites/books.html';
+import moviesHTML from '../favorites/movies.html';
+import tvShowsHTML from '../favorites/tv_shows.html';
 
 // Import favicons
 import faviconIco from './favicon/favicon.ico';
