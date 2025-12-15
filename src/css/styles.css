@@ -113,6 +113,10 @@ body::after {
     position: relative;
 }
 
+.content-centered .content {
+    margin: 0 auto;
+}
+
 /* Breathing border effect */
 .content-centered::after {
     content: '';

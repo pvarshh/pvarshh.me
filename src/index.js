@@ -1,14 +1,14 @@
 import indexHTML from '../index.html';
-import lifeHTML from '../writing/life.html';
+import lifeHTML from '../pages/writing/life.html';
 import mainJS from './js/main.js';
 import stylesCSS from './css/styles.css';
-import resumeHTML from '../resume.html';
+import resumeHTML from '../pages/resume.html';
 // Local images (placeholders)
-import imagesHTML from '../favorites/images.html';
-import musicHTML from '../favorites/music.html';
-import booksHTML from '../favorites/books.html';
-import moviesHTML from '../favorites/movies.html';
-import tvShowsHTML from '../favorites/tv_shows.html';
+import imagesHTML from '../pages/favorites/images.html';
+import musicHTML from '../pages/favorites/music.html';
+import booksHTML from '../pages/favorites/books.html';
+import moviesHTML from '../pages/favorites/movies.html';
+import tvShowsHTML from '../pages/favorites/tv_shows.html';
 
 // Import favicons
 import faviconIco from './favicon/favicon.ico';
@@ -30,45 +30,45 @@ export default {
       });
     }
 
-    if (url.pathname === '/writing/life.html') {
+    if (url.pathname === '/pages/writing/life.html') {
       return new Response(lifeHTML, {
         headers: { 'content-type': 'text/html;charset=UTF-8' }
       });
     }
 
     // Resume page
-    if (url.pathname === '/resume.html') {
+    if (url.pathname === '/pages/resume.html') {
       return new Response(resumeHTML, {
         headers: { 'content-type': 'text/html;charset=UTF-8' }
       });
     }
 
     // Favorites: images and music
-    if (url.pathname === '/favorites/images.html' || url.pathname === '/favorites/images') {
+    if (url.pathname === '/pages/favorites/images.html' || url.pathname === '/pages/favorites/images') {
       return new Response(imagesHTML, {
         headers: { 'content-type': 'text/html;charset=UTF-8' }
       });
     }
 
-    if (url.pathname === '/favorites/music.html' || url.pathname === '/favorites/music') {
+    if (url.pathname === '/pages/favorites/music.html' || url.pathname === '/pages/favorites/music') {
       return new Response(musicHTML, {
         headers: { 'content-type': 'text/html;charset=UTF-8' }
       });
     }
 
-    if (url.pathname === '/favorites/books.html' || url.pathname === '/favorites/books') {
+    if (url.pathname === '/pages/favorites/books.html' || url.pathname === '/pages/favorites/books') {
       return new Response(booksHTML, {
         headers: { 'content-type': 'text/html;charset=UTF-8' }
       });
     }
 
-    if (url.pathname === '/favorites/movies.html' || url.pathname === '/favorites/movies') {
+    if (url.pathname === '/pages/favorites/movies.html' || url.pathname === '/pages/favorites/movies') {
       return new Response(moviesHTML, {
         headers: { 'content-type': 'text/html;charset=UTF-8' }
       });
     }
 
-    if (url.pathname === '/favorites/tv_shows.html' || url.pathname === '/favorites/tv_shows') {
+    if (url.pathname === '/pages/favorites/tv_shows.html' || url.pathname === '/pages/favorites/tv_shows') {
       return new Response(tvShowsHTML, {
         headers: { 'content-type': 'text/html;charset=UTF-8' }
       });

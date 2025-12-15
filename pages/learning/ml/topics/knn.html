@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>KNNs - Pranav</title>
+
+    <!-- Standard favicon -->
+    <link rel="icon" type="image/x-icon" href="/src/favicon/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/src/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/src/favicon/favicon-16x16.png">
+
+    <!-- Apple Touch Icons -->
+    <link rel="apple-touch-icon" href="/assets/favicon/apple-touch-icon.png">
+
+    <!-- Android Chrome Icons -->
+    <link rel="icon" type="image/png" sizes="192x192" href="/src/favicon/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/src/favicon/android-chrome-512x512.png">
+
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="/site.webmanifest">
+
+    <link rel="stylesheet" href="/src/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-serif/1.0.0/fonts.min.css" async>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=Crimson+Text:ital,wght@0,400;0,700;1,400&display=swap" async>
+</head>
+<body>
+    <div class="container content-centered">
+        <div class="content">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;">
+                <a href="/pages/learning/ml/knn.html">K Nearest Neighbors</a>
+                <a href="/" class="nav-item">Home</a>
+            </div>
+
+            <p>This topic hits close to home. My first real ML Interview was with Apple for their ADSP summer internship position. I was taking EECS 398 
+                (<a href = "https://practicaldsc.org">Practical Data Science</a>) concurrently, so the earlier rounds with the Hiring Manager, Recruiters and Engineers 
+                were quite straigh forward. Due to the nature of the position, however, the final technical case study was deeply rooted in ML principles.
+                In hindsight, the question was a classic KNN problem, a trivial aglo that makes the most intuitive sense. I could cope and just say I was nervous 
+                which caused such a dull performance. But nerves are part of the job, and to cope would be a disservice to my own growth. </p>
+
+            <p>Thats why I want to start my journey with KNNs, to redem my ADSP interview and solidify my understanding of KNN Algos.</p>
+
+            <b>What is KNN?</b>
+
+            <p>First off, what exactly is KNN? KNN stands for K Nearest Neighbors, a simple, supervised machine learning algorithm that can be used for both 
+                classification and regression tasks.  The core idea behind KNN is to predict the label of a new data point based on the labels of its 'K' closest
+                neighbors in the feature space. The 'K' in KNN refers to the number of nearest neighbors to consider when making a prediction.</p>
+            
+            <b>How does KNN work?</b>
+
+            <p>KNN operates on a straightforward principle: similar data points are likely to have similar labels. The algorithm follows these steps:</p>
+
+            <ul>
+                <li>Choose the number of neighbors 'K'.</li>
+                <li>Calculate the distance between the new data point and all other data points in the training set using a distance metric (e.g., Euclidean 
+                    distance, Manhattan distance).</li>
+                <li>Identify the 'K' nearest neighbors based on the calculated distances.</li>
+                <li>For classification tasks, assign the most common label among the 'K' neighbors to the new data point. For regression tasks, calculate the 
+                    average of the labels of the 'K' neighbors.</li>
+            </ul>
+
+            <b>Choosing the right 'K'</b>
+
+            <p>Choosing the right 'K' value is extremely important in our algorithm's performance. Any slig</p>
+
+
+
+           
+        <p class="with-space">
+            <span id="edited-date" class="italic"></span>
+        </p>
+        
+        <script src="/src/js/main.js"></script>
+        
+        </div>
+    </div>
+</body>
+</html>
