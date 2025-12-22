@@ -1,3 +1,5 @@
+
+content = r'''/* Base styles */
 body {
     background: linear-gradient(135deg, #f5f4ef 0%, #e8e6dc 50%, #f5f4ef 100%);
     background-size: 200% 200%;
@@ -86,6 +88,7 @@ body::after {
 .content {
     max-width: 1000px;
     position: relative;
+    margin: 0 auto;
 }
 
 /* Decorative corner accent that appears on hover */
@@ -981,3 +984,26 @@ li {
 .content-list {
     margin-top: 0 !important;
 }
+
+/* Code block styles */
+pre {
+    background-color: rgba(240, 239, 233, 0.6);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    padding: 1.5rem;
+    overflow-x: auto;
+    margin: 1.5rem 0;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    box-shadow: inset 0 1px 4px rgba(0,0,0,0.02);
+}
+
+code {
+    font-family: 'IBM Plex Mono', monospace;
+    color: #333;
+}
+'''
+
+with open('/Users/pvarshh/Desktop/pvarshh.me/src/css/styles.css', 'w') as f:
+    f.write(content)
