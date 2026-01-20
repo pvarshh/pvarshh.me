@@ -59,6 +59,21 @@
             margin-top: 1.5rem;
             opacity: 0.4;
         }
+        .auto-solve-btn {
+             margin-top: 1rem;
+             background: none;
+             border: 1px solid rgba(26,26,26,0.2);
+             padding: 0.5rem 1rem;
+             font-family: "IBM Plex Mono", monospace;
+             font-size: 0.7rem;
+             cursor: pointer;
+             opacity: 0.3;
+             transition: all 0.3s ease;
+        }
+        .auto-solve-btn:hover {
+            opacity: 0.8;
+            background: rgba(26,26,26,0.05);
+        }
         
         body.unlocked { overflow: auto; }
         body.unlocked #main-content {
@@ -79,6 +94,7 @@
             <!-- Maze injects here -->
         </div>
         <div class="maze-instructions">use arrow keys or swipe</div>
+        <button id="quantum-solve" class="auto-solve-btn">visualize quantum solution</button>
     </div>
 
     <div id="main-content" class="container">

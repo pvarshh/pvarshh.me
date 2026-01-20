@@ -1,6 +1,3 @@
-// Maze Game for Pranav's Website
-// Minimalist, keyboard + touch friendly
-
 class MazeGame {
     constructor(containerId) {
         this.container = document.getElementById(containerId);
@@ -67,7 +64,124 @@ class MazeGame {
         this.goal = { x: this.cols - 1, y: this.rows - 1 };
         this.path = [{ x: 0, y: 0 }];
         
+        // Quantum Solver State
+        this.qQueue = [];
+        this.qVisited = new Set();
+        this.qParent = new Map();
+        
         this.draw();
+        
+        // Listen for solver button
+        const solveBtn = document.getElementById("quantum-solve");
+        if(solveBtn) {
+            solveBtn.addEventListener("click", () => this.solveQuantum());
+        }
+    }
+    
+    solveQuantum() {
+        if(this.solved) return;
+        this.solved = true; // Lock player input
+        
+        // BFS initialization
+        // We start from player position (0,0) usually
+        const startNode = this.grid[this.index(this.player.x, this.player.y)];
+        this.qQueue.push(startNode);
+        this.qVisited.add(this.index(startNode.x, startNode.y));
+        
+        this.animateQuantumStep();
+    }
+
+    animateQuantumStep() {
+        // Expand wavefunction
+        // Process a batch of nodes to make animation reasonable speed
+        const batchSize = Math.max(5, Math.floor(this.qQueue.length / 2)); 
+        
+        for(let i=0; i<batchSize; i++) {
+            if(this.qQueue.length === 0) break;
+            
+            const current = this.qQueue.shift();
+            
+            // Check win
+            if(current.x === this.goal.x && current.y === this.goal.y) {
+                this.finishQuantum(current);
+                return;
+            }
+            
+            // Get neighbors based on walls
+            const neighbors = this.getAccessibleNeighbors(current);
+            for(let next of neighbors) {
+                if(!this.qVisited.has(this.index(next.x, next.y))) {
+                    this.qVisited.add(this.index(next.x, next.y));
+                    this.qParent.set(this.index(next.x, next.y), current);
+                    this.qQueue.push(next);
+                }
+            }
+        }
+        
+        // Draw the current wavefunction state
+        this.drawQuantum();
+        
+        if(this.qQueue.length > 0) {
+            requestAnimationFrame(() => this.animateQuantumStep());
+        }
+    }
+
+    getAccessibleNeighbors(cell) {
+        // Based on walls: Top (0), Right (1), Bottom (2), Left (3)
+        const neighbors = [];
+        // Top
+        if(!cell.walls[0]) neighbors.push(this.grid[this.index(cell.x, cell.y - 1)]);
+        // Right
+        if(!cell.walls[1]) neighbors.push(this.grid[this.index(cell.x + 1, cell.y)]);
+        // Bottom
+        if(!cell.walls[2]) neighbors.push(this.grid[this.index(cell.x, cell.y + 1)]);
+        // Left
+        if(!cell.walls[3]) neighbors.push(this.grid[this.index(cell.x - 1, cell.y)]);
+        
+        return neighbors.filter(n => n !== undefined);
+    }
+
+    drawQuantum() {
+        // Redraw base maze
+        this.draw(); 
+        
+        // Draw Wavefunction (Superposition)
+        this.ctx.fillStyle = "rgba(0, 200, 255, 0.2)"; // Cyan glow
+        for(let idx of this.qVisited) {
+            // Recover x,y from index is strictly: index = x + y * cols
+            const y = Math.floor(idx / this.cols);
+            const x = idx % this.cols;
+            this.ctx.fillRect(x * this.cellSize, y * this.cellSize, this.cellSize, this.cellSize);
+        }
+    }
+
+    finishQuantum(endNode) {
+        // Reconstruct path
+        let curr = endNode;
+        const solutionPath = [];
+        while(curr) {
+            solutionPath.push(curr);
+            curr = this.qParent.get(this.index(curr.x, curr.y));
+        }
+        solutionPath.reverse();
+        
+        // Animate the collapse (solution path)
+        let step = 0;
+        const drawSolution = () => {
+             if(step >= solutionPath.length) {
+                 setTimeout(() => this.unlockSite(), 500);
+                 return;
+             }
+             
+             // Draw up to current step
+             this.ctx.fillStyle = "rgba(0, 200, 255, 0.8)";
+             const n = solutionPath[step];
+             this.ctx.fillRect(n.x * this.cellSize, n.y * this.cellSize, this.cellSize, this.cellSize);
+             
+             step++;
+             requestAnimationFrame(drawSolution);
+        };
+        drawSolution();
     }
 
     index(x, y) {
