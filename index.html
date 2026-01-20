@@ -23,7 +23,65 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=Crimson+Text:ital,wght@0,400;0,700;1,400&display=swap" async>
 </head>
 <body>
-    <div  class="container">
+    <style>
+        /* Lock Screen Styles */
+        body { overflow: hidden; } /* Lock scroll initially */
+        #main-content {
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1.5s ease;
+            filter: blur(5px);
+        }
+        #lock-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            background: linear-gradient(135deg, #f5f4ef 0%, #e8e6dc 50%, #f5f4ef 100%); /* Same as body */
+            transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out;
+        }
+        .maze-title {
+            font-family: "Crimson Text", serif;
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.7;
+            font-style: italic;
+        }
+        .maze-instructions {
+            font-family: "IBM Plex Mono", monospace;
+            font-size: 0.8rem;
+            margin-top: 1.5rem;
+            opacity: 0.4;
+        }
+        
+        body.unlocked { overflow: auto; }
+        body.unlocked #main-content {
+            opacity: 1;
+            pointer-events: auto;
+            filter: blur(0);
+        }
+        body.unlocked #lock-screen {
+            transform: translateY(-100%);
+            opacity: 0;
+            pointer-events: none;
+        }
+    </style>
+
+    <div id="lock-screen">
+        <div class="maze-title">Solve to Enter</div>
+        <div id="maze-container">
+            <!-- Maze injects here -->
+        </div>
+        <div class="maze-instructions">use arrow keys or swipe</div>
+    </div>
+
+    <div id="main-content" class="container">
         <div class="content">
             <h2>Pranav Varshney</h2>
             <!-- Hidden resume tab -->
@@ -32,9 +90,7 @@
             <p>Some things about me:</p>
             <ul>
                 <li>Studying computer science at <a href="https://www.umich.edu">University of Michigan</a></li>
-                <li>Intern at <a href="https://www.uber.com/us/en/about/">Uber</a> (Delivery Matching) and incoming inter at <span id="obfuscated-text-2"></span></li>
-                <li><s>Part of <a href="https://www.aisafety.camp/home">AISC</a>'s 11th cohort, researching with 
-                    <a href="https://www.linkedin.com/in/ikendiukhov/">Ihor Kendiukhov</a> on AI Control</s> ... I got faded</li>
+                <li>Intern at <a href="https://www.uber.com/us/en/about/">Uber</a> (Delivery Matching) and incoming intern at <span id="obfuscated-text-2"></span></li>
                 <li>Interested in quantitative finance, ai/ml and distributed systems</li>
                 <li>Obsessed with philosophy (<a href="https://mitxonline.mit.edu/courses/course-v1:MITxT+24.09x/">mind and machines</a>)</li>
 
@@ -61,6 +117,10 @@
             </ul>
 
             <p>Some of my <a href="/pages/favorites/index.html">favorites</a></p>
+
+            <style>
+                /* Embedded maze style if used later */
+            </style>
             
             <p>Some places to find me:</p>
             <ul>
@@ -74,5 +134,11 @@
         </div>
     </div>
     <script src="/src/js/main.js"></script>
+    <script src="/src/js/maze.js"></script>
+
+<div style="text-align: center; margin-top: 3rem; margin-bottom: 2rem; opacity: 0.6; font-size: 0.9rem; font-family: 'Crimson Text', serif;">
+    कृण्वन्तो विश्वं आर्यं | Make the world noble
+</div>
+</div> <!-- End of #main-content -->
 </body>
 </html>
