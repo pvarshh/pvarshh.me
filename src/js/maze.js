@@ -275,9 +275,7 @@ class MazeGame {
     
     unlockSite() {
         document.body.classList.add('unlocked');
-        // Stop listening to inputs to prevent scrolling issues or weird behavior after unlock
-        // But removing listeners is hard without named functions. 
-        // We can just set a flag.
+        sessionStorage.setItem('mazeSolved', 'true');
         this.solved = true;
     }
 
@@ -387,6 +385,15 @@ class Cell {
 }
 
 window.addEventListener("load", () => {
+    // Check if already solved in this session
+    if (sessionStorage.getItem('mazeSolved') === 'true') {
+        document.body.classList.add('unlocked');
+        // We can optionally remove the lock screen from DOM to be cleaner
+        const lockScreen = document.getElementById('lock-screen');
+        if (lockScreen) lockScreen.remove();
+        return;
+    }
+
     if(document.getElementById("maze-container")) {
         new MazeGame("maze-container");
     }

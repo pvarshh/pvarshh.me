@@ -21,11 +21,24 @@
     <link rel="stylesheet" href="/src/css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-serif/1.0.0/fonts.min.css" async>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=Crimson+Text:ital,wght@0,400;0,700;1,400&display=swap" async>
+    
+    <script>
+        // Immediately check if the maze was already solved in this session
+        if (sessionStorage.getItem('mazeSolved') === 'true') {
+            document.documentElement.classList.add('unlocked-init');
+        }
+    </script>
 </head>
 <body>
     <style>
         /* Lock Screen Styles */
         body { overflow: hidden; } /* Lock scroll initially */
+        
+        /* If unlocked-init is present on html, override defaults immediately */
+        html.unlocked-init body { overflow: auto; }
+        html.unlocked-init #lock-screen { display: none; }
+        html.unlocked-init #main-content { opacity: 1; filter: none; pointer-events: auto; }
+
         #main-content {
             opacity: 0;
             pointer-events: none;
