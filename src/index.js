@@ -1,6 +1,8 @@
 import indexHTML from '../index.html';
 import lifeHTML from '../pages/writing/life.html';
 import mainJS from './js/main.js';
+import graphJS from './js/graph.js';
+import graphData from './json/graph_data.json';
 import stylesCSS from './css/styles.css';
 import resumeHTML from '../pages/resume.html';
 // Local images (placeholders)
@@ -78,6 +80,18 @@ export default {
     if (url.pathname === '/src/js/main.js') {
       return new Response(mainJS, {
         headers: { 'content-type': 'application/javascript;charset=UTF-8' }
+      });
+    }
+
+    if (url.pathname === '/src/js/graph.js') {
+      return new Response(graphJS, {
+        headers: { 'content-type': 'application/javascript;charset=UTF-8' }
+      });
+    }
+
+    if (url.pathname === '/src/json/graph_data.json') {
+      return new Response(JSON.stringify(graphData), {
+        headers: { 'content-type': 'application/json;charset=UTF-8' }
       });
     }
     
