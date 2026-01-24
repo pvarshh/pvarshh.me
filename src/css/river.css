@@ -1,0 +1,233 @@
+#river-container {
+    position: fixed;
+    right: 15vw;
+    top: 0;
+    height: 100vh;
+    width: 250px;
+    z-index: 10; 
+    pointer-events: none;
+    display: none; 
+    overflow: hidden;
+    mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
+    opacity: 0.8; /* Slightly fade the whole thing */
+}
+
+@media (min-width: 1300px) {
+    #river-container {
+        display: block;
+    }
+}
+
+.river-stream {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 220px; /* Slightly wider */
+    height: 100%;
+    /* More visible paper/watermark style */
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(26, 26, 26, 0.04) 5%, 
+        rgba(26, 26, 26, 0.06) 50%, 
+        rgba(26, 26, 26, 0.04) 95%, 
+        transparent 100%
+    );
+    border-left: 1px solid rgba(26, 26, 26, 0.2);
+    border-right: 1px solid rgba(26, 26, 26, 0.2);
+}
+
+/* Water Flow Animation lines */
+.water-line {
+    position: absolute;
+    left: 50%;
+    width: 2px;
+    height: 60px;
+    background: rgba(26, 26, 26, 0.15);
+    animation: flowDown 4s linear infinite;
+}
+
+@keyframes flowDown {
+    from { transform: translateY(-100px); opacity: 0; }
+    20% { opacity: 0.3; }
+    80% { opacity: 0.3; }
+    to { transform: translateY(110vh); opacity: 0; }
+}
+
+.rower-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 100px;
+    z-index: 2;
+    /* Remove drop shadow for flatter ink look */
+    /* filter: drop-shadow(0 5px 5px rgba(0,0,0,0.1)); */
+}
+
+.boat {
+    width: 28px;
+    height: 65px;
+    background: #2c2c2c; /* Ink black/dark grey */
+    margin: 0 auto;
+    border-radius: 50% 50% 50% 50% / 15% 15% 40% 40%;
+    position: relative;
+    animation: boatWobble 3s ease-in-out infinite alternate;
+}
+
+.boat::after { 
+    /* Boat interior */
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 3px;
+    right: 3px;
+    bottom: 5px;
+    border: 1px solid #1a1a1a;
+    background: #3d3d3d;
+    border-radius: 50% 50% 50% 50% / 15% 15% 40% 40%;
+}
+
+.oar {
+    position: absolute;
+    top: 25px;
+    width: 45px;
+    height: 1px;
+    background: #1a1a1a;
+}
+.oar.left {
+    right: 50%;
+    transform-origin: right center;
+    animation: rowLeft 2.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+.oar.right {
+    left: 50%;
+    transform-origin: left center;
+    animation: rowRight 2.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.oar::after {
+    /* Paddle blade */
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 6px;
+    background: #1a1a1a;
+    border-radius: 40%;
+}
+.oar.left::after { left: 0; }
+.oar.right::after { right: 0; }
+
+.rower-person {
+    position: absolute;
+    top: 22px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 10px;
+    background: #f5f4ef; /* Match page bg for contrast against dark boat */
+    border-radius: 50%;
+    z-index: 3;
+    animation: rowerBob 2.5s ease-in-out infinite;
+}
+
+@keyframes boatWobble {
+    0% { transform: rotate(-2deg); }
+    100% { transform: rotate(2deg); }
+}
+
+@keyframes rowLeft {
+    0% { transform: rotate(-10deg) scaleX(1); } /* Start stroke */
+    25% { transform: rotate(30deg) scaleX(1); } /* End stroke, blade in water */
+    50% { transform: rotate(30deg) scaleX(0.8); } /* Lift paddle */
+    75% { transform: rotate(-10deg) scaleX(0.8); } /* Return */
+    100% { transform: rotate(-10deg) scaleX(1); } /* Back to start */
+}
+
+@keyframes rowRight {
+    0% { transform: rotate(10deg) scaleX(1); }
+    25% { transform: rotate(-30deg) scaleX(1); }
+    50% { transform: rotate(-30deg) scaleX(0.8); }
+    75% { transform: rotate(10deg) scaleX(0.8); }
+    100% { transform: rotate(10deg) scaleX(1); }
+}
+
+@keyframes rowerBob {
+    0% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(2px); }
+    100% { transform: translateX(-50%) translateY(0); }
+}
+
+
+.river-item {
+    position: absolute;
+    left: 50%;
+    /* Centered relative to stream, slight offset for variation handled in JS or varied classes */
+    width: max-content; /* Shrink wrap to content */
+    
+    /* Remove card styling specifically */
+    background: transparent;
+    padding: 0;
+    border: none;
+    box-shadow: none;
+    
+    /* Text styling matches site */
+    font-family: 'Crimson Text', serif;
+    font-style: italic;
+    opacity: 0;
+    transition: opacity 0.5s;
+    text-align: center;
+    transform: translateX(-50%);
+
+    pointer-events: auto; /* Enable clicks */
+    cursor: pointer;
+    z-index: 20;
+    white-space: nowrap; /* Prevent wrapping */
+}
+
+.river-item .role {
+    font-weight: normal;
+    font-size: 0.85rem;
+    color: #1a1a1a;
+    border-bottom: 1px dotted rgba(26,26,26,0.3); /* Subtle underline */
+    display: inline-block; /* Ensure border sticks to text */
+}
+
+.river-link {
+    text-decoration: none;
+    color: inherit;
+    display: inline-block; /* Ensure containing block shrinks to text */
+    
+    /* Reset global a tag styles that might interfere */
+    border-bottom: none !important;
+    background: none !important;
+    transition: none;
+}
+
+.river-link:hover, .river-link:active, .river-link:focus {
+    background: none !important;
+    border: none !important;
+    transform: none !important;
+    text-shadow: none !important;
+}
+
+/* Remove the global sparkle/arrow effect */
+.river-link::after {
+    content: none !important;
+    display: none !important;
+}
+
+/* Re-add hover states after edit block */
+.river-item:hover {
+    opacity: 1 !important; /* Force full opacity on hover */
+    transform: translateX(-50%) scale(1.05); /* Slight grow */
+}
+.river-item.left-bank:hover {
+    transform: translateX(-50%) translateX(-40px) scale(1.05);
+}
+.river-item.right-bank:hover {
+    transform: translateX(-50%) translateX(40px) scale(1.05);
+}
+
