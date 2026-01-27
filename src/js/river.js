@@ -18,6 +18,15 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
         
         document.body.appendChild(riverContainer);
+
+        // Make the boat clickable
+        const rowerContainer = riverContainer.querySelector('.rower-container');
+        rowerContainer.style.cursor = 'pointer';
+        rowerContainer.title = 'View all experiences';
+        rowerContainer.addEventListener('click', (e) => {
+            e.stopPropagation();
+            window.location.href = '/pages/experience/index.html';
+        });
         
         // Add some water flow lines
         const stream = riverContainer.querySelector('.river-stream');
