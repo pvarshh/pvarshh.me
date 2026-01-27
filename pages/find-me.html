@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Find Me! - Pranav</title>
+    <!-- Standard favicon -->
+    <link rel="icon" type="image/x-icon" href="/src/favicon/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-serif/1.0.0/fonts.min.css" async>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=Crimson+Text:ital,wght@0,400;0,700;1,400&display=swap" async>
+    <link rel="stylesheet" href="/src/css/find_me.css">
+</head>
+<body>
+    <a href="/" class="back-link">← Home</a>
+
+    <div class="ui-overlay">
+        <div>Find the mini Parney</div>
+        <div class="timer" id="timer">0.0s</div>
+    </div>
+
+    <div class="game-container">
+        <canvas id="game-canvas"></canvas>
+    </div>
+
+    <div id="result-modal" class="modal">
+        <h2 id="result-title"></h2>
+        <p id="result-message"></p>
+        <button id="restart-btn">Play Again</button>
+        <br><br>
+        <a href="/" style="color: #1a1a1a; font-family: 'IBM Plex Mono'; font-size: 0.8rem;">Return Home</a>
+    </div>
+
+    <script src="/src/js/find_me.js"></script>
+</body>
+</html>
