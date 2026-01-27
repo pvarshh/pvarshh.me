@@ -996,6 +996,7 @@ li {
     border-radius: 2px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.08); /* Subtle shadow fitting the theme */
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    min-width: 0; /* Prevents grid blowout with large images */
 }
 
 .picture-item:hover {
