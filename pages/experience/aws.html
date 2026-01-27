@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Life - Pranav</title>
+    <title>AWS - Pranav</title>
 
     <!-- Standard favicon -->
     <link rel="icon" type="image/x-icon" href="/src/favicon/favicon.ico">
@@ -26,12 +26,67 @@
     <div class="container content-centered">
         <div class="content">
             <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;">
-                <a href="/pages/experience/aws.html">Summer 25 @ Amazon</a>
+                <a href="/pages/experience/aws.html">Summer '25 @ Amazon</a>
                 <h2>Pranav Varshney</h2>
         	    <a href="/" class="nav-item">Home</a>
             </div>
 
-            <p>Interned at Amazon Web Services (AWS) on the Sagemaker / Bedrock Infra team.</p>
+            <p>I was fortunate to intern on AWS’s SageMaker / Bedrock ML Infrastructure team during Summer 2024, working with incredible mentors (Jonathan, Javion) 
+                and my manager (Qiyun). This was my first big-tech internship, and it gave me a front-row seat to how large-scale ML systems are built and operated 
+                in production.</p>
+
+            <h2>Setting the Stage</h2>
+
+            <p>SageMaker and Bedrock power large-scale machine learning and generative AI workloads for customers across AWS. My team owned the core infrastructure 
+                behind model serving, spanning hardware, software, and developer-facing APIs. With Bedrock rapidly evolving and recent org restructuring, there 
+                was significant opportunity to make meaningful, high-impact contributions.</p>
+
+            <h2>My Contributions</h2>
+
+            <p>My primary project focused on observability for Bedrock’s model serving infrastructure, a critical gap at the time. With over 1M+ SageMaker endpoints 
+                powering Bedrock models, diagnosing production issues was slow and opaque; engineers lacked visibility into which dependent AWS services were failing.</p>
+
+            <p>To solve this, I:</p>
+            <ul>
+                <li>Built a Go-based CLI tool that mapped endpoints to their downstream AWS service dependencies, giving on-call engineers a 
+                    clear service topology for faster root-cause analysis.</li>
+                <li>Designed a real-time system health monitoring framework, enabling live visibility into infrastructure health and reducing 
+                    on-call response times by ~70% through proactive issue detection.</li>
+                <li>Containerized audit infrastructure using AWS Copilot, modernizing deployments and improving scalability to reliably handle 10K+ 
+                    audit queries per week.</li>
+            </ul>
+
+            <p>These tools became core components of the team’s production and on-call workflows.</p>
+
+            <h2>Seattle + Bellevue Pit Stop</h2>
+
+            <p>Beyond technical work, I cherished the in-person experience at AWS’s Seattle and Bellevue offices. From exploring downtown, hiking trails, 
+                playing poker and everything in between, I soaked in the beauty this opportunity had to offer.</p>
+
+            <p>Some of my favorite highlights:</p>
+            <ul>
+                <li>Hiking Lake Serene and exporing its hidden charm.</li>
+                <li>Late night poker games with fellow interns.</li>
+                <li>Pickleball + Boba runs after work.</li>
+            </ul>
+
+            <div class="picture-web">
+                <div class="picture-item">
+                    <img src="/src/images/aws/needle.JPG" alt="Space Needle">
+                </div>
+                <div class="picture-item">
+                    <img src="/src/images/aws/seattle.JPG" alt="Downtown Seattle">
+                </div>
+                <div class="picture-item">
+                    <img src="/src/images/aws/cat.JPG" alt="Cute Cat @ Cat Library">
+                </div>
+            </div>
+
+            <h2>What I Learned</h2>
+
+            <p>This internship taught me how observability, reliability, and operational rigor are just as critical as core functionality in 
+                large-scale ML systems. I learned how to design tooling for real production constraints, collaborate within a massive org, and ship 
+                systems that meaningfully improve developer velocity and customer experience.</p>
 
         <p class="with-space">
             <span id="edited-date" class="italic"></span>

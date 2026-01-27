@@ -39,8 +39,10 @@ function startRiverFlow() {
     
     // Resume items based on the user's index.html content
     const resumeItems = [
+        { year: '2023', role: 'Intern @ RGT', company: 'Ratna Global Tech', link: '/pages/experience/rgt.html', side: 'right-bank' },
+        { year: '2024', role: 'Intern @ UWM', company: 'United Wholesale Mortgage', link: '/pages/experience/uwm.html', side: 'right-bank' },
         { year: '2024', role: 'Teaching Assistant (131)', company: 'CompFor 131', link: '/pages/experience/ta.html', side: 'right-bank' },
-        { year: '2025', role: 'Research (Self-Op)', company: 'Self-Op Networks', link: '/pages/experience/networks.html', side: 'left-bank' },
+        { year: '2025', role: 'Research (Networks)', company: 'Self-Op Networks', link: '/pages/experience/networks.html', side: 'left-bank' },
         { year: '2025', role: 'Research (Healthcare)', company: 'Healthcare AI', link: '/pages/experience/healthcare.html', side: 'left-bank' },
         { year: '2025', role: 'Intern @ AWS', company: 'Sagemaker', link: '/pages/experience/aws.html', side: 'right-bank' },
         { year: '2025', role: 'Intern @ Scale AI', company: 'Eval Pipelines', link: '/pages/experience/scale.html', side: 'left-bank' },
