@@ -103,108 +103,11 @@ document.addEventListener('DOMContentLoaded', () => {
         ctx.save();
         ctx.translate(x, y);
         
-        // Draw Shadow
-        ctx.fillStyle = 'rgba(0,0,0,0.1)';
-        ctx.beginPath();
-        ctx.ellipse(0, 42, 10, 3, 0, 0, Math.PI * 2);
-        ctx.fill();
-
-        // Legs (Jeans)
-        ctx.strokeStyle = '#3b4d61'; // Denim blue
-        ctx.lineWidth = 4;
-        ctx.lineCap = 'round';
-        ctx.beginPath();
-        ctx.moveTo(-3, 25);
-        ctx.lineTo(-5, 40); // Left leg
-        ctx.moveTo(3, 25);
-        ctx.lineTo(5, 40); // Right leg
-        ctx.stroke();
-
-        // Shoes
-        ctx.fillStyle = '#333';
-        ctx.beginPath();
-        ctx.ellipse(-6, 41, 3, 1.5, 0, 0, Math.PI * 2);
-        ctx.ellipse(6, 41, 3, 1.5, 0, 0, Math.PI * 2);
-        ctx.fill();
-
-        // Torso (T-shirt)
-        ctx.fillStyle = '#f5f4ef'; // Shirt base
-        ctx.beginPath();
-        ctx.roundRect(-7, 12, 14, 16, 2);
-        ctx.fill();
-        
-        // Stripes (Red)
-        ctx.fillStyle = '#d32f2f';
-        ctx.fillRect(-7, 15, 14, 2);
-        ctx.fillRect(-7, 19, 14, 2);
-        ctx.fillRect(-7, 23, 14, 2);
-
-        // Arms
-        ctx.strokeStyle = '#eac086'; // Skin arms (short sleeves)
-        ctx.lineWidth = 3;
-        ctx.lineCap = 'round';
-        ctx.beginPath();
-        ctx.moveTo(-7, 14);
-        ctx.lineTo(-13, 19); // Left arm down/out
-        ctx.moveTo(7, 14);
-        ctx.lineTo(13, 9); // Right arm waving?
-        ctx.stroke();
-        
-        // Hands
-        ctx.fillStyle = '#eac086';
-        ctx.beginPath();
-        ctx.arc(-13, 19, 2.5, 0, Math.PI*2);
-        ctx.arc(13, 9, 2.5, 0, Math.PI*2);
-        ctx.fill();
-
-        // Head
-        ctx.fillStyle = '#eac086';
-        ctx.beginPath();
-        ctx.arc(0, 5, 7, 0, Math.PI * 2);
-        ctx.fill();
-        
-        // Hair (Sides)
-        ctx.fillStyle = '#1a1a1a';
-        ctx.beginPath();
-        ctx.arc(0, 5, 7.5, Math.PI, 0); // Top covered by hat, sides visible
-        ctx.fill();
-
-        // Beanie
-        ctx.fillStyle = '#d32f2f'; // Red
-        ctx.beginPath();
-        ctx.arc(0, 2, 7, Math.PI, 0); // Hat dome
-        ctx.lineTo(7, 3);
-        ctx.lineTo(-7, 3);
-        ctx.fill();
-        // Beanie cuff
-        ctx.fillStyle = '#b71c1c'; // Darker red cuff
-        ctx.beginPath();
-        ctx.roundRect(-7.5, 1, 15, 3, 1);
-        ctx.fill();
-        // Bobble
-        ctx.fillStyle = '#d32f2f';
-        ctx.beginPath();
-        ctx.arc(0, -5, 2.5, 0, Math.PI * 2);
-        ctx.fill();
-
-        // Glasses (Thicker, cooler)
-        ctx.strokeStyle = '#1a1a1a';
-        ctx.lineWidth = 1.2;
-        ctx.beginPath();
-        ctx.roundRect(-5, 3, 4, 3, 1); // Left lens
-        ctx.roundRect(1, 3, 4, 3, 1); // Right lens
-        ctx.stroke();
-        ctx.beginPath();
-        ctx.moveTo(-1, 4.5);
-        ctx.lineTo(1, 4.5); // Bridge
-        ctx.stroke();
-        
-        // Smile
-        ctx.strokeStyle = '#a05a2c';
-        ctx.lineWidth = 0.5;
-        ctx.beginPath();
-        ctx.arc(0, 7, 2, 0, Math.PI);
-        ctx.stroke();
+        ctx.fillStyle = '#b22222'; // Distinct red color
+        ctx.font = 'bold 20px "IBM Plex Mono", monospace';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText('parney', 0, 0);
 
         ctx.restore();
     }
@@ -258,8 +161,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ctx.strokeStyle = '#b22222';
             ctx.lineWidth = 3;
             ctx.beginPath();
-            // Offset y by 20 to center circle on the body, not just the head
-            ctx.arc(target.x, target.y + 20, 50, 0, Math.PI * 2);
+            ctx.arc(target.x, target.y, 40, 0, Math.PI * 2);
             ctx.stroke();
             ctx.restore();
         }
