@@ -226,10 +226,4 @@
     opacity: 1 !important; /* Force full opacity on hover */
     transform: translateX(-50%) scale(1.05); /* Slight grow */
 }
-.river-item.left-bank:hover {
-    transform: translateX(-50%) translateX(-40px) scale(1.05);
-}
-.river-item.right-bank:hover {
-    transform: translateX(-50%) translateX(40px) scale(1.05);
-}
 

@@ -19,7 +19,7 @@
 
     function resize() {
         // Force a taller container for better visuals without editing HTML
-        container.style.height = '220px'; // Increased from 150px
+        container.style.height = '300px'; // Increased from 150px
         
         const rect = container.getBoundingClientRect();
         const dpr = window.devicePixelRatio || 1;
