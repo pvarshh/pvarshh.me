@@ -1042,3 +1042,26 @@ li {
     transform: scale(1.03);
     filter: grayscale(0%);
 }
+
+/* Interactive List Items */
+.interactive-item {
+    position: relative;
+    padding: 0.5rem 0.8rem;
+    margin-left: -0.8rem; /* Counteract padding to keep alignment */
+    border-radius: 6px;
+    margin-bottom: 0.2rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    /* Initialize vars */
+    --mouse-x: 50%;
+    --mouse-y: 50%;
+}
+
+.interactive-item:hover {
+    background: radial-gradient(
+        circle at var(--mouse-x) var(--mouse-y), 
+        rgba(0, 0, 0, 0.06), 
+        transparent 150px
+    );
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+    z-index: 2;
+}
