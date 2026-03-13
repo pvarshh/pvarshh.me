@@ -18,9 +18,12 @@
     <!-- Web App Manifest -->
     <link rel="manifest" href="/site.webmanifest">
 
-    <link rel="stylesheet" href="/src/css/styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-serif/1.0.0/fonts.min.css" async>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=Crimson+Text:ital,wght@0,400;0,700;1,400&display=swap" async>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="/src/css/styles.min.css" onload="this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/src/css/styles.min.css"></noscript>
+    <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-serif/1.0.0/fonts.min.css" onload="this.rel='stylesheet'">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=Crimson+Text:ital,wght@0,400;0,700;1,400&display=swap" onload="this.rel='stylesheet'">
 </head>
 <body>
     <div class="container content-centered">
@@ -72,13 +75,13 @@
 
             <div class="picture-web">
                 <div class="picture-item">
-                    <img src="/src/images/aws/needle.JPG" alt="Space Needle">
+                    <img src="/src/images/aws/needle.JPG" alt="Space Needle" loading="lazy">
                 </div>
                 <div class="picture-item">
-                    <img src="/src/images/aws/seattle.JPG" alt="Downtown Seattle">
+                    <img src="/src/images/aws/seattle.JPG" alt="Downtown Seattle" loading="lazy">
                 </div>
                 <div class="picture-item">
-                    <img src="/src/images/aws/cat.JPG" alt="Cute Cat @ Cat Library">
+                    <img src="/src/images/aws/cat.JPG" alt="Cute Cat @ Cat Library" loading="lazy">
                 </div>
             </div>
 
@@ -92,7 +95,7 @@
             <span id="edited-date" class="italic"></span>
         </p>
         
-        <script src="/src/js/main.js"></script>
+        <script src="/src/js/main.min.js" defer></script>
         
         </div>
     </div>
@@ -107,7 +110,7 @@
             
         </div>
     </div>
-    <script src="/src/js/garden.js"></script>
+    <script src="/src/js/garden.js" defer></script>
     
 
 </body>

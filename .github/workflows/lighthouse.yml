@@ -1,0 +1,50 @@
+name: Lighthouse CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install tools
+        run: npm install -g http-server lighthouse
+
+      - name: Serve site
+        run: npx http-server -p 8080 &
+
+      - name: Wait for server
+        run: |
+          for i in {1..15}; do
+            if curl -sSf http://localhost:8080 >/dev/null; then
+              echo "server up"; break;
+            fi
+            sleep 1
+          done
+
+      - name: Run Lighthouse (mobile)
+        run: |
+          lighthouse http://localhost:8080 \
+            --output=json --output-path=./lighthouse-report.json \
+            --chrome-flags="--no-sandbox" --emulated-form-factor=mobile || true
+
+      - name: Create summary
+        run: node -e "const r=require('./lighthouse-report.json'); const c=r.categories||{}; const out={performance:Math.round((c.performance?.score||0)*100), accessibility:Math.round((c.accessibility?.score||0)*100), bestPractices:Math.round((c['best-practices']?.score||0)*100), seo:Math.round((c.seo?.score||0)*100), pwa:Math.round((c.pwa?.score||0)*100)}; console.log('Lighthouse summary', out); require('fs').writeFileSync('lighthouse-summary.txt', JSON.stringify(out));"
+
+      - name: Upload reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse-report
+          path: |
+            ./lighthouse-report.json
+            ./lighthouse-summary.txt

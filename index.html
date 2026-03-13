@@ -18,10 +18,13 @@
     <!-- Web App Manifest -->
     <link rel="manifest" href="/site.webmanifest">
 
-    <link rel="stylesheet" href="/src/css/styles.css">
-    <link rel="stylesheet" href="/src/css/river.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-serif/1.0.0/fonts.min.css" async>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=Crimson+Text:ital,wght@0,400;0,700;1,400&display=swap" async>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="/src/css/styles.min.css" onload="this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/src/css/styles.min.css"></noscript>
+    <link rel="preload" as="style" href="/src/css/river.css" onload="this.rel='stylesheet'">
+    <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-serif/1.0.0/fonts.min.css" onload="this.rel='stylesheet'">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=Crimson+Text:ital,wght@0,400;0,700;1,400&display=swap" onload="this.rel='stylesheet'">
     
     <script>
         // Immediately check if the maze was already solved in this session
@@ -157,9 +160,9 @@
         <p class="with-space">
         </div>
     </div>
-    <script src="/src/js/main.js"></script>
-    <script src="/src/js/river.js"></script>
-    <script src="/src/js/maze.js"></script>
+    <script src="/src/js/main.min.js" defer></script>
+    <script src="/src/js/river.js" defer></script>
+    <script src="/src/js/maze.js" defer></script>
 
 <div style="text-align: center; margin-top: 3rem; margin-bottom: 2rem; opacity: 0.6; font-size: 0.9rem; font-family: 'Crimson Text', serif;">
     कृण्वन्तो विश्वं आर्यं | Make the world noble
@@ -171,7 +174,7 @@
 
         </div>
     </div>
-    <script src="/src/js/garden.js"></script>
+    <script src="/src/js/garden.js" defer></script>
     
 
 </div> <!-- End of #main-content -->

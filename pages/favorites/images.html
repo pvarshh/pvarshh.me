@@ -18,9 +18,12 @@
     <!-- Web App Manifest -->
     <link rel="manifest" href="/site.webmanifest">
 
-    <link rel="stylesheet" href="/src/css/styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-serif/1.0.0/fonts.min.css" async>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=Crimson+Text:ital,wght@0,400;0,700;1,400&display=swap" async>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="preload" as="style" href="/src/css/styles.min.css" onload="this.rel='stylesheet'">
+	<noscript><link rel="stylesheet" href="/src/css/styles.min.css"></noscript>
+	<link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-serif/1.0.0/fonts.min.css" onload="this.rel='stylesheet'">
+	<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=Crimson+Text:ital,wght@0,400;0,700;1,400&display=swap" onload="this.rel='stylesheet'">
 </head>
 <body>
   	<div class="container content-centered">
@@ -29,38 +32,38 @@
         	<a href="/" class="nav-item">Home</a>
     	</div>
     	<div class="content-blog-post">
-      		<figure class="wide-figure">
+        	<figure class="wide-figure">
         		<figcaption>amazon — early morning </figcaption>
-        		<img src="/src/images/amazon_office.JPG" alt="Mountain lake" class="wide-image" />
+        		<img src="/src/images/amazon_office.JPG" alt="Mountain lake" class="wide-image" loading="lazy" />
       		</figure>
-      		<figure class="wide-figure">
+        	<figure class="wide-figure">
         		<figcaption>hiking — the peak</figcaption>
-        		<img src="/src/images/amazon_hiking.JPG" alt="Bird close-up" class="wide-image" />
+        		<img src="/src/images/amazon_hiking.JPG" alt="Bird close-up" class="wide-image" loading="lazy" />
       		</figure>
 			<figure class="wide-figure">
-        		<figcaption>northern lights — so pretty</figcaption>
-        		<img src="/src/images/northern_lights.jpg" alt="Forest path" class="wide-image" />
-      		</figure>
-	    	<figure class="wide-figure">
-        		<figcaption>iceland — waterfall</figcaption>
-        		<img src="/src/images/iceland.JPG" alt="Desert road" class="wide-image" />
-      		</figure>
-		    <figure class="wide-figure">
-        		<figcaption>texas — family</figcaption>
-        		<img src="/src/images/texas.JPG" alt="Forest path" class="wide-image" />
-      		</figure>
-      		<figure class="wide-figure">
+	        	<figcaption>northern lights — so pretty</figcaption>
+	        	<img src="/src/images/northern_lights.jpg" alt="Forest path" class="wide-image" loading="lazy" />
+	      	</figure>
+    		<figure class="wide-figure">
+        	<figcaption>iceland — waterfall</figcaption>
+        	<img src="/src/images/iceland.JPG" alt="Desert road" class="wide-image" loading="lazy" />
+      	</figure>
+    		<figure class="wide-figure">
+        	<figcaption>texas — family</figcaption>
+        	<img src="/src/images/texas.JPG" alt="Forest path" class="wide-image" loading="lazy" />
+      	</figure>
+        	<figure class="wide-figure">
         		<figcaption>relax — have fun</figcaption>
-        		<img src="/src/images/relax.JPG" alt="Forest path" class="wide-image" />
+        		<img src="/src/images/relax.JPG" alt="Forest path" class="wide-image" loading="lazy" />
       		</figure>
 			<figure class="wide-figure">
-        		<figcaption>w ... wally west — 2021</figcaption>
-        		<img src="/src/images/wally_west.jpg" alt="Forest path" class="wide-image" />
-      		</figure>
+	        	<figcaption>w ... wally west — 2021</figcaption>
+	        	<img src="/src/images/wally_west.jpg" alt="Forest path" class="wide-image" loading="lazy" />
+	      	</figure>
     	</div>
     	<p class="with-space"><span id="edited-date" class="italic"></span></p>
   	</div>
-<script src="/src/js/main.js"></script>
+<script src="/src/js/main.min.js" defer></script>
 
 <div style="text-align: center; margin-top: 3rem; margin-bottom: 2rem; opacity: 0.6; font-size: 0.9rem; font-family: 'Crimson Text', serif;">
     कृण्वन्तो विश्वं आर्यं | Make the world noble
@@ -72,7 +75,7 @@
              
         </div>
     </div>
-    <script src="/src/js/garden.js"></script>
+	<script src="/src/js/garden.js" defer></script>
     
 
 </body>

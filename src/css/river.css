@@ -26,7 +26,7 @@
     transform: translateX(-50%);
     width: 220px; /* Slightly wider */
     height: 100%;
-    /* More visible paper/watermark style */
+    /* Use theme-aware river tint */
     background: linear-gradient(90deg, 
         transparent 0%, 
         rgba(26, 26, 26, 0.04) 5%, 
@@ -34,8 +34,8 @@
         rgba(26, 26, 26, 0.04) 95%, 
         transparent 100%
     );
-    border-left: 1px solid rgba(26, 26, 26, 0.2);
-    border-right: 1px solid rgba(26, 26, 26, 0.2);
+    border-left: 1px solid rgba(26, 26, 26, 0.12);
+    border-right: 1px solid rgba(26, 26, 26, 0.12);
 }
 
 /* Water Flow Animation lines */
@@ -44,7 +44,7 @@
     left: 50%;
     width: 2px;
     height: 60px;
-    background: rgba(26, 26, 26, 0.15);
+    background: rgba(26, 26, 26, 0.12);
     animation: flowDown 4s linear infinite;
 }
 
@@ -72,7 +72,7 @@
 .boat {
     width: 28px;
     height: 65px;
-    background: #2c2c2c; /* Ink black/dark grey */
+    background: var(--river-boat, #2c2c2c); /* theme-aware */
     margin: 0 auto;
     border-radius: 50% 50% 50% 50% / 15% 15% 40% 40%;
     position: relative;
@@ -87,8 +87,8 @@
     left: 3px;
     right: 3px;
     bottom: 5px;
-    border: 1px solid #1a1a1a;
-    background: #3d3d3d;
+    border: 1px solid rgba(0,0,0,0.25);
+    background: var(--river-boat-inner, #3d3d3d);
     border-radius: 50% 50% 50% 50% / 15% 15% 40% 40%;
 }
 
@@ -97,7 +97,7 @@
     top: 25px;
     width: 45px;
     height: 1px;
-    background: #1a1a1a;
+    background: var(--river-oar, #1a1a1a);
 }
 .oar.left {
     right: 50%;
@@ -129,7 +129,7 @@
     transform: translateX(-50%);
     width: 10px;
     height: 10px;
-    background: #f5f4ef; /* Match page bg for contrast against dark boat */
+    background: var(--river-person, #f5f4ef); /* Match page bg for contrast against dark boat */
     border-radius: 50%;
     z-index: 3;
     animation: rowerBob 2.5s ease-in-out infinite;
@@ -192,8 +192,8 @@
 .river-item .role {
     font-weight: normal;
     font-size: 0.85rem;
-    color: #1a1a1a;
-    border-bottom: 1px dotted rgba(26,26,26,0.3); /* Subtle underline */
+    color: var(--text-color, #1a1a1a);
+    border-bottom: 1px dotted rgba(26,26,26,0.18); /* Subtle underline */
     display: inline-block; /* Ensure border sticks to text */
 }
 
