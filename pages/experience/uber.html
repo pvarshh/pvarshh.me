@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Life - Pranav</title>
+    <title>Uber - Pranav</title>
 
     <!-- Standard favicon -->
     <link rel="icon" type="image/x-icon" href="/src/favicon/favicon.ico">
@@ -26,12 +26,47 @@
     <div class="container content-centered">
         <div class="content">
             <div class="site-header">
-                <a href="/pages/experience/uber.html">Winter 26 @ Uber</a>
+                <a href="/pages/experience/uber.html">Winter '26 @ Uber</a>
                 <h2>Pranav Varshney</h2>
         	    <a href="/" class="nav-item">Home</a>
             </div>
 
-            <p>Interning at Uber on the Uber Eats, Delivery Matching team.</p>
+            <p>I spent Winter 2026 on Uber Eats’ Delivery Matching team, working on observability and model evaluation for ETD and uETA systems. The internship sat at the intersection of backend infrastructure and machine learning, which made it a great lens into how Uber keeps delivery predictions reliable at scale.</p>
+
+            <h2>Setting the Stage</h2>
+
+            <p>Delivery ETA systems power the customer experience across Eyeball, Checkout, and PostOrder. My work focused on making those predictions easier to trace, easier to debug, and easier to compare across architectural choices so the team could reason about accuracy and operational behavior with more confidence.</p>
+
+            <h2>My Contributions</h2>
+
+            <p>My backend project centered on improving observability for ETD generation and logging, especially for BYOC flows where the raw ETD source and guardrail mutations were previously hard to inspect.</p>
+
+            <p>To do that, I:</p>
+            <ul>
+                <li>Added uETA logging across Eyeball, Checkout, and PostOrder so the same prediction could be traced through the full order lifecycle.</li>
+                <li>Introduced BYOC logging with a shared ByocInfo schema, capturing the raw ETD value and source before minimum-ETD guardrails mutated it.</li>
+                <li>Plumbed the new metadata through Kafka event adapters so on-call engineers and data consumers could inspect end-to-end lineage with less guesswork.</li>
+            </ul>
+
+            <p>I also worked on an offline evaluation comparing the current ETD architecture against a proposed unified model setup. That analysis tracked MAE, bias, averages, and percentile behavior across all five order stages to make the tradeoffs more concrete.</p>
+
+            <h2>Retro + Learnings</h2>
+
+            <p>The biggest takeaway was how much product clarity matters in infrastructure-heavy work. I got better at capturing requirements, thinking about the broader impact of a change, and communicating early when I was blocked. I also learned a lot from collaborating with mentors and reviewing work end-to-end instead of only looking at isolated pieces.</p>
+
+            <p>Beyond the technical work, I enjoyed the mix of racket sports, hiking, and spending time with the team while being in Seattle.</p>
+
+            <div class="picture-web">
+                <div class="picture-item">
+                    <img src="/src/images/uber/uber-01.jpg" alt="Uber internship photo 1">
+                </div>
+                <div class="picture-item">
+                    <img src="/src/images/uber/uber-02.jpg" alt="Uber internship photo 2">
+                </div>
+                <div class="picture-item">
+                    <img src="/src/images/uber/uber-03.jpg" alt="Uber internship photo 3">
+                </div>
+            </div>
 
         <p class="with-space">
             <span id="edited-date" class="italic"></span>
