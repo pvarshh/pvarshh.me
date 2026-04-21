@@ -298,6 +298,27 @@ li:hover::marker {
     font-weight: normal;
 }
 
+.obfuscated-link {
+    color: inherit;
+    text-decoration: none;
+    background-image: none;
+    border-bottom: none;
+}
+
+.obfuscated-link:hover {
+    color: inherit;
+    text-decoration: none;
+    background-image: none;
+    border-bottom: none;
+    text-shadow: none;
+    transform: none;
+}
+
+.obfuscated-link::after,
+.obfuscated-link:hover::after {
+    display: none;
+}
+
 .site-title {
     text-decoration: none;
     color: inherit;
