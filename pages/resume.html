@@ -2,37 +2,38 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Resume — Pranav Varshney">
   	<title>Resume — Pranav Varshney</title>
+
+	<link rel="icon" type="image/x-icon" href="/src/favicon/favicon.ico">
+	<link rel="apple-touch-icon" href="/src/favicon/apple-touch-icon.png">
+	<link rel="manifest" href="/site.webmanifest">
   	<link rel="stylesheet" href="/src/css/styles.css">
 </head>
 <body>
   	<div class="container content-centered">
     	<div class="site-header">
         	<a href="/pages/resume.html" class="nav-item">Resume</a>
-			<>h2>Pranav Varshney</h2>
+			<h2>Pranav Varshney</h2>
         	<a href="/" class="nav-item">Home</a>
     	</div>
 
     	<div style="margin-top:1rem;">
-      		<iframe src="/src/pdf/resume.pdf" title="Resume" style="width:100%;height:80vh;border:1px solid #ddd;border-radius:2px;"></iframe>
+      		<iframe src="/src/pdf/resume.pdf" title="Pranav Varshney Resume" style="width:100%;height:80vh;border:1px solid #ddd;border-radius:2px;"></iframe>
     	</div>
     	<p class="with-space"><span id="edited-date" class="italic"></span></p>
+
+		<div style="text-align: center; margin-top: 3rem; margin-bottom: 2rem; opacity: 0.6; font-size: 0.9rem; font-family: 'Crimson Text', serif;">
+			कृण्वन्तो विश्वं आर्यं | Make the world noble
+		</div>
+
+		<div id="interactive-garden" style="width: 100%; height: 300px; margin-top: 1rem; position: relative; cursor: crosshair; overflow: hidden;">
+			<canvas id="garden-canvas" style="width: 100%; height: 100%; display: block;" aria-hidden="true"></canvas>
+		</div>
   	</div>
-<script src="/src/js/main.js"></script>
 
-<div style="text-align: center; margin-top: 3rem; margin-bottom: 2rem; opacity: 0.6; font-size: 0.9rem; font-family: 'Crimson Text', serif;">
-    कृण्वन्तो विश्वं आर्यं | Make the world noble
-</div>
-    <!-- Digital Garden Interactive Footer -->
-    <div id="interactive-garden" style="width: 100%; height: 300px; margin-top: 1rem; position: relative; cursor: crosshair; overflow: hidden;">
-        <canvas id="garden-canvas" style="width: 100%; height: 100%; display: block;"></canvas>
-        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); pointer-events: none; font-family: 'Crimson Text', serif; opacity: 0.3; font-style: italic; font-size: 0.9rem;">
-            
-        </div>
-    </div>
-    <script src="/src/js/garden.js"></script>
-    
-
+	<script src="/src/js/main.js"></script>
+	<script src="/src/js/garden.js"></script>
 </body>
 </html>

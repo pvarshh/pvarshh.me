@@ -1,6 +1,7 @@
 (function() {
     const container = document.getElementById('interactive-garden');
-    if (!container) return; // Should exist if HTML was injected
+    if (!container) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
     const canvas = document.getElementById('garden-canvas');
     const ctx = canvas.getContext('2d');

@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Pranav Varshney | CS @ UMich">
     <title>Pranav Varshney</title>
 
     <!-- Standard favicon -->
@@ -20,8 +23,7 @@
 
     <link rel="stylesheet" href="/src/css/styles.css">
     <link rel="stylesheet" href="/src/css/river.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-serif/1.0.0/fonts.min.css" async>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=Crimson+Text:ital,wght@0,400;0,700;1,400&display=swap" async>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=Crimson+Text:ital,wght@0,400;0,700;1,400&display=swap">
     
     <script>
         // Immediately check if the maze was already solved in this session
@@ -102,45 +104,42 @@
         }
     </style>
 
-    <div id="lock-screen">
+    <div id="lock-screen" role="dialog" aria-modal="true" aria-label="Solve the maze to enter">
         <div class="maze-title">Solve to Enter</div>
-        <div id="maze-container">
+        <div id="maze-container" aria-label="Maze puzzle">
             <!-- Maze injects here -->
         </div>
         <div class="maze-instructions">use arrow keys or swipe</div>
-        <button id="quantum-solve" class="auto-solve-btn">visualize quantum solution</button>
+        <button id="quantum-solve" class="auto-solve-btn" type="button">visualize quantum solution</button>
     </div>
 
     <div id="main-content" class="container">
         <div class="content">
-            <h2>Pranav Varshney</h2>
+            <h1>Pranav Varshney</h1>
             <!-- Hidden resume tab -->
             <a id="resume-link-hidden" href="/pages/resume.html" style="display:none;" aria-hidden="true">Resume</a>
 
             <p>Some things about me:</p>
             <ul>
                 <li>Computer Science at <a href="https://www.umich.edu">University of Michigan</a></li>
-                <li>Co-Founder</i> at <a class="obfuscated-link" href="https://nodus-swart.vercel.app/" target="_blank" rel="noopener noreferrer"><span id="obfuscated-text-2"></span></a>, the execution engine for heavy compute</li>
+                <li>Co-Founder at <a class="obfuscated-link" href="https://nodus-swart.vercel.app/" target="_blank" rel="noopener noreferrer"><span id="obfuscated-text-2"></span></a>, the execution engine for heavy compute</li>
                 <li>Intern at Google, Cost Optimizations using Causal Inference</li>   
                 <li>Obsessed with poker (back in seattle!)</li>
-
             </ul>
             
             <p>Some things I wrote:</p>
-            
             <ul>
                 <li><a href="/pages/writing/life.html">What I Value in Life</a></li>
+                <li><a href="/pages/writing/ego.html">On Ego</a></li>
             </ul>
-            
-            
 
             <p>Some things I <a href="/pages/experience/index.html">did</a>:</p>
             <ul>
                 <li>Interned at 
                         <a href="/pages/experience/uber.html">Uber</a>,
                         <a href="/pages/experience/aws.html">AWS</a>, and
-                        Scale AI </li>
-                <li>Healthcare-driven ai algorithms research with <a href="https://pixail.engin.umich.edu/index.html">Joyce Wang</a></li>
+                        <a href="/pages/experience/scale.html">Scale AI</a></li>
+                <li>Healthcare-driven AI algorithms research with <a href="https://pixail.engin.umich.edu/index.html">Joyce Wang</a></li>
                 <li>Helped build popular job board <a href="https://cvrve.me">Cvrve</a></li>
                 <li>Self-operating networks research with <a href="https://websites.umich.edu/~vyl/#home">Victor Liu</a></li>
                 <li>Helped teach intro python for 
@@ -152,30 +151,24 @@
             <p>Some places to <a href="/pages/find-me.html">find</a> me:</p>
             <ul>
                 <li>Email: <a href="mailto:pvarsh@umich.edu">pvarsh [at] umich [dot] edu</a></li>
-                <li>Github: <a href="https://github.com/pvarshh">@pvarshh</a></li>
+                <li>GitHub: <a href="https://github.com/pvarshh">@pvarshh</a></li>
                 <li>LinkedIn: <a href="https://linkedin.com/in/pvarshh">@pvarshh</a></li>
             </ul>
-            
-        <p class="with-space">
+        </div>
+
+        <div style="text-align: center; margin-top: 3rem; margin-bottom: 2rem; opacity: 0.6; font-size: 0.9rem; font-family: 'Crimson Text', serif;">
+            कृण्वन्तो विश्वं आर्यं | Make the world noble
+        </div>
+
+        <!-- Digital Garden Interactive Footer -->
+        <div id="interactive-garden" style="width: 100%; height: 300px; margin-top: 1rem; position: relative; cursor: crosshair; overflow: hidden;">
+            <canvas id="garden-canvas" style="width: 100%; height: 100%; display: block;" aria-hidden="true"></canvas>
         </div>
     </div>
+
     <script src="/src/js/main.js"></script>
     <script src="/src/js/river.js"></script>
     <script src="/src/js/maze.js"></script>
-
-<div style="text-align: center; margin-top: 3rem; margin-bottom: 2rem; opacity: 0.6; font-size: 0.9rem; font-family: 'Crimson Text', serif;">
-    कृण्वन्तो विश्वं आर्यं | Make the world noble
-</div>
-    <!-- Digital Garden Interactive Footer -->
-    <div id="interactive-garden" style="width: 100%; height: 300px; margin-top: 1rem; position: relative; cursor: crosshair; overflow: hidden;">
-        <canvas id="garden-canvas" style="width: 100%; height: 100%; display: block;"></canvas>
-        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); pointer-events: none; font-family: 'Crimson Text', serif; opacity: 0.3; font-style: italic; font-size: 0.9rem;">
-
-        </div>
-    </div>
     <script src="/src/js/garden.js"></script>
-    
-
-</div> <!-- End of #main-content -->
 </body>
 </html>

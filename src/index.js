@@ -1,5 +1,6 @@
 import indexHTML from '../index.html';
 import lifeHTML from '../pages/writing/life.html';
+import egoHTML from '../pages/writing/ego.html';
 import mainJS from './js/main.js';
 import stylesCSS from './css/styles.css';
 import resumeHTML from '../pages/resume.html';
@@ -18,6 +19,7 @@ import appleTouchIcon from './favicon/apple-touch-icon.png';
 import androidChrome192 from './favicon/android-chrome-192x192.png';
 import androidChrome512 from './favicon/android-chrome-512x512.png';
 import resumePDF from './pdf/resume.pdf';
+import siteWebmanifest from '../site.webmanifest';
 
 export default {
   async fetch(request) {
@@ -32,6 +34,12 @@ export default {
 
     if (url.pathname === '/pages/writing/life.html') {
       return new Response(lifeHTML, {
+        headers: { 'content-type': 'text/html;charset=UTF-8' }
+      });
+    }
+
+    if (url.pathname === '/pages/writing/ego.html') {
+      return new Response(egoHTML, {
         headers: { 'content-type': 'text/html;charset=UTF-8' }
       });
     }
@@ -127,6 +135,12 @@ export default {
     if (url.pathname === '/src/favicon/android-chrome-512x512.png') {
       return new Response(androidChrome512, {
         headers: { 'content-type': 'image/png' }
+      });
+    }
+
+    if (url.pathname === '/site.webmanifest') {
+      return new Response(siteWebmanifest, {
+        headers: { 'content-type': 'application/manifest+json' }
       });
     }
     
