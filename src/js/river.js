@@ -1,5 +1,7 @@
 
 document.addEventListener('DOMContentLoaded', () => {
+    if (!document.body.classList.contains('page-home')) return;
+
     // Inject river container into body if it doesn't exist
     if (!document.getElementById('river-container')) {
         const riverContainer = document.createElement('div');

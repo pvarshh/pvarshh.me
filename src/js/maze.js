@@ -16,6 +16,7 @@ class MazeGame {
         this.player = { x: 0, y: 0 };
         this.goal = { x: 0, y: 0 };
         this.path = []; 
+        this.glyphs = ['λ', '∂', '∞', '?', '§', '1066', '0', '1'];
 
         // Styling - Matching website aesthetic
         this.colors = {
@@ -70,6 +71,15 @@ class MazeGame {
         this.qParent = new Map();
         
         this.draw();
+        
+        // Animate pulsing goal
+        const animGoal = () => {
+            if (!this.solved) {
+                this.draw();
+                requestAnimationFrame(animGoal);
+            }
+        };
+        requestAnimationFrame(animGoal);
         
         // Listen for solver button
         const solveBtn = document.getElementById("quantum-solve");
@@ -225,10 +235,11 @@ class MazeGame {
         }
         this.ctx.stroke();
 
-        // Draw Goal (Hollow Diamond)
+        // Draw Goal (Hollow Diamond) — pulsing
         const gx = this.goal.x * this.cellSize + this.cellSize/2;
         const gy = this.goal.y * this.cellSize + this.cellSize/2;
-        const goalSize = this.cellSize / 3.5;
+        const goalPulse = 1 + Math.sin(Date.now() * 0.004) * 0.25;
+        const goalSize = (this.cellSize / 3.5) * goalPulse;
 
         this.ctx.strokeStyle = this.colors.goal;
         this.ctx.lineWidth = 1.5;
@@ -247,6 +258,19 @@ class MazeGame {
         this.ctx.beginPath();
         this.ctx.arc(px, py, this.cellSize/5, 0, Math.PI * 2);
         this.ctx.fill();
+
+        // Faint glyphs on visited cells — other worlds bleeding through
+        this.ctx.textAlign = 'center';
+        this.ctx.textBaseline = 'middle';
+        for (let i = 0; i < this.path.length; i += 3) {
+            const p = this.path[i];
+            const gx = p.x * this.cellSize + this.cellSize / 2;
+            const gy = p.y * this.cellSize + this.cellSize / 2;
+            const glyph = this.glyphs[(p.x + p.y + i) % this.glyphs.length];
+            this.ctx.font = `${this.cellSize * 0.55}px "IBM Plex Mono", monospace`;
+            this.ctx.fillStyle = `rgba(26, 26, 26, ${0.04 + (i / this.path.length) * 0.08})`;
+            this.ctx.fillText(glyph, gx, gy);
+        }
     }
     
     move(dx, dy) {
@@ -265,9 +289,7 @@ class MazeGame {
         
         if (this.player.x === this.goal.x && this.player.y === this.goal.y) {
             this.draw();
-            setTimeout(() => {
-                this.unlockSite(); 
-            }, 300);
+            setTimeout(() => this.unlockSite(), 300);
         } else {
             this.draw();
         }
@@ -277,6 +299,7 @@ class MazeGame {
         document.body.classList.add('unlocked');
         sessionStorage.setItem('mazeSolved', 'true');
         this.solved = true;
+        if (typeof window.storyOnUnlock === 'function') window.storyOnUnlock();
     }
 
     setupInputs() {

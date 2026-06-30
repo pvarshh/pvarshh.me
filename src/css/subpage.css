@@ -1,0 +1,66 @@
+/* Subpage realm atmosphere */
+
+.page-sub {
+    --sub-realm-color: var(--color-accent);
+}
+
+.page-sub.realm-cs { --sub-realm-color: #2c4a6e; }
+.page-sub.realm-words { --sub-realm-color: #5a4a3a; }
+.page-sub.realm-world { --sub-realm-color: #3d5240; }
+.page-sub.realm-path { --sub-realm-color: #1a1a1a; }
+
+.page-sub .site-header a:first-child {
+    transition: color 0.25s ease;
+}
+
+.page-sub .site-header a:first-child:hover,
+.page-sub .site-header a.nav-item:hover {
+    color: var(--sub-realm-color);
+}
+
+.subpage-realm {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    text-align: center;
+    opacity: 0.38;
+    margin: -0.35rem 0 1.25rem;
+    color: var(--sub-realm-color);
+}
+
+#subpage-fragments {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.subpage-fragment {
+    position: absolute;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    opacity: 0;
+    white-space: nowrap;
+    color: rgba(26, 26, 26, 0.28);
+    animation: subFragmentDrift var(--dur, 18s) ease-in-out infinite;
+    animation-delay: var(--delay, 0s);
+}
+
+@keyframes subFragmentDrift {
+    0%, 100% { opacity: 0; transform: translate(0, 0); }
+    20% { opacity: var(--peak, 0.18); }
+    80% { opacity: var(--peak, 0.14); }
+    50% { transform: translate(var(--dx, 12px), var(--dy, -8px)); }
+}
+
+.page-sub .container,
+.page-sub .content-centered {
+    position: relative;
+    z-index: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #subpage-fragments { display: none; }
+}

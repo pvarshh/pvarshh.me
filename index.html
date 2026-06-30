@@ -23,21 +23,20 @@
 
     <link rel="stylesheet" href="/src/css/styles.css">
     <link rel="stylesheet" href="/src/css/river.css">
+    <link rel="stylesheet" href="/src/css/story.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=Crimson+Text:ital,wght@0,400;0,700;1,400&display=swap">
+    <noscript><style>.story-panel{opacity:1!important;visibility:visible!important;position:relative!important;pointer-events:auto!important;}</style></noscript>
     
     <script>
-        // Immediately check if the maze was already solved in this session
         if (sessionStorage.getItem('mazeSolved') === 'true') {
             document.documentElement.classList.add('unlocked-init');
         }
     </script>
 </head>
-<body>
+<body class="page-home">
     <style>
-        /* Lock Screen Styles */
-        body { overflow: hidden; } /* Lock scroll initially */
+        body { overflow: hidden; }
         
-        /* If unlocked-init is present on html, override defaults immediately */
         html.unlocked-init body { overflow: auto; }
         html.unlocked-init #lock-screen { display: none; }
         html.unlocked-init #main-content { opacity: 1; filter: none; pointer-events: auto; }
@@ -59,21 +58,8 @@
             align-items: center;
             justify-content: center;
             z-index: 10000;
-            background: linear-gradient(135deg, #f5f4ef 0%, #e8e6dc 50%, #f5f4ef 100%); /* Same as body */
+            background: linear-gradient(135deg, #f5f4ef 0%, #e8e6dc 50%, #f5f4ef 100%);
             transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out;
-        }
-        .maze-title {
-            font-family: "Crimson Text", serif;
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            opacity: 0.7;
-            font-style: italic;
-        }
-        .maze-instructions {
-            font-family: "IBM Plex Mono", monospace;
-            font-size: 0.8rem;
-            margin-top: 1.5rem;
-            opacity: 0.4;
         }
         .auto-solve-btn {
              margin-top: 1rem;
@@ -104,71 +90,113 @@
         }
     </style>
 
-    <div id="lock-screen" role="dialog" aria-modal="true" aria-label="Solve the maze to enter">
-        <div class="maze-title">Solve to Enter</div>
+    <div id="lock-screen" role="dialog" aria-modal="true" aria-label="Find a path through">
+        <div class="maze-title">· · ·</div>
         <div id="maze-container" aria-label="Maze puzzle">
-            <!-- Maze injects here -->
         </div>
-        <div class="maze-instructions">use arrow keys or swipe</div>
-        <button id="quantum-solve" class="auto-solve-btn" type="button">visualize quantum solution</button>
+        <div class="maze-instructions">↑ ↓ ← →</div>
+        <button id="quantum-solve" class="auto-solve-btn" type="button">or collapse the wavefunction</button>
     </div>
+
+    <div id="story-fragments" aria-hidden="true"></div>
 
     <div id="main-content" class="container">
         <div class="content">
-            <h1>Pranav Varshney</h1>
-            <!-- Hidden resume tab -->
+            <div class="story-name-wrap">
+                <h1 id="story-name" class="story-name">Pranav Varshney</h1>
+            </div>
             <a id="resume-link-hidden" href="/pages/resume.html" style="display:none;" aria-hidden="true">Resume</a>
 
-            <p>Some things about me:</p>
-            <ul>
-                <li>Computer Science at <a href="https://www.umich.edu">University of Michigan</a></li>
-                <li>Co-Founder at <a class="obfuscated-link" href="https://nodus-swart.vercel.app/" target="_blank" rel="noopener noreferrer"><span id="obfuscated-text-2"></span></a>, the execution engine for heavy compute</li>
-                <li>Intern at Google, Cost Optimizations using Causal Inference</li>   
-                <li>Obsessed with poker (back in seattle!)</li>
-            </ul>
-            
-            <p>Some things I wrote:</p>
-            <ul>
-                <li><a href="/pages/writing/life.html">What I Value in Life</a></li>
-                <li><a href="/pages/writing/ego.html">On Ego</a></li>
-            </ul>
+            <div class="story-tuner-wrap">
+                <div class="tuner-chassis">
+                    <div class="tuner-header">
+                        <span class="tuner-label">SIG</span>
+                        <div class="tuner-signal-meter" aria-hidden="true">
+                            <div class="tuner-signal-fill" id="tuner-signal-fill"></div>
+                        </div>
+                        <span class="tuner-freq" id="tuner-freq">92.00</span>
+                        <span class="tuner-unit">MHz</span>
+                    </div>
+                    <div class="tuner-screen">
+                        <canvas id="tuner-canvas" aria-label="Tune between interests"></canvas>
+                        <div class="tuner-scanline" aria-hidden="true"></div>
+                        <div class="tuner-lock-ring" id="tuner-lock-ring" aria-hidden="true"></div>
+                    </div>
+                </div>
+                <p class="story-tuner-readout" id="tuner-readout">— static —</p>
+                <div class="story-tuner-control" id="tuner-control" role="slider" aria-label="Interest tuner" aria-valuemin="0" aria-valuemax="100" tabindex="0">
+                    <div class="tuner-track"></div>
+                    <div class="tuner-stations" id="tuner-stations"></div>
+                    <div class="tuner-knob" id="tuner-knob"></div>
+                </div>
+            </div>
 
-            <p>Some things I <a href="/pages/experience/index.html">did</a>:</p>
-            <ul>
-                <li>Interned at 
-                        <a href="/pages/experience/uber.html">Uber</a>,
-                        <a href="/pages/experience/aws.html">AWS</a>, and
-                        <a href="/pages/experience/scale.html">Scale AI</a></li>
-                <li>Healthcare-driven AI algorithms research with <a href="https://pixail.engin.umich.edu/index.html">Joyce Wang</a></li>
-                <li>Helped build popular job board <a href="https://cvrve.me">Cvrve</a></li>
-                <li>Self-operating networks research with <a href="https://websites.umich.edu/~vyl/#home">Victor Liu</a></li>
-                <li>Helped teach intro python for 
-                    <a href="https://lsa.umich.edu/content/michigan-lsa/computingfor/en/people/instructional-assistants/pranav-varshney.html">Compfor 131</a></li>
-            </ul>
+            <div class="story-realm-section">
+                <div class="story-realm-tabs" id="story-realm-tabs" role="tablist" aria-label="Interests"></div>
 
-            <p>Some of my <a href="/pages/favorites/index.html">favorites</a></p>
-            
-            <p>Some places to <a href="/pages/find-me.html">find</a> me:</p>
-            <ul>
-                <li>Email: <a href="mailto:pvarsh@umich.edu">pvarsh [at] umich [dot] edu</a></li>
-                <li>GitHub: <a href="https://github.com/pvarshh">@pvarshh</a></li>
-                <li>LinkedIn: <a href="https://linkedin.com/in/pvarshh">@pvarshh</a></li>
-            </ul>
+                <div id="story-panels">
+                <section class="story-panel" data-realm="cs">
+                    <p class="story-panel-label">{ compute }</p>
+                    <ul>
+                        <li>Computer Science at <a href="https://www.umich.edu">University of Michigan</a></li>
+                        <li>Co-Founder at <a class="obfuscated-link" href="https://nodus-swart.vercel.app/" target="_blank" rel="noopener noreferrer"><span id="obfuscated-text-2"></span></a></li>
+                        <li>Intern at Google, Cost Optimizations using Causal Inference</li>
+                        <li>Obsessed with poker (back in seattle!)</li>
+                    </ul>
+                    <p>Some things I <a href="/pages/experience/index.html">did</a>:</p>
+                    <ul>
+                        <li>Interned at <a href="/pages/experience/uber.html">Uber</a>, <a href="/pages/experience/aws.html">AWS</a>, and <a href="/pages/experience/scale.html">Scale AI</a></li>
+                        <li>Healthcare-driven AI algorithms research with <a href="https://pixail.engin.umich.edu/index.html">Joyce Wang</a></li>
+                        <li>Helped build popular job board <a href="https://cvrve.me">Cvrve</a></li>
+                        <li>Self-operating networks research with <a href="https://websites.umich.edu/~vyl/#home">Victor Liu</a></li>
+                        <li>Helped teach intro python for <a href="https://lsa.umich.edu/content/michigan-lsa/computingfor/en/people/instructional-assistants/pranav-varshney.html">Compfor 131</a></li>
+                    </ul>
+                </section>
+
+                <section class="story-panel" data-realm="words">
+                    <p class="story-panel-label">§ reflect</p>
+                    <p>Essays on ego, ambition, and what actually matters.</p>
+                    <ul>
+                        <li><a href="/pages/writing/life.html">What I Value in Life</a> </li>
+                        <li><a href="/pages/writing/ego.html">On Ego</a> </li>
+                    </ul>
+                </section>
+
+                <section class="story-panel" data-realm="world">
+                    <p class="story-panel-label">∞ culture</p>
+                    <p>My Favorites.</p>
+                    <ul>
+                        <li><a href="/pages/favorites/images.html">Pictures</a></li>
+                        <li><a href="/pages/favorites/music.html">Songs</a></li>
+                        <li><a href="/pages/favorites/books.html">Books</a></li>
+                        <li><a href="/pages/favorites/movies.html">Movies</a></li>
+                        <li><a href="/pages/favorites/tv_shows.html">TV Shows</a></li>
+                    </ul>
+                </section>
+
+                <section class="story-panel" data-realm="path">
+                    <p class="story-panel-label">@ reach</p>
+                    <p>Some places to <a href="/pages/find-me.html">find me</a></p>
+                    <ul>
+                        <li>Email: <a href="mailto:pvarsh@umich.edu">pvarsh [at] umich [dot] edu</a></li>
+                        <li>GitHub: <a href="https://github.com/pvarshh">@pvarshh</a></li>
+                        <li>LinkedIn: <a href="https://linkedin.com/in/pvarshh">@pvarshh</a></li>
+                    </ul>
+                </section>
+            </div>
+            </div>
         </div>
 
-        <div style="text-align: center; margin-top: 3rem; margin-bottom: 2rem; opacity: 0.6; font-size: 0.9rem; font-family: 'Crimson Text', serif;">
-            कृण्वन्तो विश्वं आर्यं | Make the world noble
-        </div>
-
-        <!-- Digital Garden Interactive Footer -->
-        <div id="interactive-garden" style="width: 100%; height: 300px; margin-top: 1rem; position: relative; cursor: crosshair; overflow: hidden;">
-            <canvas id="garden-canvas" style="width: 100%; height: 100%; display: block;" aria-hidden="true"></canvas>
-        </div>
+        <footer class="site-footer">
+            <p class="site-footer-quote">कृण्वन्तो विश्वं आर्यं | Make the world noble</p>
+        </footer>
     </div>
 
+    <script src="/src/js/footer.js"></script>
     <script src="/src/js/main.js"></script>
     <script src="/src/js/river.js"></script>
     <script src="/src/js/maze.js"></script>
-    <script src="/src/js/garden.js"></script>
+    <script src="/src/js/story.js"></script>
+    <script src="/src/js/interactive_index.js"></script>
 </body>
 </html>
