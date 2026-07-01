@@ -2,6 +2,7 @@ import indexHTML from '../index.html';
 import lifeHTML from '../pages/writing/life.html';
 import egoHTML from '../pages/writing/ego.html';
 import secondPickHTML from '../pages/writing/2nd-pick.html';
+import martyrTrapHTML from '../pages/writing/martyr-trap.html';
 import mainJS from './js/main.js';
 import stylesCSS from './css/styles.css';
 import resumeHTML from '../pages/resume.html';
@@ -47,6 +48,12 @@ export default {
 
     if (url.pathname === '/pages/writing/2nd-pick.html') {
       return new Response(secondPickHTML, {
+        headers: { 'content-type': 'text/html;charset=UTF-8' }
+      });
+    }
+
+    if (url.pathname === '/pages/writing/martyr-trap.html') {
+      return new Response(martyrTrapHTML, {
         headers: { 'content-type': 'text/html;charset=UTF-8' }
       });
     }
