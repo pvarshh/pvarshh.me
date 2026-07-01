@@ -2,12 +2,10 @@
 document.addEventListener('DOMContentLoaded', () => {
     if (!document.body.classList.contains('page-home')) return;
 
-    // Inject river container into body if it doesn't exist
     if (!document.getElementById('river-container')) {
         const riverContainer = document.createElement('div');
         riverContainer.id = 'river-container';
-        
-        // Define structure
+
         riverContainer.innerHTML = `
             <div class="river-stream"></div>
             <div class="rower-container">
@@ -18,10 +16,9 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
             <div id="river-items-container"></div>
         `;
-        
+
         document.body.appendChild(riverContainer);
 
-        // Make the boat clickable
         const rowerContainer = riverContainer.querySelector('.rower-container');
         rowerContainer.style.cursor = 'pointer';
         rowerContainer.title = 'View all experiences';
@@ -29,15 +26,14 @@ document.addEventListener('DOMContentLoaded', () => {
             e.stopPropagation();
             window.location.href = '/pages/experience/index.html';
         });
-        
-        // Add some water flow lines
+
         const stream = riverContainer.querySelector('.river-stream');
         for (let i = 0; i < 5; i++) {
             const line = document.createElement('div');
             line.className = 'water-line';
             line.style.left = Math.random() * 80 + 10 + '%';
-            line.style.animationDelay = Math.random() * 3 + 's';
-            line.style.animationDuration = (Math.random() * 2 + 2) + 's';
+            line.style.animationDelay = (i * 0.8) + 's';
+            line.style.animationDuration = '4s';
             stream.appendChild(line);
         }
 
@@ -47,8 +43,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function startRiverFlow() {
     const itemsContainer = document.getElementById('river-items-container');
-    
-    // Resume items based on the user's index.html content
+    if (!itemsContainer) return;
+
     const resumeItems = [
         { year: '2023', role: 'Intern @ RGT', company: 'Ratna Global Tech', link: '/pages/experience/rgt.html', side: 'right-bank' },
         { year: '2024', role: 'Intern @ UWM', company: 'United Wholesale Mortgage', link: '/pages/experience/uwm.html', side: 'right-bank' },
@@ -60,64 +56,71 @@ function startRiverFlow() {
         { year: '2026', role: 'Intern @ Uber', company: 'Uber', link: '/pages/experience/uber.html', side: 'right-bank' }
     ];
 
+    const SPEED = 0.28;
+    const START_Y = -50;
+    const ITEM_SPACING = 220;
+    const SPAWN_THRESHOLD = START_Y + ITEM_SPACING;
+
     let currentIndex = 0;
+    const active = [];
 
-    function spawnItem() {
-        if (document.hidden) return; // Don't spawn if tab is hidden
-
-        const itemData = resumeItems[currentIndex];
-        const item = document.createElement('div');
-        
-        // assign side or center
+    function createItem(itemData) {
+        const el = document.createElement('div');
         const posClass = itemData.side || 'right-bank';
-        
-        item.className = `river-item ${posClass}`;
-        
-        item.innerHTML = `
+        el.className = `river-item ${posClass}`;
+        el.innerHTML = `
             <a href="${itemData.link}" class="river-link">
                 <span class="year">${itemData.year}</span>
                 <span class="role">${itemData.role}</span>
             </a>
         `;
+        return el;
+    }
 
-        
-        // Start position (above view)
-        item.style.top = '-50px';
-        
-        itemsContainer.appendChild(item);
-
-        // Animate down
-        let pos = -50;
-        const speed = 0.7; // Very slow for easy clicking
-        
-        function animate() {
-            pos += speed;
-            item.style.top = pos + 'px';
-            
-            // Fade in/out
-            if (pos > 50 && pos < window.innerHeight - 100) {
-                item.style.opacity = 0.8;
-            } else if (pos > window.innerHeight - 50) {
-                item.style.opacity = 0;
-            }
-
-            // Remove when off screen
-            if (pos > window.innerHeight + 50) {
-                item.remove();
-            } else {
-                requestAnimationFrame(animate);
-            }
-        }
-        
-        requestAnimationFrame(animate);
-
-        // Next item
+    function spawnItem() {
+        const itemData = resumeItems[currentIndex];
+        const el = createItem(itemData);
+        el.style.top = START_Y + 'px';
+        itemsContainer.appendChild(el);
+        active.push({ el, y: START_Y });
         currentIndex = (currentIndex + 1) % resumeItems.length;
     }
 
-    // Spawn an item every 3 seconds
-    setInterval(spawnItem, 8000);
-    
-    // Initial spawn
-    setTimeout(spawnItem, 1000);
+    function updateOpacity(item) {
+        const { y, el } = item;
+        const h = window.innerHeight;
+        if (y > 50 && y < h - 100) {
+            el.style.opacity = '0.8';
+        } else if (y >= h - 50) {
+            el.style.opacity = String(Math.max(0, 0.8 * (1 - (y - (h - 50)) / 50)));
+        } else if (y <= 50) {
+            el.style.opacity = String(Math.max(0, 0.8 * (y - START_Y) / (50 - START_Y)));
+        }
+    }
+
+    function tick() {
+        if (!document.hidden) {
+            for (let i = active.length - 1; i >= 0; i--) {
+                const item = active[i];
+                item.y += SPEED;
+                item.el.style.top = item.y + 'px';
+                updateOpacity(item);
+
+                if (item.y > window.innerHeight + 50) {
+                    item.el.remove();
+                    active.splice(i, 1);
+                }
+            }
+
+            const last = active[active.length - 1];
+            if (!last || last.y >= SPAWN_THRESHOLD) {
+                spawnItem();
+            }
+        }
+
+        requestAnimationFrame(tick);
+    }
+
+    spawnItem();
+    requestAnimationFrame(tick);
 }

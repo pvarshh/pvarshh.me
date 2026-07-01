@@ -216,107 +216,90 @@
     margin-top: 0.35rem;
 }
 
-/* ── Experience: timeline scrub ── */
-.exp-timeline {
-    margin: 1.5rem 0 2rem;
-    --fill: 0%;
+/* ── Experience index: vertical timeline ── */
+.exp-vtimeline {
+    list-style: none;
+    margin: 1.25rem 0 0;
+    padding: 0 0 0 1.1rem;
+    position: relative;
 }
 
-.exp-scrub-label {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    margin-bottom: 0.65rem;
+.exp-vtimeline::before {
+    content: '';
+    position: absolute;
+    left: 0.35rem;
+    top: 0.55rem;
+    bottom: 0.55rem;
+    width: 1px;
+    background: rgba(26, 26, 26, 0.14);
+}
+
+.exp-vtimeline-item {
+    position: relative;
+    padding: 0 0 1.65rem 1.1rem;
+    margin: 0 !important;
+    cursor: pointer;
+}
+
+.exp-vtimeline-item:last-child {
+    padding-bottom: 0;
+}
+
+.exp-vtimeline-item::before {
+    content: '';
+    position: absolute;
+    left: -0.75rem;
+    top: 0.5rem;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--color-paper, #f5f4ef);
+    border: 1.5px solid var(--sub-realm-color, #2c4a6e);
+    box-sizing: border-box;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.exp-vtimeline-item:first-child::before {
+    background: var(--sub-realm-color, #2c4a6e);
+}
+
+.exp-vtimeline-item:hover::before,
+.exp-vtimeline-item:focus-within::before {
+    transform: scale(1.15);
+}
+
+.exp-vtimeline-when {
+    display: block;
+    margin: 0 0 0.2rem;
     font-family: var(--font-mono);
-    font-size: 0.65rem;
-    letter-spacing: 0.12em;
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
     opacity: 0.45;
-}
-
-.exp-scrub-when {
     color: var(--sub-realm-color, #2c4a6e);
-    opacity: 1;
-    letter-spacing: 0.08em;
 }
 
-.exp-scrub {
-    width: 100%;
-    height: 4px;
-    appearance: none;
-    background: linear-gradient(
-        90deg,
-        var(--sub-realm-color, #2c4a6e) 0%,
-        var(--sub-realm-color, #2c4a6e) var(--fill),
-        rgba(26, 26, 26, 0.1) var(--fill),
-        rgba(26, 26, 26, 0.1) 100%
-    );
-    border-radius: 2px;
-    cursor: ew-resize;
-    margin-bottom: 0.85rem;
-}
-
-.exp-scrub::-webkit-slider-thumb {
-    appearance: none;
-    width: 14px;
-    height: 14px;
-    border-radius: 50%;
-    background: var(--sub-realm-color, #2c4a6e);
-    border: 2px solid var(--color-paper, #f5f4ef);
-    box-shadow: 0 1px 6px rgba(26, 26, 26, 0.2);
-}
-
-.exp-scrub::-moz-range-thumb {
-    width: 14px;
-    height: 14px;
-    border-radius: 50%;
-    background: var(--sub-realm-color, #2c4a6e);
-    border: 2px solid var(--color-paper, #f5f4ef);
-}
-
-.exp-track {
-    position: relative;
-    height: 1.25rem;
-    margin-bottom: 1rem;
-}
-
-.exp-tick {
-    position: absolute;
-    top: 0;
-    width: 1px;
-    height: 8px;
-    background: rgba(26, 26, 26, 0.15);
-    transform: translateX(-50%);
-    transition: height 0.2s ease, background 0.2s ease;
-}
-
-.exp-tick.active {
-    height: 12px;
-    background: var(--sub-realm-color, #2c4a6e);
-}
-
-.exp-card {
-    min-height: 5rem;
-    padding: 0.85rem 0 0;
-    border-top: 1px solid rgba(26, 26, 26, 0.08);
-    transition: opacity 0.25s ease;
-}
-
-.exp-card-title {
-    margin: 0 0 0.45rem;
+.exp-vtimeline-title {
+    display: inline-block;
+    margin: 0;
     font-size: 1.05rem;
     font-weight: 700;
+    line-height: 1.35;
+    border-bottom: 1px solid rgba(26, 26, 26, 0.2);
+    transition: color 0.2s ease, border-color 0.2s ease;
 }
 
-.exp-card-title a {
-    border-bottom-width: 1px;
+.exp-vtimeline-item:hover .exp-vtimeline-title,
+.exp-vtimeline-item:focus-within .exp-vtimeline-title {
+    color: var(--sub-realm-color, #2c4a6e);
+    border-bottom-color: var(--sub-realm-color, #2c4a6e);
 }
 
-.exp-card-desc {
-    margin: 0;
+.exp-vtimeline-desc {
+    margin: 0.35rem 0 0;
     font-size: 0.92rem;
     line-height: 1.5;
-    opacity: 0.75;
+    opacity: 0.72;
 }
 
 /* Experience detail: scroll readout */
@@ -368,9 +351,16 @@
         overflow-wrap: anywhere;
     }
 
-    .exp-card-title {
+    .exp-vtimeline {
+        padding-left: 0.95rem;
+    }
+
+    .exp-vtimeline-item {
+        padding-bottom: 1.35rem;
+    }
+
+    .exp-vtimeline-title {
         font-size: 1rem;
-        line-height: 1.35;
     }
 
     .learn-stack {

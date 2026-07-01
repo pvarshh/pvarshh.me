@@ -747,7 +747,7 @@ footer:not(.site-footer) {
 /* Balance layout when river sidebar is visible (homepage) */
 @media (min-width: 1300px) {
     .page-home .container {
-        padding-right: calc(20px + 6vw);
+        padding-right: 20px;
     }
 }
 

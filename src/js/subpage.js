@@ -237,55 +237,26 @@
         const items = [...list.querySelectorAll('li')].map(parseExperienceItem);
         if (!items.length) return;
 
-        list.hidden = true;
+        list.classList.add('exp-vtimeline');
+        list.setAttribute('aria-label', 'Experience timeline, newest first');
 
-        const wrap = document.createElement('div');
-        wrap.className = 'exp-timeline';
-        wrap.innerHTML = `
-            <label class="exp-scrub-label" for="exp-scrub">
-                <span class="exp-scrub-hint">scrub</span>
-                <span class="exp-scrub-when" id="exp-when"></span>
-            </label>
-            <input type="range" id="exp-scrub" class="exp-scrub" min="0" max="${items.length - 1}" value="0" step="1" aria-valuemin="0" aria-valuemax="${items.length - 1}" aria-label="Scrub through experiences">
-            <div class="exp-track" aria-hidden="true"></div>
-            <article class="exp-card">
-                <h3 class="exp-card-title"><a href="#"></a></h3>
-                <p class="exp-card-desc"></p>
-            </article>
-        `;
+        items.forEach((item, i) => {
+            const li = list.querySelectorAll('li')[i];
+            if (!li) return;
 
-        const track = wrap.querySelector('.exp-track');
-        items.forEach((_, i) => {
-            const tick = document.createElement('span');
-            tick.className = 'exp-tick';
-            tick.style.left = (items.length === 1 ? 50 : (i / (items.length - 1)) * 100) + '%';
-            track.appendChild(tick);
+            li.className = 'exp-vtimeline-item';
+            li.innerHTML = `
+                <span class="exp-vtimeline-when">${item.when || ''}</span>
+                <a href="${item.href}" class="exp-vtimeline-title">${item.title}</a>
+                <p class="exp-vtimeline-desc">${item.desc}</p>
+            `;
+
+            li.addEventListener('click', (e) => {
+                if (e.target.tagName === 'A') return;
+                const link = li.querySelector('a');
+                if (link) link.click();
+            });
         });
-
-        list.parentNode.insertBefore(wrap, list);
-
-        const scrub = wrap.querySelector('#exp-scrub');
-        const whenEl = wrap.querySelector('#exp-when');
-        const titleLink = wrap.querySelector('.exp-card-title a');
-        const descEl = wrap.querySelector('.exp-card-desc');
-
-        function show(i) {
-            const item = items[i];
-            whenEl.textContent = item.when || `· ${i + 1}/${items.length} ·`;
-            titleLink.textContent = item.title;
-            titleLink.href = item.href;
-            descEl.textContent = item.desc;
-            wrap.style.setProperty('--fill', (i / (items.length - 1)) * 100 + '%');
-            [...track.children].forEach((t, j) => t.classList.toggle('active', j === i));
-        }
-
-        scrub.addEventListener('input', () => show(Number(scrub.value)));
-        scrub.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowLeft') { scrub.value = Math.max(0, Number(scrub.value) - 1); show(Number(scrub.value)); }
-            if (e.key === 'ArrowRight') { scrub.value = Math.min(items.length - 1, Number(scrub.value) + 1); show(Number(scrub.value)); }
-        });
-
-        show(0);
     }
 
     function initExperienceDetail() {

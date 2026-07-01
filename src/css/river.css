@@ -1,16 +1,16 @@
 #river-container {
     position: fixed;
-    right: 15vw;
+    right: max(0.75rem, 1vw);
     top: 0;
     height: 100vh;
-    width: 250px;
+    width: 185px;
     z-index: 10; 
     pointer-events: none;
     display: none; 
     overflow: hidden;
     mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
     -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
-    opacity: 0.8; /* Slightly fade the whole thing */
+    opacity: 0.8;
 }
 
 @media (min-width: 1300px) {
@@ -19,12 +19,23 @@
     }
 }
 
+@media (min-width: 1600px) {
+    #river-container {
+        right: 2.5vw;
+        width: 220px;
+    }
+
+    .river-stream {
+        width: 200px;
+    }
+}
+
 .river-stream {
     position: absolute;
     top: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 220px; /* Slightly wider */
+    width: 160px;
     height: 100%;
     /* More visible paper/watermark style */
     background: linear-gradient(90deg, 
@@ -60,7 +71,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 60px;
+    width: 48px;
     height: 100px;
     z-index: 2;
     pointer-events: auto; /* Enable clicks despite parent being none */
@@ -95,7 +106,7 @@
 .oar {
     position: absolute;
     top: 25px;
-    width: 45px;
+    width: 32px;
     height: 1px;
     background: #1a1a1a;
 }

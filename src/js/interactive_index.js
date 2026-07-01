@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('ul li').forEach((item, index) => {
-        if (item.closest('.story-panel')) {
+        if (item.closest('.story-panel') || item.closest('.exp-vtimeline')) {
             return;
         }
 
