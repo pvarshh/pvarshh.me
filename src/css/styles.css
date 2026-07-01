@@ -8,6 +8,10 @@
     --font-mono: "IBM Plex Mono", monospace;
 }
 
+html {
+    overflow-x: clip;
+}
+
 body {
     background: linear-gradient(135deg, var(--color-paper) 0%, var(--color-paper-deep) 50%, var(--color-paper) 100%);
     background-size: 200% 200%;
@@ -18,6 +22,8 @@ body {
     font-family: var(--font-serif);
     cursor: default;
     position: relative;
+    overflow-x: clip;
+    -webkit-text-size-adjust: 100%;
 }
 
 /* Subtle grain texture overlay for vintage feel */
@@ -639,7 +645,8 @@ footer:not(.site-footer) {
     }
     
     .container {
-        padding: 0 20px;
+        padding-left: max(16px, env(safe-area-inset-left));
+        padding-right: max(16px, env(safe-area-inset-right));
     }
     
     h1 {
@@ -650,9 +657,86 @@ footer:not(.site-footer) {
         font-size: 0.95rem;
     }
 
+    .site-header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.4rem;
+        margin-bottom: 1.25rem;
+        text-align: center;
+    }
+
+    .site-header > *:first-child,
+    .site-header > *:nth-child(2),
+    .site-header > *:last-child {
+        justify-self: auto;
+        text-align: center;
+        width: 100%;
+    }
+
+    .site-header a:first-child {
+        order: 1;
+        font-size: 1.05rem;
+        line-height: 1.35;
+        word-break: break-word;
+    }
+
+    .site-header h2 {
+        order: 2;
+        font-size: 0.95rem;
+        margin: 0;
+        font-weight: 400;
+        opacity: 0.65;
+    }
+
+    .site-header .nav-item {
+        order: 3;
+        font-size: 0.85rem;
+    }
+
     .content-blog-post::before,
     .right-align::before {
         display: none;
+    }
+
+    .wide-image,
+    .wide-figure {
+        max-width: 100%;
+        margin-left: 0;
+        transform: none;
+    }
+
+    .content-centered .wide-image,
+    .content-centered .wide-figure,
+    .content-blog-post .wide-image,
+    .content-blog-post .wide-figure {
+        margin-left: 0;
+        transform: none;
+    }
+
+    .interactive-item {
+        margin-left: 0;
+        padding-left: 0.25rem;
+        padding-right: 0.25rem;
+    }
+
+    .site-footer {
+        padding: 0 16px 2rem;
+        margin-top: 2rem;
+    }
+
+    .site-footer-quote {
+        font-size: 0.82rem;
+        line-height: 1.5;
+        padding: 0 0.25rem;
+    }
+
+    .site-footer-marginalia {
+        font-size: 0.52rem;
+        padding: 0 0.15rem;
+        overflow-wrap: anywhere;
+        word-break: break-word;
+        line-height: 1.45;
     }
 
     a:hover {

@@ -349,6 +349,49 @@
     color: var(--sub-realm-color, #2c4a6e);
 }
 
+@media (max-width: 600px) {
+    .subpage-realm {
+        font-size: 0.58rem;
+        letter-spacing: 0.1em;
+        margin-bottom: 1rem;
+    }
+
+    .exp-readout,
+    .learn-loss {
+        font-size: 0.55rem;
+        max-width: 100%;
+        flex-wrap: wrap;
+        gap: 0.35rem;
+    }
+
+    .exp-readout-cmd {
+        overflow-wrap: anywhere;
+    }
+
+    .exp-card-title {
+        font-size: 1rem;
+        line-height: 1.35;
+    }
+
+    .learn-stack {
+        gap: 0.3rem;
+    }
+
+    .learn-stack-btn {
+        min-width: calc(50% - 0.2rem);
+        padding: 0.45rem 0.5rem;
+    }
+
+    .learn-stack-label {
+        font-size: 0.62rem;
+    }
+
+    .fav-photo .fav-whisper {
+        font-size: 0.62rem;
+        padding: 0.4rem 0.5rem;
+    }
+}
+
 /* Learning: depth stack */
 .learn-stack {
     display: flex;

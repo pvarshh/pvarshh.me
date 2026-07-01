@@ -541,6 +541,118 @@ body.story-unlocking::after {
     letter-spacing: 0.3em;
 }
 
+#maze-container {
+    width: min(380px, 100%);
+    margin: 0 auto;
+}
+
+#lock-screen {
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+@media (max-width: 600px) {
+    #story-bg-canvas,
+    #story-fragments {
+        display: none;
+    }
+
+    .story-tuner-wrap {
+        margin-bottom: 1rem;
+    }
+
+    .tuner-chassis {
+        padding: 0.55rem 0.6rem 0.65rem;
+        border-radius: 6px;
+    }
+
+    .tuner-header {
+        gap: 0.45rem;
+        font-size: 0.58rem;
+    }
+
+    #tuner-canvas {
+        height: 150px;
+    }
+
+    .story-tuner-readout {
+        font-size: 0.62rem;
+        letter-spacing: 0.1em;
+        margin: 0.6rem 0 0.75rem;
+    }
+
+    .story-tuner-control {
+        margin: 0;
+        height: 48px;
+    }
+
+    .tuner-station {
+        width: 2.35rem;
+        height: 2.35rem;
+        font-size: 0.62rem;
+    }
+
+    .tuner-knob {
+        width: 18px;
+        height: 18px;
+    }
+
+    .story-realm-tabs {
+        gap: 0.35rem;
+    }
+
+    .story-realm-tab {
+        flex: 1 1 calc(50% - 0.2rem);
+        min-width: 0;
+        height: 2.25rem;
+        padding: 0 0.45rem;
+        font-size: 0.6rem;
+        letter-spacing: 0.02em;
+    }
+
+    .story-name-wrap {
+        margin-bottom: 0.75rem;
+    }
+
+    .story-name {
+        min-height: 2.2rem;
+    }
+
+    .story-realm-section {
+        margin-bottom: 1rem;
+    }
+
+    .content .story-panel ul {
+        padding-left: 1rem;
+    }
+
+    .story-panel-label {
+        letter-spacing: 0.1em;
+        margin-bottom: 0.65rem;
+    }
+
+    .maze-title {
+        letter-spacing: 0.2em;
+        font-size: 0.9rem;
+    }
+
+    .maze-instructions {
+        letter-spacing: 0.15em;
+        font-size: 0.85rem;
+    }
+
+    .auto-solve-btn {
+        font-size: 0.62rem;
+        padding: 0.45rem 0.75rem;
+        text-align: center;
+        max-width: 100%;
+    }
+
+    #maze-container {
+        width: min(340px, calc(100vw - 2rem));
+    }
+}
+
 @media (prefers-reduced-motion: reduce) {
     .story-fragment { display: none; }
     #story-bg-canvas { display: none; }

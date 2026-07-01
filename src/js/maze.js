@@ -29,13 +29,19 @@ class MazeGame {
 
         this.init();
         this.setupInputs();
+
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            if (this.solved) return;
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => this.init(), 150);
+        });
     }
 
     init() {
         // Size canvas based on container width but limit height
         const rect = this.container.getBoundingClientRect();
-        // Slightly smaller max width for elegance on lock screen
-        const availableWidth = Math.min(380, rect.width);
+        const availableWidth = Math.min(380, rect.width || window.innerWidth - 32);
         
         this.cols = Math.floor(availableWidth / this.cellSize);
         if (this.cols < 5) this.cols = 5;
