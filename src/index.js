@@ -1,6 +1,7 @@
 import indexHTML from '../index.html';
 import lifeHTML from '../pages/writing/life.html';
 import egoHTML from '../pages/writing/ego.html';
+import linsanityHTML from '../pages/writing/linsanity.html';
 import mainJS from './js/main.js';
 import stylesCSS from './css/styles.css';
 import resumeHTML from '../pages/resume.html';
@@ -40,6 +41,12 @@ export default {
 
     if (url.pathname === '/pages/writing/ego.html') {
       return new Response(egoHTML, {
+        headers: { 'content-type': 'text/html;charset=UTF-8' }
+      });
+    }
+
+    if (url.pathname === '/pages/writing/linsanity.html') {
+      return new Response(linsanityHTML, {
         headers: { 'content-type': 'text/html;charset=UTF-8' }
       });
     }

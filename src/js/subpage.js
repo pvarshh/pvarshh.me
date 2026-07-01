@@ -33,6 +33,12 @@
             { para: 1, quote: 'Icarus fell. Daedalus flew.' },
             { para: 3, quote: "another person's ceiling isn't yours" },
             { para: 5, quote: 'kept me ahead of the race' }
+        ],
+        '/pages/writing/linsanity.html': [
+            { para: 1, quote: 'unexpected, generational outburst of excellence' },
+            { para: 2, quote: 'a masterclass in real-time' },
+            { para: 4, quote: 'liberated from suffocating weight of perfection' },
+            { para: 5, quote: 'your own version of Linsanity' }
         ]
     };
 
@@ -215,6 +221,28 @@
             initEgoAltitude(content);
         }
 
+        if (PATH.includes('linsanity.html')) {
+            const paras = [...content.querySelectorAll('p')].filter((p) => !p.classList.contains('with-space'));
+            pulls.forEach((item) => {
+                const p = paras[item.para];
+                if (!p) return;
+
+                const pull = document.createElement('blockquote');
+                pull.className = 'writing-pull';
+                pull.textContent = item.quote;
+                p.classList.add('writing-para');
+                p.insertAdjacentElement('afterend', pull);
+
+                const note = document.createElement('p');
+                note.className = 'writing-rail-note';
+                note.textContent = item.quote;
+                rail.appendChild(note);
+                notes.push({ el: p, note });
+            });
+
+            initLinsanityScore(content);
+        }
+
         if (!notes.length) return;
         content.appendChild(rail);
 
@@ -267,6 +295,37 @@
             fillEl.style.width = Math.max(8, (1 - pct) * 100) + '%';
             warnEl.textContent = pct > 0.72 ? 'sun ahead' : pct > 0.45 ? 'warming up' : 'wax holds';
             meter.classList.toggle('ego-hot', pct > 0.72);
+        }
+
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+    }
+
+    /* linsanity.html — MSG score climbs toward 38 as you read */
+    function initLinsanityScore(content) {
+        const board = document.createElement('div');
+        board.className = 'lin-scoreboard';
+        board.setAttribute('aria-hidden', 'true');
+        board.innerHTML = `
+            <span class="lin-score-label">msg</span>
+            <span class="lin-score-val">0</span>
+            <span class="lin-score-unit">pts</span>
+            <span class="lin-score-pick">pick #—</span>
+        `;
+        content.appendChild(board);
+
+        const valEl = board.querySelector('.lin-score-val');
+        const pickEl = board.querySelector('.lin-score-pick');
+
+        function onScroll() {
+            const rect = content.getBoundingClientRect();
+            const total = Math.max(content.scrollHeight - window.innerHeight, 1);
+            const scrolled = Math.min(Math.max(-rect.top, 0), total);
+            const pct = scrolled / total;
+            const pts = Math.round(pct * 38);
+            valEl.textContent = String(pts);
+            pickEl.textContent = pts < 12 ? 'pick #B' : pts < 28 ? 'pick #2' : 'dame time';
+            board.classList.toggle('lin-hot', pts >= 38);
         }
 
         window.addEventListener('scroll', onScroll, { passive: true });

@@ -485,6 +485,52 @@
     }
 }
 
+/* linsanity.html — scoreboard */
+.lin-scoreboard {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.2rem;
+    position: fixed;
+    right: max(1rem, calc((100vw - 800px) / 2 - 5rem));
+    top: 36%;
+    font-family: var(--font-mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0.45;
+    pointer-events: none;
+    z-index: 2;
+    transition: opacity 0.35s ease;
+}
+
+.lin-score-val {
+    font-size: 1.35rem;
+    letter-spacing: 0.02em;
+    line-height: 1;
+    color: var(--sub-realm-color, #5a4a3a);
+    transition: color 0.3s ease;
+}
+
+.lin-score-pick {
+    font-size: 0.52rem;
+    opacity: 0.65;
+}
+
+.lin-scoreboard.lin-hot .lin-score-val {
+    color: #c45a1a;
+}
+
+.lin-scoreboard.lin-hot {
+    opacity: 0.72;
+}
+
+@media (min-width: 1100px) {
+    .lin-scoreboard {
+        display: none;
+    }
+}
+
 /* Learning: depth stack */
 .learn-stack {
     display: flex;
