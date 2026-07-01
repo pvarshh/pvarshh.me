@@ -65,81 +65,8 @@
     #subpage-fragments { display: none; }
 }
 
-/* ── Writing: scroll marginalia ── */
-.writing-page .content,
-.writing-page .content-centered {
-    position: relative;
-}
-
-.writing-section {
-    position: relative;
-    margin-bottom: 0.5rem;
-}
-
-.writing-pull {
-    margin: 0.75rem 0 1.25rem;
-    padding: 0 0 0 1rem;
-    border: none;
-    border-left: 2px solid var(--sub-realm-color, #5a4a3a);
-    font-family: var(--font-serif);
-    font-style: italic;
-    font-size: 1.05rem;
-    opacity: 0;
-    transform: translateY(8px);
-    transition: opacity 0.55s ease, transform 0.55s ease;
-    color: rgba(26, 26, 26, 0.72);
-}
-
-.writing-pull.in-view,
-.writing-section.in-view .writing-pull,
-.writing-para.in-view + .writing-pull {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.writing-rail {
+.page-sub.realm-words #subpage-fragments {
     display: none;
-}
-
-@media (min-width: 1100px) {
-    .writing-page .content-centered,
-    .writing-page .container.content-centered {
-        padding-right: 5rem;
-    }
-
-    .writing-rail {
-        display: block;
-        position: fixed;
-        right: max(1.5rem, calc((100vw - 800px) / 2 - 7rem));
-        top: 42%;
-        width: 6.5rem;
-        transform: translateY(-50%);
-        pointer-events: none;
-    }
-
-    .writing-rail-note {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        font-family: var(--font-mono);
-        font-size: 0.62rem;
-        line-height: 1.45;
-        letter-spacing: 0.04em;
-        color: var(--sub-realm-color, #5a4a3a);
-        opacity: 0;
-        transform: translateY(6px);
-        transition: opacity 0.45s ease, transform 0.45s ease;
-    }
-
-    .writing-rail-note.active {
-        opacity: 0.55;
-        transform: translateY(0);
-    }
-
-    .writing-pull {
-        display: none;
-    }
 }
 
 /* ── Favorites: hover whispers ── */
@@ -422,115 +349,6 @@
     color: var(--sub-realm-color, #2c4a6e);
 }
 
-/* ego.html — Icarus altitude */
-.ego-altitude {
-    display: none;
-}
-
-.writing-page .ego-altitude {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 0.35rem;
-    position: fixed;
-    right: max(1rem, calc((100vw - 800px) / 2 - 5rem));
-    top: 38%;
-    width: 4.5rem;
-    font-family: var(--font-mono);
-    font-size: 0.58rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    opacity: 0.42;
-    pointer-events: none;
-    z-index: 2;
-    transition: opacity 0.4s ease;
-}
-
-.ego-alt-value {
-    font-size: 0.72rem;
-    letter-spacing: 0.04em;
-}
-
-.ego-wax-track {
-    width: 100%;
-    height: 3px;
-    background: rgba(26, 26, 26, 0.1);
-    border-radius: 2px;
-    overflow: hidden;
-}
-
-.ego-wax-fill {
-    height: 100%;
-    width: 100%;
-    background: var(--sub-realm-color, #5a4a3a);
-    transition: width 0.15s ease-out, background 0.3s ease;
-}
-
-.ego-altitude.ego-hot {
-    opacity: 0.72;
-}
-
-.ego-altitude.ego-hot .ego-wax-fill {
-    background: #a85a2a;
-}
-
-.ego-alt-warn {
-    font-size: 0.52rem;
-    opacity: 0.7;
-}
-
-@media (min-width: 1100px) {
-    .writing-page .ego-altitude {
-        display: none;
-    }
-}
-
-/* linsanity.html — scoreboard */
-.lin-scoreboard {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 0.2rem;
-    position: fixed;
-    right: max(1rem, calc((100vw - 800px) / 2 - 5rem));
-    top: 36%;
-    font-family: var(--font-mono);
-    font-size: 0.58rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    opacity: 0.45;
-    pointer-events: none;
-    z-index: 2;
-    transition: opacity 0.35s ease;
-}
-
-.lin-score-val {
-    font-size: 1.35rem;
-    letter-spacing: 0.02em;
-    line-height: 1;
-    color: var(--sub-realm-color, #5a4a3a);
-    transition: color 0.3s ease;
-}
-
-.lin-score-pick {
-    font-size: 0.52rem;
-    opacity: 0.65;
-}
-
-.lin-scoreboard.lin-hot .lin-score-val {
-    color: #c45a1a;
-}
-
-.lin-scoreboard.lin-hot {
-    opacity: 0.72;
-}
-
-@media (min-width: 1100px) {
-    .lin-scoreboard {
-        display: none;
-    }
-}
-
 /* Learning: depth stack */
 .learn-stack {
     display: flex;
@@ -617,17 +435,13 @@ body[data-learn-layer="known"] .learn-topics {
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .writing-pull,
-    .writing-rail-note,
     .fav-whisper.fav-aside,
     .fav-category .fav-whisper,
     .exp-readout,
-    .learn-loss,
-    .ego-wax-fill {
+    .learn-loss {
         transition: none;
     }
 
-    .writing-pull,
     .fav-pick .fav-whisper.fav-aside,
     .fav-category .fav-whisper,
     .fav-photo .fav-whisper {

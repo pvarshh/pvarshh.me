@@ -23,25 +23,6 @@
     const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const PATH = window.location.pathname;
 
-    const WRITING_PULLS = {
-        '/pages/writing/life.html': [
-            { heading: 'Money', quote: 'enablement, not accumulation' },
-            { heading: 'Friends', quote: "talent doesn't win the race" },
-            { heading: 'Family', quote: 'unconditional love' }
-        ],
-        '/pages/writing/ego.html': [
-            { para: 1, quote: 'Icarus fell. Daedalus flew.' },
-            { para: 3, quote: "another person's ceiling isn't yours" },
-            { para: 5, quote: 'kept me ahead of the race' }
-        ],
-        '/pages/writing/linsanity.html': [
-            { para: 1, quote: 'unexpected, generational outburst of excellence' },
-            { para: 2, quote: 'a masterclass in real-time' },
-            { para: 4, quote: 'liberated from suffocating weight of perfection' },
-            { para: 5, quote: 'your own version of Linsanity' }
-        ]
-    };
-
     const FAV_INDEX_WHY = {
         Pictures: 'moments I was there for',
         Songs: 'the ones that loop in my head',
@@ -128,7 +109,7 @@
     }
 
     function initFragments(realm) {
-        if (REDUCED) return;
+        if (REDUCED || realm === 'words') return;
 
         const pool = REALMS[realm].fragments;
         const wrap = document.createElement('div');
@@ -148,188 +129,6 @@
             el.style.setProperty('--dy', (Math.random() * 20 - 10) + 'px');
             wrap.appendChild(el);
         }
-    }
-
-    /* ── Writing: scroll-reveal marginalia ── */
-    function initWriting() {
-        const pulls = WRITING_PULLS[PATH];
-        if (!pulls) return;
-
-        document.body.classList.add('writing-page');
-        const content = document.querySelector('.content') || document.querySelector('.content-centered');
-        if (!content) return;
-
-        const rail = document.createElement('aside');
-        rail.className = 'writing-rail';
-        rail.setAttribute('aria-hidden', 'true');
-
-        const notes = [];
-
-        if (PATH.includes('life.html')) {
-            pulls.forEach((item) => {
-                const headings = [...content.querySelectorAll('b')];
-                const heading = headings.find((h) => h.textContent.trim() === item.heading);
-                if (!heading) return;
-
-                const section = document.createElement('section');
-                section.className = 'writing-section';
-                const parent = heading.parentNode;
-                const siblings = [];
-                let node = heading.nextSibling;
-                while (node) {
-                    if (node.nodeName === 'B') break;
-                    const next = node.nextSibling;
-                    siblings.push(node);
-                    node = next;
-                }
-                parent.insertBefore(section, heading);
-                section.appendChild(heading);
-                siblings.forEach((s) => section.appendChild(s));
-
-                const pull = document.createElement('blockquote');
-                pull.className = 'writing-pull';
-                pull.textContent = item.quote;
-                section.appendChild(pull);
-
-                const note = document.createElement('p');
-                note.className = 'writing-rail-note';
-                note.textContent = item.quote;
-                rail.appendChild(note);
-                notes.push({ el: section, note });
-            });
-        }
-
-        if (PATH.includes('ego.html')) {
-            const paras = [...content.querySelectorAll('p')].filter((p) => !p.classList.contains('with-space'));
-            pulls.forEach((item) => {
-                const p = paras[item.para];
-                if (!p) return;
-
-                const pull = document.createElement('blockquote');
-                pull.className = 'writing-pull';
-                pull.textContent = item.quote;
-                p.classList.add('writing-para');
-                p.insertAdjacentElement('afterend', pull);
-
-                const note = document.createElement('p');
-                note.className = 'writing-rail-note';
-                note.textContent = item.quote;
-                rail.appendChild(note);
-                notes.push({ el: p, note });
-            });
-
-            initEgoAltitude(content);
-        }
-
-        if (PATH.includes('linsanity.html')) {
-            const paras = [...content.querySelectorAll('p')].filter((p) => !p.classList.contains('with-space'));
-            pulls.forEach((item) => {
-                const p = paras[item.para];
-                if (!p) return;
-
-                const pull = document.createElement('blockquote');
-                pull.className = 'writing-pull';
-                pull.textContent = item.quote;
-                p.classList.add('writing-para');
-                p.insertAdjacentElement('afterend', pull);
-
-                const note = document.createElement('p');
-                note.className = 'writing-rail-note';
-                note.textContent = item.quote;
-                rail.appendChild(note);
-                notes.push({ el: p, note });
-            });
-
-            initLinsanityScore(content);
-        }
-
-        if (!notes.length) return;
-        content.appendChild(rail);
-
-        const io = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    entry.target.classList.toggle('in-view', entry.isIntersecting);
-                    const match = notes.find((n) => n.el === entry.target || n.el.contains(entry.target));
-                    if (match) {
-                        match.note.classList.toggle('active', entry.isIntersecting);
-                    }
-                });
-            },
-            { rootMargin: '-20% 0px -55% 0px', threshold: 0 }
-        );
-
-        notes.forEach(({ el }) => io.observe(el));
-        if (REDUCED) {
-            notes.forEach(({ el, note }) => {
-                el.classList.add('in-view');
-                note.classList.add('active');
-            });
-        }
-    }
-
-    /* ego.html only — Icarus altitude meter tied to scroll */
-    function initEgoAltitude(content) {
-        const meter = document.createElement('div');
-        meter.className = 'ego-altitude';
-        meter.setAttribute('aria-hidden', 'true');
-        meter.innerHTML = `
-            <span class="ego-alt-label">alt</span>
-            <span class="ego-alt-value">0 ft</span>
-            <div class="ego-wax-track"><div class="ego-wax-fill"></div></div>
-            <span class="ego-alt-warn">wax holds</span>
-        `;
-        content.appendChild(meter);
-
-        const valueEl = meter.querySelector('.ego-alt-value');
-        const fillEl = meter.querySelector('.ego-wax-fill');
-        const warnEl = meter.querySelector('.ego-alt-warn');
-
-        function onScroll() {
-            const rect = content.getBoundingClientRect();
-            const total = Math.max(content.scrollHeight - window.innerHeight, 1);
-            const scrolled = Math.min(Math.max(-rect.top, 0), total);
-            const pct = scrolled / total;
-            const ft = Math.round(pct * 48000);
-            valueEl.textContent = ft.toLocaleString() + ' ft';
-            fillEl.style.width = Math.max(8, (1 - pct) * 100) + '%';
-            warnEl.textContent = pct > 0.72 ? 'sun ahead' : pct > 0.45 ? 'warming up' : 'wax holds';
-            meter.classList.toggle('ego-hot', pct > 0.72);
-        }
-
-        window.addEventListener('scroll', onScroll, { passive: true });
-        onScroll();
-    }
-
-    /* linsanity.html — MSG score climbs toward 38 as you read */
-    function initLinsanityScore(content) {
-        const board = document.createElement('div');
-        board.className = 'lin-scoreboard';
-        board.setAttribute('aria-hidden', 'true');
-        board.innerHTML = `
-            <span class="lin-score-label">msg</span>
-            <span class="lin-score-val">0</span>
-            <span class="lin-score-unit">pts</span>
-            <span class="lin-score-pick">pick #—</span>
-        `;
-        content.appendChild(board);
-
-        const valEl = board.querySelector('.lin-score-val');
-        const pickEl = board.querySelector('.lin-score-pick');
-
-        function onScroll() {
-            const rect = content.getBoundingClientRect();
-            const total = Math.max(content.scrollHeight - window.innerHeight, 1);
-            const scrolled = Math.min(Math.max(-rect.top, 0), total);
-            const pct = scrolled / total;
-            const pts = Math.round(pct * 38);
-            valEl.textContent = String(pts);
-            pickEl.textContent = pts < 12 ? 'pick #B' : pts < 28 ? 'pick #2' : 'dame time';
-            board.classList.toggle('lin-hot', pts >= 38);
-        }
-
-        window.addEventListener('scroll', onScroll, { passive: true });
-        onScroll();
     }
 
     /* ── Favorites: hover whispers ── */
@@ -624,7 +423,6 @@
     document.body.dataset.realm = realm;
     injectRealmBadge(realm);
     initFragments(realm);
-    initWriting();
     initFavorites();
     initExperience();
     initLearning();
