@@ -246,6 +246,7 @@ body.story-tuner-locked .tuner-lock-ring {
     height: 2rem;
     border-radius: 50%;
     cursor: pointer;
+    pointer-events: auto;
     opacity: 0.45;
     transition: opacity 0.25s ease, border-color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
     color: inherit;
@@ -298,6 +299,8 @@ body.story-tuner-locked .tuner-knob {
 .story-realm-section {
     max-width: 640px;
     margin: 0 auto 1.5rem;
+    position: relative;
+    z-index: 3;
 }
 
 .story-realm-tabs {
@@ -307,6 +310,8 @@ body.story-tuner-locked .tuner-knob {
     gap: 0.45rem;
     margin: 0 0 0.65rem;
     flex-wrap: wrap;
+    position: relative;
+    z-index: 4;
 }
 
 .story-realm-tab {
@@ -327,6 +332,7 @@ body.story-tuner-locked .tuner-knob {
     letter-spacing: 0.04em;
     border-radius: 999px;
     cursor: pointer;
+    pointer-events: auto;
     opacity: 0.35;
     transition: opacity 0.25s ease, border-color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
     color: inherit;
@@ -334,7 +340,7 @@ body.story-tuner-locked .tuner-knob {
 }
 
 .story-realm-tab:hover {
-    opacity: 0.75;
+    opacity: 0.85;
 }
 
 .story-realm-tab.active {

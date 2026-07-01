@@ -24,15 +24,18 @@
     const NAME = 'Pranav Varshney';
     const SCRAMBLES = ['λx.x', '01001100', '§', '∇', 'void main()', 'cogito', '1066', NAME];
 
+    const START_REALM = 'cs';
+    const START_FREQ = REALMS[0].freq;
+
     const state = {
-        focusedRealm: null,
-        tunerPos: 0.5,
-        targetPos: 0.5,
+        focusedRealm: START_REALM,
+        tunerPos: START_FREQ,
+        targetPos: START_FREQ,
         dialVelocity: 0,
         dragging: false,
         mouse: { x: 0.5, y: 0.5 },
         signalStrength: 0,
-        nearestRealm: null,
+        nearestRealm: START_REALM,
         lockHold: 0,
         lockFlash: 0
     };
@@ -49,6 +52,7 @@
     initNameScramble();
     buildRealmTabs();
     buildStations();
+    syncFocusUI();
     trackMouse();
 
     window.storyOnUnlock = function () {
@@ -97,7 +101,7 @@
             btn.textContent = r.glyph + ' ' + r.label;
             btn.style.setProperty('--tab-color', r.color);
             btn.setAttribute('role', 'tab');
-            btn.addEventListener('click', () => tuneTo(r.freq, r.id));
+            btn.addEventListener('click', () => tuneTo(r.freq, r.id, true));
             container.appendChild(btn);
         });
     }
@@ -396,7 +400,13 @@
             if (!state.dragging) return;
             state.dragging = false;
             const { realm, dist } = nearestTo(state.tunerPos);
-            if (dist < 0.06) tuneTo(realm.freq, realm.id, true);
+            if (dist < 0.06) {
+                // Only lock when tuning forward (left → right) or re-selecting current
+                const currentIdx = REALMS.findIndex((r) => r.id === state.focusedRealm);
+                const nextIdx = REALMS.findIndex((r) => r.id === realm.id);
+                if (nextIdx >= currentIdx) tuneTo(realm.freq, realm.id, true);
+                else state.targetPos = REALMS[currentIdx]?.freq ?? state.targetPos;
+            }
         }
 
         [canvas, control].forEach((el) => {
@@ -415,14 +425,31 @@
         }, { passive: false });
 
         canvas.addEventListener('click', () => {
-            if (state.signalStrength > 0.7 && state.nearestRealm) lockTo(state.nearestRealm);
+            if (state.signalStrength > 0.7 && state.nearestRealm) {
+                const currentIdx = REALMS.findIndex((r) => r.id === state.focusedRealm);
+                const nextIdx = REALMS.findIndex((r) => r.id === state.nearestRealm);
+                if (nextIdx >= currentIdx) lockTo(state.nearestRealm);
+            }
         });
 
         control.addEventListener('keydown', (e) => {
             const step = e.shiftKey ? 0.25 : 0.05;
-            if (e.key === 'ArrowLeft') { e.preventDefault(); setPos(Math.max(0, state.targetPos - step)); }
-            if (e.key === 'ArrowRight') { e.preventDefault(); setPos(Math.min(1, state.targetPos + step)); }
-            if (e.key === 'Enter' && state.nearestRealm) lockTo(state.nearestRealm);
+            const currentIdx = REALMS.findIndex((r) => r.id === state.focusedRealm);
+            if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                const prev = REALMS[Math.max(0, currentIdx - 1)];
+                if (prev) tuneTo(prev.freq, prev.id, true);
+            }
+            if (e.key === 'ArrowRight') {
+                e.preventDefault();
+                const next = REALMS[Math.min(REALMS.length - 1, currentIdx + 1)];
+                if (next) tuneTo(next.freq, next.id, true);
+            }
+            if (e.key === 'Enter' && state.nearestRealm) {
+                const currentIdx = REALMS.findIndex((r) => r.id === state.focusedRealm);
+                const nextIdx = REALMS.findIndex((r) => r.id === state.nearestRealm);
+                if (nextIdx >= currentIdx) lockTo(state.nearestRealm);
+            }
             if (e.key === 'Escape') { state.focusedRealm = null; syncFocusUI(); }
         });
 
@@ -456,7 +483,11 @@
 
             if (!state.focusedRealm && state.signalStrength > 0.82) {
                 state.lockHold++;
-                if (state.lockHold > 45) lockTo(state.nearestRealm);
+                if (state.lockHold > 45) {
+                    const currentIdx = REALMS.findIndex((r) => r.id === state.focusedRealm);
+                    const nextIdx = REALMS.findIndex((r) => r.id === state.nearestRealm);
+                    if (nextIdx >= currentIdx) lockTo(state.nearestRealm);
+                }
             } else {
                 state.lockHold = 0;
             }
