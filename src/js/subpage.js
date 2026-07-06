@@ -31,6 +31,13 @@
         'TV Shows': 'comfort watches and obsession'
     };
 
+    const WRITING_ESSAYS = [
+        { slug: 'life.html', href: '/pages/writing/life.html', title: 'Three Pillars' },
+        { slug: 'ego.html', href: '/pages/writing/ego.html', title: 'No Ceiling' },
+        { slug: '2nd-pick.html', href: '/pages/writing/2nd-pick.html', title: 'The Second Pick' },
+        { slug: 'martyr.html', href: '/pages/writing/martyr.html', title: 'The Martyr Complex' }
+    ];
+
     const MUSIC_WHY = {
         'A Little Death': 'melancholy that feels honest',
         'たぶん': 'YAOSOBI at their most wistful',
@@ -94,8 +101,21 @@
         if (PATH.includes('/favorites/')) return 'world';
         if (PATH.includes('/experience/') || PATH.includes('/learning/')) return 'cs';
         if (PATH.includes('/find-me')) return 'path';
-        if (PATH.includes('/resume')) return 'path';
+        if (PATH.includes('/resume')) return 'cs';
         return null;
+    }
+
+    function realmHomeHref(realm) {
+        return '/?realm=' + realm;
+    }
+
+    function wireRealmHomeLinks(realm) {
+        document.querySelectorAll('.site-header a.nav-item').forEach((link) => {
+            const href = link.getAttribute('href');
+            if (href === '/' || (href && href.startsWith('/?realm='))) {
+                link.setAttribute('href', realmHomeHref(realm));
+            }
+        });
     }
 
     function injectRealmBadge(realm) {
@@ -313,7 +333,37 @@
 
         if (PATH.includes('/learning/ml/')) {
             initLearnLoss();
+            initLearnIsl();
         }
+    }
+
+    function initWriting() {
+        if (!PATH.includes('/writing/')) return;
+        document.body.classList.add('writing-page');
+
+        const slug = PATH.split('/').pop() || '';
+        if (slug === 'index.html' || slug === '' || !slug.endsWith('.html')) return;
+
+        const content = document.querySelector('.content');
+        if (!content || content.querySelector('.writing-more')) return;
+
+        const others = WRITING_ESSAYS.filter((e) => e.slug !== slug);
+        if (!others.length) return;
+
+        const block = document.createElement('nav');
+        block.className = 'writing-more';
+        block.setAttribute('aria-label', 'More essays');
+        block.innerHTML = '<p class="writing-more-label">also read</p><ul></ul>';
+        const ul = block.querySelector('ul');
+        others.forEach((e) => {
+            const li = document.createElement('li');
+            const a = document.createElement('a');
+            a.href = e.href;
+            a.textContent = e.title;
+            li.appendChild(a);
+            ul.appendChild(li);
+        });
+        content.appendChild(block);
     }
 
     function initLearnStack() {
@@ -358,6 +408,61 @@
         });
 
         document.body.dataset.learnLayer = 'unknown';
+        initLearnEpoch(content);
+    }
+
+    function initLearnEpoch(content) {
+        const epoch = document.createElement('div');
+        epoch.className = 'learn-epoch';
+        epoch.setAttribute('aria-hidden', 'true');
+        epoch.innerHTML = '<span class="learn-epoch-label">epoch</span> <span class="learn-epoch-val">0</span>';
+        content.prepend(epoch);
+
+        const valEl = epoch.querySelector('.learn-epoch-val');
+        let n = 0;
+        document.querySelector('.learn-stack')?.addEventListener('click', () => {
+            n++;
+            valEl.textContent = String(n);
+        });
+    }
+
+    function initLearnIsl() {
+        if (!PATH.includes('isl.html')) return;
+        const content = document.querySelector('.content');
+        if (!content) return;
+
+        const concepts = [
+            { label: 'bias–variance', formula: 'Err = Bias² + Var + σ²' },
+            { label: 'ridge', formula: 'β̂ = (XᵀX + λI)⁻¹Xᵀy' },
+            { label: 'lasso', formula: 'min ||y − Xβ||² + λ||β||₁' },
+            { label: 'logistic', formula: 'P(y=1|x) = 1 / (1 + e^{-xᵀβ})' }
+        ];
+
+        const rail = document.createElement('div');
+        rail.className = 'learn-isl-rail';
+        rail.setAttribute('aria-hidden', 'true');
+        rail.innerHTML = '<span class="learn-isl-formula">—</span>';
+
+        const list = document.createElement('ul');
+        list.className = 'learn-isl-concepts';
+        concepts.forEach((c) => {
+            const li = document.createElement('li');
+            li.textContent = c.label;
+            li.dataset.formula = c.formula;
+            list.appendChild(li);
+        });
+
+        const formulaEl = rail.querySelector('.learn-isl-formula');
+        list.addEventListener('mouseover', (e) => {
+            const li = e.target.closest('li');
+            if (!li) return;
+            formulaEl.textContent = li.dataset.formula || '—';
+        });
+        list.addEventListener('mouseleave', () => { formulaEl.textContent = '—'; });
+
+        const intro = content.querySelector('p');
+        if (intro) intro.insertAdjacentElement('afterend', rail);
+        content.appendChild(list);
     }
 
     function initLearnLoss() {
@@ -392,9 +497,11 @@
 
     document.body.classList.add('page-sub', 'realm-' + realm);
     document.body.dataset.realm = realm;
+    wireRealmHomeLinks(realm);
     injectRealmBadge(realm);
     initFragments(realm);
     initFavorites();
     initExperience();
     initLearning();
+    initWriting();
 })();

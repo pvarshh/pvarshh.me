@@ -1,13 +1,15 @@
 class MazeGame {
-    constructor(containerId) {
+    constructor(containerId, options = {}) {
         this.container = document.getElementById(containerId);
+        this.softened = !!options.softened;
         // Create canvas
         this.canvas = document.createElement("canvas");
         this.ctx = this.canvas.getContext("2d");
         this.container.appendChild(this.canvas);
         
         // Settings
-        this.cellSize = 15; // Smaller cells for challenging maze
+        this.cellSize = this.softened ? 22 : 15;
+        this.maxDim = this.softened ? 12 : null;
         this.cols = 0;
         this.rows = 0;
         this.grid = [];
@@ -21,11 +23,21 @@ class MazeGame {
         // Styling - Matching website aesthetic
         this.colors = {
             bg: null, // Transparent
-            wall: "rgba(50, 50, 50, 0.8)", // Soft Charcoal
+            wall: this.softened ? "rgba(50, 50, 50, 0.35)" : "rgba(50, 50, 50, 0.8)",
             player: "#1a1a1a", 
             goal: "#1a1a1a",
-            trail: "rgba(26, 26, 26, 0.05)" // Very subtle trail
+            trail: this.softened ? "rgba(26, 26, 26, 0.03)" : "rgba(26, 26, 26, 0.05)"
         };
+
+        if (this.softened) {
+            const title = this.container?.closest('#lock-screen')?.querySelector('.maze-title');
+            if (title) title.textContent = 'welcome back';
+            const solveBtn = document.getElementById('quantum-solve');
+            if (solveBtn) {
+                solveBtn.textContent = 'skip — you know the way';
+                solveBtn.classList.add('auto-solve-btn--prominent');
+            }
+        }
 
         this.init();
         this.setupInputs();
@@ -45,10 +57,12 @@ class MazeGame {
         
         this.cols = Math.floor(availableWidth / this.cellSize);
         if (this.cols < 5) this.cols = 5;
+        if (this.maxDim) this.cols = Math.min(this.cols, this.maxDim);
         
         // Square-ish for lock screen aesthetics
         this.rows = Math.floor(availableWidth / this.cellSize);
         if (this.rows < 5) this.rows = 5;
+        if (this.maxDim) this.rows = Math.min(this.rows, this.maxDim);
 
         this.canvas.width = this.cols * this.cellSize;
         this.canvas.height = this.rows * this.cellSize;
@@ -304,6 +318,7 @@ class MazeGame {
     unlockSite() {
         document.body.classList.add('unlocked');
         sessionStorage.setItem('mazeSolved', 'true');
+        localStorage.setItem('siteVisited', 'true');
         this.solved = true;
         if (typeof window.storyOnUnlock === 'function') window.storyOnUnlock();
     }
@@ -414,16 +429,16 @@ class Cell {
 }
 
 window.addEventListener("load", () => {
-    // Check if already solved in this session
+    // Same session: skip maze entirely
     if (sessionStorage.getItem('mazeSolved') === 'true') {
         document.body.classList.add('unlocked');
-        // We can optionally remove the lock screen from DOM to be cleaner
         const lockScreen = document.getElementById('lock-screen');
         if (lockScreen) lockScreen.remove();
         return;
     }
 
-    if(document.getElementById("maze-container")) {
-        new MazeGame("maze-container");
+    if (document.getElementById("maze-container")) {
+        const softened = localStorage.getItem('siteVisited') === 'true';
+        new MazeGame("maze-container", { softened });
     }
 });

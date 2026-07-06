@@ -13,6 +13,34 @@
     opacity: 0.8;
 }
 
+@media (min-width: 900px) and (max-width: 1299px) {
+    #river-container.river-lite {
+        display: block;
+        right: 0.35rem;
+        width: 72px;
+        opacity: 0.55;
+    }
+
+    #river-container.river-lite .rower-container,
+    #river-container.river-lite .water-line {
+        display: none;
+    }
+
+    #river-container.river-lite .river-stream {
+        width: 48px;
+        opacity: 0.5;
+    }
+
+    #river-container.river-lite .river-item {
+        font-size: 0.62rem;
+        max-width: 68px;
+    }
+
+    #river-container.river-lite .river-item .role {
+        display: none;
+    }
+}
+
 @media (min-width: 1300px) {
     #river-container {
         display: block;

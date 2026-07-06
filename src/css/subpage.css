@@ -467,6 +467,78 @@ body[data-learn-layer="known"] .learn-topics {
     color: var(--sub-realm-color, #2c4a6e);
 }
 
+.learn-epoch {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--color-muted);
+    margin-bottom: 0.75rem;
+    opacity: 0.65;
+}
+
+.learn-epoch-val {
+    color: var(--sub-realm-color, #2c4a6e);
+}
+
+.learn-isl-rail {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--sub-realm-color, #2c4a6e);
+    margin: 0.5rem 0 1rem;
+    min-height: 1.4em;
+    opacity: 0.75;
+}
+
+.learn-isl-concepts {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+}
+
+.learn-isl-concepts li {
+    cursor: default;
+    opacity: 0.55;
+    transition: opacity 0.2s ease;
+}
+
+.learn-isl-concepts li:hover {
+    opacity: 1;
+    color: var(--sub-realm-color, #2c4a6e);
+}
+
+.writing-page.realm-words .content > p:first-of-type {
+    font-size: 1.12em;
+    line-height: 1.55;
+}
+
+.writing-more {
+    margin-top: 2.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid rgba(26, 26, 26, 0.12);
+}
+
+.writing-more-label {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    text-transform: lowercase;
+    color: var(--color-muted);
+    margin: 0 0 0.5rem;
+}
+
+.writing-more ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.writing-more li + li {
+    margin-top: 0.35rem;
+}
+
 @media (prefers-reduced-motion: reduce) {
     .fav-whisper.fav-aside,
     .fav-category .fav-whisper,

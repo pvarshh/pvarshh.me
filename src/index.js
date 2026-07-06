@@ -3,6 +3,7 @@ import lifeHTML from '../pages/writing/life.html';
 import egoHTML from '../pages/writing/ego.html';
 import secondPickHTML from '../pages/writing/2nd-pick.html';
 import martyrHTML from '../pages/writing/martyr.html';
+import writingIndexHTML from '../pages/writing/index.html';
 import mainJS from './js/main.js';
 import stylesCSS from './css/styles.css';
 import resumeHTML from '../pages/resume.html';
@@ -56,6 +57,16 @@ export default {
       return new Response(martyrHTML, {
         headers: { 'content-type': 'text/html;charset=UTF-8' }
       });
+    }
+
+    if (url.pathname === '/pages/writing/index.html' || url.pathname === '/pages/writing/') {
+      return new Response(writingIndexHTML, {
+        headers: { 'content-type': 'text/html;charset=UTF-8' }
+      });
+    }
+
+    if (url.pathname === '/pages/writing/martyr-trap.html') {
+      return Response.redirect(new URL('/pages/writing/martyr.html', url.origin), 301);
     }
 
     // Resume page
