@@ -24,37 +24,13 @@
     const NAME = 'Pranav Varshney';
     const SCRAMBLES = ['λx.x', '01001100', '§', '∇', 'void main()', 'cogito', '1066', NAME];
 
-    const REALM_STORAGE = 'storyRealm';
-    const REALM_ALIASES = {
-        compute: 'cs', cs: 'cs',
-        reflect: 'words', words: 'words',
-        culture: 'world', world: 'world',
-        reach: 'path', path: 'path'
-    };
-
-    function resolveInitialRealm() {
-        const params = new URLSearchParams(window.location.search);
-        const fromQuery = params.get('realm');
-        const fromHash = window.location.hash.slice(1).toLowerCase();
-        const candidates = [fromQuery, fromHash].filter(Boolean);
-
-        for (const raw of candidates) {
-            const id = REALM_ALIASES[raw.toLowerCase()];
-            if (id && REALMS.some((r) => r.id === id)) return id;
-        }
-
-        const stored = sessionStorage.getItem(REALM_STORAGE);
-        if (stored && REALMS.some((r) => r.id === stored)) return stored;
-        return 'cs';
-    }
-
-    const initialRealm = resolveInitialRealm();
-    const initialFreq = REALMS.find((r) => r.id === initialRealm)?.freq ?? REALMS[0].freq;
+    const START_REALM = 'cs';
+    const START_FREQ = REALMS[0].freq;
 
     const state = {
-        focusedRealm: initialRealm,
-        tunerPos: initialFreq,
-        targetPos: initialFreq,
+        focusedRealm: START_REALM,
+        tunerPos: START_FREQ,
+        targetPos: START_FREQ,
         dialVelocity: 0,
         dragging: false,
         mouse: { x: 0.5, y: 0.5 },
@@ -65,36 +41,24 @@
     };
 
     if (REDUCED) {
-        document.querySelectorAll('.story-panel').forEach((p) => {
-            p.classList.toggle('active', p.dataset.realm === initialRealm);
-        });
+        document.querySelectorAll('.story-panel').forEach((p) => p.classList.add('active'));
         buildRealmTabs();
-        persistRealm(initialRealm);
         return;
     }
 
     initBackground();
     initFragments();
     initTuner();
-    initTunerAudio();
     initNameScramble();
     buildRealmTabs();
     buildStations();
     syncFocusUI();
     trackMouse();
-    persistRealm(initialRealm);
 
     window.storyOnUnlock = function () {
         document.body.classList.add('story-unlocking');
         setTimeout(() => document.body.classList.remove('story-unlocking'), 1200);
     };
-
-    document.querySelectorAll('.story-panel a[href^="/"]').forEach((link) => {
-        link.addEventListener('click', () => {
-            const realm = link.closest('.story-panel')?.dataset.realm;
-            if (realm) persistRealm(realm);
-        });
-    });
 
     function trackMouse() {
         window.addEventListener('mousemove', (e) => {
@@ -152,17 +116,12 @@
         }
     }
 
-    function persistRealm(id) {
-        if (id) sessionStorage.setItem(REALM_STORAGE, id);
-    }
-
     function lockTo(id) {
         state.focusedRealm = id;
         state.targetPos = REALMS.find((r) => r.id === id)?.freq ?? state.targetPos;
         state.tunerPos = state.targetPos;
         state.dialVelocity = 0;
         state.lockFlash = 1;
-        persistRealm(id);
         syncFocusUI();
     }
 
@@ -652,74 +611,6 @@
             requestAnimationFrame(draw);
         }
         draw();
-    }
-
-    function initTunerAudio() {
-        const header = document.querySelector('.tuner-header');
-        if (!header || REDUCED) return;
-
-        let audioCtx = null;
-        let gainNode = null;
-        let noiseBuf = null;
-        let source = null;
-        let muted = localStorage.getItem('tunerMuted') === 'true';
-
-        const btn = document.createElement('button');
-        btn.type = 'button';
-        btn.className = 'tuner-mute-btn';
-        btn.setAttribute('aria-label', muted ? 'Unmute tuner static' : 'Mute tuner static');
-        btn.textContent = muted ? '◌' : '◉';
-        btn.title = muted ? 'unmute static' : 'mute static';
-        header.appendChild(btn);
-
-        function ensureAudio() {
-            if (audioCtx) return;
-            audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-            gainNode = audioCtx.createGain();
-            gainNode.gain.value = 0;
-            gainNode.connect(audioCtx.destination);
-
-            const len = audioCtx.sampleRate * 2;
-            noiseBuf = audioCtx.createBuffer(1, len, audioCtx.sampleRate);
-            const data = noiseBuf.getChannelData(0);
-            for (let i = 0; i < len; i++) data[i] = Math.random() * 2 - 1;
-
-            source = audioCtx.createBufferSource();
-            source.buffer = noiseBuf;
-            source.loop = true;
-            source.connect(gainNode);
-            source.start();
-        }
-
-        function setMuted(next) {
-            muted = next;
-            localStorage.setItem('tunerMuted', muted ? 'true' : 'false');
-            btn.textContent = muted ? '◌' : '◉';
-            btn.setAttribute('aria-label', muted ? 'Unmute tuner static' : 'Mute tuner static');
-            btn.title = muted ? 'unmute static' : 'mute static';
-            if (gainNode) gainNode.gain.value = 0;
-        }
-
-        btn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            setMuted(!muted);
-        });
-
-        let lastVol = 0;
-        (function audioLoop() {
-            if (!muted && (state.dragging || state.dialVelocity !== 0)) {
-                ensureAudio();
-                if (audioCtx?.state === 'suspended') audioCtx.resume();
-                const strength = state.focusedRealm ? 1 : state.signalStrength;
-                const target = (1 - strength) * 0.045 * (state.dragging ? 1.2 : 0.7);
-                lastVol += (target - lastVol) * 0.12;
-                if (gainNode) gainNode.gain.value = lastVol;
-            } else {
-                lastVol *= 0.9;
-                if (gainNode) gainNode.gain.value = lastVol;
-            }
-            requestAnimationFrame(audioLoop);
-        })();
     }
 
     function initNameScramble() {

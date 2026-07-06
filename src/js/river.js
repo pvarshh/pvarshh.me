@@ -19,9 +19,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         document.body.appendChild(riverContainer);
 
-        const isLite = window.matchMedia('(min-width: 900px) and (max-width: 1299px)').matches;
-        if (isLite) riverContainer.classList.add('river-lite');
-
         const rowerContainer = riverContainer.querySelector('.rower-container');
         rowerContainer.style.cursor = 'pointer';
         rowerContainer.title = 'View all experiences';
@@ -59,9 +56,9 @@ function startRiverFlow() {
         { year: '2026', role: 'Intern @ Uber', company: 'Uber', link: '/pages/experience/uber.html', side: 'right-bank' }
     ];
 
-    const SPEED = document.getElementById('river-container')?.classList.contains('river-lite') ? 0.18 : 0.28;
+    const SPEED = 0.28;
     const START_Y = -50;
-    const ITEM_SPACING = document.getElementById('river-container')?.classList.contains('river-lite') ? 280 : 220;
+    const ITEM_SPACING = 220;
     const SPAWN_THRESHOLD = START_Y + ITEM_SPACING;
 
     let currentIndex = 0;
