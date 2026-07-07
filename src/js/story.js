@@ -54,6 +54,7 @@
     buildStations();
     syncFocusUI();
     trackMouse();
+    initTabAlignment();
 
     window.storyOnUnlock = function () {
         document.body.classList.add('story-unlocking');
@@ -85,6 +86,63 @@
             });
             container.appendChild(btn);
         });
+    }
+
+    function initTabAlignment() {
+        const tabsWrap = document.getElementById('story-realm-tabs');
+        const stationsWrap = document.getElementById('tuner-stations');
+        if (!tabsWrap || !stationsWrap) return;
+
+        const MOBILE = window.matchMedia('(max-width: 600px)');
+
+        function align() {
+            const tabs = [...tabsWrap.querySelectorAll('.story-realm-tab')];
+            const stations = [...stationsWrap.querySelectorAll('.tuner-station')];
+
+            // Mobile: fall back to the 2-column grid — clear inline pinning.
+            if (MOBILE.matches || !stations.length) {
+                tabsWrap.classList.remove('tabs-pinned');
+                tabsWrap.style.height = '';
+                tabs.forEach((t) => {
+                    t.style.position = '';
+                    t.style.left = '';
+                    t.style.top = '';
+                    t.style.transform = '';
+                });
+                return;
+            }
+
+            const wrapLeft = tabsWrap.getBoundingClientRect().left;
+            let maxH = 0;
+
+            tabs.forEach((tab, i) => {
+                const station = stations[i];
+                if (!station) return;
+                const sRect = station.getBoundingClientRect();
+                const centerX = sRect.left + sRect.width / 2 - wrapLeft;
+                tab.style.position = 'absolute';
+                tab.style.top = '0';
+                tab.style.left = centerX + 'px';
+                tab.style.transform = 'translateX(-50%)';
+                maxH = Math.max(maxH, tab.offsetHeight);
+            });
+
+            tabsWrap.classList.add('tabs-pinned');
+            tabsWrap.style.height = maxH + 'px';
+        }
+
+        requestAnimationFrame(align);
+        window.addEventListener('load', () => requestAnimationFrame(align));
+
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(align, 120);
+        });
+
+        if (document.fonts && document.fonts.ready) {
+            document.fonts.ready.then(() => requestAnimationFrame(align));
+        }
     }
 
     function buildRealmTabs() {
