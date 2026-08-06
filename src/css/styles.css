@@ -251,6 +251,18 @@ li {
     display: none;
 }
 
+.yc-badge {
+    white-space: nowrap;
+}
+
+.yc-mark {
+    width: 0.88em;
+    height: 0.88em;
+    vertical-align: -0.11em;
+    margin-right: 0.28em;
+    border-radius: 1px;
+}
+
 .site-title {
     text-decoration: none;
     color: inherit;

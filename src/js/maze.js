@@ -303,7 +303,7 @@ class MazeGame {
     
     unlockSite() {
         document.body.classList.add('unlocked');
-        sessionStorage.setItem('mazeSolved', 'true');
+        rememberSolved();
         this.solved = true;
         if (typeof window.storyOnUnlock === 'function') window.storyOnUnlock();
     }
@@ -413,9 +413,27 @@ class Cell {
     }
 }
 
+// Solved state persists across sessions, not just this one — returning
+// visitors should never have to run the maze twice. Wrapped because
+// storage throws in some private-browsing modes.
+function rememberSolved() {
+    try {
+        localStorage.setItem('mazeSolved', 'true');
+        sessionStorage.setItem('mazeSolved', 'true');
+    } catch (e) { /* no persistence available; gate simply returns next visit */ }
+}
+
+function alreadySolved() {
+    try {
+        return localStorage.getItem('mazeSolved') === 'true' ||
+               sessionStorage.getItem('mazeSolved') === 'true';
+    } catch (e) {
+        return false;
+    }
+}
+
 window.addEventListener("load", () => {
-    // Check if already solved in this session
-    if (sessionStorage.getItem('mazeSolved') === 'true') {
+    if (alreadySolved()) {
         document.body.classList.add('unlocked');
         // We can optionally remove the lock screen from DOM to be cleaner
         const lockScreen = document.getElementById('lock-screen');
@@ -423,7 +441,23 @@ window.addEventListener("load", () => {
         return;
     }
 
+    let maze = null;
     if(document.getElementById("maze-container")) {
-        new MazeGame("maze-container");
+        maze = new MazeGame("maze-container");
+    }
+
+    const skipBtn = document.getElementById("skip-maze");
+    if (skipBtn) {
+        // Route through unlockSite so the maze also marks itself solved —
+        // otherwise its window keydown handler keeps swallowing arrow keys
+        // and the page can't be scrolled with them after skipping.
+        skipBtn.addEventListener("click", () => {
+            if (maze) maze.unlockSite();
+            else {
+                document.body.classList.add('unlocked');
+                rememberSolved();
+                if (typeof window.storyOnUnlock === 'function') window.storyOnUnlock();
+            }
+        });
     }
 });

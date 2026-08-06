@@ -25,11 +25,23 @@
     <link rel="stylesheet" href="/src/css/river.css">
     <link rel="stylesheet" href="/src/css/story.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=Crimson+Text:ital,wght@0,400;0,700;1,400&display=swap">
-    <noscript><style>.story-panel{opacity:1!important;visibility:visible!important;position:relative!important;pointer-events:auto!important;}</style></noscript>
+    <noscript><style>
+        /* Without JS the maze can never be solved, so the gate must not exist at all. */
+        #lock-screen{display:none!important;}
+        body{overflow:auto!important;}
+        #main-content{opacity:1!important;filter:none!important;pointer-events:auto!important;}
+        .story-tuner-wrap{display:none!important;}
+        .story-panel{opacity:1!important;visibility:visible!important;position:relative!important;pointer-events:auto!important;}
+    </style></noscript>
     
     <script>
-        if (sessionStorage.getItem('mazeSolved') === 'true') {
-            document.documentElement.classList.add('unlocked-init');
+        try {
+            if (localStorage.getItem('mazeSolved') === 'true' ||
+                sessionStorage.getItem('mazeSolved') === 'true') {
+                document.documentElement.classList.add('unlocked-init');
+            }
+        } catch (e) {
+            /* private mode / storage blocked — fall through to the maze */
         }
     </script>
 </head>
@@ -64,22 +76,44 @@
             box-sizing: border-box;
             overflow-y: auto;
         }
+        .lock-escapes {
+            margin-top: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
         .auto-solve-btn {
-             margin-top: 1rem;
              background: none;
-             border: 1px solid rgba(26,26,26,0.2);
+             border: 1px solid rgba(26,26,26,0.35);
              padding: 0.5rem 1rem;
              font-family: "IBM Plex Mono", monospace;
              font-size: 0.7rem;
              cursor: pointer;
-             opacity: 0.3;
+             opacity: 0.75;
              transition: all 0.3s ease;
         }
-        .auto-solve-btn:hover {
-            opacity: 0.8;
+        .auto-solve-btn:hover,
+        .auto-solve-btn:focus-visible {
+            opacity: 1;
             background: rgba(26,26,26,0.05);
         }
-        
+        .skip-maze-btn {
+            background: none;
+            border: none;
+            border-bottom: 1px solid rgba(26,26,26,0.3);
+            padding: 0.25rem 0;
+            font-family: "IBM Plex Mono", monospace;
+            font-size: 0.7rem;
+            color: #1a1a1a;
+            cursor: pointer;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+        .skip-maze-btn:hover,
+        .skip-maze-btn:focus-visible { opacity: 1; }
+
         body.unlocked { overflow: auto; }
         body.unlocked #main-content {
             opacity: 1;
@@ -98,7 +132,10 @@
         <div id="maze-container" aria-label="Maze puzzle">
         </div>
         <div class="maze-instructions">↑ ↓ ← →</div>
-        <button id="quantum-solve" class="auto-solve-btn" type="button">or collapse the wavefunction</button>
+        <div class="lock-escapes">
+            <button id="quantum-solve" class="auto-solve-btn" type="button">or collapse the wavefunction</button>
+            <button id="skip-maze" class="skip-maze-btn" type="button">skip →</button>
+        </div>
     </div>
 
     <div id="story-fragments" aria-hidden="true"></div>
@@ -142,7 +179,7 @@
                     <p class="story-panel-label">{ compute }</p>
                     <ul>
                         <li>Computer Science at <a href="https://www.umich.edu">University of Michigan</a></li>
-                        <li>Co-Founder at <a class="obfuscated-link" href="https://nodus-swart.vercel.app/" target="_blank" rel="noopener noreferrer"><span id="obfuscated-text-2"></span></a></li>
+                        <li>Co-Founder at <a class="obfuscated-link" href="https://nodus-swart.vercel.app/" target="_blank" rel="noopener noreferrer"><span id="obfuscated-text-2"></span></a>, backed by <span class="yc-badge"><svg class="yc-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect width="24" height="24" fill="#ff6600"/><path d="M6.6 5.6 12 12.6l5.4-7M12 12.6V18.6" fill="none" stroke="#fff" stroke-width="2.5"/></svg><a href="https://www.ycombinator.com/" target="_blank" rel="noopener noreferrer">Y Combinator</a></span> </li>
                         <li>Intern at <a href="https://cloud.google.com/"> Google</a>,  Agentic Cost Optimizations </li>
                         <li>Research Fellow at  <a href="https://corticallabs.com/"> Cortical Labs</a> and <a href="https://maxellab.com/">Maxel Lab</a>
                         <li>Obsessed with poker and pickleball (back in seattle!)</li>
@@ -163,7 +200,8 @@
                     <ul>
                         <li><a href="/pages/writing/life.html">What I Value in Life</a> </li>
                         <li><a href="/pages/writing/currency.html">Currency</a></li>
-                        <li><a href="/pages/writing/ego.html">Fly High</a> </li>
+                        <li><a href="/pages/writing/ego.html">
+                        Fly High</a> </li>
                         <li><a href="/pages/writing/martyr.html">The Martyr Complex</a> </li>
                         <li><a href="/pages/writing/2nd-pick.html">The Second Pick</a> </li>
                     </ul>

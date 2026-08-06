@@ -197,6 +197,16 @@
         const realm = REALMS.find((r) => r.id === state.focusedRealm);
         if (realm) document.body.style.setProperty('--tuner-lock-color', realm.color);
 
+        // The tuner declares role="slider"; keep its value exposed so screen
+        // readers announce where the dial is, not just that a dial exists.
+        const control = document.getElementById('tuner-control');
+        if (control) {
+            control.setAttribute('aria-valuenow', Math.round(state.targetPos * 100));
+            control.setAttribute('aria-valuetext', realm
+                ? realm.label + ' — ' + realm.mhz.toFixed(1) + ' MHz'
+                : 'between stations');
+        }
+
         document.querySelectorAll('.story-panel').forEach((p) => {
             p.classList.toggle('active', p.dataset.realm === state.focusedRealm);
         });
