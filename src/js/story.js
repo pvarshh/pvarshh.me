@@ -208,7 +208,14 @@
         }
 
         document.querySelectorAll('.story-panel').forEach((p) => {
-            p.classList.toggle('active', p.dataset.realm === state.focusedRealm);
+            const active = p.dataset.realm === state.focusedRealm;
+            if (active && !p.classList.contains('active') && state.focusedRealm !== 'cs' && !REDUCED) {
+                document.querySelector('.tuner-scanline')?.animate(
+                    [{ opacity: .2 }, { opacity: .55 }, { opacity: .3 }],
+                    { duration: 180, easing: 'steps(3)' }
+                );
+            }
+            p.classList.toggle('active', active);
         });
         document.querySelectorAll('.story-realm-tab, .tuner-station').forEach((t) => {
             const active = t.dataset.realm === state.focusedRealm;

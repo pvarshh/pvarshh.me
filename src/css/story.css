@@ -687,3 +687,49 @@ body.story-unlocking::after {
     body.story-unlocking #main-content,
     body.story-unlocking::after { animation: none; }
 }
+
+/* Reflect: a ruled notebook, using the existing warm words palette. */
+.reflection-notebook {
+    position: relative;
+    padding: 1.25rem 1.25rem 1rem 3rem;
+    border-block: 1px solid color-mix(in srgb, var(--realm-words) 22%, transparent);
+    background: linear-gradient(to right, transparent 2rem, #5a4a3a30 2rem, #5a4a3a30 calc(2rem + 1px), transparent calc(2rem + 1px));
+}
+.content .story-panel .notebook-heading { font-size: 1.3rem; font-style: italic; margin-bottom: 1rem; }
+.notebook-heading span { display: block; font: .6rem var(--font-mono); letter-spacing: .06em; color: var(--realm-words); margin-top: .4rem; }
+.reflection-pages { counter-reset: essay; list-style: none; padding: 0; margin: 0; }
+.reflection-pages li { counter-increment: essay; padding: 0; margin: 0; border-bottom: 1px solid #5a4a3a20; }
+.reflection-pages li::before { content: counter(essay, decimal-leading-zero); position: absolute; left: -2.25rem; top: .85rem; font: .6rem var(--font-mono); color: var(--realm-words); }
+.content .reflection-pages a { display: block; padding: .75rem 0; border: 0; min-height: 24px; }
+.content .reflection-pages a:hover { color: var(--realm-words); font-style: italic; }
+/* Reach: a correspondence card, with real contact links as address lines. */
+.reach-postcard { position: relative; padding: 1.5rem; border: 1px dashed #1a1a1a45; }
+.postcard-stamp { position: absolute; right: 1.25rem; top: 1rem; border: 1px dotted #1a1a1a70; padding: .2rem .6rem; font: 1.4rem var(--font-serif); transform: rotate(8deg); opacity: .6; }
+.content .story-panel .postcard-heading { font-size: 1.3rem; font-style: italic; margin: 0 3rem 1.25rem 0; }
+.postcard-address { font-style: normal; }
+.content .postcard-address a { display: grid; grid-template-columns: 4.5rem 1fr auto; align-items: center; gap: .5rem; padding: .75rem 0; border-bottom: 1px solid #1a1a1a25; overflow-wrap: anywhere; }
+.postcard-address a > span { font: .6rem var(--font-mono); color: var(--color-muted); }
+.content .story-panel .postcard-footnote { margin: 1.25rem 0 0; font-size: .9rem; }
+.reflection-notebook a:focus-visible, .reach-postcard a:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; }
+@media (max-width: 600px) {
+    .reach-postcard { padding: 1rem; }
+    .content .postcard-address a { grid-template-columns: 3.5rem 1fr auto; gap: .3rem; font-size: .9rem; }
+}
+
+/* A short excerpt opens in the notebook margin on focus or hover. */
+.reflection-pages a { position: relative; }
+.essay-margin { display: block; max-width: 26rem; margin-top: .2rem; font: italic .85rem/1.45 var(--font-serif); color: var(--realm-words); opacity: .7; }
+@media (hover: hover) and (min-width: 700px) {
+    .content .reflection-pages a { padding-right: 46%; min-height: 48px; }
+    .essay-margin { position: absolute; right: 0; top: .55rem; width: 43%; margin: 0; opacity: 0; transform: translateX(5px); transition: opacity .2s, transform .2s; }
+    .reflection-pages a:hover .essay-margin, .reflection-pages a:focus-visible .essay-margin { opacity: .8; transform: none; }
+}
+.content .postcard-map { display: flex; gap: 1rem; align-items: center; padding: .5rem 0; border: 0; }
+.postcard-map svg { width: 64px; height: 48px; color: var(--realm-world); flex-shrink: 0; transform: rotate(-5deg); transition: transform .2s; }
+.postcard-map:hover svg, .postcard-map:focus-visible svg { transform: rotate(0); }
+.postcard-map small { display: block; margin-top: .3rem; font: .6rem var(--font-mono); color: var(--color-muted); }
+.postcard-map > span:last-child { margin-left: auto; }
+@media (prefers-reduced-motion: no-preference) {
+    .story-panel.active:not([data-realm="cs"]) { transform-origin: top; animation: realmUnfold .28s ease-out; }
+    @keyframes realmUnfold { from { opacity: .3; transform: translateY(6px) rotateX(-3deg); } to { opacity: 1; transform: none; } }
+}

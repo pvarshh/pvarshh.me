@@ -22,18 +22,17 @@
 
     <link rel="stylesheet" href="/src/css/styles.css">
 <link rel="stylesheet" href="/src/css/subpage.css">
+    <link rel="stylesheet" href="/src/css/favorites.css?v=fb9fd6a968">
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=Crimson+Text:ital,wght@0,400;0,700;1,400&display=swap">
 </head>
-<body>
-  	<div class="container content-centered">
-    	<div class="site-header">
-        	<a href="/pages/favorites/tv_shows.html">Favorite TV Shows</a>
-        	<h2>Pranav Varshney</h2>
-        	<a href="/" class="nav-item">Home</a>
-    	</div>
+<body class="favorites-ui" data-media="tv_shows">
+    <main class="container content-centered">
+    <header class="site-header"><a href="/pages/favorites/tv_shows.html">Favorite TV Shows</a><h2>Pranav Varshney</h2><a href="/" class="nav-item">Home</a></header>
+<nav class="favorites-nav" aria-label="Favorites categories"><a href="/pages/favorites/index.html">The web</a><a href="/pages/favorites/music.html">Songs</a><a href="/pages/favorites/books.html">Books</a><a href="/pages/favorites/movies.html">Movies</a><a href="/pages/favorites/tv_shows.html" aria-current="page">TV Shows</a><a href="/pages/favorites/images.html">Pictures</a></nav>
+<p>comfort watches and obsession</p>
     	<div style="text-align: left;">
-            <ul style="list-style: none; padding: 0; margin: 0;">
+            <ul class="favorites-collection">
                 <li style="margin-bottom: 2rem;">
                     <span class="bold" style="font-size: 1.1rem;">Adaalat</span> <span class="italic">(2010)</span>
                     <p style="margin-top: 0.25rem; margin-bottom: 0.5rem;">A defense attorney known for his sharp intellect and unconventional methods defends clients accused of serious crimes.</p>
@@ -41,7 +40,7 @@
                 </li>
                 <li style="margin-bottom: 2rem;">
                     <span class="bold" style="font-size: 1.1rem;">House M.D.</span> <span class="italic">(2004)</span>
-                    <p style="margin-top: 0.25rem; margin-bottom: 0.5rem;">An unconventional, misanthropic medical genius heads a team of diagnosticians at a teaching hospital in New Jersey.
+                    <p style="margin-top: 0.25rem; margin-bottom: 0.5rem;">An unconventional, misanthropic medical genius heads a team of diagnosticians at a teaching hospital in New Jersey.</p>
                     <button class="trailer-btn" data-video-id="GSgua-jsn-Q">Watch Trailer</button>
                 </li>
                 <li style="margin-bottom: 2rem;">
@@ -67,18 +66,18 @@
             </ul>
     	</div>
     	<p class="with-space"><span id="edited-date" class="italic"></span></p>
-  	</div>
+    </main>
 
     <!-- Trailer Modal -->
-    <div id="trailer-modal" class="modal-overlay" aria-hidden="true">
+    <dialog id="trailer-modal" class="favorite-dialog" aria-label="Watch trailer">
         <div class="modal-content">
             <button id="close-modal" class="close-btn" aria-label="Close modal">&times;</button>
             <div class="video-container">
-                <iframe id="trailer-iframe" src="" title="Trailer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe id="trailer-iframe" src="" title="Trailer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
         </div>
-    </div>
-<script src="/src/js/main.js"></script>
+    </dialog>
+<script src="/src/js/main.js?v=32bc2e15b5"></script>
 <script src="/src/js/subpage.js"></script>
     <script src="/src/js/footer.js"></script>
 

@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "targets": {
+    "/pages/favorites/index.html": {
+      "targetKind": "existing-ui",
+      "projectId": "29956158-79dd-41e8-9700-421ca20f0037",
+      "baselineDraftId": "f3b9d0da-baff-47ea-a050-602980b83188",
+      "activeDraftId": "f3b9d0da-baff-47ea-a050-602980b83188",
+      "designSystemPath": ".superdesign/design-system.md",
+      "contextFiles": [
+        ".superdesign/design-system.md",
+        "pages/favorites/index.html",
+        "src/css/styles.css:1:310",
+        "src/css/styles.css:320:460",
+        "src/css/styles.css:1045:1147",
+        "src/css/subpage.css",
+        "src/js/subpage.js",
+        "src/js/interactive_index.js",
+        "src/js/footer.js"
+      ],
+      "fingerprints": {
+        ".superdesign/design-system.md": "33b1077d08a837dff58c3f2ac4240c357180016618b9fd2ebc04f530ab689d47",
+        "pages/favorites/index.html": "4bf313d86eb86ea589c82a45382a2b1613586b055a716b1cbb98a628d2364094",
+        "src/css/styles.css": "5cb381f22a34846d28457b5f9f05afe138088cee30989b4a93d7de6a8172159a",
+        "src/css/subpage.css": "e70e3ad84dbbbef826bbb254ffbb08ebf425fbc12374891d8e6ddfad8149fd81",
+        "src/js/subpage.js": "7894bfc766dc2832509c584e3d95e7dc7c50953b462948860b3722619e704d83",
+        "src/js/interactive_index.js": "9832d8e965aa77b0b6f930126ed52ab24100f4deaaa01f3b2178e4ab93ff156c",
+        "src/js/footer.js": "288ac7a646e89cf59c4f3eb79b614e3f09786c18f9ef290a5d551d0386d3d6fb"
+      },
+      "components": [],
+      "drafts": {
+        "f3b9d0da-baff-47ea-a050-602980b83188": {
+          "title": "Caught in my web - Favorites",
+          "visualDirection": "Paper editorial cards connected by radial spiderweb, red accents",
+          "currentVersion": 2
+        }
+      },
+      "updatedAt": "2026-09-06T02:53:07.035663+00:00"
+    }
+  }
+}

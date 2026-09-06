@@ -22,16 +22,15 @@
 
     <link rel="stylesheet" href="/src/css/styles.css">
 <link rel="stylesheet" href="/src/css/subpage.css">
+    <link rel="stylesheet" href="/src/css/favorites.css?v=fb9fd6a968">
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=Crimson+Text:ital,wght@0,400;0,700;1,400&display=swap">
 </head>
-<body>
-  	<div class="container content-centered">
-    	<div class="site-header">
-        	<a href="/pages/favorites/images.html">Favorite Images</a>
-        	<h2>Pranav Varshney</h2>
-        	<a href="/" class="nav-item">Home</a>
-    	</div>
+<body class="favorites-ui" data-media="images">
+    <main class="container content-centered">
+    <header class="site-header"><a href="/pages/favorites/images.html">Favorite Pictures</a><h2>Pranav Varshney</h2><a href="/" class="nav-item">Home</a></header>
+<nav class="favorites-nav" aria-label="Favorites categories"><a href="/pages/favorites/index.html">The web</a><a href="/pages/favorites/music.html">Songs</a><a href="/pages/favorites/books.html">Books</a><a href="/pages/favorites/movies.html">Movies</a><a href="/pages/favorites/tv_shows.html">TV Shows</a><a href="/pages/favorites/images.html" aria-current="page">Pictures</a></nav>
+<p>moments I was there for</p>
     	<div class="content-blog-post">
       		<figure class="wide-figure">
         		<figcaption>amazon — early morning </figcaption>
@@ -63,8 +62,8 @@
       		</figure>
     	</div>
     	<p class="with-space"><span id="edited-date" class="italic"></span></p>
-  	</div>
-<script src="/src/js/main.js"></script>
+    </main>
+<script src="/src/js/main.js?v=32bc2e15b5"></script>
 <script src="/src/js/subpage.js"></script>
     <script src="/src/js/footer.js"></script>
 

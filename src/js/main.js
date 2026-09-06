@@ -20,96 +20,35 @@ function updateObfuscatedText() {
   }
 }
 
-function setupTrailerModal() {
-  const modal = document.getElementById('trailer-modal');
-  const iframe = document.getElementById('trailer-iframe');
-  const closeBtn = document.getElementById('close-modal');
-  const buttons = document.querySelectorAll('.trailer-btn');
-
-  if (!modal || !iframe || !buttons.length) return;
-
-  function openModal(videoId) {
-    iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
-    modal.classList.add('active');
-    modal.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden'; // Prevent background scrolling
-  }
-
-  function closeModal() {
-    modal.classList.remove('active');
-    modal.setAttribute('aria-hidden', 'true');
-    setTimeout(() => {
-      iframe.src = ''; // Stop video
-    }, 300); // Wait for fade out
-    document.body.style.overflow = '';
-  }
-
-  buttons.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      const videoId = btn.getAttribute('data-video-id');
-      if (videoId) openModal(videoId);
+function setupFavoriteDialogs() {
+  document.querySelectorAll('.favorite-dialog').forEach(dialog => {
+    dialog.querySelector('.close-btn').addEventListener('click', () => dialog.close());
+    dialog.addEventListener('click', event => {
+      if (event.target === dialog) dialog.close();
+    });
+    dialog.addEventListener('close', () => {
+      const iframe = dialog.querySelector('iframe');
+      if (iframe) iframe.removeAttribute('src');
+      document.body.style.overflow = '';
     });
   });
 
-  if (closeBtn) {
-    closeBtn.addEventListener('click', closeModal);
-  }
-
-  modal.addEventListener('click', (e) => {
-    if (e.target === modal) closeModal();
-  });
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modal.classList.contains('active')) {
-      closeModal();
-    }
-  });
-}
-
-function setupSummaryModal() {
-  const modal = document.getElementById('summary-modal');
-  const contentContainer = document.getElementById('summary-content');
-  const closeBtn = document.getElementById('close-summary-modal');
-  const buttons = document.querySelectorAll('.summary-btn');
-
-  if (!modal || !contentContainer || !buttons.length) return;
-
-  function openModal(summaryId) {
-    const summarySource = document.getElementById(summaryId);
-    if (summarySource) {
-        contentContainer.innerHTML = summarySource.innerHTML;
-        modal.classList.add('active');
-        modal.setAttribute('aria-hidden', 'false');
-        document.body.style.overflow = 'hidden';
-    }
-  }
-
-  function closeModal() {
-    modal.classList.remove('active');
-    modal.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
-  }
-
-  buttons.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      const summaryId = e.target.getAttribute('data-summary-id');
-      if (summaryId) openModal(summaryId);
+  document.querySelectorAll('[data-video-id], [data-summary-id]').forEach(button => {
+    button.addEventListener('click', () => {
+      const videoId = button.dataset.videoId;
+      const dialog = document.getElementById(videoId ? 'trailer-modal' : 'summary-modal');
+      if (!dialog) return;
+      if (videoId) {
+        if (!/^[\w-]{11}$/.test(videoId)) return;
+        dialog.querySelector('iframe').src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+      } else {
+        const summary = document.getElementById(button.dataset.summaryId);
+        if (!summary) return;
+        dialog.querySelector('#summary-content').replaceChildren(...[...summary.childNodes].map(node => node.cloneNode(true)));
+      }
+      dialog.showModal();
+      document.body.style.overflow = 'hidden';
     });
-  });
-
-  if (closeBtn) {
-    closeBtn.addEventListener('click', closeModal);
-  }
-
-  modal.addEventListener('click', (e) => {
-    if (e.target === modal) closeModal();
-  });
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modal.classList.contains('active')) {
-      closeModal();
-    }
   });
 }
 
@@ -143,11 +82,7 @@ function init() {
   // Always set edited date
   setEditedDateToToday();
   
-  // Setup trailer modal if present
-  setupTrailerModal();
-  
-  // Setup summary modal if present
-  setupSummaryModal();
+  setupFavoriteDialogs();
   
   updateSession();
   

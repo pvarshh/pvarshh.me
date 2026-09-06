@@ -23,7 +23,8 @@
 
     <link rel="stylesheet" href="/src/css/styles.css">
     <link rel="stylesheet" href="/src/css/river.css">
-    <link rel="stylesheet" href="/src/css/story.css">
+    <link rel="stylesheet" href="/src/css/story.css?v=09b7f24e28">
+    <link rel="stylesheet" href="/src/css/favorites.css?v=fb9fd6a968">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=Crimson+Text:ital,wght@0,400;0,700;1,400&display=swap">
     <noscript><style>
         /* Without JS the maze can never be solved, so the gate must not exist at all. */
@@ -196,37 +197,45 @@
 
                 <section class="story-panel" data-realm="words">
                     <p class="story-panel-label">§ reflect</p>
-                    <p>Things that I think about.</p>
-                    <ul>
-                        <li><a href="/pages/writing/life.html">What I Value in Life</a> </li>
-                        <li><a href="/pages/writing/currency.html">Currency</a></li>
-                        <li><a href="/pages/writing/ego.html">
-                        Fly High</a> </li>
-                        <li><a href="/pages/writing/martyr.html">The Martyr Complex</a> </li>
-                        <li><a href="/pages/writing/2nd-pick.html">The Second Pick</a> </li>
-                    </ul>
+                    <div class="reflection-notebook">
+                        <p class="notebook-heading">Notes to self. <span>essays &amp; questions</span></p>
+                        <ol class="reflection-pages">
+                            <li><a href="/pages/writing/life.html">What I Value in Life<span class="essay-margin">It's not about accumulation; it's about enablement.</span></a></li>
+                            <li><a href="/pages/writing/currency.html">Currency<span class="essay-margin">Every conversation is a transaction.</span></a></li>
+                            <li><a href="/pages/writing/ego.html">Fly High<span class="essay-margin">A refusal to accept that another person’s ceiling is yours as well.</span></a></li>
+                            <li><a href="/pages/writing/martyr.html">The Martyr Complex<span class="essay-margin">At what point does that need to be loved become toxic?</span></a></li>
+                            <li><a href="/pages/writing/2nd-pick.html">The Second Pick<span class="essay-margin">There is a distinct, quiet solace in utterly shattering expectations.</span></a></li>
+                        </ol>
+                    </div>
                 </section>
 
                 <section class="story-panel" data-realm="world">
                     <p class="story-panel-label">∞ culture</p>
-                    <p>My Favorites.</p>
-                    <ul>
-                        <li><a href="/pages/favorites/images.html">Pictures</a></li>
-                        <li><a href="/pages/favorites/music.html">Songs</a></li>
-                        <li><a href="/pages/favorites/books.html">Books</a></li>
-                        <li><a href="/pages/favorites/movies.html">Movies</a></li>
-                        <li><a href="/pages/favorites/tv_shows.html">TV Shows</a></li>
-                    </ul>
+                    <p>My <a href="/pages/favorites/index.html">favorites</a>.</p>
+<nav class="favorites-links web-map" aria-label="Explore my favorites">
+    <img class="web-strands" src="/src/images/favorites-web.svg?v=23c3f494ab" alt="" aria-hidden="true">
+<svg class="web-thread" aria-hidden="true"><line x1="50%" y1="50%" x2="50%" y2="50%"/></svg>
+<svg class="web-spider" viewBox="0 0 64 64" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M27 27 18 20 16 7 M26 31 12 26 6 13 M26 36 12 40 6 53 M27 40 19 48 18 59 M37 27 46 20 48 7 M38 31 52 26 58 13 M38 36 52 40 58 53 M37 40 45 48 46 59"/></g><ellipse cx="32" cy="36" rx="7" ry="11" fill="currentColor"/><circle cx="32" cy="23" r="5" fill="currentColor"/></svg>
+    <a class="web-node" href="/pages/favorites/music.html"><span aria-hidden="true">01</span>Songs</a>
+    <a class="web-node" href="/pages/favorites/books.html"><span aria-hidden="true">02</span>Books</a>
+    <a class="web-node" href="/pages/favorites/movies.html"><span aria-hidden="true">03</span>Movies</a>
+    <a class="web-node" href="/pages/favorites/tv_shows.html"><span aria-hidden="true">04</span>TV Shows</a>
+    <a class="web-node" href="/pages/favorites/images.html"><span aria-hidden="true">05</span>Pictures</a>
+</nav>
                 </section>
 
                 <section class="story-panel" data-realm="path">
                     <p class="story-panel-label">@ reach</p>
-                    <p>Some places to <a href="/pages/find-me.html">find me</a></p>
-                    <ul>
-                        <li>Email: <a href="mailto:pvarsh@umich.edu">pvarsh [at] umich [dot] edu</a></li>
-                        <li>GitHub: <a href="https://github.com/pvarshh">@pvarshh</a></li>
-                        <li>LinkedIn: <a href="https://linkedin.com/in/pvarshh">@pvarshh</a></li>
-                    </ul>
+                    <div class="reach-postcard">
+                        <span class="postcard-stamp" aria-hidden="true">@</span>
+                        <p class="postcard-heading">Let's cross paths.</p>
+                        <address class="postcard-address">
+                            <a href="mailto:pvarsh@umich.edu"><span><span aria-hidden="true">✉ </span>Email</span>pvarsh [at] umich [dot] edu <span aria-hidden="true">↗</span></a>
+                            <a href="https://github.com/pvarshh"><span>GitHub</span>@pvarshh <span aria-hidden="true">↗</span></a>
+                            <a href="https://linkedin.com/in/pvarshh"><span>LinkedIn</span>@pvarshh <span aria-hidden="true">↗</span></a>
+                        </address>
+                        <p class="postcard-footnote"><a class="postcard-map" href="/pages/find-me.html"><svg viewBox="0 0 80 54" aria-hidden="true"><path d="M2 9 26 2 53 9 78 2V45L53 52 26 45 2 52Z" fill="none" stroke="currentColor"/><path d="M26 2V45M53 9V52" fill="none" stroke="currentColor" opacity=".35"/><path d="M9 36Q23 13 37 30T67 17" fill="none" stroke="currentColor" stroke-dasharray="3 3"/><path d="m63 13 8 8m0-8-8 8" stroke="currentColor"/></svg><span>Come find me<small>A little hide-and-seek detour</small></span><span aria-hidden="true">↗</span></a></p>
+                    </div>
                 </section>
             </div>
             </div>
@@ -238,10 +247,11 @@
     </div>
 
     <script src="/src/js/footer.js"></script>
-    <script src="/src/js/main.js"></script>
+    <script src="/src/js/main.js?v=32bc2e15b5"></script>
     <script src="/src/js/river.js"></script>
     <script src="/src/js/maze.js"></script>
-    <script src="/src/js/story.js"></script>
+    <script src="/src/js/story.js?v=5bf33eceb4"></script>
     <script src="/src/js/interactive_index.js"></script>
+    <script src="/src/js/favorites.js?v=4cbc9f7d95"></script>
 </body>
 </html>

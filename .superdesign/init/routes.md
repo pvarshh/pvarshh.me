@@ -1,0 +1,29 @@
+# Static routes
+No router. URL paths match HTML files; index.html serves directories.
+- /index.html: Home maze, interest tuner and four realm panels
+- /pages/experience/aws.html: Inline site header and content; see file
+- /pages/experience/healthcare.html: Inline site header and content; see file
+- /pages/experience/index.html: Inline site header and content; see file
+- /pages/experience/networks.html: Inline site header and content; see file
+- /pages/experience/rgt.html: Inline site header and content; see file
+- /pages/experience/scale.html: Inline site header and content; see file
+- /pages/experience/ta.html: Inline site header and content; see file
+- /pages/experience/uber.html: Inline site header and content; see file
+- /pages/experience/uwm.html: Inline site header and content; see file
+- /pages/favorites/books.html: Inline site header and content; see file
+- /pages/favorites/images.html: Inline site header and content; see file
+- /pages/favorites/index.html: Inline site header and content; see file
+- /pages/favorites/movies.html: Inline site header and content; see file
+- /pages/favorites/music.html: Inline site header and content; see file
+- /pages/favorites/tv_shows.html: Inline site header and content; see file
+- /pages/find-me.html: Inline site header and content; see file
+- /pages/learning/index.html: Inline site header and content; see file
+- /pages/learning/ml/index.html: Inline site header and content; see file
+- /pages/learning/ml/topics/isl.html: Inline site header and content; see file
+- /pages/resume.html: Inline site header and content; see file
+- /pages/writing/2nd-pick.html: Inline site header and content; see file
+- /pages/writing/currency.html: Inline site header and content; see file
+- /pages/writing/ego.html: Inline site header and content; see file
+- /pages/writing/life.html: Inline site header and content; see file
+- /pages/writing/martyr-trap.html: Inline site header and content; see file
+- /pages/writing/martyr.html: Inline site header and content; see file

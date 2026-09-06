@@ -22,26 +22,27 @@
 
     <link rel="stylesheet" href="/src/css/styles.css">
 <link rel="stylesheet" href="/src/css/subpage.css">
+    <link rel="stylesheet" href="/src/css/favorites.css?v=fb9fd6a968">
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=Crimson+Text:ital,wght@0,400;0,700;1,400&display=swap">
 </head>
-<body>
-  	<div class="container content-centered">
-    	<div class="site-header">
-        	<a href="/pages/favorites/index.html">Favorites</a>
-            <h2>Pranav Varshney</h2>
-        	<a href="/" class="nav-item">Home</a>
-    	</div>
-        <p>Some of my favorites:</p>
-        <ul class="content-list">
-            <li><a href="/pages/favorites/images.html">Pictures</a></li>
-            <li><a href="/pages/favorites/music.html">Songs</a></li>
-            <li><a href="/pages/favorites/books.html">Books</a></li>
-            <li><a href="/pages/favorites/movies.html">Movies</a></li>
-            <li><a href="/pages/favorites/tv_shows.html">TV Shows</a></li>
-        </ul>
-        <script src="/src/js/interactive_index.js"></script>
-    </div>
+<body class="favorites-ui">
+    <main class="container content-centered">
+    <header class="site-header"><a href="/pages/favorites/index.html">Favorites</a><h2>Pranav Varshney</h2><a href="/" class="nav-item">Home</a></header>
+<nav class="favorites-nav" aria-label="Favorites categories"><a href="/pages/favorites/index.html" aria-current="page">The web</a><a href="/pages/favorites/music.html">Songs</a><a href="/pages/favorites/books.html">Books</a><a href="/pages/favorites/movies.html">Movies</a><a href="/pages/favorites/tv_shows.html">TV Shows</a><a href="/pages/favorites/images.html">Pictures</a></nav>
+<p>A few favorites, caught in my web.</p>
+<nav class="favorites-links web-map" aria-label="Explore my favorites">
+    <img class="web-strands" src="/src/images/favorites-web.svg?v=23c3f494ab" alt="" aria-hidden="true">
+<svg class="web-thread" aria-hidden="true"><line x1="50%" y1="50%" x2="50%" y2="50%"/></svg>
+<svg class="web-spider" viewBox="0 0 64 64" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M27 27 18 20 16 7 M26 31 12 26 6 13 M26 36 12 40 6 53 M27 40 19 48 18 59 M37 27 46 20 48 7 M38 31 52 26 58 13 M38 36 52 40 58 53 M37 40 45 48 46 59"/></g><ellipse cx="32" cy="36" rx="7" ry="11" fill="currentColor"/><circle cx="32" cy="23" r="5" fill="currentColor"/></svg>
+    <a class="web-node" href="/pages/favorites/music.html"><span aria-hidden="true">01</span>Songs</a>
+    <a class="web-node" href="/pages/favorites/books.html"><span aria-hidden="true">02</span>Books</a>
+    <a class="web-node" href="/pages/favorites/movies.html"><span aria-hidden="true">03</span>Movies</a>
+    <a class="web-node" href="/pages/favorites/tv_shows.html"><span aria-hidden="true">04</span>TV Shows</a>
+    <a class="web-node" href="/pages/favorites/images.html"><span aria-hidden="true">05</span>Pictures</a>
+</nav>
+
+    </main>
 
 <footer class="site-footer">
     <p class="site-footer-quote">कृण्वन्तो विश्वं आर्यं | Make the world noble</p>
@@ -49,5 +50,6 @@
 
     <script src="/src/js/subpage.js"></script>
     <script src="/src/js/footer.js"></script>
+    <script src="/src/js/favorites.js?v=4cbc9f7d95"></script>
 </body>
 </html>

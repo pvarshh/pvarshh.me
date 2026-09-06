@@ -22,18 +22,17 @@
 
     <link rel="stylesheet" href="/src/css/styles.css">
 <link rel="stylesheet" href="/src/css/subpage.css">
+    <link rel="stylesheet" href="/src/css/favorites.css?v=fb9fd6a968">
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=Crimson+Text:ital,wght@0,400;0,700;1,400&display=swap">
 </head>
-<body>
-  	<div class="container content-centered">
-    	<div class="site-header">
-        	<a href="/pages/favorites/books.html">Favorite Books</a>
-            <h2>Pranav Varshney</h2>
-        	<a href="/" class="nav-item">Home</a>
-    	</div>
+<body class="favorites-ui" data-media="books">
+    <main class="container content-centered">
+    <header class="site-header"><a href="/pages/favorites/books.html">Favorite Books</a><h2>Pranav Varshney</h2><a href="/" class="nav-item">Home</a></header>
+<nav class="favorites-nav" aria-label="Favorites categories"><a href="/pages/favorites/index.html">The web</a><a href="/pages/favorites/music.html">Songs</a><a href="/pages/favorites/books.html" aria-current="page">Books</a><a href="/pages/favorites/movies.html">Movies</a><a href="/pages/favorites/tv_shows.html">TV Shows</a><a href="/pages/favorites/images.html">Pictures</a></nav>
+<p>childhood shelves + philosophy</p>
     	<div style="text-align: left;">
-            <ul style="list-style: none; padding: 0; margin: 0;">
+            <ul class="favorites-collection">
                 <li style="margin-bottom: 2rem;">
 
                     <span class="bold" style="font-size: 1.1rem;">Satyarth Prakash</span> <span class="italic">by Maharishi Dayanand Saraswati</span>
@@ -73,7 +72,7 @@
             </ul>
     	</div>
     	<p class="with-space"><span id="edited-date" class="italic"></span></p>
-  	</div>
+    </main>
 
     <!-- Hidden Summaries -->
     <div style="display: none;">
@@ -112,17 +111,17 @@
     </div>
 
     <!-- Summary Modal -->
-    <div id="summary-modal" class="modal-overlay" aria-hidden="true">
+    <dialog id="summary-modal" class="favorite-dialog" aria-label="Book summary">
         <div class="modal-content">
             <div class="summary-container">
-                <button id="close-summary-modal" class="close-btn">&times;</button>
+                <button id="close-summary-modal" class="close-btn" aria-label="Close summary">&times;</button>
                 <div id="summary-content">
                     <!-- Content injected via JS -->
                 </div>
             </div>
         </div>
-    </div>
-<script src="/src/js/main.js"></script>
+    </dialog>
+<script src="/src/js/main.js?v=32bc2e15b5"></script>
 <script src="/src/js/subpage.js"></script>
     <script src="/src/js/footer.js"></script>
 
