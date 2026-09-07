@@ -763,20 +763,6 @@ footer:not(.site-footer) {
     }
 }
 
-/* Fun time-based color shifts (subtle) */
-@media (prefers-reduced-motion: no-preference) {
-    body {
-        animation: gradientShift 15s ease infinite, timeBasedTint 60s ease infinite;
-    }
-}
-
-@keyframes timeBasedTint {
-    0%, 100% { filter: brightness(1); }
-    25% { filter: brightness(1.02) hue-rotate(2deg); }
-    50% { filter: brightness(0.98); }
-    75% { filter: brightness(1.02) hue-rotate(-2deg); }
-}
-
 /* Respect user preferences for reduced motion */
 @media (prefers-reduced-motion: reduce) {
     *,

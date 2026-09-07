@@ -432,8 +432,6 @@
             dpr = window.devicePixelRatio || 1;
             canvas.width = rect.width * dpr;
             canvas.height = rect.height * dpr;
-            canvas.style.width = rect.width + 'px';
-            canvas.style.height = rect.height + 'px';
             ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
             w = rect.width;
             h = rect.height;

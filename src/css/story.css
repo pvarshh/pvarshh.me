@@ -403,6 +403,7 @@ body.story-tuner-locked .tuner-knob {
 #story-panels {
     position: relative;
     margin: 0;
+    overflow: clip;
 }
 
 .story-panel {
