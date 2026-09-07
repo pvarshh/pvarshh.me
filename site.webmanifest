@@ -3,12 +3,12 @@
   "short_name": "Pranav",
   "icons": [
     {
-      "src": "/src/favicon/android-chrome-192x192.png",
+      "src": "/src/favicon/android-chrome-192x192.png?v=a8ed54505f",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "/src/favicon/android-chrome-512x512.png",
+      "src": "/src/favicon/android-chrome-512x512.png?v=0fb54f64ac",
       "sizes": "512x512",
       "type": "image/png"
     }
