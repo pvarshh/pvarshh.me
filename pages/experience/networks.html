@@ -1,56 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Life - Pranav</title>
-
-    <!-- Standard favicon -->
-    <link rel="icon" type="image/x-icon" href="/src/favicon/favicon.ico">
-    <link rel="icon" type="image/png" sizes="32x32" href="/src/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/src/favicon/favicon-16x16.png">
-
-    <!-- Apple Touch Icons -->
-    <link rel="apple-touch-icon" href="/src/favicon/apple-touch-icon.png">
-
-    <!-- Android Chrome Icons -->
-    <link rel="icon" type="image/png" sizes="192x192" href="/src/favicon/android-chrome-192x192.png">
-    <link rel="icon" type="image/png" sizes="512x512" href="/src/favicon/android-chrome-512x512.png">
-
-    <!-- Web App Manifest -->
-    <link rel="manifest" href="/site.webmanifest">
-
-    <link rel="stylesheet" href="/src/css/styles.css">
-<link rel="stylesheet" href="/src/css/subpage.css">
-
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=Crimson+Text:ital,wght@0,400;0,700;1,400&display=swap">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="An AST-aware transformer with constrained attention, supported by a contrastive-learning pipeline for dataset expansion.">
+        <meta name="theme-color" content="#f5f4ef">
+        <title>Using code structure to guide generation — Pranav Varshney</title>
+        <link rel="icon" type="image/x-icon" href="/src/favicon/favicon.ico">
+        <link rel="icon" type="image/png" sizes="32x32" href="/src/favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/src/favicon/favicon-16x16.png">
+        <link rel="apple-touch-icon" href="/src/favicon/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="192x192" href="/src/favicon/android-chrome-192x192.png">
+        <link rel="icon" type="image/png" sizes="512x512" href="/src/favicon/android-chrome-512x512.png">
+        <link rel="manifest" href="/site.webmanifest">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=Crimson+Text:ital,wght@0,400;0,700;1,400&display=swap">
+        <link rel="stylesheet" href="/src/css/styles.css?v=65b6c45eef">
+        <link rel="stylesheet" href="/src/css/experience.css?v=6f0d84431d">
+        <script src="/src/js/experience.js?v=7d0ecec69b" defer></script>
+        <script src="/src/js/main.js?v=32bc2e15b5" defer></script>
+        <link rel="stylesheet" href="/src/css/portfolio.css?v=d73c5b40ae">
 </head>
-<body>
-    <div class="container content-centered">
-        <div class="content">
-            <div class="site-header">
-                <a href="/pages/experience/networks.html">Winter 25 @ UMich</a>
-                <h2>Pranav Varshney</h2>
-        	    <a href="/" class="nav-item">Home</a>
-            </div>
+    <body class="experience-article portfolio-system">
+    <a class="skip-link" href="#article">Skip to article</a>
+        <header class="portfolio-header"><a href="/" class="portfolio-name">Pranav Varshney</a><nav class="portfolio-nav" aria-label="Portfolio"><a href="/pages/experience/index.html" aria-current="location">Compute</a><a href="/#reflect">Reflect</a><a href="/pages/favorites/index.html">Culture</a><a href="/#reach">Reach</a></nav></header>
 
-            <p>Research with Victor Liu on self operating computer networks.</p>
-
-        <p class="with-space">
-            <span id="edited-date" class="italic"></span>
-        </p>
-        
-        <script src="/src/js/main.js"></script>
-<script src="/src/js/subpage.js"></script>
-    <script src="/src/js/footer.js"></script>
-        
+        <div class="article-layout">
+            <aside class="article-sidebar">
+                <nav aria-label="On this page">
+                    <p class="small-label">In this article</p>
+                    <ol>
+                        <li><a href="#context"><span>01</span> Research focus</a></li>
+                        <li><a href="#model"><span>02</span> Model & data pipeline</a></li>
+                        <li><a href="#results"><span>03</span> Reported results</a></li>
+                    </ol>
+                    <a class="sources-link" href="#sources">Source notes <span aria-hidden="true">↗</span></a></nav>
+                <p class="sidebar-note">Winter / Spring 2025<br>University of Michigan<br>Research notes</p>
+            </aside>
+            <main id="article" tabindex="-1">
+                <article>
+                    <header class="article-hero">
+                        <p class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span> University of Michigan / Research notes</p>
+                        <h1>Using code structure to guide generation.</h1>
+                        <p class="article-deck">An AST-aware transformer with constrained attention, supported by a contrastive-learning pipeline for dataset expansion.</p>
+                        <dl class="article-meta">
+                            <div><dt>Team / Lab</dt><dd>Self Operating Networks Laboratory</dd></div>
+                            <div><dt>Role</dt><dd>Research with Prof. Victor Liu</dd></div>
+                            <div><dt>When</dt><dd>January – May 2025</dd></div>
+                        </dl>
+                    </header>
+                    <div class="article-abstract">
+                        <p class="small-label">The work, at a glance</p>
+                        <p>I worked with Professor Victor Liu on self-operating computer networks. My research focused on code generation and training-data expansion: how a model uses program structure, and how to grow the dataset available to it.</p>
+                        <div class="work-tracks">
+                            <div><span class="track-number">I.</span><h2>Structure-aware modeling</h2>
+                                <p>An AST-aware transformer that uses constrained attention for code generation.</p>
+                            </div>
+                            <div><span class="track-number">II.</span><h2>Training-data expansion</h2>
+                                <p>A contrastive-learning pipeline for automated dataset expansion.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <dl class="experience-metrics">
+                        <div><dt>Reported code-generation accuracy</dt><dd>92%</dd></div>
+                        <div><dt>Increase in training samples</dt><dd>+250%</dd></div>
+                    </dl>
+                    <section id="context" class="article-section">
+                        <p class="section-number">01 / Context</p>
+                        <h2>Make program structure part of the model.</h2>
+                        <p>Within the self-operating networks research, I designed an <strong>AST-aware transformer</strong> using <strong>constrained attention mechanisms</strong> for code generation. An abstract syntax tree (AST) represents the structure of a program, giving this work a structural context for generation.</p>
+                        <p>The model work and the dataset-expansion work addressed separate aspects of the learning system.</p>
+                    </section>
+                    <section id="model" class="article-section">
+                        <p class="section-number">02 / Research components</p>
+                        <h2>Work on both representation and data.</h2>
+                        <p>I implemented a <strong>contrastive-learning pipeline</strong> for automated dataset expansion. This increased the number of training samples by <strong>250%</strong>.</p>
+                        <figure class="technical-figure" aria-labelledby="network-learning-caption">
+                            <div class="figure-heading">
+                                <div><span class="small-label">01 / Model &amp; training data</span><h3>Structure and data, together</h3>
+                                </div>
+                                <a class="diagram-open" href="/src/images/experience/network-learning.svg" target="_blank" rel="noopener" aria-label="Open structure and data, together diagram at full size">Full size <span aria-hidden="true">↗</span></a>
+                            </div>
+                            <picture class="architecture-art">
+                                <source media="(max-width: 600px)" srcset="/src/images/experience/network-learning-mobile.svg" width="360" height="762">
+                                <img src="/src/images/experience/network-learning.svg" width="800" height="476" alt="An AST-aware transformer uses constrained attention for code generation, with a contrastive-learning pipeline expanding the training corpus." loading="lazy">
+                            </picture>
+                            <figcaption id="network-learning-caption">Conceptual view of the model and dataset-expansion work. The dashed connection denotes training data, distinct from the code-generation path.</figcaption>
+                        </figure>
+                        <p>The diagram distinguishes the generation path from the training-data path. The constrained-attention transformer is the modeling contribution; expanding the corpus is the data contribution.</p>
+                    </section>
+                    <section id="results" class="article-section">
+                        <p class="section-number">03 / Outcomes</p>
+                        <h2>Track model performance and dataset growth.</h2>
+                        <p>The research summary reports <strong>92% code-generation accuracy</strong> for the AST-aware transformer and a <strong>250% increase in training samples</strong> from the expansion pipeline.</p>
+                    </section>
+                    <section id="sources" class="source-notes" aria-labelledby="sources-heading">
+                        <h2 id="sources-heading">Source notes</h2>
+                        <p>Based on the Self Operating Networks Laboratory entry in my <a href="/src/pdf/resume.pdf">résumé</a> and the original research summary. Accuracy and dataset-growth figures are reported as recorded there.</p>
+                    </section>
+                    <nav class="experience-related" aria-label="Continue through my experience"><a href="/pages/experience/aws.html"><span class="small-label">More recent</span><strong>Amazon Web Services <span aria-hidden="true">↗</span></strong></a><a href="/pages/experience/ta.html"><span class="small-label">Earlier experience</span><strong>Teaching COMPFOR 131 <span aria-hidden="true">↗</span></strong></a></nav>
+                    <footer class="article-end"><a href="/pages/experience/index.html">← Back to experiences</a><a href="#article">Back to top ↑</a></footer>
+                </article>
+            </main>
         </div>
-    </div>
-
-<footer class="site-footer">
-    <p class="site-footer-quote">कृण्वन्तो विश्वं आर्यं | Make the world noble</p>
-</footer>
-    
-
-</body>
+        <footer class="site-footer">
+            <p class="site-footer-quote">कृण्वन्तो विश्वं आर्यं | Make the world noble</p>
+        </footer>
+    </body>
 </html>

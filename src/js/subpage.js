@@ -393,7 +393,6 @@
     document.body.classList.add('page-sub', 'realm-' + realm);
     document.body.dataset.realm = realm;
     injectRealmBadge(realm);
-    initFragments(realm);
     initFavorites();
     initExperience();
     initLearning();

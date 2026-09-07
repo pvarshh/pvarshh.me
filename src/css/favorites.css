@@ -1,6 +1,6 @@
 /* Favorites reuse the site typography, paper and culture palette. */
 .favorites-ui, .favorites-links {
-    --favorites-accent: var(--realm-world, var(--sub-realm-color, #3d5240));
+    --favorites-accent: var(--realm-world, var(--sub-realm-color, #53634f));
 }
 .favorites-nav {
     display: flex;
@@ -42,12 +42,12 @@
     content: '';
     position: absolute;
     inset: 12%;
-    background: radial-gradient(#98483f30 .7px, transparent .7px) 0 0 / 6px 6px;
+    background: radial-gradient(#53634f30 .7px, transparent .7px) 0 0 / 6px 6px;
     mask-image: radial-gradient(ellipse, #000, transparent 65%);
     pointer-events: none;
 }
 .web-strands { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
-.web-spider { position: absolute; width: 36px; height: 36px; left: calc(50% - 18px); top: calc(50% - 18px); color: #98483f; transform: scale(1.6); filter: drop-shadow(0 2px 1px #98483f25); }
+.web-spider { position: absolute; width: 36px; height: 36px; left: calc(50% - 18px); top: calc(50% - 18px); color: #53634f; transform: scale(1.6); filter: drop-shadow(0 2px 1px #53634f25); }
 .web-node {
     position: absolute;
     transform: translate(-50%, -50%);
@@ -62,21 +62,21 @@
     box-sizing: border-box;
     background: var(--color-paper);
     border: 1px solid #1a1a1a35;
-    border-top: 2px solid #98483f;
+    border-top: 2px solid #53634f;
     border-radius: 2px;
     box-shadow: 3px 3px 0 #1a1a1a12;
     font-size: 1.05rem;
     transition: color .2s, border-color .2s, box-shadow .2s;
 }
-.web-node span { font: .55rem var(--font-mono); color: #98483f; letter-spacing: .12em; }
+.web-node span { font: .55rem var(--font-mono); color: #53634f; letter-spacing: .12em; }
 .web-node:nth-of-type(1) { left: 50%; top: 8%; }
 .web-node:nth-of-type(2) { left: 88%; top: 38%; }
 .web-node:nth-of-type(3) { left: 74%; top: 83%; }
 .web-node:nth-of-type(4) { left: 26%; top: 83%; }
 .web-node:nth-of-type(5) { left: 12%; top: 38%; }
 .web-node:hover, .web-node:focus-visible {
-    color: #98483f;
-    border-color: #98483f;
+    color: #53634f;
+    border-color: #53634f;
     box-shadow: 0 0 0 4px color-mix(in srgb, var(--favorites-accent) 8%, transparent);
 }
 .favorites-collection { display: grid; grid-template-columns: 1fr; gap: 1.5rem; padding: 0; margin: 0; list-style: none; }
@@ -117,18 +117,18 @@
 
 /* A selected thread leads the spider toward the actual link position. */
 .web-thread { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; opacity: 0; }
-.web-thread line { stroke: #98483f; stroke-width: 1.5; stroke-dasharray: 5 4; }
+.web-thread line { stroke: #53634f; stroke-width: 1.5; stroke-dasharray: 5 4; }
 .web-engaged .web-thread { opacity: .8; }
 .web-engaged .web-thread line { animation: web-signal .8s linear infinite; }
 @keyframes web-signal { to { stroke-dashoffset: -18; } }
 .web-spider { pointer-events: none; transition: left .35s ease, top .35s ease; }
 /* Songs: record sleeves with a grooved vinyl detail. */
 [data-media="music"] .embed-item { padding: 1.25rem 1.25rem 1.25rem 6rem !important; border: 1px solid #1a1a1a20; background: #f5f4ef80; }
-[data-media="music"] .embed-item::before { content: ''; position: absolute; left: 1rem; top: 1.25rem; width: 64px; height: 64px; border-radius: 50%; background: radial-gradient(circle, var(--color-paper) 0 3px, #3d5240 3px 13px, transparent 14px), repeating-radial-gradient(circle, #252525 0 2px, #41413d 3px, #252525 4px); box-shadow: 1px 2px 4px #1a1a1a30; }
+[data-media="music"] .embed-item::before { content: ''; position: absolute; left: 1rem; top: 1.25rem; width: 64px; height: 64px; border-radius: 50%; background: radial-gradient(circle, var(--color-paper) 0 3px, #53634f 3px 13px, transparent 14px), repeating-radial-gradient(circle, #252525 0 2px, #41413d 3px, #252525 4px); box-shadow: 1px 2px 4px #1a1a1a30; }
 /* Books: cloth spines, a cover edge, and the thin lines of a page block. */
-[data-media="books"] .favorites-collection > li { padding: 1.25rem 1.5rem !important; border: 1px solid #1a1a1a20; border-left: 8px solid #5a4a3a; border-radius: 2px 5px 5px 2px; background: linear-gradient(90deg, #5a4a3a0b, transparent 20%), var(--color-paper); box-shadow: 3px 0 var(--color-paper-deep), 4px 0 #1a1a1a25; }
-[data-media="books"] .favorites-collection > li:nth-child(3n + 2) { border-left-color: #3d5240; }
-[data-media="books"] .favorites-collection > li:nth-child(3n) { border-left-color: #2c4a6e; }
+[data-media="books"] .favorites-collection > li { padding: 1.25rem 1.5rem !important; border: 1px solid #1a1a1a20; border-left: 8px solid #53634f; border-radius: 2px 5px 5px 2px; background: linear-gradient(90deg, #53634f0b, transparent 20%), var(--color-paper); box-shadow: 3px 0 var(--color-paper-deep), 4px 0 #1a1a1a25; }
+[data-media="books"] .favorites-collection > li:nth-child(3n + 2) { border-left-color: #53634f; }
+[data-media="books"] .favorites-collection > li:nth-child(3n) { border-left-color: #53634f; }
 /* Movies: film frames; television: an episode guide on a softly rounded screen. */
 [data-media="movies"] .favorites-collection > li { padding: 1.75rem 1.25rem !important; border-inline: 1px solid #1a1a1a35; background: linear-gradient(90deg, #1a1a1a22 50%, transparent 50%) top left / 20px 6px repeat-x, linear-gradient(90deg, #1a1a1a22 50%, transparent 50%) bottom left / 20px 6px repeat-x; }
 [data-media="tv_shows"] .favorites-collection { counter-reset: episode; }

@@ -3,14 +3,15 @@
 
     const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+    const ACCENT = getComputedStyle(document.documentElement).getPropertyValue('--color-accent').trim();
     const REALMS = [
-        { id: 'cs', glyph: '{}', label: 'compute', color: '#2c4a6e', freq: 0.125, mhz: 88.1, font: 'mono',
+        { id: 'cs', glyph: '{}', label: 'compute', color: ACCENT, freq: 0.125, mhz: 88.1, font: 'mono',
           signal: ['if(true)', '01001', 'λx.x', 'O(n)', 'git push'] },
-        { id: 'words', glyph: '§', label: 'reflect', color: '#5a4a3a', freq: 0.375, mhz: 94.3, font: 'serif',
+        { id: 'words', glyph: '§', label: 'reflect', color: ACCENT, freq: 0.375, mhz: 94.3, font: 'serif',
           signal: ['cogito', 'tabula rasa', 'virtue', 'ego', 'memento'] },
-        { id: 'world', glyph: '∞', label: 'culture', color: '#3d5240', freq: 0.625, mhz: 101.7, font: 'serif',
+        { id: 'world', glyph: '∞', label: 'culture', color: ACCENT, freq: 0.625, mhz: 101.7, font: 'serif',
           signal: ['1066', '1453', '1789', 'Rashomon', 'annals'] },
-        { id: 'path', glyph: '@', label: 'reach', color: '#1a1a1a', freq: 0.875, mhz: 107.9, font: 'mono',
+        { id: 'path', glyph: '@', label: 'reach', color: ACCENT, freq: 0.875, mhz: 107.9, font: 'mono',
           signal: ['pvarsh@', 'seattle', 'ann arbor', 'find me', '???'] }
     ];
 
@@ -24,8 +25,9 @@
     const NAME = 'Pranav Varshney';
     const SCRAMBLES = ['λx.x', '01001100', '§', '∇', 'void main()', 'cogito', '1066', NAME];
 
-    const START_REALM = 'cs';
-    const START_FREQ = REALMS[0].freq;
+    const HASH_REALMS = { '#compute': 'cs', '#reflect': 'words', '#culture': 'world', '#reach': 'path' };
+    const START_REALM = HASH_REALMS[window.location.hash] || 'cs';
+    const START_FREQ = REALMS.find(realm => realm.id === START_REALM).freq;
 
     const state = {
         focusedRealm: START_REALM,
@@ -46,15 +48,17 @@
         return;
     }
 
-    initBackground();
-    initFragments();
+
     initTuner();
-    initNameScramble();
     buildRealmTabs();
     buildStations();
     syncFocusUI();
     trackMouse();
-    initTabAlignment();
+
+    window.addEventListener('hashchange', () => {
+        const realm = HASH_REALMS[window.location.hash];
+        if (realm) lockTo(realm);
+    });
 
     window.storyOnUnlock = function () {
         document.body.classList.add('story-unlocking');
@@ -86,63 +90,6 @@
             });
             container.appendChild(btn);
         });
-    }
-
-    function initTabAlignment() {
-        const tabsWrap = document.getElementById('story-realm-tabs');
-        const stationsWrap = document.getElementById('tuner-stations');
-        if (!tabsWrap || !stationsWrap) return;
-
-        const MOBILE = window.matchMedia('(max-width: 600px)');
-
-        function align() {
-            const tabs = [...tabsWrap.querySelectorAll('.story-realm-tab')];
-            const stations = [...stationsWrap.querySelectorAll('.tuner-station')];
-
-            // Mobile: fall back to the 2-column grid — clear inline pinning.
-            if (MOBILE.matches || !stations.length) {
-                tabsWrap.classList.remove('tabs-pinned');
-                tabsWrap.style.height = '';
-                tabs.forEach((t) => {
-                    t.style.position = '';
-                    t.style.left = '';
-                    t.style.top = '';
-                    t.style.transform = '';
-                });
-                return;
-            }
-
-            const wrapLeft = tabsWrap.getBoundingClientRect().left;
-            let maxH = 0;
-
-            tabs.forEach((tab, i) => {
-                const station = stations[i];
-                if (!station) return;
-                const sRect = station.getBoundingClientRect();
-                const centerX = sRect.left + sRect.width / 2 - wrapLeft;
-                tab.style.position = 'absolute';
-                tab.style.top = '0';
-                tab.style.left = centerX + 'px';
-                tab.style.transform = 'translateX(-50%)';
-                maxH = Math.max(maxH, tab.offsetHeight);
-            });
-
-            tabsWrap.classList.add('tabs-pinned');
-            tabsWrap.style.height = maxH + 'px';
-        }
-
-        requestAnimationFrame(align);
-        window.addEventListener('load', () => requestAnimationFrame(align));
-
-        let resizeTimer;
-        window.addEventListener('resize', () => {
-            clearTimeout(resizeTimer);
-            resizeTimer = setTimeout(align, 120);
-        });
-
-        if (document.fonts && document.fonts.ready) {
-            document.fonts.ready.then(() => requestAnimationFrame(align));
-        }
     }
 
     function buildRealmTabs() {
@@ -606,9 +553,9 @@
             if (strength < 0.85) {
                 const bleed = (1 - strength) * 3;
                 ctx.globalAlpha = 0.06 * bleed;
-                ctx.fillStyle = '#2c4a6e';
+                ctx.fillStyle = ACCENT;
                 ctx.fillRect(bleed, 0, w, h);
-                ctx.fillStyle = '#5a4a3a';
+                ctx.fillStyle = ACCENT;
                 ctx.fillRect(-bleed, 0, w, h);
                 ctx.globalAlpha = 1;
             }

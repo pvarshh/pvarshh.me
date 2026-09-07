@@ -1,56 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Life - Pranav</title>
-
-    <!-- Standard favicon -->
-    <link rel="icon" type="image/x-icon" href="/src/favicon/favicon.ico">
-    <link rel="icon" type="image/png" sizes="32x32" href="/src/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/src/favicon/favicon-16x16.png">
-
-    <!-- Apple Touch Icons -->
-    <link rel="apple-touch-icon" href="/src/favicon/apple-touch-icon.png">
-
-    <!-- Android Chrome Icons -->
-    <link rel="icon" type="image/png" sizes="192x192" href="/src/favicon/android-chrome-192x192.png">
-    <link rel="icon" type="image/png" sizes="512x512" href="/src/favicon/android-chrome-512x512.png">
-
-    <!-- Web App Manifest -->
-    <link rel="manifest" href="/site.webmanifest">
-
-    <link rel="stylesheet" href="/src/css/styles.css">
-<link rel="stylesheet" href="/src/css/subpage.css">
-
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=Crimson+Text:ital,wght@0,400;0,700;1,400&display=swap">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Retrieval, candidate filtering, and multi-stage reranking for annotation inputs, alongside high-throughput response benchmarking.">
+        <meta name="theme-color" content="#f5f4ef">
+        <title>Building the pipelines behind LLM evaluation — Pranav Varshney</title>
+        <link rel="icon" type="image/x-icon" href="/src/favicon/favicon.ico">
+        <link rel="icon" type="image/png" sizes="32x32" href="/src/favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/src/favicon/favicon-16x16.png">
+        <link rel="apple-touch-icon" href="/src/favicon/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="192x192" href="/src/favicon/android-chrome-192x192.png">
+        <link rel="icon" type="image/png" sizes="512x512" href="/src/favicon/android-chrome-512x512.png">
+        <link rel="manifest" href="/site.webmanifest">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=Crimson+Text:ital,wght@0,400;0,700;1,400&display=swap">
+        <link rel="stylesheet" href="/src/css/styles.css?v=65b6c45eef">
+        <link rel="stylesheet" href="/src/css/experience.css?v=6f0d84431d">
+        <script src="/src/js/experience.js?v=7d0ecec69b" defer></script>
+        <script src="/src/js/main.js?v=32bc2e15b5" defer></script>
+        <link rel="stylesheet" href="/src/css/portfolio.css?v=d73c5b40ae">
 </head>
-<body>
-    <div class="container content-centered">
-        <div class="content">
-            <div class="site-header">
-                <a href="/pages/experience/scale.html">Fall '25 @ Scale AI</a>
-                <h2>Pranav Varshney</h2>
-        	    <a href="/" class="nav-item">Home</a>
-            </div>
+    <body class="experience-article portfolio-system">
+    <a class="skip-link" href="#article">Skip to article</a>
+        <header class="portfolio-header"><a href="/" class="portfolio-name">Pranav Varshney</a><nav class="portfolio-nav" aria-label="Portfolio"><a href="/pages/experience/index.html" aria-current="location">Compute</a><a href="/#reflect">Reflect</a><a href="/pages/favorites/index.html">Culture</a><a href="/#reach">Reach</a></nav></header>
 
-            <p>Interned at Scale AI on the Gen AI, LLM Evals team.</p>
-
-        <p class="with-space">
-            <span id="edited-date" class="italic"></span>
-        </p>
-        
-        <script src="/src/js/main.js"></script>
-<script src="/src/js/subpage.js"></script>
-    <script src="/src/js/footer.js"></script>
-        
+        <div class="article-layout">
+            <aside class="article-sidebar">
+                <nav aria-label="On this page">
+                    <p class="small-label">In this article</p>
+                    <ol>
+                        <li><a href="#context"><span>01</span> The evaluation problem</a></li>
+                        <li><a href="#pipeline"><span>02</span> Retrieval & reranking</a></li>
+                        <li><a href="#benchmark"><span>03</span> Benchmarking & outcomes</a></li>
+                    </ol>
+                    <a class="sources-link" href="#sources">Source notes <span aria-hidden="true">↗</span></a></nav>
+                <p class="sidebar-note">Summer / Fall 2025<br>Scale AI<br>Engineering case study</p>
+            </aside>
+            <main id="article" tabindex="-1">
+                <article>
+                    <header class="article-hero">
+                        <p class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span> Scale AI / Engineering case study</p>
+                        <h1>Building the pipelines behind LLM evaluation.</h1>
+                        <p class="article-deck">Retrieval, candidate filtering, and multi-stage reranking for annotation inputs, alongside high-throughput response benchmarking.</p>
+                        <dl class="article-meta">
+                            <div><dt>Team / Lab</dt><dd>Gen AI · LLM Evaluation Pipelines</dd></div>
+                            <div><dt>Role</dt><dd>Generative AI Intern</dd></div>
+                            <div><dt>When</dt><dd>July – October 2025</dd></div>
+                        </dl>
+                    </header>
+                    <div class="article-abstract">
+                        <p class="small-label">The work, at a glance</p>
+                        <p>At Scale AI, I worked on the Gen AI, LLM Evals team. My projects covered the inputs used in annotation and the systems used to score model responses, with a focus on reducing annotation errors.</p>
+                        <div class="work-tracks">
+                            <div><span class="track-number">I.</span><h2>Input preparation</h2>
+                                <p>A retrieve-and-rerank RAG pipeline that automated LLM inputs for data annotation.</p>
+                            </div>
+                            <div><span class="track-number">II.</span><h2>Response evaluation</h2>
+                                <p>A benchmark system and multi-stage reranking using LLM-as-a-judge and adjudication.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <dl class="experience-metrics">
+                        <div><dt>Model responses scored daily</dt><dd>8K+</dd></div>
+                        <div><dt>Reduction in annotation errors</dt><dd>60%</dd></div>
+                    </dl>
+                    <section id="context" class="article-section">
+                        <p class="section-number">01 / Context</p>
+                        <h2>Evaluation quality starts with the inputs.</h2>
+                        <p>My work addressed two parts of the evaluation workflow: preparing useful inputs for annotation and scoring the responses produced by models. Candidate selection and response measurement both affect the quality of the resulting evaluation data.</p>
+                        <p>The projects brought together retrieval-augmented generation (RAG), candidate filtering, reranking, and benchmark infrastructure.</p>
+                    </section>
+                    <section id="pipeline" class="article-section">
+                        <p class="section-number">02 / Pipeline design</p>
+                        <h2>Retrieve, filter, and rerank.</h2>
+                        <p>I developed a <strong>retrieve-and-rerank RAG pipeline</strong> to automate LLM inputs for data annotation. Candidate filtering was part of that preparation, narrowing the material passed through the pipeline.</p>
+                        <p>I also worked on <strong>multi-stage reranking</strong> using <strong>LLM-as-a-judge</strong> and <strong>adjudication</strong>. These stages supported the goal of reducing annotation errors.</p>
+                        <figure class="technical-figure" aria-labelledby="scale-evaluation-caption">
+                            <div class="figure-heading">
+                                <div><span class="small-label">01 / Evaluation workflows</span><h3>Prepare inputs. Evaluate responses.</h3>
+                                </div>
+                                <a class="diagram-open" href="/src/images/experience/scale-evaluation.svg" target="_blank" rel="noopener" aria-label="Open prepare inputs. evaluate responses. diagram at full size">Full size <span aria-hidden="true">↗</span></a>
+                            </div>
+                            <picture class="architecture-art">
+                                <source media="(max-width: 600px)" srcset="/src/images/experience/scale-evaluation-mobile.svg" width="360" height="748">
+                                <img src="/src/images/experience/scale-evaluation.svg" width="800" height="448" alt="Candidate retrieval, filtering, and reranking prepare annotation inputs. A response benchmark scores more than 8,000 model responses daily." loading="lazy">
+                            </picture>
+                            <figcaption id="scale-evaluation-caption">Conceptual overview of input preparation and response benchmarking. Reranking combines LLM-as-a-judge with adjudication to prepare annotation inputs.</figcaption>
+                        </figure>
+                    </section>
+                    <section id="benchmark" class="article-section">
+                        <p class="section-number">03 / Evaluation</p>
+                        <h2>Make response scoring a repeatable workflow.</h2>
+                        <p>I built a high-throughput benchmark system that scored more than <strong>8,000 model responses per day</strong>. The reported outcome of the evaluation work was a <strong>60% reduction in annotation errors</strong>.</p>
+                        <p>The two workstreams addressed different parts of the same problem: preparing candidate inputs and assessing the model outputs used in annotation. Treating evaluation as a pipeline made those responsibilities explicit.</p>
+                    </section>
+                    <section id="sources" class="source-notes" aria-labelledby="sources-heading">
+                        <h2 id="sources-heading">Source notes</h2>
+                        <p>Based on the Scale AI entry in my <a href="/src/pdf/resume.pdf">résumé</a> and the original experience summary. Metrics reflect the outcomes recorded there; the diagram summarizes the workflow rather than an internal deployment.</p>
+                    </section>
+                    <nav class="experience-related" aria-label="Continue through my experience"><a href="/pages/experience/healthcare.html"><span class="small-label">More recent</span><strong>Healthcare AI research <span aria-hidden="true">↗</span></strong></a><a href="/pages/experience/aws.html"><span class="small-label">Earlier experience</span><strong>Amazon Web Services <span aria-hidden="true">↗</span></strong></a></nav>
+                    <footer class="article-end"><a href="/pages/experience/index.html">← Back to experiences</a><a href="#article">Back to top ↑</a></footer>
+                </article>
+            </main>
         </div>
-    </div>
-
-<footer class="site-footer">
-    <p class="site-footer-quote">कृण्वन्तो विश्वं आर्यं | Make the world noble</p>
-</footer>
-    
-
-</body>
+        <footer class="site-footer">
+            <p class="site-footer-quote">कृण्वन्तो विश्वं आर्यं | Make the world noble</p>
+        </footer>
+    </body>
 </html>

@@ -1,10 +1,10 @@
 /* Interactive narrative — show, don't tell */
 
 .page-home {
-    --realm-cs: #2c4a6e;
-    --realm-words: #5a4a3a;
-    --realm-world: #3d5240;
-    --realm-path: #1a1a1a;
+    --realm-cs: var(--color-accent);
+    --realm-words: var(--color-accent);
+    --realm-world: var(--color-accent);
+    --realm-path: var(--color-accent);
 }
 
 .page-home #main-content {
@@ -98,8 +98,8 @@
 }
 
 body.story-tuner-locked .tuner-signal-fill {
-    background: var(--tuner-lock-color, #2c4a6e);
-    box-shadow: 0 0 10px color-mix(in srgb, var(--tuner-lock-color, #2c4a6e) 50%, transparent);
+    background: var(--tuner-lock-color, #53634f);
+    box-shadow: 0 0 10px color-mix(in srgb, var(--tuner-lock-color, #53634f) 50%, transparent);
 }
 
 .tuner-freq {
@@ -111,7 +111,7 @@ body.story-tuner-locked .tuner-signal-fill {
 }
 
 body.story-tuner-locked .tuner-freq {
-    color: var(--tuner-lock-color, #2c4a6e);
+    color: var(--tuner-lock-color, #53634f);
     opacity: 1;
 }
 
@@ -167,8 +167,8 @@ body.story-tuner-locked .tuner-freq {
 
 body.story-tuner-locked .tuner-lock-ring {
     opacity: 0.35;
-    border-color: var(--tuner-lock-color, #2c4a6e);
-    box-shadow: inset 0 0 30px color-mix(in srgb, var(--tuner-lock-color, #2c4a6e) 8%, transparent);
+    border-color: var(--tuner-lock-color, #53634f);
+    box-shadow: inset 0 0 30px color-mix(in srgb, var(--tuner-lock-color, #53634f) 8%, transparent);
 }
 
 .story-tuner-readout {
@@ -292,8 +292,8 @@ body.story-tuner-locked .tuner-lock-ring {
 }
 
 body.story-tuner-locked .tuner-knob {
-    background: var(--tuner-lock-color, #2c4a6e);
-    box-shadow: 0 0 12px color-mix(in srgb, var(--tuner-lock-color, #2c4a6e) 40%, transparent);
+    background: var(--tuner-lock-color, #53634f);
+    box-shadow: 0 0 12px color-mix(in srgb, var(--tuner-lock-color, #53634f) 40%, transparent);
 }
 
 .story-realm-section {
@@ -316,13 +316,6 @@ body.story-tuner-locked .tuner-knob {
     box-sizing: border-box;
     position: relative;
     z-index: 4;
-}
-
-/* When JS pins tabs to the exact station centers, drop grid layout and let the
-   absolutely-positioned tabs define their own placement. */
-.story-realm-tabs.tabs-pinned {
-    display: block;
-    padding: 0;
 }
 
 .story-realm-tab {
@@ -689,20 +682,6 @@ body.story-unlocking::after {
     body.story-unlocking::after { animation: none; }
 }
 
-/* Reflect: a ruled notebook, using the existing warm words palette. */
-.reflection-notebook {
-    position: relative;
-    padding: 1.25rem 1.25rem 1rem 3rem;
-    border-block: 1px solid color-mix(in srgb, var(--realm-words) 22%, transparent);
-    background: linear-gradient(to right, transparent 2rem, #5a4a3a30 2rem, #5a4a3a30 calc(2rem + 1px), transparent calc(2rem + 1px));
-}
-.content .story-panel .notebook-heading { font-size: 1.3rem; font-style: italic; margin-bottom: 1rem; }
-.notebook-heading span { display: block; font: .6rem var(--font-mono); letter-spacing: .06em; color: var(--realm-words); margin-top: .4rem; }
-.reflection-pages { counter-reset: essay; list-style: none; padding: 0; margin: 0; }
-.reflection-pages li { counter-increment: essay; padding: 0; margin: 0; border-bottom: 1px solid #5a4a3a20; }
-.reflection-pages li::before { content: counter(essay, decimal-leading-zero); position: absolute; left: -2.25rem; top: .85rem; font: .6rem var(--font-mono); color: var(--realm-words); }
-.content .reflection-pages a { display: block; padding: .75rem 0; border: 0; min-height: 24px; }
-.content .reflection-pages a:hover { color: var(--realm-words); font-style: italic; }
 /* Reach: a correspondence card, with real contact links as address lines. */
 .reach-postcard { position: relative; padding: 1.5rem; border: 1px dashed #1a1a1a45; }
 .postcard-stamp { position: absolute; right: 1.25rem; top: 1rem; border: 1px dotted #1a1a1a70; padding: .2rem .6rem; font: 1.4rem var(--font-serif); transform: rotate(8deg); opacity: .6; }
@@ -717,14 +696,6 @@ body.story-unlocking::after {
     .content .postcard-address a { grid-template-columns: 3.5rem 1fr auto; gap: .3rem; font-size: .9rem; }
 }
 
-/* A short excerpt opens in the notebook margin on focus or hover. */
-.reflection-pages a { position: relative; }
-.essay-margin { display: block; max-width: 26rem; margin-top: .2rem; font: italic .85rem/1.45 var(--font-serif); color: var(--realm-words); opacity: .7; }
-@media (hover: hover) and (min-width: 700px) {
-    .content .reflection-pages a { padding-right: 46%; min-height: 48px; }
-    .essay-margin { position: absolute; right: 0; top: .55rem; width: 43%; margin: 0; opacity: 0; transform: translateX(5px); transition: opacity .2s, transform .2s; }
-    .reflection-pages a:hover .essay-margin, .reflection-pages a:focus-visible .essay-margin { opacity: .8; transform: none; }
-}
 .content .postcard-map { display: flex; gap: 1rem; align-items: center; padding: .5rem 0; border: 0; }
 .postcard-map svg { width: 64px; height: 48px; color: var(--realm-world); flex-shrink: 0; transform: rotate(-5deg); transition: transform .2s; }
 .postcard-map:hover svg, .postcard-map:focus-visible svg { transform: rotate(0); }

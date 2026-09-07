@@ -60,8 +60,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Place target (ensure not too close to edges)
         const padding = 60;
+        const topInset = Math.max(150, document.querySelector('.portfolio-header').getBoundingClientRect().bottom + 30);
         target.x = padding + Math.random() * (width - 2 * padding);
-        target.y = padding + Math.random() * (height - 2 * padding);
+        target.y = topInset + Math.random() * Math.max(1, height - topInset - 100);
         
         startTime = Date.now();
         timerInterval = setInterval(updateTimer, 100);
@@ -69,13 +70,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function getRandomColor() {
-        // Muted tech colors
+        // Shared ink and sage palette.
         const colors = [
             'rgba(26, 26, 26, 0.4)', // Dark grey
             'rgba(80, 80, 80, 0.3)', // Medium grey
-            'rgba(140, 120, 100, 0.3)', // Brownish
-            'rgba(85, 107, 47, 0.3)', // Olive
-            'rgba(70, 130, 180, 0.2)' // Steel blue
+            'rgba(83, 99, 79, 0.3)',
+            'rgba(83, 99, 79, 0.25)',
+            'rgba(104, 112, 98, 0.2)'
         ];
         return colors[Math.floor(Math.random() * colors.length)];
     }

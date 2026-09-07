@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="476" viewBox="0 0 800 476" role="img" aria-labelledby="title desc">
+<title id="title">Structural context and dataset expansion for code generation</title>
+<desc id="desc">An AST-aware transformer uses constrained attention for code generation. A contrastive-learning pipeline expands the training dataset. The résumé reports 92% code-generation accuracy and a 250% increase in training samples.</desc>
+<style>
+text { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif; fill: #293327; }
+.label { font-size: 11px; font-weight: 600; letter-spacing: 1.3px; fill: #687062; }
+.title { font-size: 16px; font-weight: 600; }
+.detail { font-size: 12px; fill: #687062; }
+.mono { font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace; font-size: 12px; }
+.accent { fill: #53634f; }
+.white { fill: #fafaf5; }
+.light { fill: #cbddd5; }
+</style>
+<defs><marker id="arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M1 1 L6 3.5 L1 6" fill="none" stroke="#a0aa99" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="green-arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M1 1 L6 3.5 L1 6" fill="none" stroke="#53634f" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<rect width="800" height="476" fill="#fafaf5"/>
+<text x="32" y="32" class="label" text-anchor="start">STRUCTURE-AWARE GENERATION</text>
+<rect x="32" y="66" width="200" height="88" rx="6" fill="#fafaf5" stroke="#d6d9ce" stroke-width="1.2"/>
+<text x="132.0" y="107.0" class="title" text-anchor="middle">AST context</text>
+<text x="132.0" y="129.0" class="detail" text-anchor="middle">Code structure</text>
+<path d="M232 110 H300" fill="none" stroke="#a0aa99" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="300" y="66" width="200" height="88" rx="6" fill="#eef1e8" stroke="#b4bfa9" stroke-width="1.2"/>
+<text x="400.0" y="107.0" class="title" text-anchor="middle">Transformer</text>
+<text x="400.0" y="129.0" class="detail" text-anchor="middle">Constrained attention</text>
+<path d="M500 110 H568" fill="none" stroke="#a0aa99" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="568" y="66" width="200" height="88" rx="6" fill="#fafaf5" stroke="#d6d9ce" stroke-width="1.2"/>
+<text x="668.0" y="107.0" class="title" text-anchor="middle">Generated code</text>
+<text x="668.0" y="129.0" class="detail" text-anchor="middle">92% reported accuracy</text>
+<rect x="32" y="250" width="736" height="202" rx="6" fill="#f5f5ef" stroke="#bacfc1" stroke-width="1.2" stroke-dasharray="5 5"/>
+<text x="52" y="280" class="label accent" text-anchor="start">DATASET EXPANSION</text>
+<path d="M656 320 V210 H400 V154" fill="none" stroke="#53634f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#green-arrow)" stroke-dasharray="4 5"/>
+<text x="529" y="196" class="label accent" text-anchor="middle" style="font-size:10px">TRAINING DATA</text>
+<rect x="52" y="320" width="184" height="84" rx="6" fill="#fafaf5" stroke="#d6d9ce" stroke-width="1.2"/>
+<text x="144.0" y="359.0" class="title" text-anchor="middle">Training corpus</text>
+<text x="144.0" y="381.0" class="detail" text-anchor="middle">Existing samples</text>
+<path d="M236 362 H308" fill="none" stroke="#a0aa99" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="308" y="320" width="184" height="84" rx="6" fill="#eef1e8" stroke="#b4bfa9" stroke-width="1.2"/>
+<text x="400.0" y="359.0" class="title" text-anchor="middle">Contrastive learning</text>
+<text x="400.0" y="381.0" class="detail" text-anchor="middle">Dataset expansion</text>
+<path d="M492 362 H564" fill="none" stroke="#a0aa99" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="564" y="320" width="184" height="84" rx="6" fill="#fafaf5" stroke="#d6d9ce" stroke-width="1.2"/>
+<text x="656.0" y="359.0" class="title" text-anchor="middle">Expanded corpus</text>
+<text x="656.0" y="381.0" class="detail" text-anchor="middle">250% more samples</text>
+</svg>

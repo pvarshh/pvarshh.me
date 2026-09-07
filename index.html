@@ -21,10 +21,11 @@
     <!-- Web App Manifest -->
     <link rel="manifest" href="/site.webmanifest">
 
-    <link rel="stylesheet" href="/src/css/styles.css">
-    <link rel="stylesheet" href="/src/css/river.css">
-    <link rel="stylesheet" href="/src/css/story.css?v=e6b61d2edc">
-    <link rel="stylesheet" href="/src/css/favorites.css?v=0d8acac280">
+    <link rel="stylesheet" href="/src/css/styles.css?v=65b6c45eef">
+    <link rel="stylesheet" href="/src/css/river.css?v=d28c28e8fb">
+    <link rel="stylesheet" href="/src/css/story.css?v=f454369806">
+    <link rel="stylesheet" href="/src/css/writing.css?v=7ca33414b4">
+    <link rel="stylesheet" href="/src/css/favorites.css?v=62c525757f">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=Crimson+Text:ital,wght@0,400;0,700;1,400&display=swap">
     <noscript><style>
         /* Without JS the maze can never be solved, so the gate must not exist at all. */
@@ -32,9 +33,9 @@
         body{overflow:auto!important;}
         #main-content{opacity:1!important;filter:none!important;pointer-events:auto!important;}
         .story-tuner-wrap{display:none!important;}
-        .story-panel{opacity:1!important;visibility:visible!important;position:relative!important;pointer-events:auto!important;}
+        .story-panel{opacity:1!important;visibility:visible!important;position:relative!important;pointer-events:auto!important;filter:none!important;transform:none!important;animation:none!important;}
     </style></noscript>
-    
+
     <script>
         try {
             if (localStorage.getItem('mazeSolved') === 'true' ||
@@ -45,11 +46,12 @@
             /* private mode / storage blocked — fall through to the maze */
         }
     </script>
+    <link rel="stylesheet" href="/src/css/portfolio.css?v=d73c5b40ae">
 </head>
-<body class="page-home">
+<body class="page-home portfolio-system">
     <style>
         body { overflow: hidden; }
-        
+
         html.unlocked-init body { overflow: auto; }
         html.unlocked-init #lock-screen { display: none; }
         html.unlocked-init #main-content { opacity: 1; filter: none; pointer-events: auto; }
@@ -71,7 +73,7 @@
             align-items: center;
             justify-content: center;
             z-index: 10000;
-            background: linear-gradient(135deg, #f5f4ef 0%, #e8e6dc 50%, #f5f4ef 100%);
+            background: var(--color-paper);
             transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out;
             padding: 1rem;
             box-sizing: border-box;
@@ -87,7 +89,8 @@
         }
         .auto-solve-btn {
              background: none;
-             border: 1px solid rgba(26,26,26,0.35);
+             border: 1px solid var(--color-line);
+             color: var(--color-accent);
              padding: 0.5rem 1rem;
              font-family: "IBM Plex Mono", monospace;
              font-size: 0.7rem;
@@ -98,16 +101,16 @@
         .auto-solve-btn:hover,
         .auto-solve-btn:focus-visible {
             opacity: 1;
-            background: rgba(26,26,26,0.05);
+            background: var(--color-accent-soft);
         }
         .skip-maze-btn {
             background: none;
             border: none;
-            border-bottom: 1px solid rgba(26,26,26,0.3);
+            border-bottom: 1px solid var(--color-line);
             padding: 0.25rem 0;
             font-family: "IBM Plex Mono", monospace;
             font-size: 0.7rem;
-            color: #1a1a1a;
+            color: var(--color-accent);
             cursor: pointer;
             opacity: 0.7;
             transition: opacity 0.3s ease;
@@ -142,10 +145,8 @@
     <div id="story-fragments" aria-hidden="true"></div>
 
     <div id="main-content" class="container">
+        <header class="portfolio-header"><h1 class="portfolio-brand"><a href="/" class="portfolio-name">Pranav Varshney</a></h1><nav class="portfolio-nav" aria-label="Portfolio"><a href="/pages/experience/index.html">Compute</a><a href="/#reflect">Reflect</a><a href="/pages/favorites/index.html">Culture</a><a href="/#reach">Reach</a></nav></header>
         <div class="content">
-            <div class="story-name-wrap">
-                <h1 id="story-name" class="story-name">Pranav Varshney</h1>
-            </div>
             <a id="resume-link-hidden" href="/pages/resume.html" style="display:none;" aria-hidden="true">Resume</a>
 
             <div class="story-tuner-wrap">
@@ -176,7 +177,7 @@
                 <div class="story-realm-tabs" id="story-realm-tabs" role="tablist" aria-label="Interests"></div>
 
                 <div id="story-panels">
-                <section class="story-panel" data-realm="cs">
+                <section class="story-panel" data-realm="cs" id="compute">
                     <p class="story-panel-label">{ compute }</p>
                     <ul>
                         <li>Computer Science at <a href="https://www.umich.edu">University of Michigan</a></li>
@@ -195,25 +196,25 @@
                     </ul>
                 </section>
 
-                <section class="story-panel" data-realm="words">
+                <section class="story-panel" data-realm="words" id="reflect">
                     <p class="story-panel-label">§ reflect</p>
                     <div class="reflection-notebook">
                         <p class="notebook-heading">Notes to self. <span>essays &amp; questions</span></p>
                         <ol class="reflection-pages">
-                            <li><a href="/pages/writing/life.html">What I Value in Life<span class="essay-margin">It's not about accumulation; it's about enablement.</span></a></li>
-                            <li><a href="/pages/writing/currency.html">Currency<span class="essay-margin">Every conversation is a transaction.</span></a></li>
-                            <li><a href="/pages/writing/ego.html">Fly High<span class="essay-margin">A refusal to accept that another person’s ceiling is yours as well.</span></a></li>
-                            <li><a href="/pages/writing/martyr.html">The Martyr Complex<span class="essay-margin">At what point does that need to be loved become toxic?</span></a></li>
-                            <li><a href="/pages/writing/2nd-pick.html">The Second Pick<span class="essay-margin">There is a distinct, quiet solace in utterly shattering expectations.</span></a></li>
+                            <li><a class="reflection-entry" href="/pages/writing/life.html">What I Value in Life<span class="essay-margin">The means to build. The people who shaped me. The people who stayed.</span></a></li>
+                            <li><a class="reflection-entry" href="/pages/writing/currency.html">Currency<span class="essay-margin">What looks like genius may begin with having more of the picture.</span></a></li>
+                            <li><a class="reflection-entry" href="/pages/writing/ego.html">Fly High<span class="essay-margin">Icarus fell. Before that, someone had to believe flight was possible.</span></a></li>
+                            <li><a class="reflection-entry" href="/pages/writing/martyr.html">The Martyr Complex<span class="essay-margin">When sacrifice becomes a way to earn a place in the room.</span></a></li>
+                            <li><a class="reflection-entry" href="/pages/writing/2nd-pick.html">The Second Pick<span class="essay-margin">Being underestimated leaves room for a very good surprise.</span></a></li>
                         </ol>
                     </div>
                 </section>
 
-                <section class="story-panel" data-realm="world">
+                <section class="story-panel" data-realm="world" id="culture">
                     <p class="story-panel-label">∞ culture</p>
                     <p>My <a href="/pages/favorites/index.html">favorites</a>.</p>
 <nav class="favorites-links web-map" aria-label="Explore my favorites">
-    <img class="web-strands" src="/src/images/favorites-web.svg?v=553813bd32" alt="" aria-hidden="true">
+    <img class="web-strands" src="/src/images/favorites-web.svg?v=475ae2f5b5" alt="" aria-hidden="true">
 <svg class="web-thread" aria-hidden="true"><line x1="50%" y1="50%" x2="50%" y2="50%"/></svg>
 <svg class="web-spider" viewBox="0 0 64 64" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2.8" stroke-linejoin="miter"><path d="M28 27 17 17 20 3 M26 30 10 23 4 9 M26 35 10 41 5 56 M28 39 20 48 23 63 M36 27 47 17 44 3 M38 30 54 23 60 9 M38 35 54 41 59 56 M36 39 44 48 41 63"/></g><path d="M32 17 37 23 35 28 40 35 32 51 24 35 29 28 27 23Z" fill="currentColor"/><path d="m28 23 3 2m5-2-3 2" stroke="#f5f4ef" stroke-width="1.4"/></svg>
     <a class="web-node" href="/pages/favorites/music.html"><span aria-hidden="true">01</span>Songs</a>
@@ -224,7 +225,7 @@
 </nav>
                 </section>
 
-                <section class="story-panel" data-realm="path">
+                <section class="story-panel" data-realm="path" id="reach">
                     <p class="story-panel-label">@ reach</p>
                     <div class="reach-postcard">
                         <span class="postcard-stamp" aria-hidden="true">@</span>
@@ -245,13 +246,12 @@
             <p class="site-footer-quote">कृण्वन्तो विश्वं आर्यं | Make the world noble</p>
         </footer>
     </div>
-
-    <script src="/src/js/footer.js"></script>
     <script src="/src/js/main.js?v=32bc2e15b5"></script>
-    <script src="/src/js/river.js"></script>
-    <script src="/src/js/maze.js"></script>
-    <script src="/src/js/story.js?v=dc44edc501"></script>
-    <script src="/src/js/interactive_index.js"></script>
+    <script src="/src/js/river.js?v=92dcc9e3eb"></script>
+    <script src="/src/js/maze.js?v=214b7582b1"></script>
+    <script src="/src/js/story.js?v=16b5b4a234"></script>
+    <script src="/src/js/writing.js?v=0fab8f5408"></script>
+    <script src="/src/js/interactive_index.js?v=9832d8e965"></script>
     <script src="/src/js/favorites.js?v=4cbc9f7d95"></script>
 </body>
 </html>

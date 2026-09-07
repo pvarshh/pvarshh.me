@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="622" viewBox="0 0 360 622" role="img" aria-labelledby="title desc">
+<title id="title">Preserving BYOC lineage before the minimum guardrail</title>
+<desc id="desc">VDF, restaurant configuration, or a constant supplies a raw ETD. The provider snapshots the value and source. The serving branch applies the minimum guardrail; the logging branch preserves the original value in ByocInfo for Kafka.</desc>
+<style>
+text { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif; fill: #293327; }
+.label { font-size: 11px; font-weight: 600; letter-spacing: 1.3px; fill: #687062; }
+.title { font-size: 16px; font-weight: 600; }
+.detail { font-size: 12px; fill: #687062; }
+.mono { font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace; font-size: 12px; }
+.accent { fill: #53634f; }
+.white { fill: #fafaf5; }
+.light { fill: #cbddd5; }
+</style>
+<defs><marker id="arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M1 1 L6 3.5 L1 6" fill="none" stroke="#a0aa99" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="green-arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M1 1 L6 3.5 L1 6" fill="none" stroke="#53634f" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<rect width="360" height="622" fill="#fafaf5"/>
+<rect x="20" y="20" width="320" height="108" rx="6" fill="#f7f9f7" stroke="#d6d9ce" stroke-width="1.2"/>
+<text x="36" y="45" class="label" text-anchor="start">PROVIDER SOURCES</text>
+<text x="36" y="72" class="detail" text-anchor="start" style="font-size:13px">VDF · Restaurant config · Constant</text>
+<text x="36" y="101" class="detail" text-anchor="start">One source supplies the raw ETD.</text>
+<path d="M180 128 V164" fill="none" stroke="#a0aa99" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="54" y="164" width="252" height="82" rx="6" fill="#fafaf5" stroke="#d6d9ce" stroke-width="1.2"/>
+<text x="180.0" y="202.0" class="title" text-anchor="middle">Snapshot provider output</text>
+<text x="180.0" y="224.0" class="detail" text-anchor="middle">raw ETD + source</text>
+<path d="M180 246 V273 H94 V325" fill="none" stroke="#a0aa99" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M180 273 H266 V325" fill="none" stroke="#53634f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#green-arrow)"/>
+<circle cx="180" cy="273" r="3" fill="#53634f"/>
+<text x="105" y="308" class="label" text-anchor="start" style="font-size:10px">SERVING</text>
+<text x="277" y="308" class="label accent" text-anchor="start" style="font-size:10px">LOGGING</text>
+<rect x="20" y="325" width="148" height="102" rx="6" fill="#fafaf5" stroke="#d6d9ce" stroke-width="1.2"/>
+<text x="94" y="356" class="title" text-anchor="middle" style="font-size:14px">Minimum ETD</text>
+<text x="94" y="376" class="title" text-anchor="middle" style="font-size:14px">guardrail</text>
+<text x="94" y="406" class="detail" text-anchor="middle">Apply the floor</text>
+<rect x="192" y="325" width="148" height="102" rx="6" fill="#eef1e8" stroke="#b4bfa9" stroke-width="1.2"/>
+<text x="266" y="359" class="title accent" text-anchor="middle" style="font-size:15px">ByocInfo</text>
+<text x="266" y="386" class="detail" text-anchor="middle">Original ETD</text>
+<text x="266" y="406" class="detail" text-anchor="middle">+ source</text>
+<path d="M94 427 V473" fill="none" stroke="#a0aa99" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M266 427 V473" fill="none" stroke="#53634f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#green-arrow)"/>
+<rect x="20" y="473" width="148" height="100" rx="6" fill="#293327" stroke="#293327" stroke-width="1.2"/>
+<text x="94" y="506" class="title white" text-anchor="middle" style="font-size:15px">Customer</text>
+<text x="94" y="527" class="title white" text-anchor="middle" style="font-size:15px">estimate</text>
+<text x="94" y="551" class="detail light" text-anchor="middle">Guarded value</text>
+<rect x="192" y="473" width="148" height="100" rx="6" fill="#eef1e8" stroke="#b4bfa9" stroke-width="1.2"/>
+<text x="266" y="509" class="title accent" text-anchor="middle" style="font-size:15px">Kafka event</text>
+<text x="266" y="538" class="detail" text-anchor="middle">Original signal</text>
+</svg>

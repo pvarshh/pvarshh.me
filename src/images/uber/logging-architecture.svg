@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="534" viewBox="0 0 800 534" role="img" aria-labelledby="title desc">
+<title id="title">Prediction observability across the order lifecycle</title>
+<desc id="desc">Eyeball prediction responses, Checkout feature vectors, and PostOrder delivery providers pass metadata through their event adapters into Kafka Heatpipe events for downstream analysis.</desc>
+<style>
+text { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif; fill: #293327; }
+.label { font-size: 11px; font-weight: 600; letter-spacing: 1.3px; fill: #687062; }
+.title { font-size: 16px; font-weight: 600; }
+.detail { font-size: 12px; fill: #687062; }
+.mono { font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace; font-size: 12px; }
+.accent { fill: #53634f; }
+.white { fill: #fafaf5; }
+.light { fill: #cbddd5; }
+</style>
+<defs><marker id="arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M1 1 L6 3.5 L1 6" fill="none" stroke="#a0aa99" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="green-arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M1 1 L6 3.5 L1 6" fill="none" stroke="#53634f" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<rect width="800" height="534" fill="#fafaf5"/>
+<text x="144" y="35" class="label" text-anchor="middle">EYEBALL</text>
+<rect x="32" y="56" width="224" height="80" rx="6" fill="#fafaf5" stroke="#d6d9ce" stroke-width="1.2"/>
+<text x="144.0" y="93.0" class="title" text-anchor="middle">Response + request</text>
+<text x="144.0" y="115.0" class="detail" text-anchor="middle">uETA + BYOC custom ETD</text>
+<path d="M144 136 V184" fill="none" stroke="#a0aa99" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="32" y="184" width="224" height="118" rx="6" fill="#eef1e8" stroke="#b4bfa9" stroke-width="1.2"/>
+<text x="144" y="214" class="title" text-anchor="middle">Eyeball adapter</text>
+<path d="M50 232 H238" fill="none" stroke="#a0aa99" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="144" y="254" class="mono accent" text-anchor="middle">TravelTime</text>
+<text x="144" y="277" class="mono accent" text-anchor="middle">ByocInfo</text>
+<path d="M144 302 V342 H400" fill="none" stroke="#a0aa99" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="400" y="35" class="label" text-anchor="middle">CHECKOUT</text>
+<rect x="288" y="56" width="224" height="80" rx="6" fill="#fafaf5" stroke="#d6d9ce" stroke-width="1.2"/>
+<text x="400.0" y="93.0" class="title" text-anchor="middle">Features + metadata</text>
+<text x="400.0" y="115.0" class="detail" text-anchor="middle">uETA + ByocInfo</text>
+<path d="M400 136 V184" fill="none" stroke="#a0aa99" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="288" y="184" width="224" height="118" rx="6" fill="#eef1e8" stroke="#b4bfa9" stroke-width="1.2"/>
+<text x="400" y="214" class="title" text-anchor="middle">Checkout adapter</text>
+<path d="M306 232 H494" fill="none" stroke="#a0aa99" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="400" y="254" class="mono accent" text-anchor="middle">TravelTime</text>
+<text x="400" y="277" class="mono accent" text-anchor="middle">ByocInfo</text>
+<path d="M400 302 V342 H400" fill="none" stroke="#a0aa99" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="656" y="35" class="label" text-anchor="middle">POSTORDER</text>
+<rect x="544" y="56" width="224" height="80" rx="6" fill="#fafaf5" stroke="#d6d9ce" stroke-width="1.2"/>
+<text x="656.0" y="93.0" class="title" text-anchor="middle">Delivery providers</text>
+<text x="656.0" y="115.0" class="detail" text-anchor="middle">Raw ETD + source</text>
+<path d="M656 136 V184" fill="none" stroke="#a0aa99" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="544" y="184" width="224" height="118" rx="6" fill="#eef1e8" stroke="#b4bfa9" stroke-width="1.2"/>
+<text x="656" y="214" class="title" text-anchor="middle">Workflow adapter</text>
+<path d="M562 232 H750" fill="none" stroke="#a0aa99" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="656" y="254" class="mono accent" text-anchor="middle">ByocInfo</text>
+<text x="656" y="277" class="detail" text-anchor="middle" style="font-size:11px">UpdateWorkflowETD</text>
+<path d="M656 302 V342 H400" fill="none" stroke="#a0aa99" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="400" cy="342" r="3" fill="#a0aa99"/>
+<path d="M400 342 V382" fill="none" stroke="#a0aa99" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="216" y="382" width="368" height="74" rx="6" fill="#293327" stroke="#293327" stroke-width="1.2"/>
+<text x="400.0" y="416.0" class="title white" text-anchor="middle">Kafka / Heatpipe</text>
+<text x="400.0" y="438.0" class="detail light" text-anchor="middle">Structured prediction events</text>
+<path d="M400 456 V491" fill="none" stroke="#a0aa99" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<text x="400" y="519" class="detail" text-anchor="middle" style="font-size:14px">Inspect inputs · validate features · trace sources</text>
+</svg>

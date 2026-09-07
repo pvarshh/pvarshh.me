@@ -1,111 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AWS - Pranav</title>
-
-    <!-- Standard favicon -->
-    <link rel="icon" type="image/x-icon" href="/src/favicon/favicon.ico">
-    <link rel="icon" type="image/png" sizes="32x32" href="/src/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/src/favicon/favicon-16x16.png">
-
-    <!-- Apple Touch Icons -->
-    <link rel="apple-touch-icon" href="/src/favicon/apple-touch-icon.png">
-
-    <!-- Android Chrome Icons -->
-    <link rel="icon" type="image/png" sizes="192x192" href="/src/favicon/android-chrome-192x192.png">
-    <link rel="icon" type="image/png" sizes="512x512" href="/src/favicon/android-chrome-512x512.png">
-
-    <!-- Web App Manifest -->
-    <link rel="manifest" href="/site.webmanifest">
-
-    <link rel="stylesheet" href="/src/css/styles.css">
-<link rel="stylesheet" href="/src/css/subpage.css">
-
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=Crimson+Text:ital,wght@0,400;0,700;1,400&display=swap">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Mapping service dependencies, monitoring infrastructure health, and making audit tooling easier to operate.">
+        <meta name="theme-color" content="#f5f4ef">
+        <title>Making model serving easier to diagnose — Pranav Varshney</title>
+        <link rel="icon" type="image/x-icon" href="/src/favicon/favicon.ico">
+        <link rel="icon" type="image/png" sizes="32x32" href="/src/favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/src/favicon/favicon-16x16.png">
+        <link rel="apple-touch-icon" href="/src/favicon/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="192x192" href="/src/favicon/android-chrome-192x192.png">
+        <link rel="icon" type="image/png" sizes="512x512" href="/src/favicon/android-chrome-512x512.png">
+        <link rel="manifest" href="/site.webmanifest">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=Crimson+Text:ital,wght@0,400;0,700;1,400&display=swap">
+        <link rel="stylesheet" href="/src/css/styles.css?v=65b6c45eef">
+        <link rel="stylesheet" href="/src/css/experience.css?v=6f0d84431d">
+        <script src="/src/js/experience.js?v=7d0ecec69b" defer></script>
+        <script src="/src/js/main.js?v=32bc2e15b5" defer></script>
+        <link rel="stylesheet" href="/src/css/portfolio.css?v=d73c5b40ae">
 </head>
-<body>
-    <div class="container content-centered">
-        <div class="content">
-            <div class="site-header">
-                <a href="/pages/experience/aws.html">Summer '25 @ Amazon</a>
-                <h2>Pranav Varshney</h2>
-        	    <a href="/" class="nav-item">Home</a>
-            </div>
+    <body class="experience-article portfolio-system">
+    <a class="skip-link" href="#article">Skip to article</a>
+        <header class="portfolio-header"><a href="/" class="portfolio-name">Pranav Varshney</a><nav class="portfolio-nav" aria-label="Portfolio"><a href="/pages/experience/index.html" aria-current="location">Compute</a><a href="/#reflect">Reflect</a><a href="/pages/favorites/index.html">Culture</a><a href="/#reach">Reach</a></nav></header>
 
-            <p>I was fortunate to intern on AWS’s SageMaker / Bedrock ML Infrastructure team during Summer 2025, working with incredible mentors (Jonathan, Javion) 
-                and my manager (Qiyun). This was my first big-tech internship, and it gave me a front-row seat to how large-scale ML systems are built and operated 
-                in production.</p>
-
-            <h2>Setting the Stage</h2>
-
-            <p>SageMaker and Bedrock power large-scale machine learning and generative AI workloads for customers across AWS. My team owned the core infrastructure 
-                behind model serving, spanning hardware, software, and developer-facing APIs. With Bedrock rapidly evolving and recent org restructuring, there 
-                was significant opportunity to make meaningful, high-impact contributions.</p>
-
-            <h2>My Contributions</h2>
-
-            <p>My primary project focused on observability for Bedrock’s model serving infrastructure, a critical gap at the time. With over 1M+ SageMaker endpoints 
-                powering Bedrock models, diagnosing production issues was slow and opaque; engineers lacked visibility into which dependent AWS services were failing.</p>
-
-            <p>To solve this, I:</p>
-            <ul>
-                <li>Built a Go-based CLI tool that mapped endpoints to their downstream AWS service dependencies, giving on-call engineers a 
-                    clear service topology for faster root-cause analysis.</li>
-                <li>Designed a real-time system health monitoring framework, enabling live visibility into infrastructure health and reducing 
-                    on-call response times by ~70% through proactive issue detection.</li>
-                <li>Containerized audit infrastructure using AWS Copilot, modernizing deployments and improving scalability to reliably handle 10K+ 
-                    audit queries per week.</li>
-            </ul>
-
-            <p>These tools became core components of the team’s production and on-call workflows.</p>
-
-            <h2>Seattle + Bellevue Pit Stop</h2>
-
-            <p>Beyond technical work, I cherished the in-person experience at AWS’s Seattle and Bellevue offices. From exploring downtown, hiking trails, 
-                playing poker and everything in between, I soaked in the beauty this opportunity had to offer.</p>
-
-            <p>Some of my favorite highlights:</p>
-            <ul>
-                <li>Hiking Lake Serene and exporing its hidden charm.</li>
-                <li>Late night poker games with fellow interns.</li>
-                <li>Pickleball + Boba runs after work.</li>
-            </ul>
-
-            <div class="picture-web">
-                <div class="picture-item">
-                    <img src="/src/images/aws/needle.JPG" alt="Space Needle">
-                </div>
-                <div class="picture-item">
-                    <img src="/src/images/aws/seattle.JPG" alt="Downtown Seattle">
-                </div>
-                <div class="picture-item">
-                    <img src="/src/images/aws/cat.JPG" alt="Cute Cat @ Cat Library">
-                </div>
-            </div>
-
-            <h2>What I Learned</h2>
-
-            <p>This internship taught me how observability, reliability, and operational rigor are just as critical as core functionality in 
-                large-scale ML systems. I learned how to design tooling for real production constraints, collaborate within a massive org, and ship 
-                systems that meaningfully improve developer velocity and customer experience.</p>
-
-        <p class="with-space">
-            <span id="edited-date" class="italic"></span>
-        </p>
-        
-        <script src="/src/js/main.js"></script>
-<script src="/src/js/subpage.js"></script>
-    <script src="/src/js/footer.js"></script>
-        
+        <div class="article-layout">
+            <aside class="article-sidebar">
+                <nav aria-label="On this page">
+                    <p class="small-label">In this article</p>
+                    <ol>
+                        <li><a href="#context"><span>01</span> The operational problem</a></li>
+                        <li><a href="#topology"><span>02</span> Dependency mapping</a></li>
+                        <li><a href="#health"><span>03</span> Live system health</a></li>
+                        <li><a href="#audits"><span>04</span> Audit infrastructure</a></li>
+                        <li><a href="#lessons"><span>05</span> Lessons & Seattle</a></li>
+                    </ol>
+                    <a class="sources-link" href="#sources">Source notes <span aria-hidden="true">↗</span></a></nav>
+                <p class="sidebar-note">Summer 2025<br>Amazon Web Services<br>Engineering case study</p>
+            </aside>
+            <main id="article" tabindex="-1">
+                <article>
+                    <header class="article-hero">
+                        <p class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span> Amazon Web Services / Engineering case study</p>
+                        <h1>Making model serving easier to diagnose.</h1>
+                        <p class="article-deck">Mapping service dependencies, monitoring infrastructure health, and making audit tooling easier to operate.</p>
+                        <dl class="article-meta">
+                            <div><dt>Team / Lab</dt><dd>SageMaker / Bedrock · Inference Platform</dd></div>
+                            <div><dt>Role</dt><dd>Software Engineering Intern</dd></div>
+                            <div><dt>When</dt><dd>May – July 2025</dd></div>
+                        </dl>
+                    </header>
+                    <div class="article-abstract">
+                        <p class="small-label">The work, at a glance</p>
+                        <p>On AWS’s SageMaker / Bedrock infrastructure team, I built tools that helped engineers understand the systems behind a model endpoint. My work connected dependency visibility, live health monitoring, and containerized audit infrastructure.</p>
+                        <div class="work-tracks">
+                            <div><span class="track-number">I.</span><h2>Topology &amp; health</h2>
+                                <p>A Go CLI for dependency mapping, paired with real-time infrastructure health monitoring.</p>
+                            </div>
+                            <div><span class="track-number">II.</span><h2>Audit infrastructure</h2>
+                                <p>Containerization tooling built with AWS Copilot for the team’s audit systems.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <dl class="experience-metrics">
+                        <div><dt>Bedrock endpoints in the serving environment</dt><dd>1M+</dd></div>
+                        <div><dt>Reduction in on-call response time</dt><dd>~70%</dd></div>
+                        <div><dt>Audit queries supported per week</dt><dd>10K+</dd></div>
+                    </dl>
+                    <section id="context" class="article-section">
+                        <p class="section-number">01 / Context</p>
+                        <h2>An endpoint is only part of the system.</h2>
+                        <p>Model serving depends on more than the endpoint a customer calls. The SageMaker infrastructure powering Bedrock spans hardware, software, and downstream AWS services. When something failed, engineers needed to understand which of those dependencies was involved.</p>
+                        <p>My primary project addressed that observability gap. The environment covered more than a million endpoints, and the existing diagnosis process offered limited visibility into dependent services. A useful operational tool had to make those relationships easy to inspect.</p>
+                    </section>
+                    <section id="topology" class="article-section">
+                        <p class="section-number">02 / Service topology</p>
+                        <h2>Start with the endpoint.</h2>
+                        <p>I built a <strong>Go-based CLI</strong> that mapped model endpoints to their downstream AWS service dependencies. The resulting topology gave on-call engineers a concrete starting point for root-cause analysis.</p>
+                        <p>The important output was the relationship between an endpoint and the services it relied on. Exposing that relationship made it easier to move from a symptom at the serving layer to the infrastructure that needed investigation.</p>
+                        <figure class="technical-figure" aria-labelledby="aws-observability-caption">
+                            <div class="figure-heading">
+                                <div><span class="small-label">01 / Observability</span><h3>Make the serving system inspectable</h3>
+                                </div>
+                                <a class="diagram-open" href="/src/images/experience/aws-observability.svg" target="_blank" rel="noopener" aria-label="Open make the serving system inspectable diagram at full size">Full size <span aria-hidden="true">↗</span></a>
+                            </div>
+                            <picture class="architecture-art">
+                                <source media="(max-width: 600px)" srcset="/src/images/experience/aws-observability-mobile.svg" width="360" height="672">
+                                <img src="/src/images/experience/aws-observability.svg" width="800" height="606" alt="Endpoint dependency mapping and real-time health monitoring feed on-call diagnosis." loading="lazy">
+                            </picture>
+                            <figcaption id="aws-observability-caption">Conceptual view of the two observability tools: the CLI exposes service relationships, while the monitoring framework exposes infrastructure health.</figcaption>
+                        </figure>
+                    </section>
+                    <section id="health" class="article-section">
+                        <p class="section-number">03 / Monitoring</p>
+                        <h2>Pair the map with current conditions.</h2>
+                        <p>I also designed a <strong>real-time system health monitoring framework</strong> to give the team live visibility into infrastructure health. Proactive issue detection helped reduce on-call response time by approximately <strong>70%</strong>.</p>
+                        <p>Topology and health information answer complementary questions: which services are involved, and how are those services behaving now? Together, they made the serving environment easier to reason about during an incident.</p>
+                    </section>
+                    <section id="audits" class="article-section">
+                        <p class="section-number">04 / Operational tooling</p>
+                        <h2>Make the audit infrastructure repeatable.</h2>
+                        <p>I built containerization tooling using <strong>AWS Copilot</strong>, modernizing deployment of the audit infrastructure. The resulting setup supported more than <strong>10,000 audit queries per week</strong>.</p>
+                        <figure class="technical-figure" aria-labelledby="aws-audits-caption">
+                            <div class="figure-heading">
+                                <div><span class="small-label">02 / Deployment &amp; workload</span><h3>Containerized audit infrastructure</h3>
+                                </div>
+                                <a class="diagram-open" href="/src/images/experience/aws-audits.svg" target="_blank" rel="noopener" aria-label="Open containerized audit infrastructure diagram at full size">Full size <span aria-hidden="true">↗</span></a>
+                            </div>
+                            <picture class="architecture-art">
+                                <source media="(max-width: 600px)" srcset="/src/images/experience/aws-audits-mobile.svg" width="360" height="426">
+                                <img src="/src/images/experience/aws-audits.svg" width="800" height="280" alt="AWS Copilot supports containerized audit infrastructure serving more than 10,000 audit queries per week." loading="lazy">
+                            </picture>
+                            <figcaption id="aws-audits-caption">A logical view of the deployment tooling and audit workload described in my internship account. The arrows distinguish deployment from incoming queries.</figcaption>
+                        </figure>
+                        <p>The CLI, health framework, and audit tools became part of the team’s production and on-call workflows. This made operational usability a core requirement of the work: engineers needed tools they could use while investigating real issues.</p>
+                    </section>
+                    <section id="lessons" class="article-section">
+                        <p class="section-number">05 / Reflection</p>
+                        <h2>Reliability includes the tools around the service.</h2>
+                        <p>This was my first big-tech internship. Working with my mentors Jonathan and Javion, and my manager Qiyun, showed me how observability and operational rigor fit into production ML infrastructure.</p>
+                        <p>I learned to design tooling around production constraints and to treat the on-call engineer’s workflow as part of the system. A service is easier to operate when the people responsible for it can understand its dependencies and current state.</p>
+                        <p>Outside work, Seattle and Bellevue meant hiking at Lake Serene, late-night poker with other interns, and pickleball and boba after work.</p>
+                        <figure class="internship-photos">
+                            <div><img src="/src/images/aws/needle.JPG" alt="The Space Needle in Seattle" width="600" height="450" loading="lazy"><img src="/src/images/aws/seattle.JPG" alt="Downtown Seattle" width="600" height="450" loading="lazy"><img src="/src/images/aws/cat.JPG" alt="A cat at the cat library" width="600" height="450" loading="lazy"></div>
+                            <figcaption>A few moments from Summer ’25 in Seattle and Bellevue.</figcaption>
+                        </figure>
+                    </section>
+                    <section id="sources" class="source-notes" aria-labelledby="sources-heading">
+                        <h2 id="sources-heading">Source notes</h2>
+                        <p>Adapted from my AWS internship account and <a href="/src/pdf/resume.pdf">résumé</a>. The scale and outcome figures are those recorded in these summaries; diagrams are conceptual views of the work.</p>
+                    </section>
+                    <nav class="experience-related" aria-label="Continue through my experience"><a href="/pages/experience/scale.html"><span class="small-label">More recent</span><strong>Scale AI <span aria-hidden="true">↗</span></strong></a><a href="/pages/experience/networks.html"><span class="small-label">Earlier experience</span><strong>Networks research <span aria-hidden="true">↗</span></strong></a></nav>
+                    <footer class="article-end"><a href="/pages/experience/index.html">← Back to experiences</a><a href="#article">Back to top ↑</a></footer>
+                </article>
+            </main>
         </div>
-    </div>
-
-<footer class="site-footer">
-    <p class="site-footer-quote">कृण्वन्तो विश्वं आर्यं | Make the world noble</p>
-</footer>
-    
-
-</body>
+        <footer class="site-footer">
+            <p class="site-footer-quote">कृण्वन्तो विश्वं आर्यं | Make the world noble</p>
+        </footer>
+    </body>
 </html>

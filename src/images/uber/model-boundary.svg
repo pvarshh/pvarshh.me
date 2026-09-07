@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="550" viewBox="0 0 800 550" role="img" aria-labelledby="title desc">
+<title id="title">Moving Checkout into the unified model</title>
+<desc id="desc">The baseline preorder model handles Eyeball and Checkout, and its postorder model handles Created, Accepted, and Adjusted. The candidate isolates Eyeball and moves Checkout into a unified model with the three postorder stages. Both architectures use two models.</desc>
+<style>
+text { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif; fill: #293327; }
+.label { font-size: 11px; font-weight: 600; letter-spacing: 1.3px; fill: #687062; }
+.title { font-size: 16px; font-weight: 600; }
+.detail { font-size: 12px; fill: #687062; }
+.mono { font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace; font-size: 12px; }
+.accent { fill: #53634f; }
+.white { fill: #fafaf5; }
+.light { fill: #cbddd5; }
+</style>
+<defs><marker id="arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M1 1 L6 3.5 L1 6" fill="none" stroke="#a0aa99" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="green-arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M1 1 L6 3.5 L1 6" fill="none" stroke="#53634f" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<rect width="800" height="550" fill="#fafaf5"/>
+<text x="32" y="31" class="label" text-anchor="start">BASELINE</text>
+<text x="768" y="31" class="detail" text-anchor="end">2 preorder + 3 postorder stages</text>
+<rect x="32" y="56" width="286" height="164" rx="6" fill="#f5f5ef" stroke="#d6d9ce" stroke-width="1.2"/>
+<rect x="328" y="56" width="440" height="164" rx="6" fill="#f5f5ef" stroke="#d6d9ce" stroke-width="1.2"/>
+<text x="50" y="86" class="title" text-anchor="start">Preorder model</text>
+<text x="346" y="86" class="title" text-anchor="start">Postorder model</text>
+<rect x="50" y="120" width="110" height="56" rx="6" fill="#fafaf5" stroke="#d6d9ce" stroke-width="1.2"/>
+<text x="105" y="153" class="title" text-anchor="middle" style="font-size:14px">Eyeball</text>
+<path d="M160 148 H194" fill="none" stroke="#a0aa99" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="194" y="120" width="110" height="56" rx="6" fill="#eef1e8" stroke="#b4bfa9" stroke-width="1.2"/>
+<text x="249" y="153" class="title accent" text-anchor="middle" style="font-size:14px">Checkout</text>
+<path d="M304 148 H338" fill="none" stroke="#a0aa99" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="338" y="120" width="110" height="56" rx="6" fill="#fafaf5" stroke="#d6d9ce" stroke-width="1.2"/>
+<text x="393" y="153" class="title" text-anchor="middle" style="font-size:14px">Created</text>
+<path d="M448 148 H482" fill="none" stroke="#a0aa99" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="482" y="120" width="110" height="56" rx="6" fill="#fafaf5" stroke="#d6d9ce" stroke-width="1.2"/>
+<text x="537" y="153" class="title" text-anchor="middle" style="font-size:14px">Accepted</text>
+<path d="M592 148 H626" fill="none" stroke="#a0aa99" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="626" y="120" width="110" height="56" rx="6" fill="#fafaf5" stroke="#d6d9ce" stroke-width="1.2"/>
+<text x="681" y="153" class="title" text-anchor="middle" style="font-size:14px">Adjusted</text>
+<text x="50" y="200" class="detail" text-anchor="start">Discovery + purchase</text>
+<text x="346" y="200" class="detail" text-anchor="start">Fulfillment updates</text>
+<path d="M249 221 V311" fill="none" stroke="#53634f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#green-arrow)"/>
+<rect x="267" y="249" width="380" height="30" rx="0" fill="#fafaf5" stroke="#fafaf5" stroke-width="1.2"/>
+<text x="281" y="270" class="detail accent" text-anchor="start" style="font-size:14px">Checkout changes model ownership</text>
+<text x="32" y="303" class="label accent" text-anchor="start">CANDIDATE</text>
+<text x="768" y="303" class="detail" text-anchor="end">1 eyeball + 4 unified stages</text>
+<rect x="32" y="326" width="144" height="164" rx="6" fill="#f5f5ef" stroke="#d6d9ce" stroke-width="1.2"/>
+<rect x="186" y="326" width="582" height="164" rx="6" fill="#eef1e8" stroke="#b4bfa9" stroke-width="1.2"/>
+<text x="50" y="356" class="title" text-anchor="start" style="font-size:15px">Eyeball-only</text>
+<text x="204" y="356" class="title accent" text-anchor="start">Unified checkout–postorder</text>
+<rect x="50" y="390" width="110" height="56" rx="6" fill="#fafaf5" stroke="#d6d9ce" stroke-width="1.2"/>
+<text x="105" y="423" class="title" text-anchor="middle" style="font-size:14px">Eyeball</text>
+<path d="M160 418 H194" fill="none" stroke="#a0aa99" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="194" y="390" width="110" height="56" rx="6" fill="#53634f" stroke="#53634f" stroke-width="1.2"/>
+<text x="249" y="423" class="title white" text-anchor="middle" style="font-size:14px">Checkout</text>
+<path d="M304 418 H338" fill="none" stroke="#a0aa99" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="338" y="390" width="110" height="56" rx="6" fill="#fafaf5" stroke="#d6d9ce" stroke-width="1.2"/>
+<text x="393" y="423" class="title" text-anchor="middle" style="font-size:14px">Created</text>
+<path d="M448 418 H482" fill="none" stroke="#a0aa99" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="482" y="390" width="110" height="56" rx="6" fill="#fafaf5" stroke="#d6d9ce" stroke-width="1.2"/>
+<text x="537" y="423" class="title" text-anchor="middle" style="font-size:14px">Accepted</text>
+<path d="M592 418 H626" fill="none" stroke="#a0aa99" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="626" y="390" width="110" height="56" rx="6" fill="#fafaf5" stroke="#d6d9ce" stroke-width="1.2"/>
+<text x="681" y="423" class="title" text-anchor="middle" style="font-size:14px">Adjusted</text>
+<text x="204" y="470" class="mono accent" text-anchor="start" style="font-size:11px">Stage context supplied through prediction_mode</text>
+<text x="400" y="526" class="detail" text-anchor="middle" style="font-size:13px">Same five stages. Same two-model count. A different boundary.</text>
+</svg>

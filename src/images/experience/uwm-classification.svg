@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="380" viewBox="0 0 800 380" role="img" aria-labelledby="title desc">
+<title id="title">Classifying loan outcomes with a random forest</title>
+<desc id="desc">A random forest model classifies loan proposals into acceptance or rejection outcomes. This project saved 20,000 dollars.</desc>
+<style>
+text { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif; fill: #293327; }
+.label { font-size: 11px; font-weight: 600; letter-spacing: 1.3px; fill: #687062; }
+.title { font-size: 16px; font-weight: 600; }
+.detail { font-size: 12px; fill: #687062; }
+.mono { font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace; font-size: 12px; }
+.accent { fill: #53634f; }
+.white { fill: #fafaf5; }
+.light { fill: #cbddd5; }
+</style>
+<defs><marker id="arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M1 1 L6 3.5 L1 6" fill="none" stroke="#a0aa99" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="green-arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M1 1 L6 3.5 L1 6" fill="none" stroke="#53634f" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<rect width="800" height="380" fill="#fafaf5"/>
+<text x="32" y="32" class="label" text-anchor="start">LOAN OUTCOME CLASSIFICATION</text>
+<rect x="32" y="74" width="200" height="84" rx="6" fill="#fafaf5" stroke="#d6d9ce" stroke-width="1.2"/>
+<text x="132.0" y="113.0" class="title" text-anchor="middle">Loan proposal</text>
+<text x="132.0" y="135.0" class="detail" text-anchor="middle">Input data</text>
+<path d="M232 116 H300" fill="none" stroke="#a0aa99" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="300" y="74" width="200" height="84" rx="6" fill="#eef1e8" stroke="#b4bfa9" stroke-width="1.2"/>
+<text x="400.0" y="113.0" class="title" text-anchor="middle">Random forest</text>
+<text x="400.0" y="135.0" class="detail" text-anchor="middle">Outcome classifier</text>
+<path d="M500 116 H568" fill="none" stroke="#a0aa99" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="568" y="74" width="200" height="84" rx="6" fill="#fafaf5" stroke="#d6d9ce" stroke-width="1.2"/>
+<text x="668.0" y="113.0" class="title" text-anchor="middle">Predicted outcome</text>
+<text x="668.0" y="135.0" class="detail" text-anchor="middle">Acceptance / rejection</text>
+<path d="M668 158 V202 H540 V248" fill="none" stroke="#a0aa99" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M668 202 H708 V248" fill="none" stroke="#a0aa99" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<circle cx="668" cy="202" r="3" fill="#a0aa99"/>
+<rect x="472" y="248" width="136" height="64" rx="6" fill="#fafaf5" stroke="#d6d9ce" stroke-width="1.2"/>
+<text x="540.0" y="285.0" class="title" text-anchor="middle">Accept</text>
+<rect x="640" y="248" width="136" height="64" rx="6" fill="#fafaf5" stroke="#d6d9ce" stroke-width="1.2"/>
+<text x="708.0" y="285.0" class="title" text-anchor="middle">Reject</text>
+<text x="32" y="290" class="title accent" text-anchor="start">$20K saved</text>
+<text x="32" y="316" class="detail" text-anchor="start">Outcome of the classification project</text>
+</svg>

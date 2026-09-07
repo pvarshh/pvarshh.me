@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="438" viewBox="0 0 360 438" role="img" aria-labelledby="title desc">
+<title id="title">Moving Checkout into the unified model</title>
+<desc id="desc">The baseline preorder model handles Eyeball and Checkout, and its postorder model handles Created, Accepted, and Adjusted. The candidate isolates Eyeball and moves Checkout into a unified model with the three postorder stages. Both architectures use two models.</desc>
+<style>
+text { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif; fill: #293327; }
+.label { font-size: 11px; font-weight: 600; letter-spacing: 1.3px; fill: #687062; }
+.title { font-size: 16px; font-weight: 600; }
+.detail { font-size: 12px; fill: #687062; }
+.mono { font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace; font-size: 12px; }
+.accent { fill: #53634f; }
+.white { fill: #fafaf5; }
+.light { fill: #cbddd5; }
+</style>
+<defs><marker id="arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M1 1 L6 3.5 L1 6" fill="none" stroke="#a0aa99" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="green-arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M1 1 L6 3.5 L1 6" fill="none" stroke="#53634f" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<rect width="360" height="438" fill="#fafaf5"/>
+<text x="20" y="30" class="label" text-anchor="start" style="font-size:10px">STAGE</text>
+<text x="166" y="30" class="label" text-anchor="middle" style="font-size:10px">BASELINE</text>
+<text x="285" y="30" class="label accent" text-anchor="middle" style="font-size:10px">CANDIDATE</text>
+<text x="20" y="92" class="title" text-anchor="start" style="font-size:13px">Eyeball</text>
+<path d="M20 114 H340" fill="none" stroke="#a0aa99" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 5"/>
+<text x="20" y="150" class="title accent" text-anchor="start" style="font-size:13px">Checkout</text>
+<path d="M20 172 H340" fill="none" stroke="#a0aa99" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 5"/>
+<text x="20" y="208" class="title" text-anchor="start" style="font-size:13px">Created</text>
+<path d="M20 230 H340" fill="none" stroke="#a0aa99" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 5"/>
+<text x="20" y="266" class="title" text-anchor="start" style="font-size:13px">Accepted</text>
+<path d="M20 288 H340" fill="none" stroke="#a0aa99" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 5"/>
+<text x="20" y="324" class="title" text-anchor="start" style="font-size:13px">Adjusted</text>
+<path d="M20 346 H340" fill="none" stroke="#a0aa99" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 5"/>
+<rect x="116" y="62" width="100" height="108" rx="6" fill="#f5f5ef" stroke="#d6d9ce" stroke-width="1.2"/>
+<text x="166" y="113" class="title" text-anchor="middle" style="font-size:14px">Preorder</text>
+<text x="166" y="133" class="detail" text-anchor="middle" style="font-size:11px">2 stages</text>
+<rect x="116" y="182" width="100" height="164" rx="6" fill="#f5f5ef" stroke="#d6d9ce" stroke-width="1.2"/>
+<text x="166" y="259" class="title" text-anchor="middle" style="font-size:14px">Postorder</text>
+<text x="166" y="280" class="detail" text-anchor="middle" style="font-size:11px">3 stages</text>
+<rect x="234" y="62" width="106" height="50" rx="6" fill="#f5f5ef" stroke="#d6d9ce" stroke-width="1.2"/>
+<text x="287" y="92" class="title" text-anchor="middle" style="font-size:12px">Eyeball-only</text>
+<rect x="234" y="124" width="106" height="222" rx="6" fill="#eef1e8" stroke="#b4bfa9" stroke-width="1.2"/>
+<text x="287" y="219" class="title accent" text-anchor="middle" style="font-size:15px">Unified</text>
+<text x="287" y="242" class="detail" text-anchor="middle" style="font-size:12px">Checkout +</text>
+<text x="287" y="261" class="detail" text-anchor="middle" style="font-size:12px">postorder</text>
+<text x="287" y="286" class="detail accent" text-anchor="middle" style="font-size:11px">4 stages</text>
+<text x="20" y="385" class="detail accent" text-anchor="start" style="font-size:13px">Checkout joins the later-stage model.</text>
+<text x="20" y="410" class="detail" text-anchor="start" style="font-size:12px">Both architectures still use two models.</text>
+</svg>

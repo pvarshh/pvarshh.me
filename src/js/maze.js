@@ -19,12 +19,14 @@ class MazeGame {
         this.glyphs = ['λ', '∂', '∞', '?', '§', '1066', '0', '1'];
 
         // Styling - Matching website aesthetic
+        const palette = getComputedStyle(document.documentElement);
         this.colors = {
             bg: null, // Transparent
-            wall: "rgba(50, 50, 50, 0.8)", // Soft Charcoal
-            player: "#1a1a1a", 
-            goal: "#1a1a1a",
-            trail: "rgba(26, 26, 26, 0.05)" // Very subtle trail
+            wall: palette.getPropertyValue('--color-muted').trim(),
+            player: palette.getPropertyValue('--color-ink').trim(),
+            goal: palette.getPropertyValue('--color-accent').trim(),
+            trail: palette.getPropertyValue('--color-accent-soft').trim(),
+            solution: palette.getPropertyValue('--color-accent').trim()
         };
 
         this.init();
@@ -162,7 +164,7 @@ class MazeGame {
         this.draw(); 
         
         // Draw Wavefunction (Superposition)
-        this.ctx.fillStyle = "rgba(0, 200, 255, 0.2)"; // Cyan glow
+        this.ctx.fillStyle = this.colors.trail;
         for(let idx of this.qVisited) {
             // Recover x,y from index is strictly: index = x + y * cols
             const y = Math.floor(idx / this.cols);
@@ -190,7 +192,7 @@ class MazeGame {
              }
              
              // Draw up to current step
-             this.ctx.fillStyle = "rgba(0, 200, 255, 0.8)";
+             this.ctx.fillStyle = this.colors.solution;
              const n = solutionPath[step];
              this.ctx.fillRect(n.x * this.cellSize, n.y * this.cellSize, this.cellSize, this.cellSize);
              

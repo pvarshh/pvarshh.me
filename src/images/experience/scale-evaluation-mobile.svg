@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="748" viewBox="0 0 360 748" role="img" aria-labelledby="title desc">
+<title id="title">Input preparation and response evaluation at Scale AI</title>
+<desc id="desc">The input-preparation work retrieves and filters candidates, then reranks using LLM-as-a-judge and adjudication to prepare annotation inputs. A separate response benchmark scores more than 8,000 model responses daily.</desc>
+<style>
+text { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif; fill: #293327; }
+.label { font-size: 11px; font-weight: 600; letter-spacing: 1.3px; fill: #687062; }
+.title { font-size: 16px; font-weight: 600; }
+.detail { font-size: 12px; fill: #687062; }
+.mono { font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace; font-size: 12px; }
+.accent { fill: #53634f; }
+.white { fill: #fafaf5; }
+.light { fill: #cbddd5; }
+</style>
+<defs><marker id="arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M1 1 L6 3.5 L1 6" fill="none" stroke="#a0aa99" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="green-arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M1 1 L6 3.5 L1 6" fill="none" stroke="#53634f" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<rect width="360" height="748" fill="#fafaf5"/>
+<rect x="20" y="20" width="320" height="486" rx="6" fill="#f5f5ef" stroke="#d6d9ce" stroke-width="1.2" stroke-dasharray="5 5"/>
+<text x="36" y="48" class="label" text-anchor="start">INPUT PREPARATION</text>
+<rect x="54" y="70" width="252" height="70" rx="6" fill="#fafaf5" stroke="#d6d9ce" stroke-width="1.2"/>
+<text x="180.0" y="102.0" class="title" text-anchor="middle">Retrieval</text>
+<text x="180.0" y="124.0" class="detail" text-anchor="middle">Gather candidates</text>
+<path d="M180 140 V170" fill="none" stroke="#a0aa99" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="54" y="170" width="252" height="70" rx="6" fill="#fafaf5" stroke="#d6d9ce" stroke-width="1.2"/>
+<text x="180.0" y="202.0" class="title" text-anchor="middle">Filtering</text>
+<text x="180.0" y="224.0" class="detail" text-anchor="middle">Select candidates</text>
+<path d="M180 240 V270" fill="none" stroke="#a0aa99" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="54" y="270" width="252" height="98" rx="6" fill="#eef1e8" stroke="#b4bfa9" stroke-width="1.2"/>
+<text x="180.0" y="316.0" class="title" text-anchor="middle">Reranking</text>
+<text x="180.0" y="338.0" class="detail" text-anchor="middle">LLM-as-a-judge</text>
+<text x="180" y="359" class="detail" text-anchor="middle" style="font-size:11px">+ adjudication</text>
+<path d="M180 368 V398" fill="none" stroke="#a0aa99" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="54" y="400" width="252" height="70" rx="6" fill="#fafaf5" stroke="#d6d9ce" stroke-width="1.2"/>
+<text x="180.0" y="432.0" class="title" text-anchor="middle">Annotation input</text>
+<text x="180.0" y="454.0" class="detail" text-anchor="middle">Prepared LLM inputs</text>
+<rect x="20" y="542" width="320" height="184" rx="6" fill="#f5f5ef" stroke="#d6d9ce" stroke-width="1.2" stroke-dasharray="5 5"/>
+<text x="36" y="570" class="label" text-anchor="start">RESPONSE EVALUATION</text>
+<rect x="54" y="594" width="252" height="92" rx="6" fill="#eef1e8" stroke="#b4bfa9" stroke-width="1.2"/>
+<text x="180.0" y="637.0" class="title" text-anchor="middle">Response benchmark</text>
+<text x="180.0" y="659.0" class="detail" text-anchor="middle">8K+ model responses / day</text>
+<text x="180" y="715" class="detail" text-anchor="middle" style="font-size:13px">Structured evaluation scores</text>
+</svg>

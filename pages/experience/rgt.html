@@ -1,56 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>UWM - Pranav</title>
-
-    <!-- Standard favicon -->
-    <link rel="icon" type="image/x-icon" href="/src/favicon/favicon.ico">
-    <link rel="icon" type="image/png" sizes="32x32" href="/src/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/src/favicon/favicon-16x16.png">
-
-    <!-- Apple Touch Icons -->
-    <link rel="apple-touch-icon" href="/src/favicon/apple-touch-icon.png">
-
-    <!-- Android Chrome Icons -->
-    <link rel="icon" type="image/png" sizes="192x192" href="/src/favicon/android-chrome-192x192.png">
-    <link rel="icon" type="image/png" sizes="512x512" href="/src/favicon/android-chrome-512x512.png">
-
-    <!-- Web App Manifest -->
-    <link rel="manifest" href="/site.webmanifest">
-
-    <link rel="stylesheet" href="/src/css/styles.css">
-<link rel="stylesheet" href="/src/css/subpage.css">
-
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=Crimson+Text:ital,wght@0,400;0,700;1,400&display=swap">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="A RAG-based customer support system grounded in company data, plus Redis caching to reduce API costs in a React application.">
+        <meta name="theme-color" content="#f5f4ef">
+        <title>Ratna Global Technologies — Pranav Varshney</title>
+        <link rel="icon" type="image/x-icon" href="/src/favicon/favicon.ico">
+        <link rel="icon" type="image/png" sizes="32x32" href="/src/favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/src/favicon/favicon-16x16.png">
+        <link rel="apple-touch-icon" href="/src/favicon/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="192x192" href="/src/favicon/android-chrome-192x192.png">
+        <link rel="icon" type="image/png" sizes="512x512" href="/src/favicon/android-chrome-512x512.png">
+        <link rel="manifest" href="/site.webmanifest">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=Crimson+Text:ital,wght@0,400;0,700;1,400&display=swap">
+        <link rel="stylesheet" href="/src/css/styles.css?v=65b6c45eef">
+        <link rel="stylesheet" href="/src/css/experience.css?v=6f0d84431d">
+        <script src="/src/js/experience.js?v=7d0ecec69b" defer></script>
+        <script src="/src/js/main.js?v=32bc2e15b5" defer></script>
+        <link rel="stylesheet" href="/src/css/portfolio.css?v=d73c5b40ae">
 </head>
-<body>
-    <div class="container content-centered">
-        <div class="content">
-            <div class="site-header">
-                <a href="/pages/experience/rgt.html">Summer '23 @ Ratna Global Tech</a>
-                <h2>Pranav Varshney</h2>
-        	    <a href="/" class="nav-item">Home</a>
-            </div>
+    <body class="experience-article portfolio-system">
+    <a class="skip-link" href="#article">Skip to article</a>
+        <header class="portfolio-header"><a href="/" class="portfolio-name">Pranav Varshney</a><nav class="portfolio-nav" aria-label="Portfolio"><a href="/pages/experience/index.html" aria-current="location">Compute</a><a href="/#reflect">Reflect</a><a href="/pages/favorites/index.html">Culture</a><a href="/#reach">Reach</a></nav></header>
 
-            <p>Intern with Ratna Global Tech during Summer 2023.</p>
-
-        <p class="with-space">
-            <span id="edited-date" class="italic"></span>
-        </p>
-        
-        <script src="/src/js/main.js"></script>
-<script src="/src/js/subpage.js"></script>
-    <script src="/src/js/footer.js"></script>
-        
+        <div class="article-layout">
+            <aside class="article-sidebar">
+                <nav aria-label="On this page">
+                    <p class="small-label">In this article</p>
+                    <ol>
+                        <li><a href="#support"><span>01</span> RAG customer support</a></li>
+                        <li><a href="#caching"><span>02</span> Redis & API efficiency</a></li>
+                        <li><a href="#outcomes"><span>03</span> Project outcomes</a></li>
+                    </ol>
+                    <a class="sources-link" href="#sources">Source notes <span aria-hidden="true">↗</span></a></nav>
+                <p class="sidebar-note">Summer 2023<br>Ratna Global Technologies<br>Engineering case study</p>
+            </aside>
+            <main id="article" tabindex="-1">
+                <article>
+                    <header class="article-hero">
+                        <p class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span> Ratna Global Technologies / Engineering case study</p>
+                        <h1>Company knowledge for support. Caching for efficiency.</h1>
+                        <p class="article-deck">A RAG-based customer support system grounded in company data, plus Redis caching to reduce API costs in a React application.</p>
+                        <dl class="article-meta">
+                            <div><dt>Team</dt><dd>Client Automation</dd></div>
+                            <div><dt>Role</dt><dd>Software Engineering Intern</dd></div>
+                            <div><dt>When</dt><dd>May – August 2023</dd></div>
+                        </dl>
+                    </header>
+                    <div class="article-abstract">
+                        <p class="small-label">The work, at a glance</p>
+                        <p>As a software engineering intern in Client Automation at Ratna Global Technologies, I built a customer support system using company knowledge and added caching to reduce redundant API requests.</p>
+                        <div class="work-tracks">
+                            <div><span class="track-number">I.</span><h2>Customer support</h2>
+                                <p>Retrieval-augmented generation (RAG) using company data to answer customer inquiries.</p>
+                            </div>
+                            <div><span class="track-number">II.</span><h2>API efficiency</h2>
+                                <p>Redis-backed caching for a React application to reuse responses and reduce request costs.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <dl class="experience-metrics">
+                        <div><dt>Customer inquiries resolved</dt><dd>80%</dd></div>
+                        <div><dt>Support-system accuracy</dt><dd>90%</dd></div>
+                        <div><dt>Monthly API cost savings</dt><dd>$1.2K</dd></div>
+                    </dl>
+                    <section id="support" class="article-section">
+                        <p class="section-number">01 / Customer automation</p>
+                        <h2>Ground support responses in company data.</h2>
+                        <p>I developed a <strong>retrieval-augmented generation (RAG)</strong> customer support system using company data. The system resolved <strong>80% of inquiries</strong> with <strong>90% accuracy</strong>.</p>
+                        <p>The workflow retrieves relevant company context for response generation, connecting the support answer to the knowledge available within the company.</p>
+                        <figure class="technical-figure" aria-labelledby="rgt-support-caption">
+                            <div class="figure-heading">
+                                <div><span class="small-label">01 / Project workflow</span><h3>From company knowledge to support answers</h3>
+                                </div>
+                                <a class="diagram-open" href="/src/images/experience/rgt-support.svg" target="_blank" rel="noopener" aria-label="Open from company knowledge to support answers diagram at full size">Full size <span aria-hidden="true">↗</span></a>
+                            </div>
+                            <picture class="architecture-art">
+                                <source media="(max-width: 600px)" srcset="/src/images/experience/rgt-support-mobile.svg" width="360" height="568">
+                                <img src="/src/images/experience/rgt-support.svg" width="800" height="382" alt="Customer inquiries and company data feed retrieval and generation to produce a support response. The system resolved 80 percent of inquiries with 90 percent accuracy." loading="lazy">
+                            </picture>
+                            <figcaption id="rgt-support-caption">Conceptual RAG workflow. Inquiry resolution and accuracy are separate measures of the support system’s results.</figcaption>
+                        </figure>
+                    </section>
+                    <section id="caching" class="article-section">
+                        <p class="section-number">02 / Application performance</p>
+                        <h2>Reuse responses to reduce API traffic.</h2>
+                        <p>I added <strong>Redis-backed caching</strong> to a <strong>React application</strong>, reducing redundant API calls and saving <strong>$1,200 per month</strong> in API request costs.</p>
+                        <p>A cached response can satisfy a repeated request without another API call. The diagram shows the cache-hit and cache-miss paths at the application level.</p>
+                        <figure class="technical-figure" aria-labelledby="rgt-caching-caption">
+                            <div class="figure-heading">
+                                <div><span class="small-label">02 / Project workflow</span><h3>Cache hits avoid repeated API calls</h3>
+                                </div>
+                                <a class="diagram-open" href="/src/images/experience/rgt-caching.svg" target="_blank" rel="noopener" aria-label="Open cache hits avoid repeated api calls diagram at full size">Full size <span aria-hidden="true">↗</span></a>
+                            </div>
+                            <picture class="architecture-art">
+                                <source media="(max-width: 600px)" srcset="/src/images/experience/rgt-caching-mobile.svg" width="360" height="608">
+                                <img src="/src/images/experience/rgt-caching.svg" width="800" height="680" alt="A React application uses a Redis cache lookup. Hits reuse stored responses; misses request the API and store the response before returning it to the application." loading="lazy">
+                            </picture>
+                            <figcaption id="rgt-caching-caption">Conceptual request flow for the caching work. Redis is shown as a separate cache used by the React application; a cache hit avoids a redundant API request.</figcaption>
+                        </figure>
+                    </section>
+                    <section id="outcomes" class="article-section">
+                        <p class="section-number">03 / Impact</p>
+                        <h2>Track support quality and recurring cost.</h2>
+                        <p>The support system resolved <strong>80% of inquiries</strong> with <strong>90% accuracy</strong>. The caching project reduced repeated API requests, saving <strong>$1.2K each month</strong>.</p>
+                    </section>
+                    <section id="sources" class="source-notes" aria-labelledby="sources-heading">
+                        <h2 id="sources-heading">Source notes</h2>
+                        <p>Project scope and results are drawn from my internship résumé bullets. Diagrams summarize the workflows at a conceptual level.</p>
+                    </section>
+                    <nav class="experience-related" aria-label="Continue through my experience"><a href="/pages/experience/uwm.html"><span class="small-label">More recent</span><strong>United Wholesale Mortgage <span aria-hidden="true">↗</span></strong></a></nav>
+                    <footer class="article-end"><a href="/pages/experience/index.html">← Back to experiences</a><a href="#article">Back to top ↑</a></footer>
+                </article>
+            </main>
         </div>
-    </div>
-
-<footer class="site-footer">
-    <p class="site-footer-quote">कृण्वन्तो विश्वं आर्यं | Make the world noble</p>
-</footer>
-    
-
-</body>
+        <footer class="site-footer">
+            <p class="site-footer-quote">कृण्वन्तो विश्वं आर्यं | Make the world noble</p>
+        </footer>
+    </body>
 </html>

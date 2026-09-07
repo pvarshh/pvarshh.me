@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="366" viewBox="0 0 800 366" role="img" aria-labelledby="title desc">
+<title id="title">From cardiac images to structured measurements</title>
+<desc id="desc">Cardiac ultrasound images feed chamber segmentation and ejection-fraction quantification in a standardized CVD diagnosis research platform. Portable ultrasound interoperability is a target of the platform.</desc>
+<style>
+text { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif; fill: #293327; }
+.label { font-size: 11px; font-weight: 600; letter-spacing: 1.3px; fill: #687062; }
+.title { font-size: 16px; font-weight: 600; }
+.detail { font-size: 12px; fill: #687062; }
+.mono { font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace; font-size: 12px; }
+.accent { fill: #53634f; }
+.white { fill: #fafaf5; }
+.light { fill: #cbddd5; }
+</style>
+<defs><marker id="arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M1 1 L6 3.5 L1 6" fill="none" stroke="#a0aa99" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="green-arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M1 1 L6 3.5 L1 6" fill="none" stroke="#53634f" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<rect width="800" height="366" fill="#fafaf5"/>
+<text x="32" y="30" class="label" text-anchor="start">RESEARCH PIPELINE</text>
+<rect x="32" y="62" width="148" height="102" rx="6" fill="#fafaf5" stroke="#d6d9ce" stroke-width="1.2"/>
+<text x="106.0" y="110.0" class="title" text-anchor="middle">Cardiac images</text>
+<text x="106.0" y="132.0" class="detail" text-anchor="middle">Ultrasound input</text>
+<path d="M180 113 H228" fill="none" stroke="#a0aa99" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="228" y="62" width="148" height="102" rx="6" fill="#eef1e8" stroke="#b4bfa9" stroke-width="1.2"/>
+<text x="302.0" y="110.0" class="title" text-anchor="middle">Segmentation</text>
+<text x="302.0" y="132.0" class="detail" text-anchor="middle">Cardiac chambers</text>
+<path d="M376 113 H424" fill="none" stroke="#a0aa99" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="424" y="62" width="148" height="102" rx="6" fill="#eef1e8" stroke="#b4bfa9" stroke-width="1.2"/>
+<text x="498.0" y="110.0" class="title" text-anchor="middle">Quantification</text>
+<text x="498.0" y="132.0" class="detail" text-anchor="middle">Ejection fraction</text>
+<path d="M572 113 H620" fill="none" stroke="#a0aa99" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="620" y="62" width="148" height="102" rx="6" fill="#fafaf5" stroke="#d6d9ce" stroke-width="1.2"/>
+<text x="694.0" y="110.0" class="title" text-anchor="middle">CVD platform</text>
+<text x="694.0" y="132.0" class="detail" text-anchor="middle">Standardized interface</text>
+<rect x="32" y="232" width="736" height="108" rx="6" fill="#f5f5ef" stroke="#bacfc1" stroke-width="1.2" stroke-dasharray="5 5"/>
+<path d="M106 232 V164" fill="none" stroke="#53634f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#green-arrow)" stroke-dasharray="4 5"/>
+<text x="56" y="261" class="label accent" text-anchor="start">INTEROPERABILITY TARGET</text>
+<text x="56" y="291" class="title" text-anchor="start">Portable ultrasound devices</text>
+<text x="56" y="316" class="detail" text-anchor="start">Designed toward portable-device interoperability.</text>
+</svg>

@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="280" viewBox="0 0 800 280" role="img" aria-labelledby="title desc">
+<title id="title">Containerizing the audit infrastructure</title>
+<desc id="desc">AWS Copilot tooling supports containerized audit infrastructure, which serves more than 10,000 audit queries per week. This is a conceptual view of deployment tooling and workload.</desc>
+<style>
+text { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif; fill: #293327; }
+.label { font-size: 11px; font-weight: 600; letter-spacing: 1.3px; fill: #687062; }
+.title { font-size: 16px; font-weight: 600; }
+.detail { font-size: 12px; fill: #687062; }
+.mono { font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace; font-size: 12px; }
+.accent { fill: #53634f; }
+.white { fill: #fafaf5; }
+.light { fill: #cbddd5; }
+</style>
+<defs><marker id="arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M1 1 L6 3.5 L1 6" fill="none" stroke="#a0aa99" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="green-arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M1 1 L6 3.5 L1 6" fill="none" stroke="#53634f" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<rect width="800" height="280" fill="#fafaf5"/>
+<text x="140" y="44" class="label" text-anchor="middle">DEPLOYMENT TOOLING</text>
+<rect x="32" y="82" width="216" height="96" rx="6" fill="#fafaf5" stroke="#d6d9ce" stroke-width="1.2"/>
+<text x="140.0" y="127.0" class="title" text-anchor="middle">AWS Copilot</text>
+<text x="140.0" y="149.0" class="detail" text-anchor="middle">Containerization tooling</text>
+<text x="400" y="44" class="label" text-anchor="middle">AUDIT RUNTIME</text>
+<rect x="292" y="82" width="216" height="96" rx="6" fill="#eef1e8" stroke="#b4bfa9" stroke-width="1.2"/>
+<text x="400.0" y="127.0" class="title" text-anchor="middle">Audit containers</text>
+<text x="400.0" y="149.0" class="detail" text-anchor="middle">Containerized infrastructure</text>
+<text x="660" y="44" class="label" text-anchor="middle">WORKLOAD</text>
+<rect x="552" y="82" width="216" height="96" rx="6" fill="#fafaf5" stroke="#d6d9ce" stroke-width="1.2"/>
+<text x="660.0" y="127.0" class="title" text-anchor="middle">Audit queries</text>
+<text x="660.0" y="149.0" class="detail" text-anchor="middle">10K+ queries per week</text>
+<path d="M248 130 H292" fill="none" stroke="#a0aa99" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M552 130 H508" fill="none" stroke="#a0aa99" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<text x="400" y="224" class="detail" text-anchor="middle" style="font-size:13px">Deployment tooling and query traffic meet at the audit runtime.</text>
+</svg>

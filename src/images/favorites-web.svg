@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" fill="none">
-<defs><radialGradient id="silk" gradientUnits="userSpaceOnUse" cx="250" cy="250" r="250"><stop stop-color="#1a1a1a" stop-opacity=".7"/><stop offset=".65" stop-color="#1a1a1a" stop-opacity=".42"/><stop offset="1" stop-color="#3d5240" stop-opacity=".12"/></radialGradient></defs>
+<defs><radialGradient id="silk" gradientUnits="userSpaceOnUse" cx="250" cy="250" r="250"><stop stop-color="#1a1a1a" stop-opacity=".7"/><stop offset=".65" stop-color="#1a1a1a" stop-opacity=".42"/><stop offset="1" stop-color="#53634f" stop-opacity=".12"/></radialGradient></defs>
 <g stroke="url(#silk)" stroke-width=".85">
 <path d="M250 250 L250.0 2.0"/>
 <path d="M250 250 L326.6 14.1"/>
@@ -30,5 +30,5 @@
 <path d="M250.0 43.0 Q280.1 59.9 314.0 53.1 Q337.4 78.5 371.7 82.5 Q386.1 113.9 417.5 128.3 Q421.5 162.6 446.9 186.0 Q440.1 219.9 457.0 250.0 Q440.1 280.1 446.9 314.0 Q421.5 337.4 417.5 371.7 Q386.1 386.1 371.7 417.5 Q337.4 421.5 314.0 446.9 Q280.1 440.1 250.0 457.0 Q219.9 440.1 186.0 446.9 Q162.6 421.5 128.3 417.5 Q113.9 386.1 82.5 371.7 Q78.5 337.4 53.1 314.0 Q59.9 280.1 43.0 250.0 Q59.9 219.9 53.1 186.0 Q78.5 162.6 82.5 128.3 Q113.9 113.9 128.3 82.5 Q162.6 78.5 186.0 53.1 Q219.9 59.9 250.0 43.0 Z"/>
 <path d="M250.0 5.0 Q285.6 25.0 325.7 17.0 Q353.4 47.0 394.0 51.8 Q411.1 88.9 448.2 106.0 Q453.0 146.6 483.0 174.3 Q475.0 214.4 495.0 250.0 Q475.0 285.6 483.0 325.7 Q453.0 353.4 448.2 394.0 Q411.1 411.1 394.0 448.2 Q353.4 453.0 325.7 483.0 Q285.6 475.0 250.0 495.0 Q214.4 475.0 174.3 483.0 Q146.6 453.0 106.0 448.2 Q88.9 411.1 51.8 394.0 Q47.0 353.4 17.0 325.7 Q25.0 285.6 5.0 250.0 Q25.0 214.4 17.0 174.3 Q47.0 146.6 51.8 106.0 Q88.9 88.9 106.0 51.8 Q146.6 47.0 174.3 17.0 Q214.4 25.0 250.0 5.0 Z"/>
 </g>
-<g stroke="#98483f" stroke-opacity=".28" stroke-width="1.2"><path d="M250 250V10 M250 250 483 174 M250 250 391 444 M250 250 109 444 M250 250 17 174"/></g>
+<g stroke="#53634f" stroke-opacity=".28" stroke-width="1.2"><path d="M250 250V10 M250 250 483 174 M250 250 391 444 M250 250 109 444 M250 250 17 174"/></g>
 </svg>

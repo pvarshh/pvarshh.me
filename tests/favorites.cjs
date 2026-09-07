@@ -53,7 +53,7 @@ const { chromium } = require('playwright');
         if (realm === 'reach') {
           assert.equal(await page.locator('.postcard-address a').first().evaluate(el => getComputedStyle(el).display), 'grid');
           assert.equal(await page.locator('.postcard-address').evaluate(el => getComputedStyle(el).fontStyle), 'normal');
-          assert.equal(await page.locator('.reach-postcard').evaluate(el => getComputedStyle(el).borderTopStyle), 'dashed');
+          assert.equal(await page.locator('.reach-postcard').evaluate(el => getComputedStyle(el).borderTopStyle), 'solid');
         }
         if (realm === 'culture') {
           assert.equal(await page.locator('.web-node').first().evaluate(el => getComputedStyle(el).position), 'absolute');
@@ -79,6 +79,10 @@ const { chromium } = require('playwright');
     for (const width of [1280, 320, 768]) {
       await page.setViewportSize({ width, height: 1000 });
       await page.waitForTimeout(150);
+      assert(await page.locator('.story-realm-tab').evaluateAll(tabs => tabs.every(tab => {
+        const rect = tab.getBoundingClientRect();
+        return rect.left >= 0 && rect.right <= innerWidth;
+      })), `Section tabs leave the viewport after resizing to ${width}`);
       assert(await page.locator('#tuner-canvas').evaluate(canvas => {
         const rect = canvas.getBoundingClientRect();
         return Math.abs(rect.width - canvas.parentElement.clientWidth) < 1 &&
@@ -87,10 +91,7 @@ const { chromium } = require('playwright');
       }), `Tuner fails to resize at ${width}`);
     }
     await page.evaluate(() => { document.documentElement.style.scrollBehavior = 'auto'; window.scrollTo(0, 200); });
-    assert(await page.locator('#story-bg-canvas').evaluate(canvas => {
-      const rect = canvas.getBoundingClientRect();
-      return rect.top === 0 && rect.left === 0;
-    }), 'Background must stay fixed to the viewport while scrolling');
+    assert.equal(await page.locator('#story-bg-canvas').count(), 0, 'The shared minimal theme has no ambient canvas');
     assert.deepEqual(errors, []);
     await page.emulateMedia({ reducedMotion: 'reduce' });
     await page.goto('/pages/favorites/index.html');

@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450" role="img" aria-labelledby="title desc">
+<title id="title">Observing asynchronous cache refreshes</title>
+<desc id="desc">A fresh cache hit returns the cached value without a refresh event. A miss or stale value enters asynchronous refresh: run the ML prediction, adapt one event per restaurant, then publish it to the cache-refresh topic. Refresh logging is in progress.</desc>
+<style>
+text { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif; fill: #293327; }
+.label { font-size: 11px; font-weight: 600; letter-spacing: 1.3px; fill: #687062; }
+.title { font-size: 16px; font-weight: 600; }
+.detail { font-size: 12px; fill: #687062; }
+.mono { font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace; font-size: 12px; }
+.accent { fill: #53634f; }
+.white { fill: #fafaf5; }
+.light { fill: #cbddd5; }
+</style>
+<defs><marker id="arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M1 1 L6 3.5 L1 6" fill="none" stroke="#a0aa99" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="green-arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M1 1 L6 3.5 L1 6" fill="none" stroke="#53634f" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<rect width="800" height="450" fill="#fafaf5"/>
+<rect x="32" y="54" width="178" height="76" rx="6" fill="#fafaf5" stroke="#d6d9ce" stroke-width="1.2"/>
+<text x="121.0" y="89.0" class="title" text-anchor="middle">Cache lookup</text>
+<text x="121.0" y="111.0" class="detail" text-anchor="middle">Read cached ETD</text>
+<path d="M210 92 H260" fill="none" stroke="#a0aa99" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M322 30 L384 92 L322 154 L260 92 Z" fill="#f7f9f7" stroke="#b9c9c0" stroke-width="1.2"/>
+<text x="322" y="88" class="title" text-anchor="middle">Fresh</text>
+<text x="322" y="109" class="title" text-anchor="middle">value?</text>
+<path d="M384 92 H530" fill="none" stroke="#a0aa99" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<text x="454" y="78" class="label" text-anchor="middle">YES</text>
+<rect x="530" y="54" width="238" height="76" rx="6" fill="#fafaf5" stroke="#d6d9ce" stroke-width="1.2"/>
+<text x="649.0" y="89.0" class="title" text-anchor="middle">Return cached value</text>
+<text x="649.0" y="111.0" class="detail" text-anchor="middle">No refresh event</text>
+<text x="337" y="186" class="label accent" text-anchor="start">NO · MISS / STALE</text>
+<rect x="32" y="226" width="736" height="200" rx="6" fill="#f7faf8" stroke="#bacfc1" stroke-width="1.2" stroke-dasharray="5 5"/>
+<path d="M322 154 V205 H272 V273 H156 V286" fill="none" stroke="#53634f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#green-arrow)"/>
+<text x="52" y="253" class="label accent" text-anchor="start">ASYNCHRONOUS REFRESH</text>
+<text x="748" y="253" class="detail" text-anchor="end">Logging in progress</text>
+<rect x="52" y="286" width="208" height="84" rx="6" fill="#fafaf5" stroke="#d6d9ce" stroke-width="1.2"/>
+<text x="156.0" y="325.0" class="title" text-anchor="middle">ML prediction</text>
+<text x="156.0" y="347.0" class="detail" text-anchor="middle">Warm the cache</text>
+<text x="156" y="399" class="detail" text-anchor="middle">Model + features</text>
+<path d="M260 328 H296" fill="none" stroke="#a0aa99" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="296" y="286" width="208" height="84" rx="6" fill="#eef1e8" stroke="#b4bfa9" stroke-width="1.2"/>
+<text x="400.0" y="325.0" class="title" text-anchor="middle">Event adapter</text>
+<text x="400.0" y="347.0" class="detail" text-anchor="middle">One event per store</text>
+<text x="400" y="399" class="detail" text-anchor="middle">Request + response</text>
+<path d="M504 328 H540" fill="none" stroke="#a0aa99" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="540" y="286" width="208" height="84" rx="6" fill="#fafaf5" stroke="#d6d9ce" stroke-width="1.2"/>
+<text x="644.0" y="325.0" class="title" text-anchor="middle">Kafka publisher</text>
+<text x="644.0" y="347.0" class="detail" text-anchor="middle">Cache-refresh topic</text>
+<text x="644" y="399" class="detail" text-anchor="middle">Structured metadata</text>
+</svg>

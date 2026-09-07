@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="536" viewBox="0 0 360 536" role="img" aria-labelledby="title desc">
+<title id="title">Database normalization for the GCP migration</title>
+<desc id="desc">Database normalization into third normal form reduced duplicate data by 45 percent and accelerated the Google Cloud Platform migration timeline by three weeks.</desc>
+<style>
+text { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif; fill: #293327; }
+.label { font-size: 11px; font-weight: 600; letter-spacing: 1.3px; fill: #687062; }
+.title { font-size: 16px; font-weight: 600; }
+.detail { font-size: 12px; fill: #687062; }
+.mono { font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace; font-size: 12px; }
+.accent { fill: #53634f; }
+.white { fill: #fafaf5; }
+.light { fill: #cbddd5; }
+</style>
+<defs><marker id="arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M1 1 L6 3.5 L1 6" fill="none" stroke="#a0aa99" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="green-arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M1 1 L6 3.5 L1 6" fill="none" stroke="#53634f" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<rect width="360" height="536" fill="#fafaf5"/>
+<rect x="54" y="24" width="252" height="84" rx="6" fill="#fafaf5" stroke="#d6d9ce" stroke-width="1.2"/>
+<text x="180.0" y="63.0" class="title" text-anchor="middle">Existing database</text>
+<text x="180.0" y="85.0" class="detail" text-anchor="middle">Relational data</text>
+<path d="M180 108 V152" fill="none" stroke="#a0aa99" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="54" y="152" width="252" height="84" rx="6" fill="#eef1e8" stroke="#b4bfa9" stroke-width="1.2"/>
+<text x="180.0" y="191.0" class="title" text-anchor="middle">3NF normalization</text>
+<text x="180.0" y="213.0" class="detail" text-anchor="middle">Restructure the schema</text>
+<path d="M180 236 V280" fill="none" stroke="#a0aa99" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="54" y="280" width="252" height="84" rx="6" fill="#fafaf5" stroke="#d6d9ce" stroke-width="1.2"/>
+<text x="180.0" y="319.0" class="title" text-anchor="middle">Normalized data</text>
+<text x="180.0" y="341.0" class="detail" text-anchor="middle">45% fewer duplicates</text>
+<path d="M180 364 V408" fill="none" stroke="#a0aa99" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="54" y="408" width="252" height="84" rx="6" fill="#fafaf5" stroke="#d6d9ce" stroke-width="1.2"/>
+<text x="180.0" y="447.0" class="title" text-anchor="middle">GCP migration</text>
+<text x="180.0" y="469.0" class="detail" text-anchor="middle">Timeline accelerated by 3 weeks</text>
+</svg>

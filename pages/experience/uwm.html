@@ -1,56 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>UWM - Pranav</title>
-
-    <!-- Standard favicon -->
-    <link rel="icon" type="image/x-icon" href="/src/favicon/favicon.ico">
-    <link rel="icon" type="image/png" sizes="32x32" href="/src/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/src/favicon/favicon-16x16.png">
-
-    <!-- Apple Touch Icons -->
-    <link rel="apple-touch-icon" href="/src/favicon/apple-touch-icon.png">
-
-    <!-- Android Chrome Icons -->
-    <link rel="icon" type="image/png" sizes="192x192" href="/src/favicon/android-chrome-192x192.png">
-    <link rel="icon" type="image/png" sizes="512x512" href="/src/favicon/android-chrome-512x512.png">
-
-    <!-- Web App Manifest -->
-    <link rel="manifest" href="/site.webmanifest">
-
-    <link rel="stylesheet" href="/src/css/styles.css">
-<link rel="stylesheet" href="/src/css/subpage.css">
-
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=Crimson+Text:ital,wght@0,400;0,700;1,400&display=swap">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Database normalization for a faster GCP migration, alongside a random forest model for classifying loan outcomes.">
+        <meta name="theme-color" content="#f5f4ef">
+        <title>United Wholesale Mortgage — Pranav Varshney</title>
+        <link rel="icon" type="image/x-icon" href="/src/favicon/favicon.ico">
+        <link rel="icon" type="image/png" sizes="32x32" href="/src/favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/src/favicon/favicon-16x16.png">
+        <link rel="apple-touch-icon" href="/src/favicon/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="192x192" href="/src/favicon/android-chrome-192x192.png">
+        <link rel="icon" type="image/png" sizes="512x512" href="/src/favicon/android-chrome-512x512.png">
+        <link rel="manifest" href="/site.webmanifest">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=Crimson+Text:ital,wght@0,400;0,700;1,400&display=swap">
+        <link rel="stylesheet" href="/src/css/styles.css?v=65b6c45eef">
+        <link rel="stylesheet" href="/src/css/experience.css?v=6f0d84431d">
+        <script src="/src/js/experience.js?v=7d0ecec69b" defer></script>
+        <script src="/src/js/main.js?v=32bc2e15b5" defer></script>
+        <link rel="stylesheet" href="/src/css/portfolio.css?v=d73c5b40ae">
 </head>
-<body>
-    <div class="container content-centered">
-        <div class="content">
-            <div class="site-header">
-                <a href="/pages/experience/uwm.html">Summer '24 @ United Wholesale Mortgage</a>
-                <h2>Pranav Varshney</h2>
-        	    <a href="/" class="nav-item">Home</a>
-            </div>
+    <body class="experience-article portfolio-system">
+    <a class="skip-link" href="#article">Skip to article</a>
+        <header class="portfolio-header"><a href="/" class="portfolio-name">Pranav Varshney</a><nav class="portfolio-nav" aria-label="Portfolio"><a href="/pages/experience/index.html" aria-current="location">Compute</a><a href="/#reflect">Reflect</a><a href="/pages/favorites/index.html">Culture</a><a href="/#reach">Reach</a></nav></header>
 
-            <p>Intern with United Wholesale Mortgage during Summer 2024.</p>
-
-        <p class="with-space">
-            <span id="edited-date" class="italic"></span>
-        </p>
-        
-        <script src="/src/js/main.js"></script>
-<script src="/src/js/subpage.js"></script>
-    <script src="/src/js/footer.js"></script>
-        
+        <div class="article-layout">
+            <aside class="article-sidebar">
+                <nav aria-label="On this page">
+                    <p class="small-label">In this article</p>
+                    <ol>
+                        <li><a href="#normalization"><span>01</span> Database normalization</a></li>
+                        <li><a href="#classification"><span>02</span> Loan outcome classification</a></li>
+                        <li><a href="#outcomes"><span>03</span> Project outcomes</a></li>
+                    </ol>
+                    <a class="sources-link" href="#sources">Source notes <span aria-hidden="true">↗</span></a></nav>
+                <p class="sidebar-note">Summer 2024<br>United Wholesale Mortgage<br>Engineering case study</p>
+            </aside>
+            <main id="article" tabindex="-1">
+                <article>
+                    <header class="article-hero">
+                        <p class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span> United Wholesale Mortgage / Engineering case study</p>
+                        <h1>Cleaner data for migration and loan classification.</h1>
+                        <p class="article-deck">Database normalization for a faster GCP migration, alongside a random forest model for classifying loan outcomes.</p>
+                        <dl class="article-meta">
+                            <div><dt>Team</dt><dd>Data Engineering</dd></div>
+                            <div><dt>Role</dt><dd>Software Engineering Intern</dd></div>
+                            <div><dt>When</dt><dd>May – August 2024</dd></div>
+                        </dl>
+                    </header>
+                    <div class="article-abstract">
+                        <p class="small-label">The work, at a glance</p>
+                        <p>As a software engineering intern in Data Engineering at United Wholesale Mortgage, I worked on two projects: preparing relational data for a cloud migration and using machine learning to classify loan outcomes.</p>
+                        <div class="work-tracks">
+                            <div><span class="track-number">I.</span><h2>Database normalization</h2>
+                                <p>Third normal form (3NF) to reduce duplicate data and accelerate migration to GCP.</p>
+                            </div>
+                            <div><span class="track-number">II.</span><h2>Loan classification</h2>
+                                <p>A random forest model to classify loan proposals into acceptance or rejection outcomes.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <dl class="experience-metrics">
+                        <div><dt>Reduction in duplicate data</dt><dd>45%</dd></div>
+                        <div><dt>Faster GCP migration timeline</dt><dd>3 weeks</dd></div>
+                        <div><dt>Savings from loan classification</dt><dd>$20K</dd></div>
+                    </dl>
+                    <section id="normalization" class="article-section">
+                        <p class="section-number">01 / Data engineering</p>
+                        <h2>Reduce duplicate data before migration.</h2>
+                        <p>I normalized databases using <strong>third normal form (3NF)</strong>, reducing duplicates by <strong>45%</strong>. The schema work helped accelerate the migration to <strong>Google Cloud Platform (GCP)</strong> by <strong>three weeks</strong>.</p>
+                        <p>The focus was on the structure of the data being migrated. Normalization reduced redundancy in the source databases and shortened the migration timeline.</p>
+                        <figure class="technical-figure" aria-labelledby="uwm-normalization-caption">
+                            <div class="figure-heading">
+                                <div><span class="small-label">01 / Project workflow</span><h3>From relational data to GCP</h3>
+                                </div>
+                                <a class="diagram-open" href="/src/images/experience/uwm-normalization.svg" target="_blank" rel="noopener" aria-label="Open from relational data to gcp diagram at full size">Full size <span aria-hidden="true">↗</span></a>
+                            </div>
+                            <picture class="architecture-art">
+                                <source media="(max-width: 600px)" srcset="/src/images/experience/uwm-normalization-mobile.svg" width="360" height="536">
+                                <img src="/src/images/experience/uwm-normalization.svg" width="800" height="310" alt="Existing databases are normalized into 3NF, reducing duplicates by 45 percent and accelerating the GCP migration timeline by three weeks." loading="lazy">
+                            </picture>
+                            <figcaption id="uwm-normalization-caption">Conceptual sequence of the normalization and migration work. The results connect a change in data quality with a shorter migration timeline.</figcaption>
+                        </figure>
+                    </section>
+                    <section id="classification" class="article-section">
+                        <p class="section-number">02 / Machine learning</p>
+                        <h2>Classify loan outcomes with a random forest.</h2>
+                        <p>I implemented a <strong>random forest model</strong> to classify loan outcomes, identifying whether a proposal should be accepted or rejected. The classification project saved <strong>$20,000</strong>.</p>
+                        <figure class="technical-figure" aria-labelledby="uwm-classification-caption">
+                            <div class="figure-heading">
+                                <div><span class="small-label">02 / Project workflow</span><h3>Classifying loan outcomes</h3>
+                                </div>
+                                <a class="diagram-open" href="/src/images/experience/uwm-classification.svg" target="_blank" rel="noopener" aria-label="Open classifying loan outcomes diagram at full size">Full size <span aria-hidden="true">↗</span></a>
+                            </div>
+                            <picture class="architecture-art">
+                                <source media="(max-width: 600px)" srcset="/src/images/experience/uwm-classification-mobile.svg" width="360" height="506">
+                                <img src="/src/images/experience/uwm-classification.svg" width="800" height="380" alt="A random forest model takes loan proposal data and predicts an acceptance or rejection outcome." loading="lazy">
+                            </picture>
+                            <figcaption id="uwm-classification-caption">Conceptual view of the classification task: loan proposal inputs, a random forest model, and the predicted outcome.</figcaption>
+                        </figure>
+                    </section>
+                    <section id="outcomes" class="article-section">
+                        <p class="section-number">03 / Impact</p>
+                        <h2>Measure data quality, time, and cost.</h2>
+                        <p>The normalization project reduced duplicate data by <strong>45%</strong> and accelerated the GCP migration timeline by <strong>three weeks</strong>. The loan-classification project delivered <strong>$20K in savings</strong>.</p>
+                    </section>
+                    <section id="sources" class="source-notes" aria-labelledby="sources-heading">
+                        <h2 id="sources-heading">Source notes</h2>
+                        <p>Project scope and results are drawn from my internship résumé bullets. Diagrams summarize the workflows at a conceptual level.</p>
+                    </section>
+                    <nav class="experience-related" aria-label="Continue through my experience"><a href="/pages/experience/ta.html"><span class="small-label">More recent</span><strong>Teaching COMPFOR 131 <span aria-hidden="true">↗</span></strong></a><a href="/pages/experience/rgt.html"><span class="small-label">Earlier experience</span><strong>Ratna Global Technologies <span aria-hidden="true">↗</span></strong></a></nav>
+                    <footer class="article-end"><a href="/pages/experience/index.html">← Back to experiences</a><a href="#article">Back to top ↑</a></footer>
+                </article>
+            </main>
         </div>
-    </div>
-
-<footer class="site-footer">
-    <p class="site-footer-quote">कृण्वन्तो विश्वं आर्यं | Make the world noble</p>
-</footer>
-    
-
-</body>
+        <footer class="site-footer">
+            <p class="site-footer-quote">कृण्वन्तो विश्वं आर्यं | Make the world noble</p>
+        </footer>
+    </body>
 </html>

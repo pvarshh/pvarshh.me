@@ -4,10 +4,10 @@
     --sub-realm-color: var(--color-accent);
 }
 
-.page-sub.realm-cs { --sub-realm-color: #2c4a6e; }
-.page-sub.realm-words { --sub-realm-color: #5a4a3a; }
-.page-sub.realm-world { --sub-realm-color: #3d5240; }
-.page-sub.realm-path { --sub-realm-color: #1a1a1a; }
+.page-sub.realm-cs { --sub-realm-color: var(--color-accent); }
+.page-sub.realm-words { --sub-realm-color: var(--color-accent); }
+.page-sub.realm-world { --sub-realm-color: var(--color-accent); }
+.page-sub.realm-path { --sub-realm-color: var(--color-accent); }
 
 .page-sub .site-header a:first-child {
     transition: color 0.25s ease;
@@ -83,7 +83,7 @@
 
 .fav-pick:hover .fav-title,
 .fav-pick:focus-within .fav-title {
-    color: var(--sub-realm-color, #3d5240);
+    color: var(--sub-realm-color, #53634f);
 }
 
 .fav-whisper {
@@ -121,7 +121,7 @@
 
 .fav-spine:hover,
 .fav-spine:focus-within {
-    border-left-color: var(--sub-realm-color, #3d5240);
+    border-left-color: var(--sub-realm-color, #53634f);
     padding-left: 1rem;
 }
 
@@ -192,7 +192,7 @@
 
 .embed-item.fav-pick:hover,
 .embed-item.fav-pick:focus-within {
-    box-shadow: inset 3px 0 0 var(--sub-realm-color, #3d5240);
+    box-shadow: inset 3px 0 0 var(--sub-realm-color, #53634f);
 }
 
 .embed-item.fav-pick:hover .fav-whisper,
@@ -254,13 +254,13 @@
     height: 8px;
     border-radius: 50%;
     background: var(--color-paper, #f5f4ef);
-    border: 1.5px solid var(--sub-realm-color, #2c4a6e);
+    border: 1.5px solid var(--sub-realm-color, #53634f);
     box-sizing: border-box;
     transition: background 0.2s ease, transform 0.2s ease;
 }
 
 .exp-vtimeline-item:first-child::before {
-    background: var(--sub-realm-color, #2c4a6e);
+    background: var(--sub-realm-color, #53634f);
 }
 
 .exp-vtimeline-item:hover::before,
@@ -276,7 +276,7 @@
     letter-spacing: 0.1em;
     text-transform: uppercase;
     opacity: 0.45;
-    color: var(--sub-realm-color, #2c4a6e);
+    color: var(--sub-realm-color, #53634f);
 }
 
 .exp-vtimeline-title {
@@ -291,8 +291,8 @@
 
 .exp-vtimeline-item:hover .exp-vtimeline-title,
 .exp-vtimeline-item:focus-within .exp-vtimeline-title {
-    color: var(--sub-realm-color, #2c4a6e);
-    border-bottom-color: var(--sub-realm-color, #2c4a6e);
+    color: var(--sub-realm-color, #53634f);
+    border-bottom-color: var(--sub-realm-color, #53634f);
 }
 
 .exp-vtimeline-desc {
@@ -329,7 +329,7 @@
 }
 
 .exp-readout-pct {
-    color: var(--sub-realm-color, #2c4a6e);
+    color: var(--sub-realm-color, #53634f);
 }
 
 @media (max-width: 600px) {
@@ -405,7 +405,7 @@
 
 .learn-stack-btn:hover,
 .learn-stack-btn.active {
-    border-color: var(--sub-realm-color, #2c4a6e);
+    border-color: var(--sub-realm-color, #53634f);
     background: rgba(44, 74, 110, 0.05);
 }
 
@@ -464,7 +464,7 @@ body[data-learn-layer="known"] .learn-topics {
 }
 
 .learn-loss-val {
-    color: var(--sub-realm-color, #2c4a6e);
+    color: var(--sub-realm-color, #53634f);
 }
 
 @media (prefers-reduced-motion: reduce) {
