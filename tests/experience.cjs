@@ -5,7 +5,7 @@ const { chromium } = require('playwright');
 (async () => {
     const browser = await chromium.launch({ channel: 'chrome' });
     const baseURL = process.env.BASE_URL || 'http://127.0.0.1:8013';
-    const pages = ['index', 'uber', 'aws', 'scale', 'healthcare', 'networks', 'ta', 'uwm', 'rgt'];
+    const pages = ['index', 'google', 'uber', 'aws', 'scale', 'healthcare', 'networks', 'ta', 'uwm', 'rgt'];
     try {
         const page = await browser.newPage({ baseURL });
         await page.route('https://**/*', route => {
@@ -36,7 +36,7 @@ const { chromium } = require('playwright');
                     await img.evaluate(el => el.decode());
                 }
                 for (const img of await page.locator('.architecture-art img').all()) {
-                    assert.equal(await img.evaluate(el => el.currentSrc.endsWith('-mobile.svg')), width <= 600, `${slug}: responsive diagram`);
+                    assert.equal(await img.evaluate(el => new URL(el.currentSrc).pathname.endsWith('-mobile.svg')), width <= 600, `${slug}: responsive diagram`);
                 }
                 if (width === 1440) {
                     const toc = page.locator('.article-sidebar ol a');
@@ -74,7 +74,7 @@ const { chromium } = require('playwright');
         assert(await staticPage.locator('#pipeline').isVisible());
         assert(await staticPage.locator('.architecture-art img').isVisible());
         await staticPage.close();
-        console.log('Passed: all 9 experience pages at 5 viewport widths, responsive images, section navigation, local links, index entries, keyboard access, and no-JS article rendering.');
+        console.log(`Passed: all ${pages.length} experience pages at 5 viewport widths, responsive images, section navigation, local links, index entries, keyboard access, and no-JS article rendering.`);
     } finally {
         await browser.close();
     }

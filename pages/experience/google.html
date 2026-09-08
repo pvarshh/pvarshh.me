@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="An agent for Microsoft licensing cost optimization on Google Cloud, combining resource topology, state drift checks, and human-reviewed change plans.">
+        <meta name="theme-color" content="#f5f4ef">
+        <title>Optimizing Microsoft licensing on Google Cloud — Pranav Varshney</title>
+        <link rel="icon" type="image/x-icon" href="/src/favicon/favicon.ico?v=bb8f4cffa8">
+        <link rel="icon" type="image/png" sizes="32x32" href="/src/favicon/favicon-32x32.png?v=fe269bb663">
+        <link rel="icon" type="image/png" sizes="16x16" href="/src/favicon/favicon-16x16.png?v=136afd93a2">
+        <link rel="apple-touch-icon" href="/src/favicon/apple-touch-icon.png?v=9b831bf2f8">
+        <link rel="icon" type="image/png" sizes="192x192" href="/src/favicon/android-chrome-192x192.png?v=a8ed54505f">
+        <link rel="icon" type="image/png" sizes="512x512" href="/src/favicon/android-chrome-512x512.png?v=0fb54f64ac">
+        <link rel="manifest" href="/site.webmanifest?v=117a06444a">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=Crimson+Text:ital,wght@0,400;0,700;1,400&display=swap">
+        <link rel="stylesheet" href="/src/css/styles.css?v=65b6c45eef">
+        <link rel="stylesheet" href="/src/css/experience.css?v=6f0d84431d">
+        <script src="/src/js/experience.js?v=7d0ecec69b" defer></script>
+        <script src="/src/js/main.js?v=32bc2e15b5" defer></script>
+        <link rel="stylesheet" href="/src/css/portfolio.css?v=d73c5b40ae">
+</head>
+    <body class="experience-article portfolio-system">
+    <a class="skip-link" href="#article">Skip to article</a>
+        <header class="portfolio-header"><a href="/" class="portfolio-name">Pranav Varshney</a><nav class="portfolio-nav" aria-label="Portfolio"><a href="/pages/experience/index.html" aria-current="location">Compute</a><a href="/#reflect">Reflect</a><a href="/pages/favorites/index.html">Culture</a><a href="/#reach">Reach</a></nav></header>
+
+        <div class="article-layout">
+            <aside class="article-sidebar">
+                <nav aria-label="On this page">
+                    <p class="small-label">In this article</p>
+                    <ol>
+                        <li><a href="#context"><span>01</span> The licensing problem</a></li>
+                        <li><a href="#architecture"><span>02</span> Inventory &amp; topology</a></li>
+                        <li><a href="#state"><span>03</span> State drift</a></li>
+                        <li><a href="#recommendations"><span>04</span> Recommendation tradeoffs</a></li>
+                        <li><a href="#apply"><span>05</span> Reviewed change plans</a></li>
+                        <li><a href="#results"><span>06</span> Benchmark results</a></li>
+                        <li><a href="#lessons"><span>07</span> Handoff &amp; reflection</a></li>
+                    </ol>
+                </nav>
+                <p class="sidebar-note">Summer 2026<br>Google Cloud<br>Engineering case study</p>
+            </aside>
+            <main id="article" tabindex="-1">
+                <article>
+                    <header class="article-hero">
+                        <p class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span> Google Cloud / Engineering case study</p>
+                        <h1>Optimizing Microsoft licensing on Google Cloud.</h1>
+                        <p class="article-deck">Connecting cloud inventory, licensing costs, and workload dependencies to recommendations engineers can review and apply.</p>
+                        <dl class="article-meta">
+                            <div><dt>Team / Lab</dt><dd>Google Cloud · Microsoft Workloads</dd></div>
+                            <div><dt>Role</dt><dd>Software Engineering Intern</dd></div>
+                            <div><dt>When</dt><dd>Summer 2026</dd></div>
+                        </dl>
+                    </header>
+                    <div class="article-abstract">
+                        <p class="small-label">The work, at a glance</p>
+                        <p>I built an AI-assisted License Cost Optimization agent, or LCOp, for Microsoft workloads on Google Cloud. The framework combines an asynchronous data pipeline, resource topology, state drift checks, recommendation agents, and reviewed execution plans. In a sandbox benchmark, it identified about 2.7 times the estimated monthly savings of the baseline Gemini CLI.</p>
+                        <div class="work-tracks">
+                            <div><span class="track-number">I.</span><h2>Understand the environment</h2>
+                                <p>Reconcile resource inventory and billing data, map dependencies, and keep analysis aligned with live infrastructure.</p>
+                            </div>
+                            <div><span class="track-number">II.</span><h2>Evaluate and apply changes</h2>
+                                <p>Compare optimization paths and generate Terraform or CLI plans with human review, health checks, and rollback instructions.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <dl class="experience-metrics">
+                        <div><dt>Estimated savings vs. baseline in the sandbox benchmark</dt><dd>2.7×</dd></div>
+                        <div><dt>Mean time to a generated deliverable in the benchmark</dt><dd>3.01s</dd></div>
+                        <div><dt>Higher total token usage, a deliberate tradeoff</dt><dd>48%</dd></div>
+                    </dl>
+                    <section id="context" class="article-section">
+                        <p class="section-number">01 / Context</p>
+                        <h2>The bill only tells part of the story.</h2>
+                        <p>For enterprise Microsoft workloads, infrastructure sizing and software licensing are tightly connected. An oversized virtual machine can carry unnecessary compute and licensing costs, while a database edition change can affect features that the application depends on.</p>
+                        <p>The project began with a visibility problem: pay-as-you-go licensing appears in cloud billing, but bring-your-own-license agreements require additional context. Billing data alone could not explain the full environment or which changes made sense for a workload.</p>
+                        <p>My goal was to give an agent enough structured evidence to explain those costs, compare optimization strategies, and produce an implementation plan an engineer could evaluate.</p>
+                    </section>
+                    <section id="architecture" class="article-section">
+                        <p class="section-number">02 / Inventory &amp; topology</p>
+                        <h2>Build the evidence before the conversation.</h2>
+                        <p>I built an asynchronous extraction, transformation, and loading pipeline using <strong>Python, Cloud Run, and BigQuery</strong>. It brought together live resource inventory, billing exports, and utilization data so each conversation could work from a prepared view of the project.</p>
+                        <p>The understanding phase mapped relationships between virtual machines, disks, databases, networks, and identity services. Time-series utilization added context about how those resources behaved. That made it possible to reason about a proposed change in terms of both its cost and its dependencies.</p>
+                        <p>I exposed the workflow through <strong>Model Context Protocol (MCP)</strong> tools for Gemini CLI, with an additional interface using Google’s Agent Development Kit and Vertex AI. Separating data collection from analysis reduced repeated discovery work and kept the interactive workflow focused.</p>
+                        <figure class="technical-figure" aria-labelledby="google-architecture-caption">
+                            <div class="figure-heading">
+                                <div><span class="small-label">01 / System architecture</span><h3>Agent architecture</h3></div>
+                                <a class="diagram-open" href="/src/images/experience/google-optimization.svg?v=0511cf2964" target="_blank" rel="noopener" aria-label="Open the Google licensing optimization architecture diagram at full size">Full size <span aria-hidden="true">↗</span></a>
+                            </div>
+                            <picture class="architecture-art">
+                                <source media="(max-width: 600px)" srcset="/src/images/experience/google-optimization-mobile.svg?v=f18a944d22" width="360" height="780">
+                                <img src="/src/images/experience/google-optimization.svg?v=0511cf2964" width="1600" height="460" alt="The data pipeline and Vertex powered Dashboard connect to an umbrella agent. Its subprocesses system contains an understanding subagent, state checker, recommendation subagent, and application subagent, with two-way communication between agents." loading="lazy">
+                            </picture>
+                            <figcaption id="google-architecture-caption">The umbrella agent connects the data pipeline and dashboard to the subagent system. Double arrows show two-way communication.</figcaption>
+                        </figure>
+                    </section>
+                    <section id="state" class="article-section">
+                        <p class="section-number">03 / State drift</p>
+                        <h2>Keep recommendations tied to the current environment.</h2>
+                        <p>A prepared inventory becomes stale when someone resizes an instance, changes a configuration, or removes a resource. I built a state comparator to detect those differences before downstream agents continued using an outdated view.</p>
+                        <p>The comparator canonicalized resource records, filtered fields that changed without a meaningful configuration change, and compared state hashes. When it detected drift, it recorded the differences, refreshed the inventory, and invalidated dependent analysis and recommendations.</p>
+                        <p>This became a central design constraint: a recommendation needed a traceable relationship to the infrastructure state that produced it. Rechecking that state was part of the workflow, including the path back to understanding when assumptions changed.</p>
+                    </section>
+                    <section id="recommendations" class="article-section">
+                        <p class="section-number">04 / Recommendation tradeoffs</p>
+                        <h2>A lower cost still needs a workable plan.</h2>
+                        <p>The recommendation phase combined deterministic licensing and resource checks with an <strong>LLM-as-a-judge</strong> review. Financial, reliability, and cloud architecture perspectives evaluated candidates against a shared rubric covering savings, feasibility, operational risk, and the ability to reverse a change.</p>
+                        <p>The resulting recommendations ranged from idle-resource cleanup and rightsizing to SQL Server edition changes and more involved licensing or database migrations. Organizing these paths by effort and risk helped make the tradeoffs visible to the engineer reviewing them.</p>
+                        <p>I also separated mutually exclusive strategies in the savings calculation. Resizing a database host and migrating that same database to another platform represent alternative plans; adding their full projected savings together would overstate the opportunity.</p>
+                    </section>
+                    <section id="apply" class="article-section">
+                        <p class="section-number">05 / Reviewed change plans</p>
+                        <h2>Make the proposed change inspectable.</h2>
+                        <p>The application phase generated <strong>Terraform or CLI artifacts</strong> alongside a seven-phase plan: safety verification, invariant verification, human review, implementation, health probing, rollback instructions, and observability.</p>
+                        <p>Feedback during the design and progress reviews sharpened the human approval requirement, especially for actions such as deleting a disk or virtual machine. The workflow made the proposed commands and their consequences available for review before execution.</p>
+                        <p>This also shaped what the agent had to return. A useful deliverable included the intended change, its prerequisites, a way to check workload health, and a recovery path if the outcome differed from the plan.</p>
+                    </section>
+                    <section id="results" class="article-section">
+                        <p class="section-number">06 / Evaluation</p>
+                        <h2>More savings identified, with a larger token footprint.</h2>
+                        <p>I compared LCOp with the vanilla Gemini CLI in an internship sandbox. The evaluation used the same underlying telemetry, resource specifications, and pricing inputs, and compared estimated savings, time to a generated deliverable, and token usage.</p>
+                        <div class="table-scroll" role="region" aria-label="Google licensing optimization benchmark comparison" tabindex="0">
+                            <table>
+                                <caption>Sandbox benchmark totals from my final presentation. Savings are estimated monthly opportunities.</caption>
+                                <thead><tr><th scope="col">Metric</th><th scope="col">Gemini CLI baseline</th><th scope="col">LCOp agent</th></tr></thead>
+                                <tbody>
+                                    <tr><th scope="row">Estimated monthly savings</th><td>$1,514</td><td>$4,114</td></tr>
+                                    <tr><th scope="row">Mean time to deliverable</th><td>7.45 seconds</td><td>3.01 seconds</td></tr>
+                                    <tr><th scope="row">Input tokens</th><td>7,500</td><td>8,880</td></tr>
+                                    <tr><th scope="row">Output tokens</th><td>1,900</td><td>5,000</td></tr>
+                                    <tr><th scope="row">Total tokens</th><td>9,400</td><td>13,880</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p>The agent identified <strong>about 2.7× the estimated monthly savings</strong> and reduced mean time to a deliverable by approximately <strong>60%</strong>. Total token usage increased by about <strong>48%</strong>, reflecting the additional tool context and more detailed change artifacts.</p>
+                        <p>The strongest gains were on SQL Server virtual machines and Cloud SQL instances. Results were comparable on Windows GKE nodes, storage, and Linux virtual machines, where the specialized licensing analysis added less.</p>
+                        <p>These measurements describe the sandbox evaluation and projected opportunities. They do not establish realized customer savings, fleet-wide performance, or the time required to execute an infrastructure change.</p>
+                    </section>
+                    <section id="lessons" class="article-section">
+                        <p class="section-number">07 / Handoff &amp; reflection</p>
+                        <h2>The system around the agent matters.</h2>
+                        <p>I brought the framework through design review, implementation, a working dashboard, benchmarking, and handoff documentation. The production transition still required team-owned service accounts and permissions, pipeline health monitoring, and automated deployment.</p>
+                        <p>The hardest problems included permissions, changing infrastructure state, and nondeterministic model behavior. They pushed me to make the data pipeline, validation boundaries, and evaluation criteria explicit.</p>
+                        <p>Working with Pri, Luqi, Sampath, and Steve also changed how I communicated the project. I learned to lead with the customer’s problem, use a concrete workload to explain the system, and present the business impact alongside the engineering tradeoffs.</p>
+                        <p>Outside work, the summer meant hikes at Rainier, Hoh, and Rattlesnake, plenty of racket sports, and time with the team around Seattle.</p>
+                    </section>
+                    <nav class="experience-related" aria-label="Continue through my experience"><a href="/pages/experience/uber.html"><span class="small-label">Earlier experience</span><strong>Uber Eats <span aria-hidden="true">↗</span></strong></a><a href="/pages/experience/aws.html"><span class="small-label">More cloud infrastructure</span><strong>Amazon Web Services <span aria-hidden="true">↗</span></strong></a></nav>
+                    <footer class="article-end"><a href="/pages/experience/index.html">← Back to experiences</a><a href="#article">Back to top ↑</a></footer>
+                </article>
+            </main>
+        </div>
+        <footer class="site-footer">
+            <p class="site-footer-quote">कृण्वन्तो विश्वं आर्यं | Make the world noble</p>
+        </footer>
+    </body>
+</html>

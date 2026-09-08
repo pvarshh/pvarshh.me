@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="460" viewBox="0 0 1600 460" role="img" aria-labelledby="title desc">
+<title id="title">Licensing optimization agent architecture</title>
+<desc id="desc">The data pipeline feeds an umbrella agent. A Vertex powered Dashboard communicates with the umbrella agent. The umbrella agent connects to a subprocesses system containing an understanding subagent, a state checker, a recommendation subagent, and an application subagent. The subagents exchange information in both directions.</desc>
+<style>
+text { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif; font-size: 23px; font-weight: 600; fill: #293327; text-anchor: middle; }
+.node { fill: #fafaf5; stroke: #d6d9ce; stroke-width: 2.4; }
+.system { fill: #f5f5ef; stroke-dasharray: 10 10; }
+.coordinator { fill: #293327; stroke: #293327; }
+.coordinator-title { fill: #fafaf5; }
+.state { fill: #eef1e8; stroke: #b4bfa9; }
+.system-label { fill: #687062; font-size: 18px; letter-spacing: 1.2px; }
+.system-heading { fill: #f5f5ef; stroke: none; }
+.edge { fill: none; stroke: #a0aa99; stroke-width: 2.8; stroke-linecap: round; stroke-linejoin: round; }
+</style>
+<defs>
+<marker id="arrow" markerWidth="13" markerHeight="12" refX="11" refY="6" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M1 1 11 6 1 11" fill="none" stroke="#a0aa99" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></marker>
+</defs>
+<rect width="1600" height="460" fill="#fafaf5"/>
+<rect class="node system" x="784" y="108" width="792" height="330" rx="12"/>
+<rect class="node" x="24" y="36" width="362" height="74" rx="12"/>
+<text x="205" y="80">Data Pipeline</text>
+<rect class="node" x="198" y="220" width="188" height="78" rx="12"/>
+<text x="292" y="252"><tspan x="292">Vertex powered</tspan><tspan x="292" dy="28">Dashboard</tspan></text>
+<rect class="node coordinator" x="476" y="216" width="216" height="86" rx="12"/>
+<text x="584" y="267" class="coordinator-title">Umbrella Agent</text>
+<path class="edge" d="M387 72 C416 152 425 170 510 208" marker-end="url(#arrow)"/>
+<path class="edge" d="M390 259 H472" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+<path class="edge" d="M695 260 L779 263" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+<rect class="node system-heading" x="794" y="118" width="254" height="58" rx="12"/>
+<text x="921" y="154" class="system-label">SUBPROCESSES SYSTEM</text>
+<rect class="node" x="802" y="246" width="194" height="92" rx="12"/>
+<text x="899" y="284"><tspan x="899">Understanding</tspan><tspan x="899" dy="28">Subagent</tspan></text>
+<rect class="node state" x="1046" y="256" width="196" height="72" rx="12"/>
+<text x="1144" y="299">State Checker</text>
+<rect class="node" x="1288" y="154" width="224" height="88" rx="12"/>
+<text x="1400" y="190"><tspan x="1400">Recommendation</tspan><tspan x="1400" dy="28">Subagent</tspan></text>
+<rect class="node" x="1288" y="342" width="224" height="88" rx="12"/>
+<text x="1400" y="378"><tspan x="1400">Application</tspan><tspan x="1400" dy="28">Subagent</tspan></text>
+<path class="edge" d="M1001 283 C1140 278 1180 264 1284 202" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+<path class="edge" d="M1001 308 C1140 307 1180 301 1284 381" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+<path class="edge" d="M1400 248 L1400 336" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+</svg>

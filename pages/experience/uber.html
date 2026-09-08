@@ -38,7 +38,6 @@
                     <li><a href="#evaluation"><span>06</span> Evaluation &amp; results</a></li>
                     <li><a href="#lessons"><span>07</span> What I took away</a></li>
                 </ol>
-                <a class="sources-link" href="#sources">Source notes <span aria-hidden="true">↗</span></a>
             </nav>
             <p class="sidebar-note">Winter 2026<br>Uber Eats<br>Delivery Matching</p>
         </aside>
@@ -76,7 +75,7 @@
                             <source media="(max-width: 600px)" srcset="/src/images/uber/logging-architecture-mobile.svg" width="360" height="650">
                             <img src="/src/images/uber/logging-architecture.svg" width="800" height="534" alt="Eyeball, Checkout, and PostOrder source signals flow through event adapters into Kafka Heatpipe events." loading="lazy">
                         </picture>
-                        <figcaption id="lifecycle-caption">The logging paths I worked on. uETA extraction was implemented in Eyeball and Checkout; BYOC metadata spans all three phases. This is a logical view of the event flow, not a deployment topology. <a href="#source-logging" class="citation" aria-label="Source 1: logging documents">[1]</a></figcaption>
+                        <figcaption id="lifecycle-caption">The logging paths I worked on. uETA extraction was implemented in Eyeball and Checkout; BYOC metadata spans all three phases. This is a logical view of the event flow, not a deployment topology.</figcaption>
                     </figure>
                 </section>
                 <section id="ueta" class="article-section">
@@ -93,7 +92,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <p>Both adapters convert the available value to <code>int64</code> seconds to satisfy the event schema. At Checkout, the feature-vector JSON also retains <code>ti_ueta_seconds</code> for ML audits. Existing minimum/maximum ETD and calibration logic stays intact. Tests cover extraction, conversion, and fallback behavior; both uETA adapter changes are marked merged in the engineering notes. <a href="#source-logging" class="citation" aria-label="Source 1">[1]</a></p>
+                    <p>Both adapters convert the available value to <code>int64</code> seconds to satisfy the event schema. At Checkout, the feature-vector JSON also retains <code>ti_ueta_seconds</code> for ML audits. Existing minimum/maximum ETD and calibration logic stays intact. Tests cover extraction, conversion, and fallback behavior; both uETA adapter changes merged.</p>
                     <aside class="article-callout"><p class="small-label">The contract matters</p><p>A missing estimate and a zero-second estimate mean different things. The logging adapter needs to preserve the established missing-value semantics for each workflow.</p></aside>
                 </section>
                 <section id="byoc" class="article-section">
@@ -114,9 +113,9 @@
                             <div class="demo-heading"><label for="raw-etd">Explore the guardrail</label><span>Illustrative · 10-minute floor</span></div>
                             <div class="slider-row"><span>Raw ETD</span><input id="raw-etd" type="range" min="1" max="20" value="5" step="1" disabled aria-describedby="guardrail-explanation"><output id="raw-value" for="raw-etd">5 min</output></div>
                             <div class="demo-values" aria-live="polite" aria-atomic="true"><p>Customer estimate<strong id="served-value">10 min</strong></p><p>Logged raw value<strong id="logged-value">5 min</strong></p><p>Guardrail applied<strong id="guardrail-state">Yes</strong></p></div>
-                            <p id="guardrail-explanation">The documented test uses a 5-minute input and a 10-minute minimum: the estimate becomes 10 minutes; the logged input stays 5.</p>
+                            <p id="guardrail-explanation">With a 5-minute input and a 10-minute minimum, the estimate becomes 10 minutes; the logged input stays 5.</p>
                         </div>
-                        <figcaption id="byoc-caption">Capture the source signal before minimum-ETD mutation. The design also calls for absolute bounds on anomalous raw values; those bounds are outside this simplified example. <a href="#source-logging" class="citation" aria-label="Source 1">[1]</a></figcaption>
+                        <figcaption id="byoc-caption">Capture the source signal before minimum-ETD mutation. The design also calls for absolute bounds on anomalous raw values; those bounds are outside this simplified example.</figcaption>
                     </figure>
                     <h3>Carry the metadata through every branch.</h3>
                     <p>Checkout has both a primary v2 path and a legacy fallback path. I propagated <code>ByocInfo</code> through both, including the prediction metadata returned by the fallback calculator. Otherwise, the audit trail would disappear precisely when the system took its recovery path.</p>
@@ -127,7 +126,7 @@
                         <li><strong>Validation:</strong> Test client-failure fallback traversal, the 5-to-10-minute guardrail case, source attribution, and calculator priority.</li>
                         <li><strong>Telemetry:</strong> Use M3 metrics to inspect source distributions and whether the guardrail ran.</li>
                     </ul>
-                    <p class="implementation-note">The February notes mark Checkout and PostOrder merged and Eyeball awaiting review. The final presentation describes the Eyeball implementation, but does not supply a later merge status. <a href="#source-logging" class="citation" aria-label="Source 1">[1]</a> <a href="#source-presentation" class="citation" aria-label="Source 2: final presentation">[2]</a></p>
+                    <p class="implementation-note">Checkout and PostOrder merged during the internship. Eyeball was implemented and awaiting review; I did not track a later merge status here.</p>
                 </section>
                 <section id="cache" class="article-section">
                     <p class="section-number">04 / Background work</p>
@@ -142,15 +141,15 @@
                             <source media="(max-width: 600px)" srcset="/src/images/uber/cache-refresh-mobile.svg" width="360" height="764">
                             <img src="/src/images/uber/cache-refresh.svg" width="800" height="450" alt="Fresh cache hits return a cached value; misses or stale values trigger ML prediction, per-store event adaptation, and Kafka publishing." loading="lazy">
                         </picture>
-                        <figcaption id="cache-caption">The proposed refresh pipeline captures model identity, features, and prediction metadata. Fresh cache hits produce no refresh event. <a href="#source-presentation" class="citation" aria-label="Source 2">[2]</a></figcaption>
+                        <figcaption id="cache-caption">The proposed refresh pipeline captures model identity, features, and prediction metadata. Fresh cache hits produce no refresh event.</figcaption>
                     </figure>
-                    <p>The adapter accounts for absent <code>TravelTime</code>, <code>FeatureVector</code>, and <code>PresentedETDMetadata</code>. The design separates event adaptation from publishing and pairs a primary topic with a shadow topic sharing its schema. My final presentation describes the adapter implementation while still listing cache-refresh logging as <strong>in progress</strong>; it is not evidence of a completed rollout.</p>
+                    <p>The adapter accounts for absent <code>TravelTime</code>, <code>FeatureVector</code>, and <code>PresentedETDMetadata</code>. The design separates event adaptation from publishing and pairs a primary topic with a shadow topic sharing its schema. I implemented the adapter, but cache-refresh logging remained <strong>in progress</strong> by the end of the internship—not a completed rollout.</p>
                 </section>
                 <section id="architecture" class="article-section">
                     <p class="section-number">05 / Machine learning</p>
                     <h2>Move the boundary to where information changes.</h2>
                     <p>My second project asked whether Checkout belongs with PostOrder in the model architecture. The existing split places Eyeball and Checkout in a preorder model, with Created, Accepted, and Adjusted handled by a postorder model. The candidate keeps an Eyeball-only model and moves Checkout into a unified model with the later stages.</p>
-                    <p>The hypothesis was that Checkout has richer order context than browsing, making it a useful place to share representations with PostOrder. The candidate still uses <strong>two models</strong>. The change is which stages each model owns. <a href="#source-evaluation" class="citation" aria-label="Source 3: ETD evaluation">[3]</a></p>
+                    <p>The hypothesis was that Checkout has richer order context than browsing, making it a useful place to share representations with PostOrder. The candidate still uses <strong>two models</strong>. The change is which stages each model owns.</p>
                     <figure class="technical-figure" aria-labelledby="architecture-caption">
                         <div class="figure-heading">
                             <div><span class="small-label">04 / Model architecture</span><h3>Move the boundary, keep the lifecycle</h3></div>
@@ -160,7 +159,7 @@
                             <source media="(max-width: 600px)" srcset="/src/images/uber/model-boundary-mobile.svg" width="360" height="438">
                             <img src="/src/images/uber/model-boundary.svg" width="800" height="550" alt="Baseline: Eyeball and Checkout use the preorder model. Candidate: Eyeball stands alone and Checkout joins Created, Accepted, and Adjusted in a unified model." loading="lazy">
                         </picture>
-                        <figcaption id="architecture-caption">Stage ownership for the single-head comparison. The multi-head experiment also evaluates standard and priority outputs. Both test the same boundary shift. Redrawn from the internship presentation, slides 19 and 22. <a href="#source-presentation" class="citation" aria-label="Source 2">[2]</a></figcaption>
+                        <figcaption id="architecture-caption">Stage ownership for the single-head comparison. The multi-head experiment also evaluates standard and priority outputs. Both test the same boundary shift.</figcaption>
                     </figure>
                     <p>The unified model introduces <code>prediction_mode</code> as a feature to distinguish the four stages. Its feature set includes stage-specific preparation times and elapsed times between order events, alongside shared order, location, travel-time, and fulfillment features.</p>
                     <aside class="article-callout"><p class="small-label">Serving is a separate question</p><p>The design estimated roughly <strong>2–3× postorder traffic</strong> after moving Checkout. This was an offline accuracy evaluation; it did not establish production latency or throughput readiness.</p></aside>
@@ -168,14 +167,14 @@
                 <section id="evaluation" class="article-section">
                     <p class="section-number">06 / Evidence</p>
                     <h2>Make the comparison fair before making it favorable.</h2>
-                    <p>I used Michelangelo evaluation outputs and Hive queries to compare baseline and candidate predictions on matched orders and stages. The final presentation describes shared training data, feature pipelines, and hyperparameters. The evaluation notes specify chronological train, validation, test, and evaluation windows to avoid leakage.</p>
+                    <p>I used Michelangelo evaluation outputs and Hive queries to compare baseline and candidate predictions on matched orders and stages. Baseline and candidate shared training data, feature pipelines, and hyperparameters. I used chronological train, validation, test, and evaluation windows to avoid leakage.</p>
                     <ol class="method-steps">
                         <li><strong>Match the cohort.</strong> Intersect <code>workflow_uuid</code> values within each <code>prediction_mode</code> and use the same date range for both models.</li>
                         <li><strong>Align the target.</strong> Preorder actual time runs from order creation to dropoff; PostOrder actual time runs from the prediction timestamp to dropoff. Comparisons must respect that distinction.</li>
                         <li><strong>Validate the inputs to the comparison.</strong> Check matching row counts and identical average actual delivery times before interpreting metric differences. Matching IDs alone does not prove timestamp alignment.</li>
                     </ol>
                     <div class="metric-definitions"><div><span class="small-label">Accuracy</span><code>MAE = avg(|ATD − ETD|)</code><p>Average absolute prediction error.</p></div><div><span class="small-label">Bias</span><code>bias = avg(ATD − ETD)</code><p>Positive means underprediction.</p></div></div>
-                    <p>I also tracked error percentiles and mean predicted ETD. Tail metrics show what the average conceals; mean ETD reveals whether improved error comes with a longer promise. The multi-head comparison adds the model’s loss metrics for its different prediction heads. <a href="#source-evaluation" class="citation" aria-label="Source 3">[3]</a></p>
+                    <p>I also tracked error percentiles and mean predicted ETD. Tail metrics show what the average conceals; mean ETD reveals whether improved error comes with a longer promise. The multi-head comparison adds the model’s loss metrics for its different prediction heads.</p>
                     <h3>The result depends on the model and fulfillment type.</h3>
                     <p>For single-head Delivery at Checkout, MAE fell <strong>4.2%</strong> and p95 error fell <strong>7.5%</strong>, while average predicted ETD rose <strong>2.5%</strong>. The OTT (over-the-top) cohort showed a larger accuracy gain and a larger increase in the estimate. The multi-head experiment did not reproduce those gains.</p>
                     <figure class="technical-figure results-figure" aria-labelledby="results-caption">
@@ -187,7 +186,7 @@
                         <div id="results-panels" aria-live="polite" aria-atomic="true">
                             <div class="result-panel" data-model="single" data-cohort="delivery">
                                 <h4>Single-head · Delivery</h4>
-                                <div class="table-scroll" role="region" aria-label="Single-head Delivery results" tabindex="0"><table class="results-table"><caption>Relative change (%) from the baseline; final presentation, slide 20.</caption><thead><tr><th scope="col">Stage</th><th scope="col">MAE</th><th scope="col">p95 error</th><th scope="col">Mean ETD</th></tr></thead><tbody>
+                                <div class="table-scroll" role="region" aria-label="Single-head Delivery results" tabindex="0"><table class="results-table"><caption>Relative change (%) from the baseline.</caption><thead><tr><th scope="col">Stage</th><th scope="col">MAE</th><th scope="col">p95 error</th><th scope="col">Mean ETD</th></tr></thead><tbody>
                                     <tr><th scope="row">Eyeball</th><td class="improved">−4.1%</td><td class="improved strong-improvement">−8.5%</td><td class="eta-up">+0.5%</td></tr>
                                     <tr class="focus-row"><th scope="row">Checkout</th><td class="improved">−4.2%</td><td class="improved strong-improvement">−7.5%</td><td class="eta-up">+2.5%</td></tr>
                                     <tr><th scope="row">Created</th><td class="near-flat">+0.2%</td><td class="improved">−4.8%</td><td class="near-flat">−0.1%</td></tr>
@@ -198,16 +197,16 @@
                             </div>
                             <div class="result-panel" data-model="single" data-cohort="ott">
                                 <h4>Single-head · Over-the-top (OTT)</h4>
-                                <div class="table-scroll" role="region" aria-label="Single-head OTT results" tabindex="0"><table class="results-table"><caption>Relative change (%) from the baseline; final presentation, slide 20.</caption><thead><tr><th scope="col">Stage</th><th scope="col">MAE</th><th scope="col">p95 error</th><th scope="col">Mean ETD</th></tr></thead><tbody>
+                                <div class="table-scroll" role="region" aria-label="Single-head OTT results" tabindex="0"><table class="results-table"><caption>Relative change (%) from the baseline.</caption><thead><tr><th scope="col">Stage</th><th scope="col">MAE</th><th scope="col">p95 error</th><th scope="col">Mean ETD</th></tr></thead><tbody>
                                     <tr><th scope="row">Eyeball</th><td class="improved">−5.9%</td><td class="improved strong-improvement">−8.1%</td><td class="eta-up">+4.4%</td></tr>
                                     <tr class="focus-row"><th scope="row">Checkout</th><td class="improved strong-improvement">−12.0%</td><td class="improved strong-improvement">−13.6%</td><td class="eta-up">+8.8%</td></tr>
                                     <tr><th scope="row">Created</th><td class="near-flat">−0.5%</td><td class="regressed">+1.6%</td><td class="near-flat">+0.2%</td></tr>
                                 </tbody></table></div>
-                                <p class="result-reading"><strong>Reading the result:</strong> Checkout has the strongest accuracy gain and the largest mean-ETD increase. The presentation reports only these three stages for OTT.</p>
+                                <p class="result-reading"><strong>Reading the result:</strong> Checkout has the strongest accuracy gain and the largest mean-ETD increase. The OTT comparison covers only these three stages.</p>
                             </div>
                             <div class="result-panel" data-model="multi" data-cohort="delivery">
                                 <h4>Multi-head · Delivery</h4>
-                                <div class="table-scroll" role="region" aria-label="Multi-head Delivery results" tabindex="0"><table class="results-table"><caption>Selected metrics, relative change (%); final presentation, slide 23.</caption><thead><tr><th scope="col">Stage</th><th scope="col">MAE</th><th scope="col">p95 error</th><th scope="col">Mean ETD</th></tr></thead><tbody>
+                                <div class="table-scroll" role="region" aria-label="Multi-head Delivery results" tabindex="0"><table class="results-table"><caption>Selected metrics, relative change (%).</caption><thead><tr><th scope="col">Stage</th><th scope="col">MAE</th><th scope="col">p95 error</th><th scope="col">Mean ETD</th></tr></thead><tbody>
                                     <tr><th scope="row">Eyeball</th><td class="near-flat">+0.0%</td><td class="near-flat">+0.5%</td><td class="near-flat">+0.0%</td></tr>
                                     <tr class="focus-row"><th scope="row">Checkout</th><td class="regressed">+1.8%</td><td class="regressed">+4.1%</td><td class="eta-down">−1.1%</td></tr>
                                     <tr><th scope="row">Created</th><td class="regressed">+0.8%</td><td class="improved">−4.0%</td><td class="near-flat">−0.1%</td></tr>
@@ -218,7 +217,7 @@
                             </div>
                             <div class="result-panel" data-model="multi" data-cohort="ott">
                                 <h4>Multi-head · Over-the-top (OTT)</h4>
-                                <div class="table-scroll" role="region" aria-label="Multi-head OTT results" tabindex="0"><table class="results-table"><caption>Selected metrics, relative change (%); final presentation, slide 23.</caption><thead><tr><th scope="col">Stage</th><th scope="col">MAE</th><th scope="col">p95 error</th><th scope="col">Mean ETD</th></tr></thead><tbody>
+                                <div class="table-scroll" role="region" aria-label="Multi-head OTT results" tabindex="0"><table class="results-table"><caption>Selected metrics, relative change (%).</caption><thead><tr><th scope="col">Stage</th><th scope="col">MAE</th><th scope="col">p95 error</th><th scope="col">Mean ETD</th></tr></thead><tbody>
                                     <tr><th scope="row">Eyeball</th><td class="near-flat">+0.1%</td><td class="regressed">+1.4%</td><td class="near-flat">−0.1%</td></tr>
                                     <tr><th scope="row">Checkout</th><td class="near-flat">−0.5%</td><td class="improved">−2.7%</td><td class="near-flat">−0.0%</td></tr>
                                     <tr class="focus-row"><th scope="row">Created</th><td class="regressed strong-regression">+11.8%</td><td class="regressed strong-regression">+11.0%</td><td class="eta-down">−3.2%</td></tr>
@@ -227,7 +226,7 @@
                             </div>
                         </div>
                         <div class="results-legend"><span><i class="legend-improved" aria-hidden="true"></i>Lower error</span><span><i class="legend-regressed" aria-hidden="true"></i>Higher error</span><span><i class="legend-eta" aria-hidden="true"></i>Longer mean ETD</span></div>
-                        <figcaption id="results-caption">Δ% = (candidate − baseline) / baseline × 100. Negative MAE/p95 changes mean lower error; mean ETD is the promise length, not an error metric. Shading is directional, with error changes of ±0.5% or less shown as near-flat. These figures come from the final presentation’s heatmaps; the evaluation document contains separate result snapshots that are not combined here. <a href="#source-presentation" class="citation" aria-label="Source 2">[2]</a></figcaption>
+                        <figcaption id="results-caption">Δ% = (candidate − baseline) / baseline × 100. Negative MAE/p95 changes mean lower error; mean ETD is the promise length, not an error metric. Shading is directional, with error changes of ±0.5% or less shown as near-flat.</figcaption>
                     </figure>
                     <p><strong>My takeaway was a conditional result.</strong> The single-head architecture was promising for earlier stages, with ETA inflation still to investigate. Postorder gains were limited. The multi-head experiment raised a different question: whether sharing Checkout and PostOrder introduces conflicting signals. The work produced evidence for those next investigations, rather than a blanket recommendation to migrate.</p>
                 </section>
@@ -235,19 +234,9 @@
                     <p class="section-number">07 / Reflection</p>
                     <h2>Understand the full path of a prediction.</h2>
                     <p>The common thread across both projects was knowing what a number actually represents. In logging, that meant preserving its source, units, and behavior through fallbacks. In evaluation, it meant aligning cohorts and targets, then looking beyond one aggregate metric.</p>
-                    <p>I also learned to formalize requirements earlier, map a feature end to end, and connect implementation decisions to the reason the team needed the work. Shadow-traffic validation, SLATE testing, HDFS failures during training, and multi-head out-of-memory errors were reminders that the environment around a change is part of the engineering problem. <a href="#source-presentation" class="citation" aria-label="Source 2">[2]</a> <a href="#source-retro" class="citation" aria-label="Source 4: retrospective">[4]</a></p>
+                    <p>I also learned to formalize requirements earlier, map a feature end to end, and connect implementation decisions to the reason the team needed the work. Shadow-traffic validation, SLATE testing, HDFS failures during training, and multi-head out-of-memory errors were reminders that the environment around a change is part of the engineering problem.</p>
                     <p>And outside the code: racket sports, hiking, and time with the team made California feel like more than an internship location.</p>
                     <figure class="internship-photos"><div><img src="/src/images/uber/uber-01.jpg" alt="A stage performer standing on the hand of a giant illuminated puppet" width="450" height="600" loading="lazy"><img src="/src/images/uber/uber-02.jpg" alt="A Golden State Warriors basketball game at Chase Center" width="600" height="450" loading="lazy"><img src="/src/images/uber/uber-03.jpg" alt="Sunset over rolling California hills and low fog" width="600" height="450" loading="lazy"></div><figcaption>A few moments from Winter ’26.</figcaption></figure>
-                </section>
-                <section id="sources" class="source-notes" aria-labelledby="sources-heading">
-                    <h2 id="sources-heading">Source notes</h2>
-                    <p>Adapted from my internship engineering documents. Diagrams are redrawn for this article; results retain their original experiment context.</p>
-                    <ol>
-                        <li id="source-logging"><strong>uETA Logging</strong> (February 25, 2026) and <strong>BYOC Logging</strong> (February 24, 2026). Adapter contracts, data lineage, tests, and implementation status.</li>
-                        <li id="source-presentation"><strong>Pranav Internship Presentation</strong> (January 12–April 3, 2026). Logging work, model diagrams, final comparison heatmaps (slides 20 and 23), conclusions, and roadblocks.</li>
-                        <li id="source-evaluation"><strong>ETD Prediction Evaluation Comparison.</strong> Architecture, feature sets, matching methodology, target definitions, and evaluation metrics.</li>
-                        <li id="source-retro"><strong>Evaluation Document</strong> (midpoint February 26; final April 2, 2026). Personal reflection on requirements, architectural thinking, and end-to-end ownership.</li>
-                    </ol>
                 </section>
                 <footer class="article-end"><a href="/pages/experience/index.html">← Back to experiences</a><a href="#article">Back to top ↑</a></footer>
             </article>

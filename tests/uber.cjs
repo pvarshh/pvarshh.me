@@ -42,7 +42,7 @@ const { chromium } = require('playwright');
                 }
             }
         }
-        // Check all combinations against the source presentation's key tradeoffs.
+        // Check all combinations against the offline evaluation's key tradeoffs.
         for (const [model, cohort, row, values] of [
             ['single', 'delivery', 'Checkout', ['−4.2%', '−7.5%', '+2.5%']],
             ['single', 'ott', 'Checkout', ['−12.0%', '−13.6%', '+8.8%']],
