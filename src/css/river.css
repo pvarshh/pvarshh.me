@@ -1,16 +1,15 @@
 #river-container {
     position: fixed;
     right: max(0.75rem, 1vw);
-    top: 0;
-    height: 100vh;
-    width: 185px;
+    top: 120px;
+    height: calc(100vh - 144px);
+    width: 216px;
     z-index: 10; 
     pointer-events: none;
     display: none; 
     overflow: hidden;
-    mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
-    opacity: 0.8;
+    mask-image: linear-gradient(to bottom, transparent, black 32px, black calc(100% - 32px), transparent);
+    -webkit-mask-image: linear-gradient(to bottom, transparent, black 32px, black calc(100% - 32px), transparent);
 }
 
 @media (min-width: 1300px) {
@@ -22,20 +21,14 @@
 @media (min-width: 1600px) {
     #river-container {
         right: 2.5vw;
-        width: 220px;
-    }
-
-    .river-stream {
-        width: 200px;
     }
 }
 
 .river-stream {
     position: absolute;
     top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 160px;
+    right: 12px;
+    width: 48px;
     height: 100%;
     /* More visible paper/watermark style */
     background: linear-gradient(90deg, 
@@ -69,9 +62,9 @@
 .rower-container {
     position: absolute;
     top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 48px;
+    right: 4px;
+    transform: translateY(-50%);
+    width: 64px;
     height: 100px;
     z-index: 2;
     pointer-events: auto; /* Enable clicks despite parent being none */
@@ -176,9 +169,8 @@
 
 .river-item {
     position: absolute;
-    left: 50%;
-    /* Centered relative to stream, slight offset for variation handled in JS or varied classes */
-    width: max-content; /* Shrink wrap to content */
+    left: 8px;
+    width: 132px;
     
     /* Remove card styling specifically */
     background: transparent;
@@ -187,31 +179,40 @@
     box-shadow: none;
     
     /* Text styling matches site */
-    font-family: 'Crimson Text', serif;
-    font-style: italic;
+    font-family: var(--font-serif);
+    font-style: normal;
     opacity: 0;
-    transition: opacity 0.5s;
-    text-align: center;
-    transform: translateX(-50%);
+    transition: opacity 0.25s;
+    text-align: left;
 
     pointer-events: auto; /* Enable clicks */
     cursor: pointer;
     z-index: 20;
-    white-space: nowrap; /* Prevent wrapping */
+    white-space: normal;
+}
+
+.river-item .year {
+    display: block;
+    margin-bottom: 5px;
+    font: 10px/1.4 var(--font-mono);
+    letter-spacing: 0.06em;
+    color: var(--color-muted);
 }
 
 .river-item .role {
-    font-weight: normal;
-    font-size: 0.85rem;
-    color: #1a1a1a;
-    border-bottom: 1px dotted rgba(26,26,26,0.3); /* Subtle underline */
-    display: inline-block; /* Ensure border sticks to text */
+    display: block;
+    font-size: 16px;
+    line-height: 1.25;
+    font-weight: 700;
+    color: var(--color-ink);
+    overflow-wrap: anywhere;
 }
 
 .river-link {
     text-decoration: none;
     color: inherit;
-    display: inline-block; /* Ensure containing block shrinks to text */
+    display: block;
+    padding: 6px 0;
     
     /* Reset global a tag styles that might interfere */
     border-bottom: none !important;
@@ -235,6 +236,24 @@
 /* Re-add hover states after edit block */
 .river-item:hover {
     opacity: 1 !important; /* Force full opacity on hover */
-    transform: translateX(-50%) scale(1.05); /* Slight grow */
 }
 
+.river-link:hover .role,
+.river-link:focus-visible .role {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.rower-container,
+.rower-container:hover,
+.rower-container:focus {
+    background: none !important;
+    border: 0 !important;
+    text-decoration: none;
+    transform: translateY(-50%) !important;
+}
+
+.rower-container::after { display: none !important; }
+.rower-container:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; }
+#river-container:hover *, #river-container:focus-within * { animation-play-state: paused; }

@@ -69,8 +69,7 @@ body.portfolio-system { margin: 0; padding: 0; background: var(--color-paper); c
 .portfolio-system .story-realm-tabs { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; padding: 0 16px; }
 .portfolio-system .story-realm-tab { min-width: 0; padding-inline: 6px; font-size: 10px; letter-spacing: 0; border-radius: 0; border-color: var(--color-line); color: var(--color-muted); box-shadow: none; opacity: 1; }
 .portfolio-system .story-realm-tab.active, .portfolio-system .story-realm-tab:hover { color: var(--color-accent); border-color: var(--color-accent); }
-.portfolio-system #river-container { width: 100px; opacity: .6; }
-.portfolio-system .river-stream { width: 90px; background: transparent; border-color: var(--color-line); }
+.portfolio-system .river-stream { background: transparent; border-color: var(--color-line); }
 .portfolio-system .water-line { background: var(--color-line); }
 .portfolio-system .boat, .portfolio-system .oar, .portfolio-system .oar::after { background: var(--color-accent); }
 .portfolio-system .boat::after { background: var(--color-muted); border-color: var(--color-accent); }
