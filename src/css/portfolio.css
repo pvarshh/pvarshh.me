@@ -65,7 +65,8 @@ body.portfolio-system { margin: 0; padding: 0; background: var(--color-paper); c
 .portfolio-system .story-panel { filter: none; }
 .portfolio-system .story-panel.active { animation: none; }
 .portfolio-system .story-panel.active li { animation: none !important; }
-.portfolio-system .story-realm-tabs { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; padding: 0; }
+/* Match the track's 12px inset, plus half the grid gap, to align tab and station centers. */
+.portfolio-system .story-realm-tabs { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; padding: 0 16px; }
 .portfolio-system .story-realm-tab { min-width: 0; padding-inline: 6px; font-size: 10px; letter-spacing: 0; border-radius: 0; border-color: var(--color-line); color: var(--color-muted); box-shadow: none; opacity: 1; }
 .portfolio-system .story-realm-tab.active, .portfolio-system .story-realm-tab:hover { color: var(--color-accent); border-color: var(--color-accent); }
 .portfolio-system #river-container { width: 100px; opacity: .6; }
@@ -136,6 +137,7 @@ body.portfolio-system { margin: 0; padding: 0; background: var(--color-paper); c
     .portfolio-system .article-section > p:not(.section-number), .portfolio-system .essay-body p { font-size: 19px; }
     .portfolio-system .essay-pullquote p { font-size: 24px; }
     .portfolio-system.page-home #main-content { padding-inline: 20px; }
+    .portfolio-system .story-realm-tabs { padding-inline: 4px; }
     .portfolio-system .site-footer { padding-inline: 20px; }
     .portfolio-game .ui-overlay { top: auto; bottom: 56px; }
 }
